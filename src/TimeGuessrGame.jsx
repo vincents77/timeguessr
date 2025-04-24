@@ -1,28 +1,6 @@
 import { useEffect, useState } from 'react';
 import supabase from './supabaseClient';
-import MapboxMap from './MapboxMap';
-
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-});
-
-function MapSelector({ onSelect }) {
-  useMapEvents({ click: (e) => onSelect([e.latlng.lat, e.latlng.lng]) });
-  return null;
-}
-
-function FitBounds({ coordsA, coordsB }) {
-  const map = useMap();
-  useEffect(() => {
-    if (!coordsA || !coordsB) return;
-    map.fitBounds([coordsA, coordsB], { padding: [50, 50] });
-  }, [coordsA, coordsB, map]);
-  return null;
-}
+import MapboxMap from './components/MapboxMap';
 
 export default function TimeGuessrGame() {
   const [events, setEvents] = useState([]);
@@ -89,11 +67,11 @@ export default function TimeGuessrGame() {
     if (selectedEra) results = results.filter(e => e.era === selectedEra);
     if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
 
-    if (filteredEvents.length === 0) {
+    if (results.length === 0) {
       alert("⚠️ No events match your filters. Adjust filters to continue.");
       return;
     }
-    const next = filteredEvents[Math.floor(Math.random() * filteredEvents.length)];
+    const next = results[Math.floor(Math.random() * results.length)];
     setEvent(next);
     setGuessCoords(null);
     setGuessYear('');
@@ -140,56 +118,66 @@ export default function TimeGuessrGame() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6 relative overflow-hidden">
-        <h1 className="text-3xl font-bold mb-2">TimeGuessr</h1>
+      <h1 className="text-3xl font-bold mb-2">TimeGuessr</h1>
 
-        <div className="flex flex-wrap gap-4 items-center">
+      <div className="flex flex-wrap gap-4 items-center">
         <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
-            <option value="">🎯 All Themes</option>
-            {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
+          <option value="">🎯 All Themes</option>
+          {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
         </select>
 
         <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
-            <option value="">⏳ All Eras</option>
-            {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
+          <option value="">⏳ All Eras</option>
+          {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
         </select>
 
         <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
-            <option value="">🌍 All Regions</option>
-            {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
+          <option value="">🌍 All Regions</option>
+          {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
         </select>
 
-        <button
-            className="bg-black text-white p-2 px-4 rounded hover:bg-gray-800"
-            onClick={startGame}
-        >
-            ▶️ Start Guessing
+        <button className="bg-black text-white p-2 px-4 rounded hover:bg-gray-800" onClick={startGame}>
+          ▶️ Start Guessing
         </button>
 
-        <input
-            className="border rounded px-2 py-1"
-            value={playerName}
-            onChange={e => setPlayerName(e.target.value)}
-            placeholder="Player Name"
-        />
-        </div>
+        <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
+      </div>
 
       {event && gameStarted && (
         <>
-          <img src={event.image_url} className="rounded shadow w-full max-h-[70vh] object-cover" alt="event" />
-
-          <div className="md:flex gap-6">
-            <div className="flex-1 z-10">
-              <h2 className="font-semibold text-xl mb-2">📍 Place your location guess:</h2>
-              <MapboxMap
-                guessCoords={guessCoords}
-                setGuessCoords={setGuessCoords}
+          <div className="flex flex-col lg:flex-row gap-6 max-w-[90vw] mx-auto">
+            {/* Left: Image */}
+            <div className="lg:w-1/2 w-full h-auto aspect-[4/3]">
+              <img
+                src={event.image_url}
+                alt="event"
+                className="w-full h-full object-cover rounded shadow"
               />
             </div>
 
-            <div className="w-full md:w-64 space-y-4 mt-6 md:mt-0">
-              <input type="number" className="border w-full p-2 rounded" value={guessYear} onChange={e => setGuessYear(e.target.value)} placeholder="Year (e.g. 1789 or -753)" />
-              <button className="bg-blue-600 text-white p-2 rounded w-full" onClick={handleSubmit} disabled={!guessCoords || !guessYear}>Submit Guess</button>
+            {/* Right: Map */}
+            <div className="lg:w-1/2 w-full h-auto aspect-[4/3]">
+              <h2 className="font-semibold text-xl mb-2">📍 Place your location guess:</h2>
+              <MapboxMap guessCoords={guessCoords} setGuessCoords={setGuessCoords} isStatic={true}/>
             </div>
+          </div>
+
+          {/* Input Section */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
+            <input
+              type="number"
+              className="border w-full sm:w-64 p-2 rounded"
+              value={guessYear}
+              onChange={e => setGuessYear(e.target.value)}
+              placeholder="Year (e.g. 1789 or -753)"
+            />
+            <button
+              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+              onClick={handleSubmit}
+              disabled={!guessCoords || !guessYear}
+            >
+              Submit Guess
+            </button>
           </div>
         </>
       )}
@@ -203,14 +191,8 @@ export default function TimeGuessrGame() {
             <p>📏 Distance: {getDistance(...guessCoords, ...event.coords).toFixed(1)} km</p>
             <p>⏳ Year: {event.year < 0 ? `${-event.year} BCE` : `${event.year} CE`}</p>
             <p>📆 Year Difference: {Math.abs(event.year - parseInt(guessYear))} {Math.abs(event.year - parseInt(guessYear)) === 1 ? 'year' : 'years'}</p>
-            <MapContainer center={event.coords} zoom={5} className="w-full h-64 rounded z-40">
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              <Marker position={event.coords}><Popup>Actual</Popup></Marker>
-              <Marker position={guessCoords}><Popup>Your Guess</Popup></Marker>
-              <Polyline positions={[event.coords, guessCoords]} color="red" />
-              <FitBounds coordsA={event.coords} coordsB={guessCoords} />
-            </MapContainer>
-            <button onClick={() => { setShowModal(false); startGame(); }} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <MapboxMap guessCoords={guessCoords} actualCoords={event.coords} isResult />
+            <button onClick={() => { setShowModal(false); startGame(); }} className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
               🔁 Play Again
             </button>
           </div>
