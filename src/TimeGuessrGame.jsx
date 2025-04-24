@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
-import { useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import supabase from './supabaseClient';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import MapboxMap from './MapboxMap';
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -187,11 +180,10 @@ export default function TimeGuessrGame() {
           <div className="md:flex gap-6">
             <div className="flex-1 z-10">
               <h2 className="font-semibold text-xl mb-2">📍 Place your location guess:</h2>
-              <MapContainer center={[20, 0]} zoom={2} className="w-full h-[70vh] rounded">
-                <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
-                <MapSelector onSelect={setGuessCoords} />
-                {guessCoords && <Marker position={guessCoords}><Popup>Your Guess</Popup></Marker>}
-              </MapContainer>
+              <MapboxMap
+                guessCoords={guessCoords}
+                setGuessCoords={setGuessCoords}
+              />
             </div>
 
             <div className="w-full md:w-64 space-y-4 mt-6 md:mt-0">
