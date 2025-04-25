@@ -1,0 +1,65 @@
+id,label,region,country,start,end
+1,Ancient Egypt,North Africa,Egypt,-3000,-332
+2,Hellenistic Egypt,North Africa,Egypt,-332,641
+3,Medieval Egypt,North Africa,Egypt,641,1517
+4,Ottoman Egypt,North Africa,Egypt,1517,1867
+5,Modern Egypt,North Africa,Egypt,1867,1952
+6,Republican Egypt,North Africa,Egypt,1952,2025
+7,Ancient Mesopotamia,Middle East,Iraq,-3500,-539
+8,Achaemenid Persia,Middle East,Iran,-550,-330
+9,Parthian Empire,Middle East,Iran,-247,224
+10,Sassanid Empire,Middle East,Iran,224,651
+11,Islamic Golden Age,Middle East,General,750,1258
+12,Ottoman Empire,Middle East,Turkey,1299,1922
+13,Modern Turkey,Middle East,Turkey,1923,2025
+14,Ancient Greece,Europe,Greece,-1200,-146
+15,Roman Republic,Europe,Italy,-509,-27
+16,Roman Empire,Europe,Italy,-27,476
+17,Byzantine Empire,Europe,Turkey,330,1453
+18,Medieval Europe,Europe,General,476,1492
+19,Renaissance Europe,Europe,General,1300,1600
+20,Age of Exploration,Europe,General,1400,1700
+21,Industrial Revolution,Europe,General,1760,1914
+22,World War I,Europe,General,1914,1918
+23,Interwar Period,Europe,General,1918,1939
+24,World War II,Europe,General,1939,1945
+25,Cold War Europe,Europe,General,1945,1991
+26,European Union Era,Europe,General,1991,2025
+27,Colonial Africa,Africa,General,1880,1960
+28,Decolonization of Africa,Africa,General,1950,1980
+29,Modern Africa,Africa,General,1980,2025
+30,Ancient India,South Asia,India,-2500,500
+31,Classical India,South Asia,India,500,1200
+32,Medieval India,South Asia,India,1200,1526
+33,Mughal Empire,South Asia,India,1526,1857
+34,British Raj,South Asia,India,1858,1947
+35,Independent India,South Asia,India,1947,2025
+36,Classical China,East Asia,China,-2100,220
+37,Three Kingdoms to Tang Dynasty,East Asia,China,220,907
+38,Song to Yuan Dynasties,East Asia,China,960,1368
+39,Ming Dynasty,East Asia,China,1368,1644
+40,Qing Dynasty,East Asia,China,1644,1912
+41,Republic of China,East Asia,China,1912,1949
+42,People's Republic of China,East Asia,China,1949,2025
+43,Classical Japan,East Asia,Japan,250,1185
+44,Feudal Japan,East Asia,Japan,1185,1868
+45,Meiji Restoration,East Asia,Japan,1868,1912
+46,Taisho Era,East Asia,Japan,1912,1926
+47,Showa Era,East Asia,Japan,1926,1989
+48,Heisei Era,East Asia,Japan,1989,2019
+49,Reiwa Era,East Asia,Japan,2019,2025
+50,Pre-Columbian Americas,Americas,General,-3000,1492
+51,Colonial Americas,Americas,General,1492,1776
+52,American Revolution,Americas,USA,1776,1789
+53,Early USA,Americas,USA,1789,1865
+54,Industrial USA,Americas,USA,1865,1914
+55,World Wars USA,Americas,USA,1914,1945
+56,Cold War USA,Americas,USA,1945,1991
+57,Modern USA,Americas,USA,1991,2025
+58,Global Cold War,Global,Global,1945,1991
+59,Information Age,Global,Global,1990,2025
+60,Globalization Era,Global,Global,1980,2025
+61,Climate Crisis Era,Global,Global,2000,2025
+62,Post-Colonial Middle East,Middle East,General,1945,2025
+63,Modern Latin America,Americas,General,1900,2025
+64,Modern Oceania,Oceania,General,1900,2025

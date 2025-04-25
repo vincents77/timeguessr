@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import supabase from './supabaseClient';
 import MapboxMap from './components/MapboxMap';
+import cityLookup from './assets/city_lookup.json';
 
 export default function TimeGuessrGame() {
   const [events, setEvents] = useState([]);
@@ -19,6 +20,12 @@ export default function TimeGuessrGame() {
   const [selectedTheme, setSelectedTheme] = useState('');
   const [selectedEra, setSelectedEra] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [retryCount, setRetryCount] = useState(0);
+  const [lastEntry, setLastEntry] = useState(null);
+  const [accepted, setAccepted] = useState(false);
+  const [revealMap, setRevealMap] = useState(false);
+  const [imageExpanded, setImageExpanded] = useState(false);
+  const [mapExpanded, setMapExpanded] = useState(false);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -61,11 +68,92 @@ export default function TimeGuessrGame() {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   };
 
+  const getRegionFromGuess = (cityGuess, countryGuess) => {
+    if (!cityGuess && !countryGuess) return null;
+  
+    const guessCity = cityGuess?.trim().toLowerCase();
+    const guessCountry = countryGuess?.trim().toLowerCase();
+
+    console.log('Guess City:', guessCity);
+    console.log('Guess Country:', guessCountry);
+  
+    if (guessCity) {
+      const foundCity = cityLookup.find(
+        (c) => c.city.toLowerCase() === guessCity && c.country.toLowerCase() === guessCountry
+      );
+      if (foundCity) {
+        console.log('Found city region:', foundCity.region);  // Log the found region
+        return foundCity.region;
+      }
+    }
+  
+    const foundCountry = cityLookup.find(
+      (c) => c.country.toLowerCase() === guessCountry
+    );
+    if (foundCountry) {
+      console.log('Found country region:', foundCountry.region);  // Log the found region
+      return foundCountry.region;
+    }
+  
+    return null;
+  };
+
+  const fetchEraDuration = async (eraId) => {
+    const { data, error } = await supabase
+      .from('eras')
+      .select('duration')  // Fetch the duration of the era
+      .eq('id', eraId)      // Match the event's era_id
+      .single();            // Get a single result (one era)
+  
+    if (error) {
+      console.error("Error fetching era duration:", error.message);
+      return null;
+    }
+  
+    return data?.duration; // Return the duration of the era
+  };
+
+  const calculateScore = ({ distance, yearDiff, eraDuration, guessRegion, actualRegion, guessCountry, actualCountry }) => {
+    console.log('distance:', distance, 'yearDiff:', yearDiff, 'eraDuration:', eraDuration);
+  
+    if (eraDuration === 0) {
+      console.error('Error: Era duration cannot be zero');
+      return 0;
+    }
+    
+    let baseScore = 2000;
+  
+    // Distance penalty
+    baseScore -= distance * 2;
+  
+    // Year penalty relative to era size
+    const maxYearPenalty = 500; // Limit maximum penalty for year differences
+    const yearPenalty = Math.min((yearDiff / eraDuration) * 1000, maxYearPenalty);
+    baseScore -= yearPenalty;
+
+    // If the year difference is very small (less than 5 years), reduce the penalty
+    if (yearDiff <= 5) {
+    baseScore += 100;  // Small bonus if the guess is very close to the real year
+    }
+  
+    // Region or country match bonuses
+    if (guessCountry && guessCountry.toLowerCase() === actualCountry.toLowerCase()) {
+      baseScore += 200; // Strong bonus for correct country
+    } else if (guessRegion && guessRegion === actualRegion) {
+      baseScore += 100; // Smaller bonus for correct region
+    }
+    
+    console.log('Final score:', baseScore);
+
+    return Math.max(0, Math.round(baseScore));
+  };
+
   const startGame = () => {
     let results = events;
     if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
     if (selectedEra) results = results.filter(e => e.era === selectedEra);
     if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
+    setAccepted(false);
 
     if (results.length === 0) {
       alert("⚠️ No events match your filters. Adjust filters to continue.");
@@ -80,12 +168,19 @@ export default function TimeGuessrGame() {
     setGameStarted(true);
     setTimerActive(true);
     setShowModal(false);
+    setRetryCount(0);
   };
 
   const handleSubmit = async () => {
     const dist = getDistance(...guessCoords, ...event.coords);
     const yearDiff = Math.abs(event.year - parseInt(guessYear));
     const timeToGuess = defaultTimer - timeLeft;
+    const eraDuration = await fetchEraDuration(event.era_id);
+
+    if (eraDuration === null) {
+      console.error("Failed to fetch era duration.");
+      return;
+    }
 
     const entry = {
       player: playerName || 'Anonymous',
@@ -97,23 +192,38 @@ export default function TimeGuessrGame() {
       guess_coords: guessCoords.join(','),
       distance: Number(dist.toFixed(1)),
       year_diff: parseInt(yearDiff),
-      score: Math.max(0, Math.round(2000 - dist * 2 - yearDiff * 5)),
+      score: calculateScore({
+        distance: dist,
+        yearDiff,
+        eraDuration: eraDuration,
+        guessRegion: getRegionFromGuess(event.city, event.country),
+        actualRegion: event.region,
+        guessCountry: event.country,   // Using country info from the event (could improve later)
+        actualCountry: event.country,
+      }),
       time_to_guess: parseInt(timeToGuess),
       notable_location: event.notable_location || null,
       city: event.city || null,
       country: event.country || null,
-      region: event.region || null
+      region: event.region || null,
+      attempt_number: retryCount + 1,
     };
-
-    console.log("📤 Inserting to Supabase:", entry);
-
-    const { error } = await supabase.from('results').insert([entry]);
-    if (error) console.error('❌ Supabase insert error:', error.message);
-
-    setHistory(prev => [...prev, entry]);
+  
+    setLastEntry(entry); // Save but don't insert yet
     setSubmitted(true);
     setTimerActive(false);
     setShowModal(true);
+  };
+
+  const handleAcceptResult = async () => {
+    if (!lastEntry) return;
+  
+    const { error } = await supabase.from('results').insert([lastEntry]);
+    if (error) console.error('❌ Supabase insert error:', error.message);
+  
+    setHistory(prev => [...prev, lastEntry]);
+    setAccepted(true);
+    setRevealMap(true);
   };
 
   return (
@@ -158,7 +268,7 @@ export default function TimeGuessrGame() {
             {/* Right: Map */}
             <div className="lg:w-1/2 w-full h-auto aspect-[4/3]">
               <h2 className="font-semibold text-xl mb-2">📍 Place your location guess:</h2>
-              <MapboxMap guessCoords={guessCoords} setGuessCoords={setGuessCoords} isStatic={true}/>
+              <MapboxMap guessCoords={guessCoords} setGuessCoords={setGuessCoords} isStatic={true} event={event}/>
             </div>
           </div>
 
@@ -182,22 +292,83 @@ export default function TimeGuessrGame() {
         </>
       )}
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-lg text-center space-y-3 z-[101]">
-            <h2 className="text-xl font-bold">📜 Your Results</h2>
-            <p>✅ <strong>{event.title}</strong></p>
-            <p>📍 Location: {[event.notable_location, event.city, event.country].filter(Boolean).join(', ')}</p>
-            <p>📏 Distance: {getDistance(...guessCoords, ...event.coords).toFixed(1)} km</p>
-            <p>⏳ Year: {event.year < 0 ? `${-event.year} BCE` : `${event.year} CE`}</p>
-            <p>📆 Year Difference: {Math.abs(event.year - parseInt(guessYear))} {Math.abs(event.year - parseInt(guessYear)) === 1 ? 'year' : 'years'}</p>
-            <MapboxMap guessCoords={guessCoords} actualCoords={event.coords} isResult />
-            <button onClick={() => { setShowModal(false); startGame(); }} className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
-              🔁 Play Again
-            </button>
+    {showModal && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
+        <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-lg text-center space-y-3 z-[101]">
+          <h2 className="text-xl font-bold">📜 Your Results</h2>
+          <p>✅ <strong>{event.title}</strong></p>
+          <p>📏 Distance: {getDistance(...guessCoords, ...event.coords).toFixed(1)} km</p>
+          <p>📆 Year Difference: {Math.abs(event.year - parseInt(guessYear)) === 0 ? 'Perfect!' : `${Math.abs(event.year - parseInt(guessYear))} year(s)`}</p>
+          {console.log('🔍 Debug lastEntry:', lastEntry)}
+          <p>🏆 Score: {lastEntry?.score}</p>
+          <p className="text-sm text-gray-600 italic">🔁 Attempt {retryCount + 1} of 3</p>
+
+          {(retryCount >= 2 || accepted) ? (
+            <>
+              <p>📍 Location: {[event.notable_location, event.city, event.country].filter(Boolean).join(', ')}</p>
+              <p>⏳ Year: {event.year < 0 ? `${-event.year} BCE` : `${event.year} CE`}</p>
+              {!revealMap ? (
+                <button
+                  onClick={() => setRevealMap(true)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  🗺️ Reveal Map
+                </button>
+              ) : (
+                <MapboxMap
+                  guessCoords={guessCoords}
+                  actualCoords={event.coords}
+                  isResult
+                />
+              )}
+            </>
+          ) : null}
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
+            {!accepted && retryCount < 2 && (
+              <button
+                onClick={() => {
+                  setRetryCount(c => c + 1);
+                  setGuessYear('');
+                  setSubmitted(false);
+                  setTimeLeft(defaultTimer);
+                  setTimerActive(true);
+                  setShowModal(false);
+                  setAccepted(false);
+                  setRevealMap(false);
+                }}
+                className="bg-white text-black border border-black px-4 py-2 rounded hover:bg-gray-100"
+              >
+                🔁 Retry Guess
+              </button>
+            )}
+
+            {!accepted && (
+              <button
+                onClick={handleAcceptResult}
+                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+              >
+                ✅ Accept Result
+              </button>
+            )}
+
+            {accepted && (
+              <button
+                onClick={() => {
+                  setLastEntry(null);
+                  setShowModal(false);
+                  setRevealMap(false);
+                  startGame();   // NOW go to next event
+                }}
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+              >
+                ▶️ Play Next Event
+              </button>
+            )}
+            </div>
           </div>
         </div>
       )}
     </div>
   );
-}
+  }
