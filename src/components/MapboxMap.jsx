@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, setGuessCoords, isStatic = false  }) {
+export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, setGuessCoords, isStatic = false, isResult = false, event }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const markerRef = useRef(null);
@@ -14,11 +14,10 @@ export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/vincentseris/cm9u72ite001d01s9engy9j7j',
-      center: [2, 48], // Europe-centered default
-      zoom: 3,
+      center: [2, 48],
+      zoom: 2,
     });
 
-    // Gameplay mode: click to guess
     if (!actualCoords && setGuessCoords) {
       map.current.on('click', (e) => {
         const { lng, lat } = e.lngLat;
@@ -28,35 +27,58 @@ export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, 
         markerRef.current = new mapboxgl.Marker()
           .setLngLat([lng, lat])
           .addTo(map.current);
-      });
-    }
-  }, []);
+
+        const currentZoom = map.current.getZoom();
+        map.current.flyTo({
+            center: [lng, lat],
+            zoom: Math.min(currentZoom + 1, 10), // Avoid over-zooming
+            speed: 0.7,
+        });
+    });
+  }
+}, []);
 
   useEffect(() => {
-    if (!map.current || !actualCoords || !guessCoords) return;
+    if (!map.current) return;
 
-    // Clean up any old guess markers from gameplay mode
-    if (markerRef.current) {
-      markerRef.current.remove();
-      markerRef.current = null;
+    // Clear previous markers (result mode or retry)
+    const markers = document.getElementsByClassName('mapboxgl-marker');
+    while (markers.length) {
+      markers[0].remove();
     }
 
-    // Results mode: show both markers
-    new mapboxgl.Marker({ color: 'green' })
-      .setLngLat([actualCoords[1], actualCoords[0]])
-      .setPopup(new mapboxgl.Popup().setText('📍 Actual'))
-      .addTo(map.current);
+    if (isResult && actualCoords && guessCoords) {
+      new mapboxgl.Marker({ color: 'green' })
+        .setLngLat([actualCoords[1], actualCoords[0]])
+        .setPopup(new mapboxgl.Popup().setText('📍 Actual'))
+        .addTo(map.current);
 
-    new mapboxgl.Marker({ color: 'red' })
-      .setLngLat([guessCoords[1], guessCoords[0]])
-      .setPopup(new mapboxgl.Popup().setText('❌ Your Guess'))
-      .addTo(map.current);
+      new mapboxgl.Marker({ color: 'red' })
+        .setLngLat([guessCoords[1], guessCoords[0]])
+        .setPopup(new mapboxgl.Popup().setText('❌ Your Guess'))
+        .addTo(map.current);
 
-    const bounds = new mapboxgl.LngLatBounds();
-    bounds.extend([actualCoords[1], actualCoords[0]]);
-    bounds.extend([guessCoords[1], guessCoords[0]]);
-    map.current.fitBounds(bounds, { padding: 60 });
-  }, [actualCoords, guessCoords]);
+      const bounds = new mapboxgl.LngLatBounds();
+      bounds.extend([actualCoords[1], actualCoords[0]]);
+      bounds.extend([guessCoords[1], guessCoords[0]]);
+      map.current.fitBounds(bounds, { padding: 60 });
+    } else if (guessCoords && !isResult) {
+      new mapboxgl.Marker({ color: 'red' })
+        .setLngLat([guessCoords[1], guessCoords[0]])
+        .addTo(map.current);
+
+        map.current.panTo([guessCoords[1], guessCoords[0]]);
+    }
+  }, [guessCoords, actualCoords, isResult]);
+
+  useEffect(() => {
+    if (!map.current || !event || isResult) return;
+
+    map.current.flyTo({
+      center: [2, 48],
+      zoom: 2,
+    });
+  }, [event]);
 
   return (
     <div
