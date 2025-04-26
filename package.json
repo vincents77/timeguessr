@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
     "json2csv": "^6.0.0-alpha.2",
     "leaflet": "^1.9.4",
     "mapbox-gl": "^3.11.1",
