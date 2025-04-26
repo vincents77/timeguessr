@@ -36,7 +36,7 @@ export default function TimeGuessrGame() {
       }
       const normalized = data.map(e => ({
         ...e,
-        coords: e.coords?.split(',').map(Number) || [0, 0],
+        coords: Array.isArray(e.coords) ? e.coords : JSON.parse(e.coords),
       }));
       setEvents(normalized);
       setFilteredEvents(normalized);
