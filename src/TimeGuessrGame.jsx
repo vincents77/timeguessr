@@ -29,6 +29,8 @@ export default function TimeGuessrGame() {
   const [retryCenter, setRetryCenter] = useState(null);
   const [retryZoom, setRetryZoom] = useState(null);
   const [shouldRecenter, setShouldRecenter] = useState(false);
+  const [guessPlace, setGuessPlace] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -125,6 +127,30 @@ export default function TimeGuessrGame() {
     return data?.duration; // Return the duration of the era
   };
 
+  const handlePlaceSearch = async () => {
+    if (!guessPlace.trim()) return;
+  
+    setIsSearching(true);
+    const encodedPlace = encodeURIComponent(guessPlace.trim());
+  
+    try {
+      const res = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedPlace}.json?access_token=${import.meta.env.VITE_MAPBOX_TOKEN}`);
+      const data = await res.json();
+      if (data.features && data.features.length > 0) {
+        const [lng, lat] = data.features[0].center;
+        setGuessCoords([lat, lng]);
+        console.log('📍 Found location:', lat, lng);
+      } else {
+        alert('❌ Location not found. Try being more specific.');
+      }
+    } catch (error) {
+      console.error('Error fetching location:', error);
+      alert('❌ Error searching location. Try again.');
+    }
+  
+    setIsSearching(false);
+  };
+  
   const calculateScore = ({ distance, yearDiff, eraDuration, guessRegion, actualRegion, guessCountry, actualCountry }) => {
     console.log('distance:', distance, 'yearDiff:', yearDiff, 'eraDuration:', eraDuration);
   
@@ -285,50 +311,70 @@ export default function TimeGuessrGame() {
       </div>
 
       {event && gameStarted && (
-        <>
-          <div className="flex flex-col lg:flex-row gap-6 max-w-[90vw] mx-auto">
-            {/* Left: Image */}
-            <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
-              <img
-                src={event.image_url}
-                alt="event"
-                className="w-full h-full object-cover rounded shadow"
-              />
-            </div>
+  <>
+    <div className="flex flex-col lg:flex-row gap-6 max-w-[90vw] mx-auto">
+      {/* Left: Image */}
+      <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
+        <img
+          src={event.image_url}
+          alt="event"
+          className="w-full h-full object-cover rounded shadow"
+        />
+      </div>
 
-            {/* Right: Map */}
-            <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
-              <h2 className="font-semibold text-xl mb-2">📍 Place your location guess:</h2>
-              <MapboxMap
-                guessCoords={guessCoords}
-                setGuessCoords={setGuessCoords}
-                event={event}
-                retryCenter={retryCenter}
-                retryZoom={retryZoom}
-                shouldRecenter={shouldRecenter}
-                onRecenterComplete={() => setShouldRecenter(false)}
-/>            </div>
-          </div>
-
-          {/* Input Section */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
+      {/* Right: Map + Place Search */}
+      <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
+        <div className="flex flex-col">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <h2 className="font-semibold text-xl">📍 Place your location guess:</h2>
             <input
-              type="number"
-              className="border w-full sm:w-64 p-2 rounded"
-              value={guessYear}
-              onChange={e => setGuessYear(e.target.value)}
-              placeholder="Year (e.g. 1789 or -753)"
+              type="text"
+              className="border p-1 rounded text-sm"
+              value={guessPlace}
+              onChange={e => setGuessPlace(e.target.value)}
+              placeholder="Enter city, country, or landmark"
             />
             <button
-              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-              onClick={handleSubmit}
-              disabled={!guessCoords || !guessYear}
+              onClick={handlePlaceSearch}
+              className="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm"
+              disabled={isSearching}
             >
-              Submit Guess
+              {isSearching ? '...' : '🔍'}
             </button>
           </div>
-        </>
-      )}
+
+          <MapboxMap
+            guessCoords={guessCoords}
+            setGuessCoords={setGuessCoords}
+            event={event}
+            retryCenter={retryCenter}
+            retryZoom={retryZoom}
+            shouldRecenter={shouldRecenter}
+            onRecenterComplete={() => setShouldRecenter(false)}
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* Input Section (Year Guess) */}
+    <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
+      <input
+        type="number"
+        className="border w-full sm:w-64 p-2 rounded"
+        value={guessYear}
+        onChange={e => setGuessYear(e.target.value)}
+        placeholder="Year (e.g. 1789 or -753)"
+      />
+      <button
+        className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+        onClick={handleSubmit}
+        disabled={!guessCoords || !guessYear}
+      >
+        Submit Guess
+      </button>
+    </div>
+  </>
+)}
 
     {showModal && (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
