@@ -90,8 +90,14 @@ Required fields:
 - city (if any)
 - notable_location (if any)
 
+Special instructions:
+- When generating the `prompt` field for the image, always follow this structure:
+"A highly detailed, photo-realistic image of [title] as it might have appeared at the time. 
+The scene includes [visual elements], depicted with authentic clothing and technology from the era. 
+Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style."
+
 Respond only with valid JSON. No text around it.
-    """
+"""
 
     response = openai.chat.completions.create(
         model="gpt-4o",
@@ -118,11 +124,15 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-        "First Gothic Cathedral Construction",
-        "Discovery of Penicillin",
-        "First Crossing of the English Channel",
-        "Construction of Machu Picchu",
-        "The Black Death in Europe"
+        "The crowning of Charlemagne as Holy Roman Emperor",
+        "The signing of the Magna Carta",
+        "The construction of Notre-Dame Cathedral in Paris",
+        "The founding of the University of Bologna",
+        "The reign of Mansa Musa in the Mali Empire",
+        "The founding of Great Zimbabwe",
+        "The rise of the Kingdom of Aksum",
+        "The construction of the Al-Qarawiyyin University in Fez",
+        "The Battle of Ain Jalut involving Mamluks from Egypt"
     ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
@@ -131,6 +141,7 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
     slug = slugify(raw["title"])
     era_match = match_era(raw["year"], raw["region"], eras_df)
     theme_info = assign_theme(raw["theme"], theme_lookup)
+    normalized_coords = normalize_coords(raw["coords"])
 
     return {
         "title": raw["title"],
