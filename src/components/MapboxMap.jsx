@@ -3,7 +3,19 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, setGuessCoords, isStatic = false, isResult = false, event }) {
+export default function MapboxMap({ 
+  actualCoords, 
+  guessCoords, 
+  guessCoordsOnly, 
+  setGuessCoords, 
+  isStatic = false, 
+  isResult = false, 
+  event, 
+  retryCenter = null, 
+  retryZoom = null, 
+  shouldRecenter = false, 
+  onRecenterComplete = () => {} // new callback
+}) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const markerRef = useRef(null);
@@ -30,18 +42,17 @@ export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, 
 
         const currentZoom = map.current.getZoom();
         map.current.flyTo({
-            center: [lng, lat],
-            zoom: Math.min(currentZoom + 1, 10), // Avoid over-zooming
-            speed: 0.7,
+          center: [lng, lat],
+          zoom: Math.min(currentZoom + 1, 10),
+          speed: 0.7,
         });
-    });
-  }
-}, []);
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (!map.current) return;
 
-    // Clear previous markers (result mode or retry)
     const markers = document.getElementsByClassName('mapboxgl-marker');
     while (markers.length) {
       markers[0].remove();
@@ -67,7 +78,7 @@ export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, 
         .setLngLat([guessCoords[1], guessCoords[0]])
         .addTo(map.current);
 
-        map.current.panTo([guessCoords[1], guessCoords[0]]);
+      map.current.panTo([guessCoords[1], guessCoords[0]]);
     }
   }, [guessCoords, actualCoords, isResult]);
 
@@ -80,10 +91,27 @@ export default function MapboxMap({ actualCoords, guessCoords, guessCoordsOnly, 
     });
   }, [event]);
 
+  // NEW: Handle Retry Recenter based on previous guess
+  useEffect(() => {
+    if (!map.current) return;
+
+    if (shouldRecenter && retryCenter && retryZoom) {
+      map.current.flyTo({
+        center: [retryCenter[1], retryCenter[0]], // lng, lat
+        zoom: retryZoom,
+        speed: 0.8,
+        curve: 1.5,
+        easing: (t) => t, // linear easing
+        essential: true,
+      });
+      onRecenterComplete(); // call back to parent to reset shouldRecenter
+    }
+  }, [shouldRecenter, retryCenter, retryZoom, onRecenterComplete]);
+
   return (
     <div
       ref={mapContainer}
-      className={`w-full ${isStatic ? 'aspect-square' : 'h-64'} rounded shadow`}
+      className="w-full aspect-[1/1] rounded shadow"
     />
   );
 }
