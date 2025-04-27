@@ -144,6 +144,30 @@
     "theme_id": 2
   },
   {
+    "title": "The Battle of Ain Jalut involving Mamluks from Egypt",
+    "slug": "the-battle-of-ain-jalut-involving-mamluks-from-egypt",
+    "year": 1260,
+    "coords": [
+      32.3333,
+      35.3333
+    ],
+    "theme": "wars & battles",
+    "era": "Pre-Columbian Americas",
+    "region": "Asia",
+    "notable_figures": "Sultan Qutuz, Baibars",
+    "visuals": "Mamluk cavalry charging; Mongol soldiers in combat; desert landscape; medieval armor and weapons; dust and chaos of battle",
+    "prompt": "A highly detailed, photo-realistic image of The Battle of Ain Jalut involving Mamluks from Egypt as it might have appeared at the time. The scene includes Mamluk cavalry charging, Mongol soldiers in combat, desert landscape, medieval armor and weapons, dust and chaos of battle, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-battle-of-ain-jalut-involving-mamluks-from-egypt.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "270e0be6-45a6-44c7-9741-c85af9c287de",
+    "country": "Israel",
+    "city": null,
+    "notable_location": "Ain Jalut",
+    "era_id": 50,
+    "theme_id": 1
+  },
+  {
     "title": "First Gothic Cathedral Construction",
     "slug": "first-gothic-cathedral-construction",
     "year": 1137,
@@ -432,6 +456,30 @@
     "theme_id": 6
   },
   {
+    "title": "The crowning of Charlemagne as Holy Roman Emperor",
+    "slug": "the-crowning-of-charlemagne-as-holy-roman-emperor",
+    "year": 800,
+    "coords": [
+      41.9029,
+      12.4534
+    ],
+    "theme": "royalty & coronations",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "Charlemagne, Pope Leo III",
+    "visuals": "Charlemagne in regal attire; Pope Leo III placing the crown; interior of St. Peter's Basilica; medieval courtiers; ornate throne",
+    "prompt": "A highly detailed, photo-realistic image of The crowning of Charlemagne as Holy Roman Emperor as it might have appeared at the time. The scene includes Charlemagne in regal attire, Pope Leo III placing the crown, interior of St. Peter's Basilica, medieval courtiers, ornate throne, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-crowning-of-charlemagne-as-holy-roman-emperor.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "1f34584b-6b31-4c89-81f7-4578467da221",
+    "country": "Italy",
+    "city": "Rome",
+    "notable_location": "St. Peter's Basilica",
+    "era_id": 17,
+    "theme_id": 11
+  },
+  {
     "title": "First Crossing of the English Channel",
     "slug": "first-crossing-of-the-english-channel",
     "year": 1785,
@@ -526,6 +574,126 @@
     "notable_location": "Le Corbusier workshop",
     "era_id": 23,
     "theme_id": 10
+  },
+  {
+    "title": "The signing of the Magna Carta",
+    "slug": "the-signing-of-the-magna-carta",
+    "year": 1215,
+    "coords": [
+      51.4839,
+      -0.5605
+    ],
+    "theme": "law & justice",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "King John of England, Stephen Langton, William Marshal",
+    "visuals": "King John with a quill; medieval barons; parchment document; Runnymede meadow; medieval tents",
+    "prompt": "A highly detailed, photo-realistic image of The signing of the Magna Carta as it might have appeared at the time. The scene includes King John with a quill, medieval barons, parchment document, Runnymede meadow, medieval tents, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-signing-of-the-magna-carta.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "b8ec32cf-c3b6-4e1f-add9-3b22ba0f1fe0",
+    "country": "England",
+    "city": null,
+    "notable_location": "Runnymede",
+    "era_id": 17,
+    "theme_id": 4
+  },
+  {
+    "title": "The construction of Notre-Dame Cathedral in Paris",
+    "slug": "the-construction-of-notre-dame-cathedral-in-paris",
+    "year": 1163,
+    "coords": [
+      48.853,
+      2.3499
+    ],
+    "theme": "architecture & engineering",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "Bishop Maurice de Sully",
+    "visuals": "medieval workers with stone blocks; scaffolding around the cathedral; cranes and pulleys; gothic architectural elements; early stages of the cathedral facade",
+    "prompt": "A highly detailed, photo-realistic image of The construction of Notre-Dame Cathedral in Paris as it might have appeared at the time. The scene includes medieval workers with stone blocks, scaffolding around the cathedral, cranes and pulleys, gothic architectural elements, early stages of the cathedral facade, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-construction-of-notre-dame-cathedral-in-paris.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "ba5449f2-2acd-41a4-8ec0-82297eb007ac",
+    "country": "France",
+    "city": "Paris",
+    "notable_location": "\u00cele de la Cit\u00e9",
+    "era_id": 17,
+    "theme_id": 8
+  },
+  {
+    "title": "The founding of the University of Bologna",
+    "slug": "the-founding-of-the-university-of-bologna",
+    "year": 1088,
+    "coords": [
+      44.4949,
+      11.3426
+    ],
+    "theme": "art & culture",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "Irnerius",
+    "visuals": "medieval scholars in discussion; ancient manuscripts and scrolls; a lecture in a medieval classroom; students in traditional medieval attire; the architecture of early university buildings",
+    "prompt": "A highly detailed, photo-realistic image of The founding of the University of Bologna as it might have appeared at the time. The scene includes medieval scholars in discussion, ancient manuscripts and scrolls, a lecture in a medieval classroom, students in traditional medieval attire, the architecture of early university buildings, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-founding-of-the-university-of-bologna.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "122ba98a-f493-4e9b-a19a-366ccbc1b4da",
+    "country": "Italy",
+    "city": "Bologna",
+    "notable_location": "University of Bologna",
+    "era_id": 17,
+    "theme_id": 10
+  },
+  {
+    "title": "The reign of Mansa Musa in the Mali Empire",
+    "slug": "the-reign-of-mansa-musa-in-the-mali-empire",
+    "year": 1312,
+    "coords": [
+      12.6392,
+      -8.0029
+    ],
+    "theme": "royalty & coronations",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "Mansa Musa",
+    "visuals": "Mansa Musa seated on a golden throne; richly adorned courtiers and advisors; bustling market scene with traders; grand architecture of Timbuktu; caravan of camels laden with gold",
+    "prompt": "A highly detailed, photo-realistic image of The reign of Mansa Musa in the Mali Empire as it might have appeared at the time. The scene includes Mansa Musa seated on a golden throne, richly adorned courtiers and advisors, bustling market scene with traders, grand architecture of Timbuktu, caravan of camels laden with gold, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-reign-of-mansa-musa-in-the-mali-empire.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "cb7bf94b-16a6-45cb-9418-b904b9881df8",
+    "country": "Mali",
+    "city": "Timbuktu",
+    "notable_location": "Timbuktu",
+    "era_id": 50,
+    "theme_id": 11
+  },
+  {
+    "title": "The founding of Great Zimbabwe",
+    "slug": "the-founding-of-great-zimbabwe",
+    "year": 1100,
+    "coords": [
+      -20.267,
+      30.933
+    ],
+    "theme": "architecture & engineering",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "",
+    "visuals": "massive stone walls; conical towers; ancient pathways; traditional huts; lush surrounding landscape",
+    "prompt": "A highly detailed, photo-realistic image of The founding of Great Zimbabwe as it might have appeared at the time. The scene includes massive stone walls, conical towers, ancient pathways, traditional huts, lush surrounding landscape, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-founding-of-great-zimbabwe.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "3eb1592d-49fb-41d0-8595-a71597255474",
+    "country": "Zimbabwe",
+    "city": "",
+    "notable_location": "Great Zimbabwe",
+    "era_id": 50,
+    "theme_id": 8
   },
   {
     "title": "First Gothic Cathedral Construction",
@@ -694,6 +862,54 @@
     "notable_location": "none",
     "era_id": 17,
     "theme_id": 7
+  },
+  {
+    "title": "The rise of the Kingdom of Aksum",
+    "slug": "the-rise-of-the-kingdom-of-aksum",
+    "year": 100,
+    "coords": [
+      14.1339,
+      38.7169
+    ],
+    "theme": "foundational political moments",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "King Ezana",
+    "visuals": "ancient Aksumite architecture; trading caravans; royal court; stone obelisks; bustling marketplace",
+    "prompt": "A highly detailed, photo-realistic image of The rise of the Kingdom of Aksum as it might have appeared at the time. The scene includes ancient Aksumite architecture, trading caravans, royal court, stone obelisks, bustling marketplace, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-rise-of-the-kingdom-of-aksum.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "c1f4b3ff-42ba-4e59-9b39-19078c9d6e4f",
+    "country": "Ethiopia",
+    "city": "Aksum",
+    "notable_location": "Aksum Obelisks",
+    "era_id": 50,
+    "theme_id": 2
+  },
+  {
+    "title": "The construction of the Al-Qarawiyyin University in Fez",
+    "slug": "the-construction-of-the-al-qarawiyyin-university-in-fez",
+    "year": 859,
+    "coords": [
+      34.0331,
+      -5.0003
+    ],
+    "theme": "architecture & engineering",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "Fatima al-Fihri",
+    "visuals": "workers laying bricks; architects with scrolls; scaffolding around the building; traditional Islamic architectural elements; bustling construction site",
+    "prompt": "A highly detailed, photo-realistic image of The construction of the Al-Qarawiyyin University in Fez as it might have appeared at the time. The scene includes workers laying bricks, architects with scrolls, scaffolding around the building, traditional Islamic architectural elements, bustling construction site, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-construction-of-the-al-qarawiyyin-university-in-fez.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "111846bd-6431-433b-a0ca-5082dfb1f0f6",
+    "country": "Morocco",
+    "city": "Fez",
+    "notable_location": "Al-Qarawiyyin University",
+    "era_id": 50,
+    "theme_id": 8
   },
   {
     "title": "First Gothic Cathedral Construction",
