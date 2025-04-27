@@ -93,9 +93,12 @@ Required fields:
 Special instructions:
 - When generating the `prompt` field for the image, always follow this structure:
 "A highly detailed, photo-realistic image of [title] as it might have appeared at the time. 
-The scene includes [visual elements], depicted with authentic clothing and technology from the era. 
+The scene includes [visual elements], depicted with authentic clothing, environment, and technology from the historical era. 
 Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style."
-
+- Prioritize scenes that include recognizable city features, landscapes, important buildings, or architecture when relevant to the event.
+- Human activity (e.g., battles, ceremonies, education) should still be central, but framed within authentic settings when possible.
+- If the event takes place indoors, consider showing elements of the architecture or view of the surrounding location if appropriate.
+- Ensure that clothing, crowns, tools, furniture, artifacts, and architecture match the specific time period (avoid anachronisms).
 Respond only with valid JSON. No text around it.
 """
 
