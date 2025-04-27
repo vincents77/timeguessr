@@ -378,7 +378,7 @@ export default function TimeGuessrGame() {
 
     {showModal && (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
-        <div className="bg-white rounded-xl p-6 w-full max-w-md shadow-lg text-center space-y-3 z-[101]">
+        <div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto shadow-lg text-center space-y-3 z-[101]">
           <h2 className="text-xl font-bold">📜 Your Results</h2>
           <p>✅ <strong>{event.title}</strong></p>
           <p>📏 Distance: {getDistance(...guessCoords, ...event.coords).toFixed(1)} km</p>
