@@ -26,6 +26,9 @@ export default function TimeGuessrGame() {
   const [revealMap, setRevealMap] = useState(false);
   const [imageExpanded, setImageExpanded] = useState(false);
   const [mapExpanded, setMapExpanded] = useState(false);
+  const [retryCenter, setRetryCenter] = useState(null);
+  const [retryZoom, setRetryZoom] = useState(null);
+  const [shouldRecenter, setShouldRecenter] = useState(false);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -66,6 +69,15 @@ export default function TimeGuessrGame() {
     const dLon = toRad(lon2 - lon1);
     const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon/2)**2;
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  };
+
+  const distToZoom = (distanceKm) => {
+    if (distanceKm < 2) return 16;
+    if (distanceKm < 10) return 14;
+    if (distanceKm < 50) return 12;
+    if (distanceKm < 200) return 9;
+    if (distanceKm < 1000) return 6;
+    return 3;
   };
 
   const getRegionFromGuess = (cityGuess, countryGuess) => {
@@ -171,6 +183,24 @@ export default function TimeGuessrGame() {
     setRetryCount(0);
   };
 
+  const pickNextFilteredEvent = () => {
+    if (filteredEvents.length === 0) {
+      alert("⚠️ No more events matching your filters. Adjust filters.");
+      return;
+    }
+    const next = filteredEvents[Math.floor(Math.random() * filteredEvents.length)];
+    setEvent(next);
+    setGuessCoords(null);
+    setGuessYear('');
+    setSubmitted(false);
+    setAccepted(false);
+    setTimeLeft(defaultTimer);
+    setGameStarted(true);
+    setTimerActive(true);
+    setShowModal(false);
+    setRetryCount(0);
+  };
+
   const handleSubmit = async () => {
     const dist = getDistance(...guessCoords, ...event.coords);
     const yearDiff = Math.abs(event.year - parseInt(guessYear));
@@ -246,18 +276,19 @@ export default function TimeGuessrGame() {
           {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
         </select>
 
+
+        <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
+
         <button className="bg-black text-white p-2 px-4 rounded hover:bg-gray-800" onClick={startGame}>
           ▶️ Start Guessing
         </button>
-
-        <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
       </div>
 
       {event && gameStarted && (
         <>
           <div className="flex flex-col lg:flex-row gap-6 max-w-[90vw] mx-auto">
             {/* Left: Image */}
-            <div className="lg:w-1/2 w-full h-auto aspect-[4/3]">
+            <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
               <img
                 src={event.image_url}
                 alt="event"
@@ -266,10 +297,17 @@ export default function TimeGuessrGame() {
             </div>
 
             {/* Right: Map */}
-            <div className="lg:w-1/2 w-full h-auto aspect-[4/3]">
+            <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
               <h2 className="font-semibold text-xl mb-2">📍 Place your location guess:</h2>
-              <MapboxMap guessCoords={guessCoords} setGuessCoords={setGuessCoords} isStatic={true} event={event}/>
-            </div>
+              <MapboxMap
+                guessCoords={guessCoords}
+                setGuessCoords={setGuessCoords}
+                event={event}
+                retryCenter={retryCenter}
+                retryZoom={retryZoom}
+                shouldRecenter={shouldRecenter}
+                onRecenterComplete={() => setShouldRecenter(false)}
+/>            </div>
           </div>
 
           {/* Input Section */}
@@ -329,7 +367,13 @@ export default function TimeGuessrGame() {
               <button
                 onClick={() => {
                   setRetryCount(c => c + 1);
-                  setGuessYear('');
+                  if (guessCoords) {
+                    const dist = getDistance(...guessCoords, ...event.coords);
+                    const zoom = distToZoom(dist * 2);
+                    setRetryCenter(guessCoords);
+                    setRetryZoom(zoom);
+                    setShouldRecenter(true);
+                  }
                   setSubmitted(false);
                   setTimeLeft(defaultTimer);
                   setTimerActive(true);
@@ -358,7 +402,8 @@ export default function TimeGuessrGame() {
                   setLastEntry(null);
                   setShowModal(false);
                   setRevealMap(false);
-                  startGame();   // NOW go to next event
+                  setRetryCount(0);
+                  pickNextFilteredEvent();
                 }}
                 className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
               >
