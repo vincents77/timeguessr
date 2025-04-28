@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import supabase from './supabaseClient';
 import MapboxMap from './components/MapboxMap';
 import cityLookup from './assets/city_lookup.json';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function TimeGuessrGame() {
   const [events, setEvents] = useState([]);
@@ -31,6 +32,14 @@ export default function TimeGuessrGame() {
   const [shouldRecenter, setShouldRecenter] = useState(false);
   const [guessPlace, setGuessPlace] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const [sessionId, setSessionId] = useState(() => {
+    return sessionStorage.getItem('sessionId') || null;
+  });
+  
+  useEffect(() => {
+    setSessionId(null);
+    sessionStorage.removeItem('sessionId');
+  }, [playerName]);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -72,6 +81,29 @@ export default function TimeGuessrGame() {
     const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon/2)**2;
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   };
+
+  useEffect(() => {
+    let finalized = false;
+  
+    const handleBeforeUnload = async (e) => {
+      if (finalized) return;
+      if (sessionId && history.length > 0) {
+        try {
+          await finalizeSession();
+          logEvent('session_finalize_auto', { sessionId });
+          finalized = true;
+        } catch (error) {
+          console.error('Failed to auto-finalize session:', error);
+        }
+      }
+    };
+  
+    window.addEventListener('beforeunload', handleBeforeUnload);
+  
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [sessionId, history]);
 
   const distToZoom = (distanceKm) => {
     if (distanceKm < 2) return 16;
@@ -188,17 +220,58 @@ export default function TimeGuessrGame() {
     return Math.max(0, Math.round(baseScore));
   };
 
-  const startGame = () => {
+  const createNewSession = async () => {
+    const newSessionId = uuidv4();
+    const { error } = await supabase.from('sessions').insert([
+      {
+        id: newSessionId,
+        player_name: playerName || "Anonymous",
+        started_at: new Date().toISOString(),
+        theme: selectedTheme || null,
+        era: selectedEra || null,
+        region: selectedRegion || null,
+      }
+    ]);
+  
+    if (error) {
+      console.error('❌ Error creating session:', error.message);
+      alert('⚠️ Could not start session. Please retry.');
+      return null;
+    }
+  
+    console.log('🎯 New session created:', newSessionId);
+    return newSessionId;
+  };
+
+  const startGame = async () => {
+    if (!playerName.trim()) {
+      alert("⚠️ Please enter your player name before starting!");
+      return;
+    }
+  
+    let activeSessionId = sessionStorage.getItem('sessionId');
+  
+    if (!activeSessionId) {
+      const newId = await createNewSession();
+      if (!newId) return; // Stop if creation failed
+      sessionStorage.setItem('sessionId', newId);
+      setSessionId(newId);
+    } else {
+      console.log('🔁 Reusing active session:', activeSessionId);
+      setSessionId(activeSessionId);
+    }
+  
+    // Then continue game start...
     let results = events;
     if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
     if (selectedEra) results = results.filter(e => e.era === selectedEra);
     if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
-    setAccepted(false);
-
+  
     if (results.length === 0) {
       alert("⚠️ No events match your filters. Adjust filters to continue.");
       return;
     }
+  
     const next = results[Math.floor(Math.random() * results.length)];
     setEvent(next);
     setGuessCoords(null);
@@ -243,7 +316,7 @@ export default function TimeGuessrGame() {
     }
 
     const entry = {
-      player: playerName || 'Anonymous',
+      player_name: playerName || 'Anonymous',
       slug: event.slug,
       title: event.title,
       actual_year: parseInt(event.year),
@@ -273,17 +346,89 @@ export default function TimeGuessrGame() {
     setSubmitted(true);
     setTimerActive(false);
     setShowModal(true);
+    setAccepted(false);
   };
 
   const handleAcceptResult = async () => {
     if (!lastEntry) return;
+
+    const entryWithSession = {
+      ...lastEntry,
+      session_id: sessionId,
+    };
   
-    const { error } = await supabase.from('results').insert([lastEntry]);
+    const { error } = await supabase.from('results').insert([entryWithSession]);
     if (error) console.error('❌ Supabase insert error:', error.message);
   
-    setHistory(prev => [...prev, lastEntry]);
+    setHistory(prev => [...prev, entryWithSession]);
     setAccepted(true);
     setRevealMap(true);
+  };
+
+  const finalizeSession = async () => {
+    if (!sessionId || history.length === 0) {
+      console.warn("⚠️ No active session or no results to finalize.");
+      return;
+    }
+
+    // Step 1: Group by slug and find best score per event
+    const bestScoresBySlug = {};
+
+    history.forEach(entry => {
+      const slug = entry.slug;
+      const clampedScore = Math.max(entry.score || 0, 0);
+
+      if (!bestScoresBySlug[slug] || clampedScore > bestScoresBySlug[slug]) {
+        bestScoresBySlug[slug] = clampedScore;
+      }
+    });
+
+    // Step 2: Aggregate session stats
+    const totalEvents = Object.keys(bestScoresBySlug).length;
+    const totalPoints = Object.values(bestScoresBySlug).reduce((sum, score) => sum + score, 0);
+    const averageScore = totalEvents > 0 ? totalPoints / totalEvents : 0;
+    const totalAttempts = history.length; // optional: could be saved separately if needed
+
+    const sessionData = {
+      total_events: totalEvents,
+      total_points: Math.round(totalPoints),
+      average_score: Math.round(averageScore),
+      ended_at: new Date().toISOString(),
+      completed: true,
+    };
+
+    const { error } = await supabase
+      .from('sessions')
+      .update(sessionData)
+      .eq('id', sessionId);
+
+    if (error) {
+      console.error('❌ Failed to finalize session:', error.message);
+      return;
+    }
+
+    console.log('✅ Session finalized and saved.');
+
+    // Cleanup
+    sessionStorage.removeItem('sessionId');
+    setSessionId(null);
+  };
+
+  const logEvent = async (eventType, payload = {}) => {
+    console.log(`[LOG] ${eventType}`, payload);
+  
+    try {
+      await supabase.from('logs').insert([
+        {
+          event_type: eventType,
+          session_id: payload.sessionId || null,
+          player_name: payload.playerName || null,
+          payload,
+        }
+      ]);
+    } catch (error) {
+      console.error('❌ Failed to save log to Supabase:', error);
+    }
   };
 
   return (
@@ -447,18 +592,36 @@ export default function TimeGuessrGame() {
             )}
 
             {accepted && (
-              <button
-                onClick={() => {
-                  setLastEntry(null);
-                  setShowModal(false);
-                  setRevealMap(false);
-                  setRetryCount(0);
-                  pickNextFilteredEvent();
-                }}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-              >
-                ▶️ Play Next Event
-              </button>
+              <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                <button
+                  onClick={() => {
+                    setLastEntry(null);
+                    setShowModal(false);
+                    setRevealMap(false);
+                    setRetryCount(0);
+                    pickNextFilteredEvent();
+                  }}
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                >
+                  ▶️ Play Next Event
+                </button>
+
+                <button
+                  onClick={async () => {
+                    await finalizeSession();
+                    logEvent('session_finalize_manual', { sessionId });
+                    setLastEntry(null);
+                    setShowModal(false);
+                    setRevealMap(false);
+                    setRetryCount(0);
+                    setHistory([]);
+                    setGameStarted(false);
+                  }}
+                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                >
+                  🏁 Finish Session
+                </button>
+              </div>
             )}
             </div>
           </div>
