@@ -40,12 +40,25 @@ export default function MapboxMap({
           .setLngLat([lng, lat])
           .addTo(map.current);
 
-        const currentZoom = map.current.getZoom();
-        map.current.flyTo({
-          center: [lng, lat],
-          zoom: Math.min(currentZoom + 1, 10),
-          speed: 0.7,
-        });
+          const currentZoom = map.current.getZoom();
+          let targetZoom;
+
+          if (currentZoom < 4) {
+            targetZoom = 5.5; // Very far view, jump closer
+          } else if (currentZoom < 6) {
+            targetZoom = currentZoom + 2; // Medium view, zoom in 2 levels
+          } else {
+            targetZoom = Math.min(currentZoom + 1, 12); // Already close, just zoom slightly
+          }
+          
+          map.current.flyTo({
+            center: [lng, lat],
+            zoom: targetZoom,
+            speed: 0.7,
+            curve: 1.3,
+            easing: (t) => t,
+            essential: true,
+          });
       });
     }
   }, []);
