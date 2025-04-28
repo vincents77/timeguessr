@@ -142,10 +142,12 @@ export default function TimeGuessrGame() {
         console.log('📍 Found location:', lat, lng);
       } else {
         alert('❌ Location not found. Try being more specific.');
+        setGuessPlace('');
       }
     } catch (error) {
       console.error('Error fetching location:', error);
       alert('❌ Error searching location. Try again.');
+      setGuessPlace('');
     }
   
     setIsSearching(false);
@@ -201,6 +203,7 @@ export default function TimeGuessrGame() {
     setEvent(next);
     setGuessCoords(null);
     setGuessYear('');
+    setGuessPlace('');
     setSubmitted(false);
     setTimeLeft(defaultTimer);
     setGameStarted(true);
@@ -218,6 +221,7 @@ export default function TimeGuessrGame() {
     setEvent(next);
     setGuessCoords(null);
     setGuessYear('');
+    setGuessPlace('');
     setSubmitted(false);
     setAccepted(false);
     setTimeLeft(defaultTimer);

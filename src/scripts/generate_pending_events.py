@@ -127,15 +127,16 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-        "The crowning of Charlemagne as Holy Roman Emperor",
-        "The signing of the Magna Carta",
-        "The construction of Notre-Dame Cathedral in Paris",
-        "The founding of the University of Bologna",
-        "The reign of Mansa Musa in the Mali Empire",
-        "The founding of Great Zimbabwe",
-        "The rise of the Kingdom of Aksum",
-        "The construction of the Al-Qarawiyyin University in Fez",
-        "The Battle of Ain Jalut involving Mamluks from Egypt"
+        "Woodstock Festival",
+        "The Beatles' First Appearance on The Ed Sullivan Show",
+        "Live Aid Concert",
+        "Elvis Presley's 'Aloha from Hawaii' Satellite Concert",
+        "The Rolling Stones Free Concert at Altamont",
+        "The Opening of Abbey Road Studios to the Public",
+        "The Fall of the Berlin Wall Concert (Pink Floyd’s 'The Wall')",
+        "The First Eurovision Song Contest",
+        "Bob Dylan 'Goes Electric' at Newport Folk Festival",
+        "Nirvana’s 'MTV Unplugged' Performance"
     ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
