@@ -6,6 +6,12 @@ import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
 from supabase import create_client, Client
+from src.utils.git_helpers import (
+    smart_git_commit_and_push,
+    print_git_branch,
+    print_git_summary,
+)
+
 
 # --- Setup
 project_root = Path(__file__).resolve().parent.parent.parent
@@ -92,21 +98,6 @@ def fetch_all_events_and_save():
     save_json(events, FRONTEND_EVENTS_PATH)
     print(f"✅ Saved {len(events)} events to {FRONTEND_EVENTS_PATH}")
 
-def git_commit_and_push():
-    try:
-        print("📂 Git: Staging updated files...")
-        subprocess.run(["git", "add", "."], check=True)
-
-        print("✍️ Git: Committing...")
-        subprocess.run(["git", "commit", "-m", "Auto: Insert events + refresh events.json"], check=True)
-
-        print("🚀 Git: Pushing to remote...")
-        subprocess.run(["git", "push"], check=True)
-
-        print("✅ Git push completed successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Git operation failed: {e}")
-
 # --- Main process
 
 def main():
@@ -144,7 +135,11 @@ def main():
 
     # ⚡ Bonus Step: Pull updated events.json + Git push
     fetch_all_events_and_save()
-    git_commit_and_push()
+    smart_git_commit_and_push(
+    commit_message="Auto: Generated pending event images",
+    branch="feature/image-generation",
+    create_if_missing=True
+)
 
 # --- Entry point
 if __name__ == "__main__":

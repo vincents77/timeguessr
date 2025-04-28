@@ -4,8 +4,13 @@ from pathlib import Path
 import openai
 import requests
 import subprocess
-import base64  # 👈 Needed to decode Base64
+import base64
 from dotenv import load_dotenv
+from src.utils.git_helpers import (
+    smart_git_commit_and_push,
+    print_git_branch,
+    print_git_summary,
+)
 
 # --- Setup
 load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env")
@@ -105,27 +110,11 @@ def main():
 
     print("✅ All done!")
 
-def git_commit_and_push():
-    from datetime import datetime
-
-    try:
-        print("📂 Git: Staging all changes...")
-        subprocess.run(["git", "add", "."], check=True)
-
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        commit_message = f"Auto: Add new event images and metadata ({timestamp})"
-
-        print(f"✍️ Git: Committing with message: {commit_message}")
-        subprocess.run(["git", "commit", "-m", commit_message], check=True)
-
-        print("🚀 Git: Pushing to remote...")
-        subprocess.run(["git", "push"], check=True)
-
-        print("✅ Git push completed successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Git operation failed: {e}")
-
 # --- Entry point
 if __name__ == "__main__":
     main()
-    git_commit_and_push()
+    smart_git_commit_and_push(
+        commit_message="Auto: Generated pending event images",
+        branch="feature/image-generation",
+        create_if_missing=True
+    )

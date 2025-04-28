@@ -127,16 +127,12 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-        "Woodstock Festival",
-        "The Beatles' First Appearance on The Ed Sullivan Show",
-        "Live Aid Concert",
-        "Elvis Presley's 'Aloha from Hawaii' Satellite Concert",
-        "The Rolling Stones Free Concert at Altamont",
-        "The Opening of Abbey Road Studios to the Public",
-        "The Fall of the Berlin Wall Concert (Pink Floyd’s 'The Wall')",
-        "The First Eurovision Song Contest",
-        "Bob Dylan 'Goes Electric' at Newport Folk Festival",
-        "Nirvana’s 'MTV Unplugged' Performance"
+        "The premiere of Michael Jackson's Thriller music video",
+        "The fall of the Soviet Union (1991)",
+        "The first performance of Hamilton on Broadway (2015)",
+        "The release of the first iPhone by Steve Jobs (2007)",
+        "The Signing of the Civil Rights Act of 1964",
+        "The Launch of the World Wide Web by Tim Berners-Lee"
     ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
