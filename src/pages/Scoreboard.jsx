@@ -98,6 +98,9 @@ export default function Scoreboard() {
                     <td className="p-2 border font-semibold">
                       {rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : ""}
                       {session.player_name}
+                      {session.id === sessionId && (
+                        <span className="ml-2 text-sm text-purple-700 font-medium">(you)</span>
+                      )}
                     </td>
                     <td className="p-2 border">{session.total_points}</td>
                     <td className="p-2 border">{new Date(session.started_at).toLocaleDateString()}</td>
