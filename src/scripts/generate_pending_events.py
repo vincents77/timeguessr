@@ -127,12 +127,16 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-        "The premiere of Michael Jackson's Thriller music video",
-        "The fall of the Soviet Union (1991)",
-        "The first performance of Hamilton on Broadway (2015)",
-        "The release of the first iPhone by Steve Jobs (2007)",
-        "The Signing of the Civil Rights Act of 1964",
-        "The Launch of the World Wide Web by Tim Berners-Lee"
+        "The discovery of the Rosetta Stone by French soldiers (1799)",
+        "The inauguration of the Statue of Liberty in New York Harbor (1886)",
+        "The sinking of the Titanic during its maiden voyage (1912)",
+        "The first successful climb of Mount Everest by Edmund Hillary and Tenzing Norgay (1953)",
+        "The first successful vaccine trial by Edward Jenner against smallpox (1796)",
+        "The publication of Charles Darwin's On the Origin of Species (1859)",
+        "The launch of Sputnik 1, the first artificial satellite, by the Soviet Union (1957)",
+        "The signing of the Treaty of Versailles ending World War I (1919)",
+        "The discovery of Tutankhamun's tomb by Howard Carter (1922)",
+        "The fall of Constantinople to the Ottoman Empire (1453)"
     ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
