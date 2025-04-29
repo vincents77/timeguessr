@@ -3,6 +3,7 @@ import supabase from './supabaseClient';
 import MapboxMap from './components/MapboxMap';
 import cityLookup from './assets/city_lookup.json';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 export default function TimeGuessrGame() {
   const [events, setEvents] = useState([]);
@@ -35,11 +36,18 @@ export default function TimeGuessrGame() {
   const [sessionId, setSessionId] = useState(() => {
     return sessionStorage.getItem('sessionId') || null;
   });
+  const [playedSlugs, setPlayedSlugs] = useState(new Set());
+  const [sessionProgress, setSessionProgress] = useState({ played: 0, total: 0 });
   
   useEffect(() => {
     setSessionId(null);
     sessionStorage.removeItem('sessionId');
   }, [playerName]);
+
+  useEffect(() => {
+    const savedSlugs = JSON.parse(sessionStorage.getItem('playedSlugs') || '[]');
+    setPlayedSlugs(new Set(savedSlugs));
+  }, []);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -82,12 +90,14 @@ export default function TimeGuessrGame() {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   };
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     let finalized = false;
   
     const handleBeforeUnload = async (e) => {
       if (finalized) return;
-      if (sessionId && history.length > 0) {
+      if (sessionId) {
         try {
           await finalizeSession();
           logEvent('session_finalize_auto', { sessionId });
@@ -240,6 +250,7 @@ export default function TimeGuessrGame() {
     }
   
     console.log('🎯 New session created:', newSessionId);
+    localStorage.setItem('sessionId', newSessionId);
     return newSessionId;
   };
 
@@ -263,9 +274,19 @@ export default function TimeGuessrGame() {
   
     // Then continue game start...
     let results = events;
+    let playedSlugs = new Set();
+    try {
+      const storedPlayed = JSON.parse(sessionStorage.getItem('playedSlugs'));
+      if (Array.isArray(storedPlayed)) {
+        playedSlugs = new Set(storedPlayed);
+      }
+    } catch (e) {
+      console.error('Error loading playedSlugs from sessionStorage:', e);
+    }
     if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
     if (selectedEra) results = results.filter(e => e.era === selectedEra);
     if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
+    results = results.filter(e => !playedSlugs.has(e.slug));
   
     if (results.length === 0) {
       alert("⚠️ No events match your filters. Adjust filters to continue.");
@@ -274,6 +295,10 @@ export default function TimeGuessrGame() {
   
     const next = results[Math.floor(Math.random() * results.length)];
     setEvent(next);
+    setSessionProgress({
+      played: 0,
+      total: results.length
+    });
     setGuessCoords(null);
     setGuessYear('');
     setGuessPlace('');
@@ -286,11 +311,30 @@ export default function TimeGuessrGame() {
   };
 
   const pickNextFilteredEvent = () => {
-    if (filteredEvents.length === 0) {
-      alert("⚠️ No more events matching your filters. Adjust filters.");
+    let playedSlugs = new Set();
+    try {
+      const storedPlayed = JSON.parse(sessionStorage.getItem('playedSlugs'));
+      if (Array.isArray(storedPlayed)) {
+        playedSlugs = new Set(storedPlayed);
+      }
+    } catch (e) {
+      console.error('Error loading playedSlugs from sessionStorage:', e);
+    }
+  
+    // Filter out already played events
+    const remaining = filteredEvents.filter(e => !playedSlugs.has(e.slug));
+  
+    if (remaining.length === 0) {
+      const hasFilter = selectedTheme || selectedEra || selectedRegion;
+      alert(
+        hasFilter
+          ? "🎯 You've completed all matching events. Try adjusting the filters to explore more!"
+          : "🎯 You've played all available events for now. More will be added soon!"
+      );
       return;
     }
-    const next = filteredEvents[Math.floor(Math.random() * filteredEvents.length)];
+  
+    const next = remaining[Math.floor(Math.random() * remaining.length)];
     setEvent(next);
     setGuessCoords(null);
     setGuessYear('');
@@ -351,67 +395,123 @@ export default function TimeGuessrGame() {
 
   const handleAcceptResult = async () => {
     if (!lastEntry) return;
-
+  
     const entryWithSession = {
       ...lastEntry,
       session_id: sessionId,
     };
   
     const { error } = await supabase.from('results').insert([entryWithSession]);
-    if (error) console.error('❌ Supabase insert error:', error.message);
+    if (error) {
+      console.error('❌ Supabase insert error:', error.message);
+      return;
+    }
   
-    setHistory(prev => [...prev, entryWithSession]);
+    // Update both history and played slugs
+    setHistory(prev => {
+      const updatedHistory = [...prev, entryWithSession];
+      const updatedSlugs = updatedHistory.map(h => h.slug);
+      sessionStorage.setItem('playedSlugs', JSON.stringify(updatedSlugs));
+      setPlayedSlugs(new Set(updatedSlugs));
+      return updatedHistory;
+    });
+    setSessionProgress(prev => ({
+      ...prev,
+      played: prev.played + 1
+    }));
     setAccepted(true);
     setRevealMap(true);
   };
 
   const finalizeSession = async () => {
-    if (!sessionId || history.length === 0) {
-      console.warn("⚠️ No active session or no results to finalize.");
+    if (!sessionId) {
+      console.warn("⚠️ No active session to finalize.");
       return;
     }
-
+  
+    // Case: No guesses made
+    if (history.length === 0) {
+      const { error } = await supabase
+        .from('sessions')
+        .update({
+          ended_at: new Date().toISOString(),
+          completed: false,
+        })
+        .eq('id', sessionId);
+  
+      if (error) {
+        console.error('❌ Failed to finalize empty session:', error.message);
+      } else {
+        console.log('✅ Empty session finalized with completed: false');
+      }
+  
+    // Store sessionId so we can still show it on scoreboard
+    localStorage.setItem("sessionId", sessionId);
+    sessionStorage.removeItem("sessionId");
+    sessionStorage.removeItem("playedSlugs");
+    setSessionId(null);
+    setPlayedSlugs(new Set());
+    return;
+  }
+  
     // Step 1: Group by slug and find best score per event
     const bestScoresBySlug = {};
-
     history.forEach(entry => {
       const slug = entry.slug;
       const clampedScore = Math.max(entry.score || 0, 0);
-
       if (!bestScoresBySlug[slug] || clampedScore > bestScoresBySlug[slug]) {
         bestScoresBySlug[slug] = clampedScore;
       }
     });
-
+  
     // Step 2: Aggregate session stats
     const totalEvents = Object.keys(bestScoresBySlug).length;
     const totalPoints = Object.values(bestScoresBySlug).reduce((sum, score) => sum + score, 0);
     const averageScore = totalEvents > 0 ? totalPoints / totalEvents : 0;
-    const totalAttempts = history.length; // optional: could be saved separately if needed
-
+  
+    // Step 3: Analyze metadata
+    const summarizeFilter = (values, selected) => {
+      if (!selected) return "all";
+      const unique = [...new Set(values.filter(Boolean))];
+      return unique.length === 1 ? unique[0] : "mixed";
+    };
+  
+    const finalTheme = summarizeFilter(history.map(e => e.theme), selectedTheme);
+    const finalEra = summarizeFilter(history.map(e => e.era), selectedEra);
+    const finalRegion = summarizeFilter(history.map(e => e.region), selectedRegion);
+  
+    // Step 4: Final update
     const sessionData = {
       total_events: totalEvents,
       total_points: Math.round(totalPoints),
       average_score: Math.round(averageScore),
       ended_at: new Date().toISOString(),
       completed: true,
+      theme: finalTheme,
+      era: finalEra,
+      region: finalRegion,
     };
-
+  
     const { error } = await supabase
       .from('sessions')
       .update(sessionData)
       .eq('id', sessionId);
-
+  
     if (error) {
       console.error('❌ Failed to finalize session:', error.message);
       return;
     }
+  
+    console.log('✅ Session finalized and saved.', sessionData);
 
-    console.log('✅ Session finalized and saved.');
-
+      // 💾 Persist for /scoreboard highlighting
+  localStorage.setItem("sessionId", sessionId);
+  
     // Cleanup
     sessionStorage.removeItem('sessionId');
+    sessionStorage.removeItem('playedSlugs');
     setSessionId(null);
+    setPlayedSlugs(new Set());
   };
 
   const logEvent = async (eventType, payload = {}) => {
@@ -435,28 +535,46 @@ export default function TimeGuessrGame() {
     <div className="p-6 max-w-6xl mx-auto space-y-6 relative overflow-hidden">
       <h1 className="text-3xl font-bold mb-2">TimeGuessr</h1>
 
-      <div className="flex flex-wrap gap-4 items-center">
-        <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
-          <option value="">🎯 All Themes</option>
-          {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
-        </select>
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+        {/* Filters group */}
+        <div className="flex flex-wrap items-center gap-2">
+          <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
+            <option value="">🎯 All Themes</option>
+            {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
+          </select>
 
-        <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
-          <option value="">⏳ All Eras</option>
-          {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
-        </select>
+          <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
+            <option value="">⏳ All Eras</option>
+            {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
+          </select>
 
-        <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
-          <option value="">🌍 All Regions</option>
-          {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
-        </select>
+          <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
+            <option value="">🌍 All Regions</option>
+            {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
+          </select>
 
+          <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
+        </div>
 
-        <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
-
-        <button className="bg-black text-white p-2 px-4 rounded hover:bg-gray-800" onClick={startGame}>
-          ▶️ Start Guessing
-        </button>
+        <div className="flex items-center gap-4 min-w-[280px]">
+          <button
+            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 whitespace-nowrap"
+            onClick={startGame}
+          >
+            ▶️ Start Guessing
+          </button>
+          {gameStarted && (
+            <div className="flex-1 text-sm text-gray-600">
+              <div className="mb-1">Progress: {sessionProgress.played} / {sessionProgress.total}</div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div
+                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${(sessionProgress.played / sessionProgress.total) * 100}%` }}
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {event && gameStarted && (
@@ -616,6 +734,7 @@ export default function TimeGuessrGame() {
                     setRetryCount(0);
                     setHistory([]);
                     setGameStarted(false);
+                    navigate("/scoreboard");  // 👈 redirect here
                   }}
                   className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
                 >
