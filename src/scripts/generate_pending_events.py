@@ -89,6 +89,8 @@ Required fields:
 - country
 - city (if any)
 - notable_location (if any)
+- caption (1–2 sentence clue or contextual enrichment that hints at or deepens the event, for display after the game round)
+- wiki_url (URL to the best matching Wikipedia article)
 
 Special instructions:
 - When generating the `prompt` field for the image, always follow this structure:
@@ -127,16 +129,38 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-        "The discovery of the Rosetta Stone by French soldiers (1799)",
-        "The inauguration of the Statue of Liberty in New York Harbor (1886)",
-        "The sinking of the Titanic during its maiden voyage (1912)",
-        "The first successful climb of Mount Everest by Edmund Hillary and Tenzing Norgay (1953)",
-        "The first successful vaccine trial by Edward Jenner against smallpox (1796)",
-        "The publication of Charles Darwin's On the Origin of Species (1859)",
-        "The launch of Sputnik 1, the first artificial satellite, by the Soviet Union (1957)",
-        "The signing of the Treaty of Versailles ending World War I (1919)",
-        "The discovery of Tutankhamun's tomb by Howard Carter (1922)",
-        "The fall of Constantinople to the Ottoman Empire (1453)"
+        "The founding of the Red Cross by Henri Dunant (1863)",
+        "The building of the first transcontinental railroad in the United States (1869)",
+        "The eruption of Krakatoa (1883)",
+        "The meeting of Roosevelt, Churchill, and Stalin at the Yalta Conference (1945)",
+        "The trial of Galileo Galilei before the Inquisition (1633)",
+        "The coronation of Queen Elizabeth II in Westminster Abbey (1953)",
+        "The partition of India and creation of Pakistan (1947)",
+        "The first human heart transplant by Christiaan Barnard (1967)",
+        "The liberation of Auschwitz by Soviet troops (1945)",
+        "The abdication of Tsar Nicholas II and end of the Russian Empire (1917)",
+        "The eruption of Eyjafjallajökull disrupting European air travel (2010)",
+        "The 1986 Chernobyl nuclear disaster and initial evacuation",
+        "The assassination of Archduke Franz Ferdinand in Sarajevo (1914)",
+        "The first use of the telegraph to send a long-distance message (1844)",
+        "The 1972 Nixon visit to China marking a shift in Cold War diplomacy",
+        "The trial and execution of Louis XVI during the French Revolution (1793)",
+        "The Berlin Airlift begins as a response to the Soviet blockade (1948)",
+        "The sinking of the Lusitania by a German U-boat (1915)",
+        "The proclamation of the German Empire in the Hall of Mirrors at Versailles (1871)",
+        "The assassination of Yitzhak Rabin at a peace rally in Tel Aviv (1995)",
+        "The Boxer Rebellion erupts in China against foreign influence (1900)",
+        "The election of Nelson Mandela as President of South Africa (1994)",
+        "The burning of the Reichstag in Berlin (1933)",
+        "The abdication of Emperor Akihito, Japan’s first in two centuries (2019)",
+        "The fall of Saigon and end of the Vietnam War (1975)",
+        "The launch of Voyager 1 carrying the Golden Record (1977)",
+        "The Great Fire of London devastates the city (1666)",
+        "The death of Princess Diana and public mourning (1997)",
+        "The 2015 Paris Agreement is signed at COP21 (2015)",
+        "The 1968 student protests erupt in Paris (May 1968)",
+        "The signing of the Camp David Accords between Egypt and Israel (1978)",
+        "The 1973 oil crisis triggered by the Yom Kippur War"
     ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
@@ -165,7 +189,9 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
         "city": raw.get("city", ""),
         "notable_location": raw.get("notable_location", ""),
         "era": era_match["era"],
-        "era_id": era_match["era_id"]
+        "era_id": era_match["era_id"],
+        "caption": raw.get("caption", ""),
+        "wiki_url": raw.get("wiki_url", "") 
     }
 
 def save_event_locally(event: dict, output_file="pending_events.json"):

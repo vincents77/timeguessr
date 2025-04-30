@@ -15,7 +15,7 @@ export default function TimeGuessrGame() {
   const [guessCoords, setGuessCoords] = useState(null);
   const [guessYear, setGuessYear] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [playerName, setPlayerName] = useState('');
+  const [playerName, setPlayerName] = useState(() => sessionStorage.getItem('playerName') || '');
   const [history, setHistory] = useState([]);
   const [defaultTimer, setDefaultTimer] = useState(30);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -46,6 +46,12 @@ export default function TimeGuessrGame() {
   useEffect(() => {
     setSessionId(null);
     sessionStorage.removeItem('sessionId');
+  }, [playerName]);
+
+  useEffect(() => {
+    if (playerName) {
+      sessionStorage.setItem('playerName', playerName);
+    }
   }, [playerName]);
 
   useEffect(() => {
