@@ -4,6 +4,9 @@ import MapboxMap from './components/MapboxMap';
 import cityLookup from './assets/city_lookup.json';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
+import GuessResultModal from './components/GuessResultModal';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 export default function TimeGuessrGame() {
   const [events, setEvents] = useState([]);
@@ -38,6 +41,7 @@ export default function TimeGuessrGame() {
   });
   const [playedSlugs, setPlayedSlugs] = useState(new Set());
   const [sessionProgress, setSessionProgress] = useState({ played: 0, total: 0 });
+  const [showFullCaption, setShowFullCaption] = useState(false);
   
   useEffect(() => {
     setSessionId(null);
@@ -56,13 +60,31 @@ export default function TimeGuessrGame() {
         console.error('❌ Error fetching events:', error.message);
         return;
       }
-      const normalized = data.map(e => ({
-        ...e,
-        coords: Array.isArray(e.coords) ? e.coords : JSON.parse(e.coords),
-      }));
+  
+      const normalized = data.map(e => {
+        let coords = e.coords;
+  
+        if (Array.isArray(coords)) {
+          // Already correct
+        } else if (typeof coords === "string") {
+          try {
+            const parts = coords.split(",").map(p => parseFloat(p.trim()));
+            coords = parts;
+          } catch (err) {
+            console.warn(`⚠️ Could not parse coords for ${e.title}`);
+            coords = [0, 0];
+          }
+        } else {
+          coords = [0, 0]; // fallback
+        }
+  
+        return { ...e, coords };
+      });
+  
       setEvents(normalized);
       setFilteredEvents(normalized);
     }
+  
     fetchEvents();
   }, []);
 
@@ -92,28 +114,42 @@ export default function TimeGuessrGame() {
 
   const navigate = useNavigate();
 
+
+  const IconLocation = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 2a6 6 0 016 6c0 4-6 10-6 10S4 12 4 8a6 6 0 016-6zm0 8a2 2 0 100-4 2 2 0 000 4z" />
+    </svg>
+  );
+
+  const IconCalendar = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M6 2a1 1 0 00-1 1v1H5a3 3 0 00-3 3v9a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3h-.002V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zM4 7h12v9a1 1 0 01-1 1H5a1 1 0 01-1-1V7z" />
+    </svg>
+  );
+
+  const IconTrophy = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M16 4V2H8v2H2v4a6 6 0 006 6c0 .7.1 1.3.4 1.9C8 16.6 7 18.1 7 20h10c0-1.9-1-3.4-1.4-4.1.3-.6.4-1.2.4-1.9a6 6 0 006-6V4h-6zM6 10a4 4 0 01-4-4V6h4v4zm12 0a4 4 0 01-4-4V6h4v4z"/>
+    </svg>
+  );
+
   useEffect(() => {
-    let finalized = false;
-  
-    const handleBeforeUnload = async (e) => {
-      if (finalized) return;
+    const handleBeforeUnload = () => {
+      const sessionId = sessionStorage.getItem("sessionId");
       if (sessionId) {
-        try {
-          await finalizeSession();
-          logEvent('session_finalize_auto', { sessionId });
-          finalized = true;
-        } catch (error) {
-          console.error('Failed to auto-finalize session:', error);
-        }
+        navigator.sendBeacon(
+          "https://zmvfnefkksnxiqdcgemc.functions.supabase.co/finalize_session",
+          JSON.stringify({ session_id: sessionId })
+        );
       }
     };
   
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
   
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [sessionId, history]);
+  }, []);
 
   const distToZoom = (distanceKm) => {
     if (distanceKm < 2) return 16;
@@ -539,17 +575,17 @@ export default function TimeGuessrGame() {
         {/* Filters group */}
         <div className="flex flex-wrap items-center gap-2">
           <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
-            <option value="">🎯 All Themes</option>
+            <option value="">All Themes</option>
             {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
           </select>
 
           <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
-            <option value="">⏳ All Eras</option>
+            <option value="">All Eras</option>
             {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
           </select>
 
           <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
-            <option value="">🌍 All Regions</option>
+            <option value="">All Regions</option>
             {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
           </select>
 
@@ -560,8 +596,11 @@ export default function TimeGuessrGame() {
           <button
             className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 whitespace-nowrap"
             onClick={startGame}
-          >
-            ▶️ Start Guessing
+            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4l12 8-12 8z" />
+              </svg>Start Guessing
           </button>
           {gameStarted && (
             <div className="flex-1 text-sm text-gray-600">
@@ -579,37 +618,53 @@ export default function TimeGuessrGame() {
 
       {event && gameStarted && (
   <>
-    <div className="flex flex-col lg:flex-row gap-6 max-w-[90vw] mx-auto">
-      {/* Left: Image */}
-      <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
-        <img
-          src={event.image_url}
-          alt="event"
-          className="w-full h-full object-cover rounded shadow"
-        />
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[90vw] mx-auto">
+      {/* Left column */}
+      <div className="flex flex-col">
+        <div className="min-h-[4.5rem] mb-2">
+          <p className="text-lg font-semibold">Your visual clue</p>
+          <p className="text-sm text-gray-600">Watch carefully! You can zoom in.</p>
+        </div>
+        <div className="aspect-square overflow-hidden rounded shadow">
+          <Zoom>
+            <img
+              src={event.image_url}
+              alt="event"
+              className="w-full h-full object-cover cursor-zoom-in"
+            />
+          </Zoom>
+        </div>
       </div>
 
-      {/* Right: Map + Place Search */}
-      <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
-        <div className="flex flex-col">
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            <h2 className="font-semibold text-xl">📍 Place your location guess:</h2>
+      {/* Right column */}
+      <div className="flex flex-col">
+        <div className="min-h-[4.5rem] mb-2">
+          <label className="text-lg font-semibold block">
+            Guess the location: pin it on the map or enter a place
+          </label>
+          <div className="flex mt-2">
             <input
               type="text"
-              className="border p-1 rounded text-sm"
+              className="border p-2 rounded-l text-sm w-full"
               value={guessPlace}
               onChange={e => setGuessPlace(e.target.value)}
               placeholder="Enter city, country, or landmark"
             />
             <button
               onClick={handlePlaceSearch}
-              className="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm"
+              className="bg-gray-200 border-l border-gray-300 px-3 py-2 rounded-r hover:bg-gray-300 text-gray-700 text-sm"
               disabled={isSearching}
             >
-              {isSearching ? '...' : '🔍'}
+              {isSearching ? '...' : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              )}
             </button>
           </div>
-
+        </div>
+        <div className="aspect-square overflow-hidden rounded shadow">
           <MapboxMap
             guessCoords={guessCoords}
             setGuessCoords={setGuessCoords}
@@ -623,13 +678,13 @@ export default function TimeGuessrGame() {
       </div>
     </div>
 
-    {/* Input Section (Year Guess) */}
+    {/* Input Section */}
     <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
       <input
         type="number"
         className="border w-full sm:w-64 p-2 rounded"
         value={guessYear}
-        onChange={e => setGuessYear(e.target.value)}
+        onChange={(e) => setGuessYear(e.target.value)}
         placeholder="Year (e.g. 1789 or -753)"
       />
       <button
@@ -643,109 +698,58 @@ export default function TimeGuessrGame() {
   </>
 )}
 
-    {showModal && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
-        <div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto shadow-lg text-center space-y-3 z-[101]">
-          <h2 className="text-xl font-bold">📜 Your Results</h2>
-          <p>✅ <strong>{event.title}</strong></p>
-          <p>📏 Distance: {getDistance(...guessCoords, ...event.coords).toFixed(1)} km</p>
-          <p>📆 Year Difference: {Math.abs(event.year - parseInt(guessYear)) === 0 ? 'Perfect!' : `${Math.abs(event.year - parseInt(guessYear))} year(s)`}</p>
-          {console.log('🔍 Debug lastEntry:', lastEntry)}
-          <p>🏆 Score: {lastEntry?.score}</p>
-          <p className="text-sm text-gray-600 italic">🔁 Attempt {retryCount + 1} of 3</p>
-
-          {(retryCount >= 2 || accepted) ? (
-            <>
-              <p>📍 Location: {[event.notable_location, event.city, event.country].filter(Boolean).join(', ')}</p>
-              <p>⏳ Year: {event.year < 0 ? `${-event.year} BCE` : `${event.year} CE`}</p>
-              {!revealMap ? (
-                <button
-                  onClick={() => setRevealMap(true)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                  🗺️ Reveal Map
-                </button>
-              ) : (
-                <MapboxMap
-                  guessCoords={guessCoords}
-                  actualCoords={event.coords}
-                  isResult
-                />
-              )}
-            </>
-          ) : null}
-
-          <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
-            {!accepted && retryCount < 2 && (
-              <button
-                onClick={() => {
-                  setRetryCount(c => c + 1);
-                  if (guessCoords) {
-                    const dist = getDistance(...guessCoords, ...event.coords);
-                    const zoom = distToZoom(dist * 2);
-                    setRetryCenter(guessCoords);
-                    setRetryZoom(zoom);
-                    setShouldRecenter(true);
-                  }
-                  setSubmitted(false);
-                  setTimeLeft(defaultTimer);
-                  setTimerActive(true);
-                  setShowModal(false);
-                  setAccepted(false);
-                  setRevealMap(false);
-                }}
-                className="bg-white text-black border border-black px-4 py-2 rounded hover:bg-gray-100"
-              >
-                🔁 Retry Guess
-              </button>
-            )}
-
-            {!accepted && (
-              <button
-                onClick={handleAcceptResult}
-                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-              >
-                ✅ Accept Result
-              </button>
-            )}
-
-            {accepted && (
-              <div className="flex flex-col sm:flex-row gap-2 justify-center">
-                <button
-                  onClick={() => {
-                    setLastEntry(null);
-                    setShowModal(false);
-                    setRevealMap(false);
-                    setRetryCount(0);
-                    pickNextFilteredEvent();
-                  }}
-                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-                >
-                  ▶️ Play Next Event
-                </button>
-
-                <button
-                  onClick={async () => {
-                    await finalizeSession();
-                    logEvent('session_finalize_manual', { sessionId });
-                    setLastEntry(null);
-                    setShowModal(false);
-                    setRevealMap(false);
-                    setRetryCount(0);
-                    setHistory([]);
-                    setGameStarted(false);
-                    navigate("/scoreboard");  // 👈 redirect here
-                  }}
-                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
-                >
-                  🏁 Finish Session
-                </button>
-              </div>
-            )}
-            </div>
-          </div>
-        </div>
+      {showModal && (
+        <GuessResultModal
+          event={event}
+          guessCoords={guessCoords}
+          guessYear={guessYear}
+          lastEntry={lastEntry}
+          retryCount={retryCount}
+          accepted={accepted}
+          revealMap={revealMap}
+          showFullCaption={showFullCaption}
+          setShowFullCaption={setShowFullCaption}
+          onRetry={() => {
+            setRetryCount(c => c + 1);
+            if (guessCoords) {
+              const dist = getDistance(...guessCoords, ...event.coords);
+              const zoom = distToZoom(dist * 2);
+              setRetryCenter(guessCoords);
+              setRetryZoom(zoom);
+              setShouldRecenter(true);
+            }
+            setSubmitted(false);
+            setTimeLeft(defaultTimer);
+            setTimerActive(true);
+            setShowModal(false);
+            setAccepted(false);
+            setRevealMap(false);
+          }}
+          onAccept={handleAcceptResult}
+          onRevealMap={() => setRevealMap(true)}
+          onPlayNext={() => {
+            setLastEntry(null);
+            setShowModal(false);
+            setRevealMap(false);
+            setRetryCount(0);
+            pickNextFilteredEvent();
+          }}
+          onFinishSession={async () => {
+            await finalizeSession();
+            logEvent('session_finalize_manual', { sessionId });
+            setLastEntry(null);
+            setShowModal(false);
+            setRevealMap(false);
+            setRetryCount(0);
+            setHistory([]);
+            setGameStarted(false);
+            navigate("/scoreboard");
+          }}
+          IconLocation={IconLocation}
+          IconCalendar={IconCalendar}
+          IconTrophy={IconTrophy}
+        />
       )}
-    </div>
+            </div>
   );
-  }
+}

@@ -21,7 +21,9 @@
     "city": "Berlin",
     "notable_location": null,
     "era_id": 25,
-    "theme_id": 2
+    "theme_id": 2,
+    "caption": "The fall of the Berlin Wall on November 9, 1989, marked a pivotal moment in the Cold War, symbolizing the collapse of communist control in Eastern Europe and paving the way for German reunification. This event was unexpectedly triggered by a botched announcement regarding travel regulations by East German official G\u00fcnter Schabowski.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall"
   },
   {
     "title": "Tiananmen Square Protests",
@@ -45,7 +47,9 @@
     "city": "Beijin",
     "notable_location": "Tiananmen Square",
     "era_id": 42,
-    "theme_id": 2
+    "theme_id": 2,
+    "caption": "The Tiananmen Square Protests of 1989, also known as the June Fourth Incident, were a pivotal moment in Chinese history where thousands of students and citizens gathered to demand political reform and greater freedoms, leading to a violent military crackdown that remains a sensitive topic in China today.",
+    "wiki_url": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre"
   },
   {
     "title": "Signing of the Declaration of Independence",
@@ -69,7 +73,9 @@
     "city": "Philadelphia",
     "notable_location": "Independance Hall",
     "era_id": 51,
-    "theme_id": 2
+    "theme_id": 2,
+    "caption": "The Declaration of Independence, adopted on July 4, 1776, marked the American colonies' formal separation from Britain, but it was not signed by all delegates until August 2, 1776, highlighting the complexities and debates that surrounded its creation.",
+    "wiki_url": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence"
   },
   {
     "title": "Marie Curie Discovers Radioactivity",
@@ -93,7 +99,9 @@
     "city": "Paris",
     "notable_location": null,
     "era_id": 21,
-    "theme_id": 6
+    "theme_id": 6,
+    "caption": "In 1898, Marie Curie, alongside her husband Pierre, isolated radioactive elements polonium and radium, pioneering research that would lay the foundation for modern nuclear physics and cancer treatment. Her groundbreaking work challenged the scientific norms of the time and led to her becoming the first woman to win a Nobel Prize.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Marie_Curie"
   },
   {
     "title": "Storming of the Bastille",
@@ -117,7 +125,9 @@
     "city": "Paris",
     "notable_location": "La Bastille",
     "era_id": 21,
-    "theme_id": 1
+    "theme_id": 1,
+    "caption": "The Storming of the Bastille on July 14, 1789, marked a pivotal moment in the French Revolution, symbolizing the end of the king's absolute power and the birth of the people's sovereignty. This event was fueled by the economic hardships and political discontent among the French populace, leading to the fall of this notorious prison fortress.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Storming_of_the_Bastille"
   },
   {
     "title": "Signing of the Armistice of 1918",
@@ -141,31 +151,9 @@
     "city": "Compiegne",
     "notable_location": null,
     "era_id": 22,
-    "theme_id": 2
-  },
-  {
-    "title": "The Battle of Ain Jalut involving Mamluks from Egypt",
-    "slug": "the-battle-of-ain-jalut-involving-mamluks-from-egypt",
-    "year": 1260,
-    "coords": [
-      32.3333,
-      35.3333
-    ],
-    "theme": "wars & battles",
-    "era": "Pre-Columbian Americas",
-    "region": "Asia",
-    "notable_figures": "Sultan Qutuz, Baibars",
-    "visuals": "Mamluk cavalry charging; Mongol soldiers in combat; desert landscape; medieval armor and weapons; dust and chaos of battle",
-    "prompt": "A highly detailed, photo-realistic image of The Battle of Ain Jalut involving Mamluks from Egypt as it might have appeared at the time. The scene includes Mamluk cavalry charging, Mongol soldiers in combat, desert landscape, medieval armor and weapons, dust and chaos of battle, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-battle-of-ain-jalut-involving-mamluks-from-egypt.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "270e0be6-45a6-44c7-9741-c85af9c287de",
-    "country": "Israel",
-    "city": null,
-    "notable_location": "Ain Jalut",
-    "era_id": 50,
-    "theme_id": 1
+    "theme_id": 2,
+    "caption": "The Armistice of 1918, signed in a railway carriage in the Compi\u00e8gne Forest, marked the end of World War I on the Western Front, leading to a ceasefire effective on the eleventh hour of the eleventh day of the eleventh month.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Armistice_of_11_November_1918"
   },
   {
     "title": "First Gothic Cathedral Construction",
@@ -189,7 +177,9 @@
     "city": "Saint-Denis",
     "notable_location": "Basilica of Saint-Denis",
     "era_id": 17,
-    "theme_id": 8
+    "theme_id": 8,
+    "caption": "The construction of the first Gothic cathedral began in 1137 with the rebuilding of the Basilica of Saint-Denis, led by Abbot Suger, marking a pivotal shift in architectural style that emphasized verticality and light.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Basilica_of_Saint-Denis"
   },
   {
     "title": "Discovery of Penicillin",
@@ -213,7 +203,9 @@
     "city": "London",
     "notable_location": "St. Mary's Hospital",
     "era_id": 23,
-    "theme_id": 6
+    "theme_id": 6,
+    "caption": "The discovery of penicillin by Alexander Fleming in 1928 revolutionized medicine by introducing the first true antibiotic, which led to the treatment of previously incurable bacterial infections and laid the foundation for modern antibiotics.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Penicillin"
   },
   {
     "title": "First Crossing of the English Channel",
@@ -237,7 +229,9 @@
     "city": null,
     "notable_location": "English Channel",
     "era_id": 21,
-    "theme_id": 9
+    "theme_id": 9,
+    "caption": "In 1785, French inventor Jean-Pierre Blanchard and American physician John Jeffries made history by completing the first successful balloon flight across the English Channel, marking a significant milestone in aviation history.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Blanchard_and_Jeffries%27s_balloon_flight"
   },
   {
     "title": "Construction of Machu Picchu",
@@ -261,31 +255,9 @@
     "city": "",
     "notable_location": "Machu Picchu",
     "era_id": 50,
-    "theme_id": 8
-  },
-  {
-    "title": "The Black Death in Europe",
-    "slug": "the-black-death-in-europe",
-    "year": 1347,
-    "coords": [
-      48.8566,
-      2.3522
-    ],
-    "theme": "natural disasters",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "none",
-    "visuals": "medieval city streets; plague doctors in masks; mass graves; abandoned villages; illustrations of the bubonic plague",
-    "prompt": "A medieval European city during the Black Death, with plague doctors in masks, empty streets, and a somber atmosphere, illustrating the impact of the bubonic plague.",
-    "image_url": "/images/the-black-death-in-europe.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "0315b5ae-ef91-4b5e-abbd-2bbc22e5ec7b",
-    "country": "France",
-    "city": "Paris",
-    "notable_location": "none",
-    "era_id": 17,
-    "theme_id": 7
+    "theme_id": 8,
+    "caption": "Built during the reign of the Inca emperor Pachacuti, Machu Picchu is believed to have served as a royal estate or religious retreat, showcasing the advanced engineering skills of the Inca civilization amidst the challenging Andean terrain.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Machu_Picchu"
   },
   {
     "title": "Coronation of Hatshepsut in Ancient Egypt",
@@ -309,31 +281,9 @@
     "city": "Louxor",
     "notable_location": "Karnak",
     "era_id": 1,
-    "theme_id": 11
-  },
-  {
-    "title": "Alexander the Great Enters Babylon",
-    "slug": "alexander_the_great_enters_babylon",
-    "year": -331,
-    "coords": [
-      32.543,
-      44.421
-    ],
-    "theme": "wars & battles",
-    "era": "classical",
-    "region": "Middle East",
-    "notable_figures": "",
-    "visuals": "Alexander the Great on a white horse; Babylonian citizens kneeling and reaching out; ancient Mesopotamian gate with lion reliefs; ziggurat in the background; Macedonian soldiers with spears and red cloaks",
-    "prompt": "A vivid and meticulously detailed painting captures Alexander the Great's grand entry into Babylon in 331 BCE, as he marches proudly through the ancient city gate astride his white horse, flanked by his army and curious Babylonian onlookers. The scene, bathed in warm hues, showcases the awe-inspiring architecture of the gate and the distant ziggurat, with a panoramic composition bringing focus to Alexander's determined expression, surrounded by soldiers holding spears, shields, and a flag, while the crowd kneels and reaches out in reverence. Framed in landscape orientation. Composition balanced for horizontal display.",
-    "image_url": "/images/alexander_the_great_enters_babylon.jpg",
-    "difficulty": 3,
-    "source": "AI-generated metadata from historical context",
-    "id": "ecfc87a9-4db7-4506-be1a-0c9882f85bcc",
-    "country": "Irak",
-    "city": "Hillah",
-    "notable_location": null,
-    "era_id": 8,
-    "theme_id": 1
+    "theme_id": 11,
+    "caption": "Hatshepsut's coronation marked a significant moment in ancient Egyptian history as she became one of the few female pharaohs, adopting full kingly titles and regalia to legitimize her rule in a male-dominated society.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Hatshepsut"
   },
   {
     "title": "Eruption of Mount Vesuvius (79 CE)",
@@ -357,7 +307,9 @@
     "city": "Pompei",
     "notable_location": null,
     "era_id": 16,
-    "theme_id": 7
+    "theme_id": 7,
+    "caption": "The eruption of Mount Vesuvius in 79 CE buried the Roman cities of Pompeii and Herculaneum under a thick layer of volcanic ash, preserving them for centuries and providing a unique archaeological snapshot of Roman life.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_79"
   },
   {
     "title": "Nikola Tesla Demonstrates Alternating Current",
@@ -381,55 +333,9 @@
     "city": "Chicago",
     "notable_location": null,
     "era_id": 54,
-    "theme_id": 6
-  },
-  {
-    "title": "First Gothic Cathedral Construction",
-    "slug": "first-gothic-cathedral-construction",
-    "year": 1137,
-    "coords": [
-      49.255,
-      2.468
-    ],
-    "theme": "architecture & engineering",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "Abbot Suger",
-    "visuals": "flying buttresses; pointed arches; ribbed vaults; stained glass windows; tall spires",
-    "prompt": "A detailed illustration of the first Gothic cathedral under construction in the 12th century, showcasing flying buttresses, pointed arches, ribbed vaults, and stained glass windows, with medieval workers and scaffolding.",
-    "image_url": "/images/first-gothic-cathedral-construction.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "25b262da-b120-4ce0-ad1b-4007901b9762",
-    "country": "France",
-    "city": "Saint-Denis",
-    "notable_location": "Basilica of Saint-Denis",
-    "era_id": 17,
-    "theme_id": 8
-  },
-  {
-    "title": "Discovery of Penicillin",
-    "slug": "discovery-of-penicillin",
-    "year": 1928,
-    "coords": [
-      51.5074,
-      -0.1278
-    ],
-    "theme": "scientific & technological breakthroughs",
-    "era": "Interwar Period",
-    "region": "Europe",
-    "notable_figures": "Alexander Fleming",
-    "visuals": "laboratory setting; Petri dishes with mold; scientist examining samples; microscope; medical breakthrough illustration",
-    "prompt": "A detailed illustration of Alexander Fleming in a 1920s laboratory, surrounded by Petri dishes with mold, examining samples under a microscope, representing the discovery of penicillin.",
-    "image_url": "/images/discovery-of-penicillin.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "81556872-b258-4868-a9f4-758f5f4cb5ac",
-    "country": "United Kingdom",
-    "city": "London",
-    "notable_location": "St. Mary's Hospital",
-    "era_id": 23,
-    "theme_id": 6
+    "theme_id": 6,
+    "caption": "In 1893, at the World's Columbian Exposition in Chicago, Nikola Tesla showcased the potential of alternating current (AC) by illuminating the fairgrounds, marking a pivotal moment in the War of Currents against Thomas Edison\u2019s direct current (DC).",
+    "wiki_url": "https://en.wikipedia.org/wiki/World%27s_Columbian_Exposition"
   },
   {
     "title": "First Flight of the Wright Brothers",
@@ -453,127 +359,9 @@
     "city": "Kill Devil Hills",
     "notable_location": null,
     "era_id": 54,
-    "theme_id": 6
-  },
-  {
-    "title": "The crowning of Charlemagne as Holy Roman Emperor",
-    "slug": "the-crowning-of-charlemagne-as-holy-roman-emperor",
-    "year": 800,
-    "coords": [
-      41.9029,
-      12.4534
-    ],
-    "theme": "royalty & coronations",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "Charlemagne, Pope Leo III",
-    "visuals": "Charlemagne in regal attire; Pope Leo III placing the crown; interior of St. Peter's Basilica; medieval courtiers; ornate throne",
-    "prompt": "A highly detailed, photo-realistic image of The crowning of Charlemagne as Holy Roman Emperor as it might have appeared at the time. The scene includes Charlemagne in regal attire, Pope Leo III placing the crown, interior of St. Peter's Basilica, medieval courtiers, ornate throne, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-crowning-of-charlemagne-as-holy-roman-emperor.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "1f34584b-6b31-4c89-81f7-4578467da221",
-    "country": "Italy",
-    "city": "Rome",
-    "notable_location": "St. Peter's Basilica",
-    "era_id": 17,
-    "theme_id": 11
-  },
-  {
-    "title": "First Crossing of the English Channel",
-    "slug": "first-crossing-of-the-english-channel",
-    "year": 1785,
-    "coords": [
-      50.9513,
-      1.8587
-    ],
-    "theme": "exploration & discovery",
-    "era": "Industrial Revolution",
-    "region": "Europe",
-    "notable_figures": "Jean-Pierre Blanchard, John Jeffries",
-    "visuals": "hot air balloon; English Channel; 18th-century attire; coastal landscape; ballooning equipment",
-    "prompt": "A historical depiction of the first successful crossing of the English Channel by hot air balloon in 1785, featuring Jean-Pierre Blanchard and John Jeffries in 18th-century attire, with a view of the English Channel and coastal landscape, showcasing the ballooning equipment of the era.",
-    "image_url": "/images/first-crossing-of-the-english-channel.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "7c88cc81-bcac-46f5-86f1-f61dff725360",
-    "country": "France",
-    "city": null,
-    "notable_location": "English Channel",
-    "era_id": 21,
-    "theme_id": 9
-  },
-  {
-    "title": "Construction of Machu Picchu",
-    "slug": "construction-of-machu-picchu",
-    "year": 1450,
-    "coords": [
-      -13.1631,
-      -72.545
-    ],
-    "theme": "architecture & engineering",
-    "era": "Pre-Columbian Americas",
-    "region": "Americas",
-    "notable_figures": "Pachacuti Inca Yupanqui",
-    "visuals": "stone terraces; Incan architecture; mountainous landscape; ancient ruins; cloud forest",
-    "prompt": "A detailed depiction of the construction of Machu Picchu, showcasing Incan architecture with stone terraces and ancient ruins set against a mountainous landscape and cloud forest.",
-    "image_url": "/images/construction-of-machu-picchu.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "7714c996-1b15-4334-9412-62d731a6928e",
-    "country": "Peru",
-    "city": "",
-    "notable_location": "Machu Picchu",
-    "era_id": 50,
-    "theme_id": 8
-  },
-  {
-    "title": "The Black Death in Europe",
-    "slug": "the-black-death-in-europe",
-    "year": 1347,
-    "coords": [
-      48.8566,
-      2.3522
-    ],
-    "theme": "natural disasters",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "none",
-    "visuals": "medieval city streets; plague doctors in masks; mass graves; abandoned villages; illustrations of the bubonic plague",
-    "prompt": "A medieval European city during the Black Death, with plague doctors in masks, empty streets, and a somber atmosphere, illustrating the impact of the bubonic plague.",
-    "image_url": "/images/the-black-death-in-europe.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "54e680ce-2476-4ad8-9fec-9391f63ccbc0",
-    "country": "France",
-    "city": "Paris",
-    "notable_location": "none",
-    "era_id": 17,
-    "theme_id": 7
-  },
-  {
-    "title": "Charlotte Perriand & Le Corbusier Design Iconic Furniture",
-    "slug": "charlotte-perriand-le-corbusier-design-collaboration",
-    "year": 1929,
-    "coords": [
-      48.84375399315147,
-      2.2514144744380036
-    ],
-    "theme": "art & culture",
-    "era": "20th century",
-    "region": "Europe",
-    "notable_figures": "",
-    "visuals": "Charlotte Perriand assembling tubular steel frame; Le Corbusier reviewing sketches with a pipe in hand; LC4 Chaise Longue and modernist chairs in a minimalist studio; sunlight through a tall atelier window with Bauhaus-era tools",
-    "prompt": "A highly detailed, photo-realistic image of Charlotte Perriand collaborating with Le Corbusier in a Paris studio in 1929, designing iconic modernist furniture. The scene includes Charlotte Perriand in workwear, adjusting a tubular steel frame beside the LC4 Chaise Longue, while Le Corbusier reviews design sketches with a pipe in hand. Their atelier is minimalist, filled with mid-century modern design tools, leather upholstery, and metalworking equipment. Sunlight streams through tall industrial windows. Authentic 1920s clothing, furniture, and atmosphere. No modern artifacts. Cinematic proportions and realistic style. Framed in landscape orientation. Composition balanced for horizontal display.",
-    "image_url": "/images/charlotte-perriand-le-corbusier-design-collaboration.jpg",
-    "difficulty": 3,
-    "source": "TimeGuessr AI Event Generator",
-    "id": "f58a7edf-b41b-4ae9-be36-44154d77cd7c",
-    "country": "France",
-    "city": "Paris",
-    "notable_location": "Le Corbusier workshop",
-    "era_id": 23,
-    "theme_id": 10
+    "theme_id": 6,
+    "caption": "On December 17, 1903, Orville and Wilbur Wright achieved the first powered, controlled, and sustained flight in a heavier-than-air machine, marking a pivotal moment in aviation history at Kitty Hawk, North Carolina.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Wright_brothers"
   },
   {
     "title": "The signing of the Magna Carta",
@@ -597,7 +385,35 @@
     "city": null,
     "notable_location": "Runnymede",
     "era_id": 17,
-    "theme_id": 4
+    "theme_id": 4,
+    "caption": "The Magna Carta, signed by King John of England in 1215, was a groundbreaking document that limited royal power and laid the foundation for modern constitutional governance, influencing legal systems worldwide.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Magna_Carta"
+  },
+  {
+    "title": "The crowning of Charlemagne as Holy Roman Emperor",
+    "slug": "the-crowning-of-charlemagne-as-holy-roman-emperor",
+    "year": 800,
+    "coords": [
+      41.9029,
+      12.4534
+    ],
+    "theme": "royalty & coronations",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "Charlemagne, Pope Leo III",
+    "visuals": "Charlemagne in regal attire; Pope Leo III placing the crown; interior of St. Peter's Basilica; medieval courtiers; ornate throne",
+    "prompt": "A highly detailed, photo-realistic image of The crowning of Charlemagne as Holy Roman Emperor as it might have appeared at the time. The scene includes Charlemagne in regal attire, Pope Leo III placing the crown, interior of St. Peter's Basilica, medieval courtiers, ornate throne, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-crowning-of-charlemagne-as-holy-roman-emperor.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "1f34584b-6b31-4c89-81f7-4578467da221",
+    "country": "Italy",
+    "city": "Rome",
+    "notable_location": "St. Peter's Basilica",
+    "era_id": 17,
+    "theme_id": 11,
+    "caption": "On Christmas Day in the year 800, Pope Leo III crowned Charlemagne as Holy Roman Emperor in St. Peter's Basilica, a pivotal moment that marked the fusion of Roman, Christian, and Germanic elements, laying the foundation for the medieval European political landscape.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Coronation_of_Charlemagne"
   },
   {
     "title": "The construction of Notre-Dame Cathedral in Paris",
@@ -621,199 +437,9 @@
     "city": "Paris",
     "notable_location": "\u00cele de la Cit\u00e9",
     "era_id": 17,
-    "theme_id": 8
-  },
-  {
-    "title": "The founding of the University of Bologna",
-    "slug": "the-founding-of-the-university-of-bologna",
-    "year": 1088,
-    "coords": [
-      44.4949,
-      11.3426
-    ],
-    "theme": "art & culture",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "Irnerius",
-    "visuals": "medieval scholars in discussion; ancient manuscripts and scrolls; a lecture in a medieval classroom; students in traditional medieval attire; the architecture of early university buildings",
-    "prompt": "A highly detailed, photo-realistic image of The founding of the University of Bologna as it might have appeared at the time. The scene includes medieval scholars in discussion, ancient manuscripts and scrolls, a lecture in a medieval classroom, students in traditional medieval attire, the architecture of early university buildings, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-founding-of-the-university-of-bologna.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "122ba98a-f493-4e9b-a19a-366ccbc1b4da",
-    "country": "Italy",
-    "city": "Bologna",
-    "notable_location": "University of Bologna",
-    "era_id": 17,
-    "theme_id": 10
-  },
-  {
-    "title": "The reign of Mansa Musa in the Mali Empire",
-    "slug": "the-reign-of-mansa-musa-in-the-mali-empire",
-    "year": 1312,
-    "coords": [
-      12.6392,
-      -8.0029
-    ],
-    "theme": "royalty & coronations",
-    "era": "Pre-Columbian Americas",
-    "region": "Africa",
-    "notable_figures": "Mansa Musa",
-    "visuals": "Mansa Musa seated on a golden throne; richly adorned courtiers and advisors; bustling market scene with traders; grand architecture of Timbuktu; caravan of camels laden with gold",
-    "prompt": "A highly detailed, photo-realistic image of The reign of Mansa Musa in the Mali Empire as it might have appeared at the time. The scene includes Mansa Musa seated on a golden throne, richly adorned courtiers and advisors, bustling market scene with traders, grand architecture of Timbuktu, caravan of camels laden with gold, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-reign-of-mansa-musa-in-the-mali-empire.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "cb7bf94b-16a6-45cb-9418-b904b9881df8",
-    "country": "Mali",
-    "city": "Timbuktu",
-    "notable_location": "Timbuktu",
-    "era_id": 50,
-    "theme_id": 11
-  },
-  {
-    "title": "The founding of Great Zimbabwe",
-    "slug": "the-founding-of-great-zimbabwe",
-    "year": 1100,
-    "coords": [
-      -20.267,
-      30.933
-    ],
-    "theme": "architecture & engineering",
-    "era": "Pre-Columbian Americas",
-    "region": "Africa",
-    "notable_figures": "",
-    "visuals": "massive stone walls; conical towers; ancient pathways; traditional huts; lush surrounding landscape",
-    "prompt": "A highly detailed, photo-realistic image of The founding of Great Zimbabwe as it might have appeared at the time. The scene includes massive stone walls, conical towers, ancient pathways, traditional huts, lush surrounding landscape, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-founding-of-great-zimbabwe.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "3eb1592d-49fb-41d0-8595-a71597255474",
-    "country": "Zimbabwe",
-    "city": "",
-    "notable_location": "Great Zimbabwe",
-    "era_id": 50,
-    "theme_id": 8
-  },
-  {
-    "title": "First Gothic Cathedral Construction",
-    "slug": "first-gothic-cathedral-construction",
-    "year": 1137,
-    "coords": [
-      49.255,
-      2.468
-    ],
-    "theme": "architecture & engineering",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "Abbot Suger",
-    "visuals": "flying buttresses; pointed arches; ribbed vaults; stained glass windows; tall spires",
-    "prompt": "A detailed illustration of the first Gothic cathedral under construction in the 12th century, showcasing flying buttresses, pointed arches, ribbed vaults, and stained glass windows, with medieval workers and scaffolding.",
-    "image_url": "/images/first-gothic-cathedral-construction.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "4339324c-0bb2-4d7a-866a-8d3ad3cc14bc",
-    "country": "France",
-    "city": "Saint-Denis",
-    "notable_location": "Basilica of Saint-Denis",
-    "era_id": 17,
-    "theme_id": 8
-  },
-  {
-    "title": "Discovery of Penicillin",
-    "slug": "discovery-of-penicillin",
-    "year": 1928,
-    "coords": [
-      51.5074,
-      -0.1278
-    ],
-    "theme": "scientific & technological breakthroughs",
-    "era": "Interwar Period",
-    "region": "Europe",
-    "notable_figures": "Alexander Fleming",
-    "visuals": "laboratory setting; Petri dishes with mold; scientist examining samples; microscope; medical breakthrough illustration",
-    "prompt": "A detailed illustration of Alexander Fleming in a 1920s laboratory, surrounded by Petri dishes with mold, examining samples under a microscope, representing the discovery of penicillin.",
-    "image_url": "/images/discovery-of-penicillin.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "ff450a1b-7deb-4575-a93a-fa1b4edad3d9",
-    "country": "United Kingdom",
-    "city": "London",
-    "notable_location": "St. Mary's Hospital",
-    "era_id": 23,
-    "theme_id": 6
-  },
-  {
-    "title": "First Crossing of the English Channel",
-    "slug": "first-crossing-of-the-english-channel",
-    "year": 1785,
-    "coords": [
-      50.9513,
-      1.8587
-    ],
-    "theme": "exploration & discovery",
-    "era": "Industrial Revolution",
-    "region": "Europe",
-    "notable_figures": "Jean-Pierre Blanchard, John Jeffries",
-    "visuals": "hot air balloon; English Channel; 18th-century attire; coastal landscape; ballooning equipment",
-    "prompt": "A historical depiction of the first successful crossing of the English Channel by hot air balloon in 1785, featuring Jean-Pierre Blanchard and John Jeffries in 18th-century attire, with a view of the English Channel and coastal landscape, showcasing the ballooning equipment of the era.",
-    "image_url": "/images/first-crossing-of-the-english-channel.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "6d97eeba-b0b3-4405-8cd0-ba08c21a3bed",
-    "country": "France",
-    "city": null,
-    "notable_location": "English Channel",
-    "era_id": 21,
-    "theme_id": 9
-  },
-  {
-    "title": "Construction of Machu Picchu",
-    "slug": "construction-of-machu-picchu",
-    "year": 1450,
-    "coords": [
-      -13.1631,
-      -72.545
-    ],
-    "theme": "architecture & engineering",
-    "era": "Pre-Columbian Americas",
-    "region": "Americas",
-    "notable_figures": "Pachacuti Inca Yupanqui",
-    "visuals": "stone terraces; Incan architecture; mountainous landscape; ancient ruins; cloud forest",
-    "prompt": "A detailed depiction of the construction of Machu Picchu, showcasing Incan architecture with stone terraces and ancient ruins set against a mountainous landscape and cloud forest.",
-    "image_url": "/images/construction-of-machu-picchu.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "9714948e-b20e-471e-a9ba-825cc60302b8",
-    "country": "Peru",
-    "city": "",
-    "notable_location": "Machu Picchu",
-    "era_id": 50,
-    "theme_id": 8
-  },
-  {
-    "title": "Nonviolent March in Colonial India",
-    "slug": "nonviolent-march-colonial-india",
-    "year": 1930,
-    "coords": [
-      21.6417,
-      72.8746
-    ],
-    "theme": "foundational political moments",
-    "era": "Modern",
-    "region": "Asia",
-    "notable_figures": "",
-    "visuals": "peaceful demonstrators in traditional cotton garments; dusty rural Indian road; salt pans in the distance; colonial officers observing the crowd",
-    "prompt": "A highly detailed, photo-realistic image of a historic nonviolent protest march in rural India during the 1930s. The scene shows a line of peaceful demonstrators walking along a dusty road, wearing traditional cotton garments, some carrying walking sticks or containers for salt. Salt pans shimmer in the distance, with colonial officers observing from afar. The lighting reflects the heat of midday with long shadows and a determined, focused atmosphere. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/nonviolent-march-colonial-india.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical references to the Salt March",
-    "id": "c41371f0-4d65-473b-a879-23df57753cfc",
-    "country": "India",
-    "city": "Dandi",
-    "notable_location": "Salt Fields near Dandi",
-    "era_id": 34,
-    "theme_id": 2
+    "theme_id": 8,
+    "caption": "The construction of Notre-Dame Cathedral in Paris, initiated in 1163 under the reign of King Louis VII, marked a pivotal moment in Gothic architecture, showcasing innovations such as the use of flying buttresses, which allowed for higher and thinner walls and larger stained-glass windows.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
   },
   {
     "title": "Assassination of Julius Caesar",
@@ -837,151 +463,87 @@
     "city": "Rome",
     "notable_location": "Curia of Pompei",
     "era_id": 15,
-    "theme_id": 1
+    "theme_id": 1,
+    "caption": "The assassination of Julius Caesar on the Ides of March was orchestrated by a group of Roman senators, including his close friend Brutus, as a desperate attempt to restore the Republic and prevent Caesar from becoming a dictator for life.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar"
   },
   {
-    "title": "The Black Death in Europe",
-    "slug": "the-black-death-in-europe",
-    "year": 1347,
+    "title": "The reign of Mansa Musa in the Mali Empire",
+    "slug": "the-reign-of-mansa-musa-in-the-mali-empire",
+    "year": 1312,
     "coords": [
-      48.8566,
-      2.3522
+      12.6392,
+      -8.0029
     ],
-    "theme": "natural disasters",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "none",
-    "visuals": "medieval city streets; plague doctors in masks; mass graves; abandoned villages; illustrations of the bubonic plague",
-    "prompt": "A medieval European city during the Black Death, with plague doctors in masks, empty streets, and a somber atmosphere, illustrating the impact of the bubonic plague.",
-    "image_url": "/images/the-black-death-in-europe.jpg",
+    "theme": "royalty & coronations",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "Mansa Musa",
+    "visuals": "Mansa Musa seated on a golden throne; richly adorned courtiers and advisors; bustling market scene with traders; grand architecture of Timbuktu; caravan of camels laden with gold",
+    "prompt": "A highly detailed, photo-realistic image of The reign of Mansa Musa in the Mali Empire as it might have appeared at the time. The scene includes Mansa Musa seated on a golden throne, richly adorned courtiers and advisors, bustling market scene with traders, grand architecture of Timbuktu, caravan of camels laden with gold, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-reign-of-mansa-musa-in-the-mali-empire.jpg",
     "difficulty": 3,
     "source": "AI-generated based on historical records",
-    "id": "a3b944d7-a0e2-4c73-82fb-1a44fa9d4232",
-    "country": "France",
-    "city": "Paris",
-    "notable_location": "none",
-    "era_id": 17,
-    "theme_id": 7
+    "id": "cb7bf94b-16a6-45cb-9418-b904b9881df8",
+    "country": "Mali",
+    "city": "Timbuktu",
+    "notable_location": "Timbuktu",
+    "era_id": 50,
+    "theme_id": 11,
+    "caption": "Mansa Musa's reign is renowned for his legendary pilgrimage to Mecca in 1324, which showcased the immense wealth of the Mali Empire and significantly impacted the economies of regions he passed through, including Egypt and the broader Islamic world.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Mansa_Musa"
   },
   {
-    "title": "The rise of the Kingdom of Aksum",
-    "slug": "the-rise-of-the-kingdom-of-aksum",
-    "year": 100,
+    "title": "The founding of Great Zimbabwe",
+    "slug": "the-founding-of-great-zimbabwe",
+    "year": 1100,
     "coords": [
-      14.1339,
-      38.7169
+      -20.267,
+      30.933
+    ],
+    "theme": "architecture & engineering",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "",
+    "visuals": "massive stone walls; conical towers; ancient pathways; traditional huts; lush surrounding landscape",
+    "prompt": "A highly detailed, photo-realistic image of The founding of Great Zimbabwe as it might have appeared at the time. The scene includes massive stone walls, conical towers, ancient pathways, traditional huts, lush surrounding landscape, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-founding-of-great-zimbabwe.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "3eb1592d-49fb-41d0-8595-a71597255474",
+    "country": "Zimbabwe",
+    "city": "",
+    "notable_location": "Great Zimbabwe",
+    "era_id": 50,
+    "theme_id": 8,
+    "caption": "Great Zimbabwe, a monumental city built by the ancestors of the Shona people, served as a thriving center of trade and culture in southeastern Africa, showcasing advanced architecture and social organization long before European contact.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Great_Zimbabwe"
+  },
+  {
+    "title": "Nonviolent March in Colonial India",
+    "slug": "nonviolent-march-colonial-india",
+    "year": 1930,
+    "coords": [
+      21.6417,
+      72.8746
     ],
     "theme": "foundational political moments",
-    "era": "Pre-Columbian Americas",
-    "region": "Africa",
-    "notable_figures": "King Ezana",
-    "visuals": "ancient Aksumite architecture; trading caravans; royal court; stone obelisks; bustling marketplace",
-    "prompt": "A highly detailed, photo-realistic image of The rise of the Kingdom of Aksum as it might have appeared at the time. The scene includes ancient Aksumite architecture, trading caravans, royal court, stone obelisks, bustling marketplace, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-rise-of-the-kingdom-of-aksum.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "c1f4b3ff-42ba-4e59-9b39-19078c9d6e4f",
-    "country": "Ethiopia",
-    "city": "Aksum",
-    "notable_location": "Aksum Obelisks",
-    "era_id": 50,
-    "theme_id": 2
-  },
-  {
-    "title": "The construction of the Al-Qarawiyyin University in Fez",
-    "slug": "the-construction-of-the-al-qarawiyyin-university-in-fez",
-    "year": 859,
-    "coords": [
-      34.0331,
-      -5.0003
-    ],
-    "theme": "architecture & engineering",
-    "era": "Pre-Columbian Americas",
-    "region": "Africa",
-    "notable_figures": "Fatima al-Fihri",
-    "visuals": "workers laying bricks; architects with scrolls; scaffolding around the building; traditional Islamic architectural elements; bustling construction site",
-    "prompt": "A highly detailed, photo-realistic image of The construction of the Al-Qarawiyyin University in Fez as it might have appeared at the time. The scene includes workers laying bricks, architects with scrolls, scaffolding around the building, traditional Islamic architectural elements, bustling construction site, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-construction-of-the-al-qarawiyyin-university-in-fez.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "111846bd-6431-433b-a0ca-5082dfb1f0f6",
-    "country": "Morocco",
-    "city": "Fez",
-    "notable_location": "Al-Qarawiyyin University",
-    "era_id": 50,
-    "theme_id": 8
-  },
-  {
-    "title": "First Gothic Cathedral Construction",
-    "slug": "first-gothic-cathedral-construction",
-    "year": 1137,
-    "coords": [
-      49.255,
-      2.468
-    ],
-    "theme": "architecture & engineering",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "Abbot Suger",
-    "visuals": "flying buttresses; pointed arches; ribbed vaults; stained glass windows; tall spires",
-    "prompt": "A detailed illustration of the first Gothic cathedral under construction in the 12th century, showcasing flying buttresses, pointed arches, ribbed vaults, and stained glass windows, with medieval workers and scaffolding.",
-    "image_url": "/images/first-gothic-cathedral-construction.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "1be1ee57-1721-48b9-8b46-a0cd9b284e87",
-    "country": "France",
-    "city": "Saint-Denis",
-    "notable_location": "Basilica of Saint-Denis",
-    "era_id": 17,
-    "theme_id": 8
-  },
-  {
-    "title": "Discovery of Penicillin",
-    "slug": "discovery-of-penicillin",
-    "year": 1928,
-    "coords": [
-      51.5074,
-      -0.1278
-    ],
-    "theme": "scientific & technological breakthroughs",
-    "era": "Interwar Period",
-    "region": "Europe",
-    "notable_figures": "Alexander Fleming",
-    "visuals": "laboratory setting; Petri dishes with mold; scientist examining samples; microscope; medical breakthrough illustration",
-    "prompt": "A detailed illustration of Alexander Fleming in a 1920s laboratory, surrounded by Petri dishes with mold, examining samples under a microscope, representing the discovery of penicillin.",
-    "image_url": "/images/discovery-of-penicillin.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "1c588465-34b8-4b4d-875c-8cf9417e09c1",
-    "country": "United Kingdom",
-    "city": "London",
-    "notable_location": "St. Mary's Hospital",
-    "era_id": 23,
-    "theme_id": 6
-  },
-  {
-    "title": "Battle of Hastings",
-    "slug": "battle-of-hastings",
-    "year": 1066,
-    "coords": [
-      50.9116,
-      0.4875
-    ],
-    "theme": "wars & battles",
-    "era": "medieval",
-    "region": "Europe",
+    "era": "Modern",
+    "region": "Asia",
     "notable_figures": "",
-    "visuals": "Norman cavalry charging uphill; shield wall of Anglo-Saxon warriors; flags and medieval armor",
-    "prompt": "A highly detailed, photo-realistic image of the Battle of Hastings as it might have appeared in 1066. The scene includes Norman cavalry charging uphill against a shield wall of Anglo-Saxon warriors. They wear chainmail, conical helmets, and carry round shields with heraldic symbols. No gunpowder weapons, no modern flags. The landscape shows open countryside under an overcast sky. Authentic 11th-century military detail and natural terrain. Depicts Norman cavalry with kite shields and chainmail attacking uphill against a dense Anglo-Saxon shield wall. The battlefield is an open slope near a wooden palisade. No castles or fantasy elements. Clearly 11th-century. No text or modern artifacts. Realistic proportions, cinematic style. Framed in landscape orientation. Composition balanced for horizontal display.",
-    "image_url": "/images/battle-of-hastings.jpg",
-    "difficulty": 4,
-    "source": "AI-generated metadata from historical context",
-    "id": "54343b03-1102-4940-b119-9562efb706a6",
-    "country": "England",
-    "city": "Hastings",
-    "notable_location": "Battlefield",
-    "era_id": 17,
-    "theme_id": 1
+    "visuals": "peaceful demonstrators in traditional cotton garments; dusty rural Indian road; salt pans in the distance; colonial officers observing the crowd",
+    "prompt": "A highly detailed, photo-realistic image of a historic nonviolent protest march in rural India during the 1930s. The scene shows a line of peaceful demonstrators walking along a dusty road, wearing traditional cotton garments, some carrying walking sticks or containers for salt. Salt pans shimmer in the distance, with colonial officers observing from afar. The lighting reflects the heat of midday with long shadows and a determined, focused atmosphere. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/nonviolent-march-colonial-india.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical references to the Salt March",
+    "id": "c41371f0-4d65-473b-a879-23df57753cfc",
+    "country": "India",
+    "city": "Dandi",
+    "notable_location": "Salt Fields near Dandi",
+    "era_id": 34,
+    "theme_id": 2,
+    "caption": "The Nonviolent March in Colonial India refers to the Salt March led by Mahatma Gandhi, a pivotal act of civil disobedience against British salt taxes, which galvanized the Indian independence movement and drew international attention to the cause.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Salt_March"
   },
   {
     "title": "Gutenberg Printing Press in Action",
@@ -1005,127 +567,87 @@
     "city": "Mainz",
     "notable_location": "Humbrechthof\n",
     "era_id": 18,
-    "theme_id": 6
+    "theme_id": 6,
+    "caption": "The Gutenberg Printing Press, introduced in 1454, revolutionized the production of books by enabling mass printing, which significantly contributed to the spread of knowledge and the onset of the Renaissance in Europe.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Printing_press"
   },
   {
-    "title": "First Crossing of the English Channel",
-    "slug": "first-crossing-of-the-english-channel",
-    "year": 1785,
+    "title": "The rise of the Kingdom of Aksum",
+    "slug": "the-rise-of-the-kingdom-of-aksum",
+    "year": 100,
     "coords": [
-      50.9513,
-      1.8587
+      14.1339,
+      38.7169
     ],
-    "theme": "exploration & discovery",
-    "era": "Industrial Revolution",
-    "region": "Europe",
-    "notable_figures": "Jean-Pierre Blanchard, John Jeffries",
-    "visuals": "hot air balloon; English Channel; 18th-century attire; coastal landscape; ballooning equipment",
-    "prompt": "A historical depiction of the first successful crossing of the English Channel by hot air balloon in 1785, featuring Jean-Pierre Blanchard and John Jeffries in 18th-century attire, with a view of the English Channel and coastal landscape, showcasing the ballooning equipment of the era.",
-    "image_url": "/images/first-crossing-of-the-english-channel.jpg",
+    "theme": "foundational political moments",
+    "era": "Pre-Columbian Americas",
+    "region": "Africa",
+    "notable_figures": "King Ezana",
+    "visuals": "ancient Aksumite architecture; trading caravans; royal court; stone obelisks; bustling marketplace",
+    "prompt": "A highly detailed, photo-realistic image of The rise of the Kingdom of Aksum as it might have appeared at the time. The scene includes ancient Aksumite architecture, trading caravans, royal court, stone obelisks, bustling marketplace, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-rise-of-the-kingdom-of-aksum.jpg",
     "difficulty": 3,
     "source": "AI-generated based on historical records",
-    "id": "9f212ddb-6472-48fb-8fbe-6ab53a3f6225",
-    "country": "France",
-    "city": null,
-    "notable_location": "English Channel",
-    "era_id": 21,
-    "theme_id": 9
+    "id": "c1f4b3ff-42ba-4e59-9b39-19078c9d6e4f",
+    "country": "Ethiopia",
+    "city": "Aksum",
+    "notable_location": "Aksum Obelisks",
+    "era_id": 50,
+    "theme_id": 2,
+    "caption": "The Kingdom of Aksum, emerging around 100 CE, became a major trading empire in Northeast Africa, known for its monumental obelisks and as one of the first empires to officially adopt Christianity in the 4th century.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Kingdom_of_Aksum"
   },
   {
-    "title": "Construction of Machu Picchu",
-    "slug": "construction-of-machu-picchu",
-    "year": 1450,
+    "title": "The construction of the Al-Qarawiyyin University in Fez",
+    "slug": "the-construction-of-the-al-qarawiyyin-university-in-fez",
+    "year": 859,
     "coords": [
-      -13.1631,
-      -72.545
+      34.0331,
+      -5.0003
     ],
     "theme": "architecture & engineering",
     "era": "Pre-Columbian Americas",
-    "region": "Americas",
-    "notable_figures": "Pachacuti Inca Yupanqui",
-    "visuals": "stone terraces; Incan architecture; mountainous landscape; ancient ruins; cloud forest",
-    "prompt": "A detailed depiction of the construction of Machu Picchu, showcasing Incan architecture with stone terraces and ancient ruins set against a mountainous landscape and cloud forest.",
-    "image_url": "/images/construction-of-machu-picchu.jpg",
+    "region": "Africa",
+    "notable_figures": "Fatima al-Fihri",
+    "visuals": "workers laying bricks; architects with scrolls; scaffolding around the building; traditional Islamic architectural elements; bustling construction site",
+    "prompt": "A highly detailed, photo-realistic image of The construction of the Al-Qarawiyyin University in Fez as it might have appeared at the time. The scene includes workers laying bricks, architects with scrolls, scaffolding around the building, traditional Islamic architectural elements, bustling construction site, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-construction-of-the-al-qarawiyyin-university-in-fez.jpg",
     "difficulty": 3,
     "source": "AI-generated based on historical records",
-    "id": "bab09a95-f70f-4f0e-a795-98ab5c38062a",
-    "country": "Peru",
-    "city": "",
-    "notable_location": "Machu Picchu",
+    "id": "111846bd-6431-433b-a0ca-5082dfb1f0f6",
+    "country": "Morocco",
+    "city": "Fez",
+    "notable_location": "Al-Qarawiyyin University",
     "era_id": 50,
-    "theme_id": 8
+    "theme_id": 8,
+    "caption": "Founded by Fatima al-Fihri, the Al-Qarawiyyin University in Fez is recognized by UNESCO and the Guinness World Records as the oldest existing, continually operating higher educational institution in the world, playing a crucial role in the cultural and academic development of the Islamic Golden Age.",
+    "wiki_url": "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin"
   },
   {
-    "title": "The Black Death in Europe",
-    "slug": "the-black-death-in-europe",
-    "year": 1347,
+    "title": "Battle of Hastings",
+    "slug": "battle-of-hastings",
+    "year": 1066,
     "coords": [
-      48.8566,
-      2.3522
-    ],
-    "theme": "natural disasters",
-    "era": "Byzantine Empire",
-    "region": "Europe",
-    "notable_figures": "none",
-    "visuals": "medieval city streets; plague doctors in masks; mass graves; abandoned villages; illustrations of the bubonic plague",
-    "prompt": "A medieval European city during the Black Death, with plague doctors in masks, empty streets, and a somber atmosphere, illustrating the impact of the bubonic plague.",
-    "image_url": "/images/the-black-death-in-europe.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "e915d05b-d33a-42b4-8ec5-336d2a32539e",
-    "country": "France",
-    "city": "Paris",
-    "notable_location": "none",
-    "era_id": 17,
-    "theme_id": 7
-  },
-  {
-    "title": "Construction of the Great Wall of China",
-    "slug": "construction-of-great-wall",
-    "year": -220,
-    "coords": [
-      40.4319,
-      116.5704
-    ],
-    "theme": "architecture & engineering",
-    "era": "classical",
-    "region": "Asia",
-    "notable_figures": "",
-    "visuals": "workers lifting stones; unfinished wall stretching into hills; guards in ancient Chinese armor",
-    "prompt": "A highly detailed, photo-realistic image of the Construction of the Great Wall of China as it might have appeared at the time. The scene includes workers lifting stones and stacking them along an unfinished wall snaking through the hills, during the Qin Dynasty in 220 BCE, with workers in ancient Chinese robes and soldiers in early lamellar armor. The unfinished wall is built of earth and stone, with simple wooden scaffolds. No modern elements or later architecture styles. Framed in landscape orientation. Atmospheric lighting from the rising sun. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/construction-of-great-wall.jpg",
-    "difficulty": 3,
-    "source": "AI-generated metadata from historical context",
-    "id": "29af6c45-5108-48be-a57e-c668ab10a8d1",
-    "country": "China",
-    "city": null,
-    "notable_location": "Great Wall",
-    "era_id": 36,
-    "theme_id": 8
-  },
-  {
-    "title": "Battle of Verdun",
-    "slug": "battle-of-verdun",
-    "year": 1916,
-    "coords": [
-      49.1575,
-      5.3844
+      50.9116,
+      0.4875
     ],
     "theme": "wars & battles",
-    "era": "20th century",
+    "era": "medieval",
     "region": "Europe",
     "notable_figures": "",
-    "visuals": "French soldiers in muddy trenches; explosions in the distance; barbed wire and cratered battlefield; clouds of smoke under overcast sky",
-    "prompt": "A highly detailed, photo-realistic image of the Battle of Verdun as it might have appeared in 1916. The scene includes exhausted French soldiers in \u201cbleu horizon\u201d uniforms entrenched in mud-soaked foxholes near the ruins of Fort Douaumont, with twisted barbed wire in the foreground and cratered terrain stretching into the smoky distance. Massive artillery shells explode across a scorched landscape beneath a grey, overcast sky. Narrow-gauge supply tracks and makeshift shelters hint at the prolonged nature of the battle. The devastation is immense, with burned trees and collapsed stonework scattered across the Meuse sector. Authentic early 20th-century French military detail. No modern artifacts or text. Realistic proportions, cinematic style. Framed in landscape orientation. Composition balanced for horizontal display.",
-    "image_url": "/images/battle-of-verdun.jpg",
-    "difficulty": 3,
+    "visuals": "Norman cavalry charging uphill; shield wall of Anglo-Saxon warriors; flags and medieval armor",
+    "prompt": "A highly detailed, photo-realistic image of the Battle of Hastings as it might have appeared in 1066. The scene includes Norman cavalry charging uphill against a shield wall of Anglo-Saxon warriors. They wear chainmail, conical helmets, and carry round shields with heraldic symbols. No gunpowder weapons, no modern flags. The landscape shows open countryside under an overcast sky. Authentic 11th-century military detail and natural terrain. Depicts Norman cavalry with kite shields and chainmail attacking uphill against a dense Anglo-Saxon shield wall. The battlefield is an open slope near a wooden palisade. No castles or fantasy elements. Clearly 11th-century. No text or modern artifacts. Realistic proportions, cinematic style. Framed in landscape orientation. Composition balanced for horizontal display.",
+    "image_url": "/images/battle-of-hastings.jpg",
+    "difficulty": 4,
     "source": "AI-generated metadata from historical context",
-    "id": "abe9e9d7-d4e1-4577-a155-d60a313c75a8",
-    "country": "France",
-    "city": "Verdun",
-    "notable_location": "Fort Douaumont",
-    "era_id": 22,
-    "theme_id": 1
+    "id": "54343b03-1102-4940-b119-9562efb706a6",
+    "country": "England",
+    "city": "Hastings",
+    "notable_location": "Battlefield",
+    "era_id": 17,
+    "theme_id": 1,
+    "caption": "The Battle of Hastings marked the beginning of Norman rule in England, fundamentally altering the English culture, language, and governance structure, as William the Conqueror defeated King Harold II's forces.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Battle_of_Hastings"
   },
   {
     "title": "Leonardo da Vinci Paints the Mona Lisa",
@@ -1149,7 +671,9 @@
     "city": "Florence",
     "notable_location": null,
     "era_id": 19,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "Leonardo da Vinci's painting of the Mona Lisa, completed in 1504, is renowned for its enigmatic expression and pioneering use of sfumato, a technique that creates a soft transition between colors and tones, enhancing the lifelike quality of the portrait.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Mona_Lisa"
   },
   {
     "title": "Martin Luther Posts the 95 Theses",
@@ -1173,31 +697,35 @@
     "city": "Wittenberg",
     "notable_location": "All Saints' Church",
     "era_id": 19,
-    "theme_id": 12
+    "theme_id": 12,
+    "caption": "Martin Luther's act of nailing the 95 Theses to the door of the Wittenberg Castle Church is often seen as the catalyst for the Protestant Reformation, challenging the Catholic Church's practice of selling indulgences and sparking widespread religious reform across Europe.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Ninety-five_Theses"
   },
   {
-    "title": "Woodstock Festival",
-    "slug": "woodstock-festival",
-    "year": 1969,
+    "title": "Construction of the Great Wall of China",
+    "slug": "construction-of-great-wall",
+    "year": -220,
     "coords": [
-      41.7014,
-      -74.8803
+      40.4319,
+      116.5704
     ],
-    "theme": "art & culture",
-    "era": "Modern Latin America",
-    "region": "Americas",
-    "notable_figures": "Jimi Hendrix, Janis Joplin, The Who, Santana, Joan Baez",
-    "visuals": "large crowds of people; open-air stage with musicians; colorful tents and banners; people in 1960s hippie clothing; muddy fields",
-    "prompt": "A highly detailed, photo-realistic image of Woodstock Festival as it might have appeared at the time. The scene includes large crowds of people, an open-air stage with musicians, colorful tents and banners, people in 1960s hippie clothing, and muddy fields, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/woodstock-festival.jpg",
+    "theme": "architecture & engineering",
+    "era": "classical",
+    "region": "Asia",
+    "notable_figures": "",
+    "visuals": "workers lifting stones; unfinished wall stretching into hills; guards in ancient Chinese armor",
+    "prompt": "A highly detailed, photo-realistic image of the Construction of the Great Wall of China as it might have appeared at the time. The scene includes workers lifting stones and stacking them along an unfinished wall snaking through the hills, during the Qin Dynasty in 220 BCE, with workers in ancient Chinese robes and soldiers in early lamellar armor. The unfinished wall is built of earth and stone, with simple wooden scaffolds. No modern elements or later architecture styles. Framed in landscape orientation. Atmospheric lighting from the rising sun. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/construction-of-great-wall.jpg",
     "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "9e46550e-3782-4be3-a92e-4351df9ffc66",
-    "country": "United States",
+    "source": "AI-generated metadata from historical context",
+    "id": "29af6c45-5108-48be-a57e-c668ab10a8d1",
+    "country": "China",
     "city": null,
-    "notable_location": "Bethel, New York",
-    "era_id": 63,
-    "theme_id": 10
+    "notable_location": "Great Wall",
+    "era_id": 36,
+    "theme_id": 8,
+    "caption": "The construction of the Great Wall of China, initiated by Emperor Qin Shi Huang, was not only a defensive structure but also a means to unify various warring states and consolidate the emperor's power, symbolizing the strength and unity of the newly formed Qin Dynasty.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Great_Wall_of_China"
   },
   {
     "title": "The Beatles' First Appearance on The Ed Sullivan Show",
@@ -1221,7 +749,9 @@
     "city": "New York City",
     "notable_location": "Ed Sullivan Theater",
     "era_id": 63,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "The Beatles' debut on The Ed Sullivan Show on February 9, 1964, marked a pivotal moment in music history, drawing an estimated 73 million viewers and igniting the 'British Invasion' in America, forever changing the landscape of popular music.",
+    "wiki_url": "https://en.wikipedia.org/wiki/The_Beatles%27_first_American_television_appearance"
   },
   {
     "title": "Live Aid Concert",
@@ -1245,31 +775,9 @@
     "city": "London",
     "notable_location": "Wembley Stadium",
     "era_id": 25,
-    "theme_id": 10
-  },
-  {
-    "title": "Elvis Presley's 'Aloha from Hawaii' Satellite Concert",
-    "slug": "elvis-presley-s-aloha-from-hawaii-satellite-concert",
-    "year": 1973,
-    "coords": [
-      21.3069,
-      -157.8583
-    ],
-    "theme": "art & culture",
-    "era": "Modern Oceania",
-    "region": "Oceania",
-    "notable_figures": "Elvis Presley",
-    "visuals": "Elvis Presley performing on stage; audience in Hawaiian attire; 1970s stage lighting and equipment; Hawaiian floral decorations; television cameras broadcasting the event",
-    "prompt": "A highly detailed, photo-realistic image of Elvis Presley's 'Aloha from Hawaii' Satellite Concert as it might have appeared at the time. The scene includes Elvis Presley performing on stage, audience in Hawaiian attire, 1970s stage lighting and equipment, Hawaiian floral decorations, television cameras broadcasting the event, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/elvis-presley-s-aloha-from-hawaii-satellite-concert.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "e4bd7de9-1a0d-429a-b212-990de9d66a9d",
-    "country": "United States",
-    "city": "Honolulu",
-    "notable_location": "Neal S. Blaisdell Center",
-    "era_id": 64,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "The Live Aid Concert, held on July 13, 1985, was a dual-venue benefit concert organized to raise funds for famine relief in Ethiopia, featuring performances by iconic artists like Queen, U2, and David Bowie, and was watched by an estimated 1.9 billion people across 150 nations.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Live_Aid"
   },
   {
     "title": "The Rolling Stones Free Concert at Altamont",
@@ -1293,7 +801,9 @@
     "city": null,
     "notable_location": "Altamont Speedway",
     "era_id": 63,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "The Rolling Stones Free Concert at Altamont, held on December 6, 1969, is infamous for the violence that erupted, including the stabbing death of a concertgoer, which marked a tragic end to the 1960s counterculture movement.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Altamont_Free_Concert"
   },
   {
     "title": "The Opening of Abbey Road Studios to the Public",
@@ -1317,7 +827,9 @@
     "city": "London",
     "notable_location": "Abbey Road Studios",
     "era_id": 25,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "In 1983, Abbey Road Studios, renowned for its association with The Beatles, opened its doors to the public for the first time, allowing fans to explore the iconic recording spaces where legendary music was created.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Abbey_Road_Studios"
   },
   {
     "title": "The Fall of the Berlin Wall Concert (Pink Floyd\u2019s 'The Wall')",
@@ -1341,31 +853,9 @@
     "city": "Berlin",
     "notable_location": "Potsdamer Platz",
     "era_id": 25,
-    "theme_id": 10
-  },
-  {
-    "title": "The First Eurovision Song Contest",
-    "slug": "the-first-eurovision-song-contest",
-    "year": 1956,
-    "coords": [
-      46.2044,
-      6.1432
-    ],
-    "theme": "art & culture",
-    "era": "Cold War Europe",
-    "region": "Europe",
-    "notable_figures": "Lys Assia",
-    "visuals": "a grand stage with performers; audience in formal 1950s attire; vintage microphones; orchestra in the background; 1950s television cameras",
-    "prompt": "A highly detailed, photo-realistic image of The First Eurovision Song Contest as it might have appeared at the time. The scene includes a grand stage with performers, audience in formal 1950s attire, vintage microphones, orchestra in the background, and 1950s television cameras, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-first-eurovision-song-contest.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "e569b3c8-843c-46e0-8590-1ad95d38acb1",
-    "country": "Switzerland",
-    "city": "Lugano",
-    "notable_location": "Teatro Kursaal",
-    "era_id": 25,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "The Fall of the Berlin Wall Concert, featuring Pink Floyd's 'The Wall', was a monumental live performance held on July 21, 1990, at Potsdamer Platz, Berlin, symbolizing the reunification of Germany and the end of the Cold War, with Roger Waters leading an ensemble of musicians in a historic celebration of freedom and unity.",
+    "wiki_url": "https://en.wikipedia.org/wiki/The_Wall_%E2%80%93_Live_in_Berlin"
   },
   {
     "title": "Bob Dylan 'Goes Electric' at Newport Folk Festival",
@@ -1389,31 +879,9 @@
     "city": "Newport",
     "notable_location": "Newport Folk Festival",
     "era_id": 63,
-    "theme_id": 10
-  },
-  {
-    "title": "Nirvana\u2019s 'MTV Unplugged' Performance",
-    "slug": "nirvana-s-mtv-unplugged-performance",
-    "year": 1993,
-    "coords": [
-      40.7128,
-      -74.006
-    ],
-    "theme": "art & culture",
-    "era": "Modern Latin America",
-    "region": "Americas",
-    "notable_figures": "Kurt Cobain, Krist Novoselic, Dave Grohl",
-    "visuals": "Kurt Cobain playing an acoustic guitar; dimly lit stage with candles; audience seated in an intimate setting; band members with acoustic instruments; floral arrangements on stage",
-    "prompt": "A highly detailed, photo-realistic image of Nirvana\u2019s 'MTV Unplugged' Performance as it might have appeared at the time. The scene includes Kurt Cobain playing an acoustic guitar, dimly lit stage with candles, audience seated in an intimate setting, band members with acoustic instruments, floral arrangements on stage, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/nirvana-s-mtv-unplugged-performance.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "1257be04-3c68-45ad-9fad-c19c0daa16a5",
-    "country": "United States",
-    "city": "New York City",
-    "notable_location": "Sony Music Studios",
-    "era_id": 63,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "Bob Dylan's controversial performance at the 1965 Newport Folk Festival marked a pivotal moment in music history, as he defied folk purists by using electric instruments, signaling a shift towards rock music and altering the landscape of popular music forever.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Electric_Dylan_controversy"
   },
   {
     "title": "The premiere of Michael Jackson's Thriller music video",
@@ -1437,31 +905,9 @@
     "city": "Los Angeles",
     "notable_location": "Los Angeles",
     "era_id": 63,
-    "theme_id": 10
-  },
-  {
-    "title": "The fall of the Soviet Union",
-    "slug": "the-fall-of-the-soviet-union",
-    "year": 1991,
-    "coords": [
-      55.7558,
-      37.6176
-    ],
-    "theme": "foundational political moments",
-    "era": "Cold War Europe",
-    "region": "Europe",
-    "notable_figures": "Mikhail Gorbachev,Boris Yeltsin,George H. W. Bush",
-    "visuals": "crowds in Red Square; Soviet flags being lowered; politicians in suits; Moscow skyline; Kremlin walls",
-    "prompt": "A highly detailed, photo-realistic image of The fall of the Soviet Union as it might have appeared at the time. The scene includes crowds in Red Square, Soviet flags being lowered, politicians in suits, Moscow skyline, Kremlin walls, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-fall-of-the-soviet-union.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "363ee826-bb40-42ae-8e3d-1a3d81b8676c",
-    "country": "Russia",
-    "city": "Moscow",
-    "notable_location": "Red Square",
-    "era_id": 25,
-    "theme_id": 2
+    "theme_id": 10,
+    "caption": "The premiere of Michael Jackson's 'Thriller' music video on December 2, 1983, marked a revolutionary moment in music history, blending film and music in an unprecedented way and setting a new standard for music video production with its 14-minute horror-themed narrative.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Thriller_(music_video)"
   },
   {
     "title": "The first performance of Hamilton on Broadway",
@@ -1485,7 +931,9 @@
     "city": "New York City",
     "notable_location": "Richard Rodgers Theatre",
     "era_id": 63,
-    "theme_id": 10
+    "theme_id": 10,
+    "caption": "The first performance of 'Hamilton' on Broadway marked a revolutionary moment in theater, blending hip-hop with American history and featuring a diverse cast that redefined the portrayal of the Founding Fathers.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Hamilton_(musical)"
   },
   {
     "title": "The release of the first iPhone by Steve Jobs",
@@ -1509,31 +957,9 @@
     "city": "San Francisco",
     "notable_location": "Macworld Conference & Expo",
     "era_id": 63,
-    "theme_id": 6
-  },
-  {
-    "title": "The Signing of the Civil Rights Act of 1964",
-    "slug": "the-signing-of-the-civil-rights-act-of-1964",
-    "year": 1964,
-    "coords": [
-      38.8977,
-      -77.0365
-    ],
-    "theme": "law & justice",
-    "era": "Modern Latin America",
-    "region": "Americas",
-    "notable_figures": "Lyndon B. Johnson, Martin Luther King Jr., Hubert Humphrey, Everett Dirksen, John F. Kennedy",
-    "visuals": "President Lyndon B. Johnson signing the document; Martin Luther King Jr. observing the signing; a diverse group of civil rights leaders and politicians present; the interior of the White House with period-appropriate decor; cameras and reporters capturing the moment",
-    "prompt": "A highly detailed, photo-realistic image of The Signing of the Civil Rights Act of 1964 as it might have appeared at the time. The scene includes President Lyndon B. Johnson signing the document, Martin Luther King Jr. observing the signing, a diverse group of civil rights leaders and politicians present, the interior of the White House with period-appropriate decor, cameras and reporters capturing the moment, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-signing-of-the-civil-rights-act-of-1964.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "e6c03845-2c55-4b42-8efb-3f0772fd2124",
-    "country": "United States",
-    "city": "Washington, D.C.",
-    "notable_location": "The White House",
-    "era_id": 63,
-    "theme_id": 4
+    "theme_id": 6,
+    "caption": "The release of the first iPhone on June 29, 2007, marked a revolutionary shift in mobile technology, combining a phone, an iPod, and an internet communicator into a single device, fundamentally changing how people interact with technology and paving the way for the modern smartphone era.",
+    "wiki_url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
   },
   {
     "title": "The Launch of the World Wide Web by Tim Berners-Lee",
@@ -1557,7 +983,9 @@
     "city": "London",
     "notable_location": "CERN",
     "era_id": 25,
-    "theme_id": 6
+    "theme_id": 6,
+    "caption": "In 1991, Tim Berners-Lee introduced the World Wide Web, revolutionizing global communication and information sharing by creating the first web browser and web server, laying the foundation for the modern internet.",
+    "wiki_url": "https://en.wikipedia.org/wiki/World_Wide_Web"
   },
   {
     "title": "The discovery of the Rosetta Stone by French soldiers",
@@ -1581,7 +1009,9 @@
     "city": "Rashid",
     "notable_location": "Fort Julien",
     "era_id": 53,
-    "theme_id": 9
+    "theme_id": 9,
+    "caption": "The Rosetta Stone, discovered by French soldiers in 1799 during Napoleon's campaign in Egypt, became the key to deciphering Egyptian hieroglyphs, bridging ancient and modern understanding of Egyptian civilization.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Rosetta_Stone"
   },
   {
     "title": "The inauguration of the Statue of Liberty in New York Harbor",
@@ -1605,31 +1035,9 @@
     "city": "New York",
     "notable_location": "New York Harbor",
     "era_id": 54,
-    "theme_id": 8
-  },
-  {
-    "title": "The sinking of the Titanic during its maiden voyage",
-    "slug": "the-sinking-of-the-titanic-during-its-maiden-voyage",
-    "year": 1912,
-    "coords": [
-      41.7325,
-      -49.9469
-    ],
-    "theme": "exploration & discovery",
-    "era": "Industrial USA",
-    "region": "Americas",
-    "notable_figures": "Captain Edward Smith, Thomas Andrews, J. Bruce Ismay",
-    "visuals": "the Titanic partially submerged in the ocean; lifeboats filled with passengers; icebergs floating nearby; distressed passengers on deck; crew members assisting evacuation",
-    "prompt": "A highly detailed, photo-realistic image of The sinking of the Titanic during its maiden voyage as it might have appeared at the time. The scene includes the Titanic partially submerged in the ocean, lifeboats filled with passengers, icebergs floating nearby, distressed passengers on deck, crew members assisting evacuation, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-sinking-of-the-titanic-during-its-maiden-voyage.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "24bde8b5-5cba-43b9-9d2f-ccc7ff09eba2",
-    "country": "United States",
-    "city": null,
-    "notable_location": "North Atlantic Ocean",
-    "era_id": 54,
-    "theme_id": 9
+    "theme_id": 8,
+    "caption": "The inauguration of the Statue of Liberty in 1886 was marked by a grand ceremony attended by thousands, featuring a parade and speeches, symbolizing the enduring friendship between France and the United States as well as America's ideals of freedom and democracy.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Statue_of_Liberty"
   },
   {
     "title": "The first successful climb of Mount Everest by Edmund Hillary and Tenzing Norgay",
@@ -1653,31 +1061,9 @@
     "city": null,
     "notable_location": "Mount Everest",
     "era_id": 27,
-    "theme_id": 9
-  },
-  {
-    "title": "The first successful vaccine trial by Edward Jenner against smallpox",
-    "slug": "the-first-successful-vaccine-trial-by-edward-jenner-against-smallpox",
-    "year": 1796,
-    "coords": [
-      51.752,
-      -1.2577
-    ],
-    "theme": "scientific & technological breakthroughs",
-    "era": "Industrial Revolution",
-    "region": "Europe",
-    "notable_figures": "Edward Jenner",
-    "visuals": "Edward Jenner administering the vaccine; a young boy receiving the vaccine; medical instruments of the 18th century; an 18th-century English laboratory; period-appropriate clothing",
-    "prompt": "A highly detailed, photo-realistic image of The first successful vaccine trial by Edward Jenner against smallpox as it might have appeared at the time. The scene includes Edward Jenner administering the vaccine, a young boy receiving the vaccine, medical instruments of the 18th century, an 18th-century English laboratory, period-appropriate clothing, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-first-successful-vaccine-trial-by-edward-jenner-against-smallpox.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "31bf1071-a5c3-4207-81cb-5b7c9835f115",
-    "country": "United Kingdom",
-    "city": "Berkeley",
-    "notable_location": "Edward Jenner's house",
-    "era_id": 21,
-    "theme_id": 6
+    "theme_id": 9,
+    "caption": "On May 29, 1953, Edmund Hillary of New Zealand and Tenzing Norgay, a Sherpa of Nepal, became the first climbers confirmed to have reached the summit of Mount Everest, marking a significant achievement in mountaineering history just days before the coronation of Queen Elizabeth II.",
+    "wiki_url": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition"
   },
   {
     "title": "The publication of Charles Darwin's On the Origin of Species",
@@ -1701,31 +1087,9 @@
     "city": "London",
     "notable_location": "John Murray's publishing house",
     "era_id": 21,
-    "theme_id": 6
-  },
-  {
-    "title": "The launch of Sputnik 1, the first artificial satellite, by the Soviet Union",
-    "slug": "the-launch-of-sputnik-1-the-first-artificial-satellite-by-the-soviet-union",
-    "year": 1957,
-    "coords": [
-      45.920278,
-      63.342222
-    ],
-    "theme": "scientific & technological breakthroughs",
-    "era": "Cold War Europe",
-    "region": "Europe",
-    "notable_figures": "Sergei Korolev",
-    "visuals": "Sputnik 1 satellite in space; Baikonur Cosmodrome launch pad; Soviet scientists and engineers; 1950s Soviet technology and equipment; Night sky with stars",
-    "prompt": "A highly detailed, photo-realistic image of The launch of Sputnik 1, the first artificial satellite, by the Soviet Union as it might have appeared at the time. The scene includes Sputnik 1 satellite in space, Baikonur Cosmodrome launch pad, Soviet scientists and engineers, 1950s Soviet technology and equipment, Night sky with stars, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-launch-of-sputnik-1-the-first-artificial-satellite-by-the-soviet-union.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "9083b2df-f6aa-4c4e-9a1c-f6b8c2815d90",
-    "country": "Soviet Union",
-    "city": null,
-    "notable_location": "Baikonur Cosmodrome",
-    "era_id": 25,
-    "theme_id": 6
+    "theme_id": 6,
+    "caption": "Charles Darwin's groundbreaking work, 'On the Origin of Species,' introduced the theory of natural selection, challenging contemporary scientific and religious beliefs and laying the foundation for modern evolutionary biology.",
+    "wiki_url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
   },
   {
     "title": "The signing of the Treaty of Versailles ending World War I",
@@ -1749,7 +1113,9 @@
     "city": "Versailles",
     "notable_location": "Palace of Versailles",
     "era_id": 23,
-    "theme_id": 3
+    "theme_id": 3,
+    "caption": "The Treaty of Versailles, signed in the Hall of Mirrors at the Palace of Versailles, imposed heavy reparations and territorial losses on Germany, setting the stage for economic hardship and political instability in the interwar period.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Treaty_of_Versailles"
   },
   {
     "title": "The discovery of Tutankhamun's tomb by Howard Carter",
@@ -1773,7 +1139,9 @@
     "city": null,
     "notable_location": "Valley of the Kings",
     "era_id": 27,
-    "theme_id": 9
+    "theme_id": 9,
+    "caption": "The discovery of Tutankhamun's tomb by Howard Carter in 1922 was a pivotal moment in archaeology, revealing a nearly intact royal burial and sparking a global fascination with ancient Egypt that continues to this day. The tomb's treasures, including the iconic golden mask, provided invaluable insights into the wealth and artistry of the New Kingdom period.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Tutankhamun"
   },
   {
     "title": "The fall of Constantinople to the Ottoman Empire",
@@ -1797,6 +1165,398 @@
     "city": "Istanbul",
     "notable_location": "Hagia Sophia",
     "era_id": 17,
-    "theme_id": 1
+    "theme_id": 1,
+    "caption": "The fall of Constantinople in 1453 marked the end of the Byzantine Empire and was a pivotal moment in history, as it not only shifted the balance of power in the region but also spurred European exploration by blocking land routes to Asia.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+  },
+  {
+    "title": "The Battle of Ain Jalut involving Mamluks from Egypt",
+    "slug": "the-battle-of-ain-jalut-involving-mamluks-from-egypt",
+    "year": 1260,
+    "coords": [
+      32.3333,
+      35.3333
+    ],
+    "theme": "wars & battles",
+    "era": "Pre-Columbian Americas",
+    "region": "Asia",
+    "notable_figures": "Sultan Qutuz, Baibars",
+    "visuals": "Mamluk cavalry charging; Mongol soldiers in combat; desert landscape; medieval armor and weapons; dust and chaos of battle",
+    "prompt": "A highly detailed, photo-realistic image of The Battle of Ain Jalut involving Mamluks from Egypt as it might have appeared at the time. The scene includes Mamluk cavalry charging, Mongol soldiers in combat, desert landscape, medieval armor and weapons, dust and chaos of battle, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-battle-of-ain-jalut-involving-mamluks-from-egypt.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "270e0be6-45a6-44c7-9741-c85af9c287de",
+    "country": "Israel",
+    "city": null,
+    "notable_location": "Ain Jalut",
+    "era_id": 50,
+    "theme_id": 1,
+    "caption": "The Battle of Ain Jalut marked a pivotal moment in history as the Mamluks halted the westward expansion of the Mongol Empire, showcasing the effectiveness of their military tactics and solidifying their control over the region.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut"
+  },
+  {
+    "title": "The Black Death in Europe",
+    "slug": "the-black-death-in-europe",
+    "year": 1347,
+    "coords": [
+      48.8566,
+      2.3522
+    ],
+    "theme": "natural disasters",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "none",
+    "visuals": "medieval city streets; plague doctors in masks; mass graves; abandoned villages; illustrations of the bubonic plague",
+    "prompt": "A medieval European city during the Black Death, with plague doctors in masks, empty streets, and a somber atmosphere, illustrating the impact of the bubonic plague.",
+    "image_url": "/images/the-black-death-in-europe.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "0315b5ae-ef91-4b5e-abbd-2bbc22e5ec7b",
+    "country": "France",
+    "city": "Paris",
+    "notable_location": "none",
+    "era_id": 17,
+    "theme_id": 7,
+    "caption": "The Black Death, which devastated Europe in the mid-14th century, arrived in France in 1347, drastically reducing the population and leading to significant social and economic upheaval, including the weakening of feudal structures and a shift in labor dynamics.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Black_Death"
+  },
+  {
+    "title": "Alexander the Great Enters Babylon",
+    "slug": "alexander_the_great_enters_babylon",
+    "year": -331,
+    "coords": [
+      32.543,
+      44.421
+    ],
+    "theme": "wars & battles",
+    "era": "classical",
+    "region": "Middle East",
+    "notable_figures": "",
+    "visuals": "Alexander the Great on a white horse; Babylonian citizens kneeling and reaching out; ancient Mesopotamian gate with lion reliefs; ziggurat in the background; Macedonian soldiers with spears and red cloaks",
+    "prompt": "A vivid and meticulously detailed painting captures Alexander the Great's grand entry into Babylon in 331 BCE, as he marches proudly through the ancient city gate astride his white horse, flanked by his army and curious Babylonian onlookers. The scene, bathed in warm hues, showcases the awe-inspiring architecture of the gate and the distant ziggurat, with a panoramic composition bringing focus to Alexander's determined expression, surrounded by soldiers holding spears, shields, and a flag, while the crowd kneels and reaches out in reverence. Framed in landscape orientation. Composition balanced for horizontal display.",
+    "image_url": "/images/alexander_the_great_enters_babylon.jpg",
+    "difficulty": 3,
+    "source": "AI-generated metadata from historical context",
+    "id": "ecfc87a9-4db7-4506-be1a-0c9882f85bcc",
+    "country": "Irak",
+    "city": "Hillah",
+    "notable_location": null,
+    "era_id": 8,
+    "theme_id": 1,
+    "caption": "Alexander the Great's entry into Babylon in 331 BCE marked a pivotal moment in his campaign against the Persian Empire, as he was welcomed as a liberator by the Babylonians, who were discontent with Persian rule.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Battle_of_Gaugamela"
+  },
+  {
+    "title": "Charlotte Perriand & Le Corbusier Design Iconic Furniture",
+    "slug": "charlotte-perriand-le-corbusier-design-collaboration",
+    "year": 1929,
+    "coords": [
+      48.84375399315147,
+      2.2514144744380036
+    ],
+    "theme": "art & culture",
+    "era": "20th century",
+    "region": "Europe",
+    "notable_figures": "",
+    "visuals": "Charlotte Perriand assembling tubular steel frame; Le Corbusier reviewing sketches with a pipe in hand; LC4 Chaise Longue and modernist chairs in a minimalist studio; sunlight through a tall atelier window with Bauhaus-era tools",
+    "prompt": "A highly detailed, photo-realistic image of Charlotte Perriand collaborating with Le Corbusier in a Paris studio in 1929, designing iconic modernist furniture. The scene includes Charlotte Perriand in workwear, adjusting a tubular steel frame beside the LC4 Chaise Longue, while Le Corbusier reviews design sketches with a pipe in hand. Their atelier is minimalist, filled with mid-century modern design tools, leather upholstery, and metalworking equipment. Sunlight streams through tall industrial windows. Authentic 1920s clothing, furniture, and atmosphere. No modern artifacts. Cinematic proportions and realistic style. Framed in landscape orientation. Composition balanced for horizontal display.",
+    "image_url": "/images/charlotte-perriand-le-corbusier-design-collaboration.jpg",
+    "difficulty": 3,
+    "source": "TimeGuessr AI Event Generator",
+    "id": "f58a7edf-b41b-4ae9-be36-44154d77cd7c",
+    "country": "France",
+    "city": "Paris",
+    "notable_location": "Le Corbusier workshop",
+    "era_id": 23,
+    "theme_id": 10,
+    "caption": "In 1929, Charlotte Perriand joined forces with Le Corbusier and Pierre Jeanneret to design a series of revolutionary furniture pieces, including the iconic LC4 chaise longue, which combined modernist aesthetics with functional comfort, challenging traditional furniture design norms.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Charlotte_Perriand"
+  },
+  {
+    "title": "The founding of the University of Bologna",
+    "slug": "the-founding-of-the-university-of-bologna",
+    "year": 1088,
+    "coords": [
+      44.4949,
+      11.3426
+    ],
+    "theme": "art & culture",
+    "era": "Byzantine Empire",
+    "region": "Europe",
+    "notable_figures": "Irnerius",
+    "visuals": "medieval scholars in discussion; ancient manuscripts and scrolls; a lecture in a medieval classroom; students in traditional medieval attire; the architecture of early university buildings",
+    "prompt": "A highly detailed, photo-realistic image of The founding of the University of Bologna as it might have appeared at the time. The scene includes medieval scholars in discussion, ancient manuscripts and scrolls, a lecture in a medieval classroom, students in traditional medieval attire, the architecture of early university buildings, depicted with authentic clothing and technology from the era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-founding-of-the-university-of-bologna.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "122ba98a-f493-4e9b-a19a-366ccbc1b4da",
+    "country": "Italy",
+    "city": "Bologna",
+    "notable_location": "University of Bologna",
+    "era_id": 17,
+    "theme_id": 10,
+    "caption": "The University of Bologna, established in 1088, is recognized as the oldest university in continuous operation, setting a precedent for higher education institutions worldwide and pioneering the concept of academic freedom and autonomy.",
+    "wiki_url": "https://en.wikipedia.org/wiki/University_of_Bologna"
+  },
+  {
+    "title": "The fall of the Soviet Union",
+    "slug": "the-fall-of-the-soviet-union",
+    "year": 1991,
+    "coords": [
+      55.7558,
+      37.6176
+    ],
+    "theme": "foundational political moments",
+    "era": "Cold War Europe",
+    "region": "Europe",
+    "notable_figures": "Mikhail Gorbachev,Boris Yeltsin,George H. W. Bush",
+    "visuals": "crowds in Red Square; Soviet flags being lowered; politicians in suits; Moscow skyline; Kremlin walls",
+    "prompt": "A highly detailed, photo-realistic image of The fall of the Soviet Union as it might have appeared at the time. The scene includes crowds in Red Square, Soviet flags being lowered, politicians in suits, Moscow skyline, Kremlin walls, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-fall-of-the-soviet-union.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "363ee826-bb40-42ae-8e3d-1a3d81b8676c",
+    "country": "Russia",
+    "city": "Moscow",
+    "notable_location": "Red Square",
+    "era_id": 25,
+    "theme_id": 2,
+    "caption": "The fall of the Soviet Union in 1991 marked the end of the Cold War era, leading to the independence of 15 republics and a significant shift in global power dynamics. This dissolution was accelerated by economic struggles, political reforms, and a failed coup attempt against Mikhail Gorbachev.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
+  },
+  {
+    "title": "Battle of Verdun",
+    "slug": "battle-of-verdun",
+    "year": 1916,
+    "coords": [
+      49.1575,
+      5.3844
+    ],
+    "theme": "wars & battles",
+    "era": "20th century",
+    "region": "Europe",
+    "notable_figures": "",
+    "visuals": "French soldiers in muddy trenches; explosions in the distance; barbed wire and cratered battlefield; clouds of smoke under overcast sky",
+    "prompt": "A highly detailed, photo-realistic image of the Battle of Verdun as it might have appeared in 1916. The scene includes exhausted French soldiers in \u201cbleu horizon\u201d uniforms entrenched in mud-soaked foxholes near the ruins of Fort Douaumont, with twisted barbed wire in the foreground and cratered terrain stretching into the smoky distance. Massive artillery shells explode across a scorched landscape beneath a grey, overcast sky. Narrow-gauge supply tracks and makeshift shelters hint at the prolonged nature of the battle. The devastation is immense, with burned trees and collapsed stonework scattered across the Meuse sector. Authentic early 20th-century French military detail. No modern artifacts or text. Realistic proportions, cinematic style. Framed in landscape orientation. Composition balanced for horizontal display.",
+    "image_url": "/images/battle-of-verdun.jpg",
+    "difficulty": 3,
+    "source": "AI-generated metadata from historical context",
+    "id": "abe9e9d7-d4e1-4577-a155-d60a313c75a8",
+    "country": "France",
+    "city": "Verdun",
+    "notable_location": "Fort Douaumont",
+    "era_id": 22,
+    "theme_id": 1,
+    "caption": "The Battle of Verdun, one of the longest and most grueling engagements of World War I, saw French and German forces locked in a brutal stalemate, with the French rallying around the cry 'They shall not pass' to defend their homeland at all costs.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Battle_of_Verdun"
+  },
+  {
+    "title": "Woodstock Festival",
+    "slug": "woodstock-festival",
+    "year": 1969,
+    "coords": [
+      41.7014,
+      -74.8803
+    ],
+    "theme": "art & culture",
+    "era": "Modern Latin America",
+    "region": "Americas",
+    "notable_figures": "Jimi Hendrix, Janis Joplin, The Who, Santana, Joan Baez",
+    "visuals": "large crowds of people; open-air stage with musicians; colorful tents and banners; people in 1960s hippie clothing; muddy fields",
+    "prompt": "A highly detailed, photo-realistic image of Woodstock Festival as it might have appeared at the time. The scene includes large crowds of people, an open-air stage with musicians, colorful tents and banners, people in 1960s hippie clothing, and muddy fields, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/woodstock-festival.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "9e46550e-3782-4be3-a92e-4351df9ffc66",
+    "country": "United States",
+    "city": null,
+    "notable_location": "Bethel, New York",
+    "era_id": 63,
+    "theme_id": 10,
+    "caption": "The Woodstock Festival, held in August 1969 on a dairy farm in Bethel, New York, became a pivotal moment in music history, symbolizing the counterculture movement and featuring legendary performances by artists like Jimi Hendrix and Janis Joplin.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Woodstock"
+  },
+  {
+    "title": "Elvis Presley's 'Aloha from Hawaii' Satellite Concert",
+    "slug": "elvis-presley-s-aloha-from-hawaii-satellite-concert",
+    "year": 1973,
+    "coords": [
+      21.3069,
+      -157.8583
+    ],
+    "theme": "art & culture",
+    "era": "Modern Oceania",
+    "region": "Oceania",
+    "notable_figures": "Elvis Presley",
+    "visuals": "Elvis Presley performing on stage; audience in Hawaiian attire; 1970s stage lighting and equipment; Hawaiian floral decorations; television cameras broadcasting the event",
+    "prompt": "A highly detailed, photo-realistic image of Elvis Presley's 'Aloha from Hawaii' Satellite Concert as it might have appeared at the time. The scene includes Elvis Presley performing on stage, audience in Hawaiian attire, 1970s stage lighting and equipment, Hawaiian floral decorations, television cameras broadcasting the event, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/elvis-presley-s-aloha-from-hawaii-satellite-concert.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "e4bd7de9-1a0d-429a-b212-990de9d66a9d",
+    "country": "United States",
+    "city": "Honolulu",
+    "notable_location": "Neal S. Blaisdell Center",
+    "era_id": 64,
+    "theme_id": 10,
+    "caption": "Elvis Presley's 'Aloha from Hawaii' concert was the first concert by a solo artist to be broadcast live via satellite, reaching over 40 countries and an estimated audience of 1.5 billion people, showcasing the global influence of the King of Rock and Roll.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Aloha_from_Hawaii_Via_Satellite"
+  },
+  {
+    "title": "The First Eurovision Song Contest",
+    "slug": "the-first-eurovision-song-contest",
+    "year": 1956,
+    "coords": [
+      46.2044,
+      6.1432
+    ],
+    "theme": "art & culture",
+    "era": "Cold War Europe",
+    "region": "Europe",
+    "notable_figures": "Lys Assia",
+    "visuals": "a grand stage with performers; audience in formal 1950s attire; vintage microphones; orchestra in the background; 1950s television cameras",
+    "prompt": "A highly detailed, photo-realistic image of The First Eurovision Song Contest as it might have appeared at the time. The scene includes a grand stage with performers, audience in formal 1950s attire, vintage microphones, orchestra in the background, and 1950s television cameras, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-first-eurovision-song-contest.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "e569b3c8-843c-46e0-8590-1ad95d38acb1",
+    "country": "Switzerland",
+    "city": "Lugano",
+    "notable_location": "Teatro Kursaal",
+    "era_id": 25,
+    "theme_id": 10,
+    "caption": "The inaugural Eurovision Song Contest in 1956 marked the beginning of a cultural phenomenon, featuring seven countries and showcasing the first-ever winning song 'Refrain' by Lys Assia from Switzerland, setting the stage for an annual celebration of music and unity in post-war Europe.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Eurovision_Song_Contest_1956"
+  },
+  {
+    "title": "Nirvana\u2019s 'MTV Unplugged' Performance",
+    "slug": "nirvana-s-mtv-unplugged-performance",
+    "year": 1993,
+    "coords": [
+      40.7128,
+      -74.006
+    ],
+    "theme": "art & culture",
+    "era": "Modern Latin America",
+    "region": "Americas",
+    "notable_figures": "Kurt Cobain, Krist Novoselic, Dave Grohl",
+    "visuals": "Kurt Cobain playing an acoustic guitar; dimly lit stage with candles; audience seated in an intimate setting; band members with acoustic instruments; floral arrangements on stage",
+    "prompt": "A highly detailed, photo-realistic image of Nirvana\u2019s 'MTV Unplugged' Performance as it might have appeared at the time. The scene includes Kurt Cobain playing an acoustic guitar, dimly lit stage with candles, audience seated in an intimate setting, band members with acoustic instruments, floral arrangements on stage, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/nirvana-s-mtv-unplugged-performance.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "1257be04-3c68-45ad-9fad-c19c0daa16a5",
+    "country": "United States",
+    "city": "New York City",
+    "notable_location": "Sony Music Studios",
+    "era_id": 63,
+    "theme_id": 10,
+    "caption": "Nirvana's 'MTV Unplugged' performance, recorded on November 18, 1993, was a poignant and raw showcase of the band's versatility, featuring haunting covers and stripped-down versions of their hits, just months before Kurt Cobain's tragic death.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Nirvana_(band)#MTV_Unplugged_in_New_York"
+  },
+  {
+    "title": "The Signing of the Civil Rights Act of 1964",
+    "slug": "the-signing-of-the-civil-rights-act-of-1964",
+    "year": 1964,
+    "coords": [
+      38.8977,
+      -77.0365
+    ],
+    "theme": "law & justice",
+    "era": "Modern Latin America",
+    "region": "Americas",
+    "notable_figures": "Lyndon B. Johnson, Martin Luther King Jr., Hubert Humphrey, Everett Dirksen, John F. Kennedy",
+    "visuals": "President Lyndon B. Johnson signing the document; Martin Luther King Jr. observing the signing; a diverse group of civil rights leaders and politicians present; the interior of the White House with period-appropriate decor; cameras and reporters capturing the moment",
+    "prompt": "A highly detailed, photo-realistic image of The Signing of the Civil Rights Act of 1964 as it might have appeared at the time. The scene includes President Lyndon B. Johnson signing the document, Martin Luther King Jr. observing the signing, a diverse group of civil rights leaders and politicians present, the interior of the White House with period-appropriate decor, cameras and reporters capturing the moment, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-signing-of-the-civil-rights-act-of-1964.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "e6c03845-2c55-4b42-8efb-3f0772fd2124",
+    "country": "United States",
+    "city": "Washington, D.C.",
+    "notable_location": "The White House",
+    "era_id": 63,
+    "theme_id": 4,
+    "caption": "The Civil Rights Act of 1964, signed by President Lyndon B. Johnson, was a landmark piece of legislation that outlawed discrimination based on race, color, religion, sex, or national origin, and it also paved the way for subsequent civil rights advancements, including the Voting Rights Act of 1965.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1964"
+  },
+  {
+    "title": "The sinking of the Titanic during its maiden voyage",
+    "slug": "the-sinking-of-the-titanic-during-its-maiden-voyage",
+    "year": 1912,
+    "coords": [
+      41.7325,
+      -49.9469
+    ],
+    "theme": "exploration & discovery",
+    "era": "Industrial USA",
+    "region": "Americas",
+    "notable_figures": "Captain Edward Smith, Thomas Andrews, J. Bruce Ismay",
+    "visuals": "the Titanic partially submerged in the ocean; lifeboats filled with passengers; icebergs floating nearby; distressed passengers on deck; crew members assisting evacuation",
+    "prompt": "A highly detailed, photo-realistic image of The sinking of the Titanic during its maiden voyage as it might have appeared at the time. The scene includes the Titanic partially submerged in the ocean, lifeboats filled with passengers, icebergs floating nearby, distressed passengers on deck, crew members assisting evacuation, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-sinking-of-the-titanic-during-its-maiden-voyage.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "24bde8b5-5cba-43b9-9d2f-ccc7ff09eba2",
+    "country": "United States",
+    "city": null,
+    "notable_location": "North Atlantic Ocean",
+    "era_id": 54,
+    "theme_id": 9,
+    "caption": "The sinking of the Titanic, a British passenger liner, occurred on April 15, 1912, after hitting an iceberg in the North Atlantic Ocean, leading to the loss of over 1,500 lives and highlighting the inadequacies in maritime safety regulations of the time.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Sinking_of_the_Titanic"
+  },
+  {
+    "title": "The first successful vaccine trial by Edward Jenner against smallpox",
+    "slug": "the-first-successful-vaccine-trial-by-edward-jenner-against-smallpox",
+    "year": 1796,
+    "coords": [
+      51.752,
+      -1.2577
+    ],
+    "theme": "scientific & technological breakthroughs",
+    "era": "Industrial Revolution",
+    "region": "Europe",
+    "notable_figures": "Edward Jenner",
+    "visuals": "Edward Jenner administering the vaccine; a young boy receiving the vaccine; medical instruments of the 18th century; an 18th-century English laboratory; period-appropriate clothing",
+    "prompt": "A highly detailed, photo-realistic image of The first successful vaccine trial by Edward Jenner against smallpox as it might have appeared at the time. The scene includes Edward Jenner administering the vaccine, a young boy receiving the vaccine, medical instruments of the 18th century, an 18th-century English laboratory, period-appropriate clothing, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-first-successful-vaccine-trial-by-edward-jenner-against-smallpox.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "31bf1071-a5c3-4207-81cb-5b7c9835f115",
+    "country": "United Kingdom",
+    "city": "Berkeley",
+    "notable_location": "Edward Jenner's house",
+    "era_id": 21,
+    "theme_id": 6,
+    "caption": "In 1796, Edward Jenner's pioneering experiment involved inoculating a young boy with material from cowpox sores, laying the groundwork for modern immunology and the eventual eradication of smallpox.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Edward_Jenner"
+  },
+  {
+    "title": "The launch of Sputnik 1, the first artificial satellite, by the Soviet Union",
+    "slug": "the-launch-of-sputnik-1-the-first-artificial-satellite-by-the-soviet-union",
+    "year": 1957,
+    "coords": [
+      45.920278,
+      63.342222
+    ],
+    "theme": "scientific & technological breakthroughs",
+    "era": "Cold War Europe",
+    "region": "Europe",
+    "notable_figures": "Sergei Korolev",
+    "visuals": "Sputnik 1 satellite in space; Baikonur Cosmodrome launch pad; Soviet scientists and engineers; 1950s Soviet technology and equipment; Night sky with stars",
+    "prompt": "A highly detailed, photo-realistic image of The launch of Sputnik 1, the first artificial satellite, by the Soviet Union as it might have appeared at the time. The scene includes Sputnik 1 satellite in space, Baikonur Cosmodrome launch pad, Soviet scientists and engineers, 1950s Soviet technology and equipment, Night sky with stars, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-launch-of-sputnik-1-the-first-artificial-satellite-by-the-soviet-union.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "9083b2df-f6aa-4c4e-9a1c-f6b8c2815d90",
+    "country": "Soviet Union",
+    "city": null,
+    "notable_location": "Baikonur Cosmodrome",
+    "era_id": 25,
+    "theme_id": 6,
+    "caption": "Sputnik 1's launch on October 4, 1957, marked the beginning of the space age and triggered the space race between the United States and the Soviet Union, significantly impacting global technological and political landscapes.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Sputnik_1"
   }
 ]

@@ -1,7 +1,8 @@
 // src/App.jsx
 import { Routes, Route } from 'react-router-dom';
 import TimeGuessrGame from './TimeGuessrGame';
-import Scoreboard from './pages/Scoreboard'; // <- import your scoreboard
+import Scoreboard from './pages/Scoreboard';
+import GuessResultTest from './pages/GuessResultTest';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<TimeGuessrGame />} />
         <Route path="/scoreboard" element={<Scoreboard />} />
+        <Route path="/modal-test" element={<GuessResultTest />} />
       </Routes>
     </main>
   );

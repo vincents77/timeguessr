@@ -1,4 +1,5 @@
 # src/scripts/fetch_all_events.py
+
 import os
 import json
 from pathlib import Path
@@ -24,16 +25,31 @@ PUBLIC_EVENTS_PATH.parent.mkdir(parents=True, exist_ok=True)  # Ensure /public/d
 
 def normalize_coords(events):
     """
-    Ensures coords field is parsed as [lat, lng] array, not a string.
+    Ensures the coords field is stored as [lat, lon] list.
+    Handles both string and malformed cases safely.
     """
     for event in events:
         coords = event.get("coords")
-        if isinstance(coords, str):
+
+        if isinstance(coords, list) and len(coords) == 2:
+            continue  # Already valid
+        elif isinstance(coords, str):
             try:
-                event["coords"] = json.loads(coords)
-            except json.JSONDecodeError:
+                # Handle either stringified array or comma-separated lat, lon
+                if coords.strip().startswith("["):
+                    event["coords"] = json.loads(coords)
+                else:
+                    parts = [float(x.strip()) for x in coords.split(",")]
+                    if len(parts) == 2:
+                        event["coords"] = parts
+                    else:
+                        raise ValueError("Invalid coords count")
+            except Exception:
                 print(f"⚠️ Failed to parse coords for event: {event.get('title', 'Unknown')}")
                 event["coords"] = [0.0, 0.0]
+        else:
+            print(f"⚠️ Invalid coords type for event: {event.get('title', 'Unknown')}")
+            event["coords"] = [0.0, 0.0]
     return events
 
 def fetch_all_events():

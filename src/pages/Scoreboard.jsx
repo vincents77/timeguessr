@@ -43,26 +43,36 @@ export default function Scoreboard() {
   }, [selectedRange]);
 
   const sortedSessions = [...sessions].sort((a, b) => b.total_points - a.total_points);
-  const currentIndex = sortedSessions.findIndex(s => s.id === sessionId);
 
   let displaySessions = [];
-  if (currentIndex === -1 || currentIndex < 3) {
+
+  const top3 = sortedSessions.slice(0, 3);
+  const currentIndex = sortedSessions.findIndex(s => s.id === sessionId);
+  const current = sortedSessions[currentIndex];
+  
+  if (!current || currentIndex < 3) {
     displaySessions = sortedSessions.slice(0, 10);
   } else {
-    const start = Math.max(0, currentIndex - 3);
-    displaySessions = sortedSessions.slice(start, start + 7);
+    const aroundCurrent = sortedSessions.slice(currentIndex - 3, currentIndex + 4);
+    displaySessions = [...top3, ...aroundCurrent.filter(s => !top3.some(top => top.id === s.id))];
   }
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center">🏆 Top Scores</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" className="inline w-5 h-5 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 4h-2V2H6v2H4c0 3 1 5 3 6 1 3 3 5 5 6v3H8v2h8v-2h-4v-3c2-1 4-3 5-6 2-1 3-3 3-6zM6 9c-1-.6-2-2-2-4h2v4zm12 0V5h2c0 2-1 3.4-2 4z"/>
+      </svg> Top Scores</h1>
 
       <div className="flex justify-center gap-4 mb-6">
         {['week', 'month', 'all'].map((range) => (
           <button
             key={range}
             onClick={() => setSelectedRange(range)}
-            className={`px-4 py-2 rounded ${selectedRange === range ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+            className={`px-4 py-2 rounded font-medium ${
+              selectedRange === range
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-100 text-gray-800"
+            }`}
           >
             {range === "week" ? "This Week" : range === "month" ? "This Month" : "All Time"}
           </button>
@@ -94,11 +104,26 @@ export default function Scoreboard() {
                     key={session.id}
                     className={`text-center hover:bg-gray-100 ${isCurrent ? "bg-purple-100 border-l-4 border-purple-500" : ""}`}
                   >
-                    <td className="p-2 border">{rank}</td>
-                    <td className="p-2 border font-semibold">
-                      {rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : ""}
-                      {session.player_name}
-                    </td>
+                  <td className="p-2 border">
+                  <div className="flex items-center gap-2 justify-center">
+                    {rank === 1 && (
+                      <svg className="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5zM8 12l4 10 4-10H8z" />
+                      </svg>
+                    )}
+                    {rank === 2 && (
+                      <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5zM8 12h8l-4 10-4-10z" />
+                      </svg>
+                    )}
+                    {rank === 3 && (
+                      <svg className="w-4 h-4 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5zM9 12h6l-3 10-3-10z" />
+                      </svg>
+                    )}
+                    <span className="font-semibold">{session.player_name}</span>
+                  </div>
+                  </td>
                     <td className="p-2 border">{session.total_points}</td>
                     <td className="p-2 border">{new Date(session.started_at).toLocaleDateString()}</td>
                     <td className="p-2 border">{session.theme || "-"}</td>
@@ -117,9 +142,12 @@ export default function Scoreboard() {
                 sessionStorage.removeItem("sessionId");
                 navigate("/");
               }}
-              className="mt-4 px-5 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded flex items-center gap-2"
             >
-              ▶️ Guess Again
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4l12 8-12 8z" />
+              </svg>
+              Guess Again
             </button>
           </div>
         </>
