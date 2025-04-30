@@ -92,15 +92,12 @@ export default function Scoreboard() {
                 return (
                   <tr
                     key={session.id}
-                    className={`text-center hover:bg-gray-100 ${isCurrent ? "bg-purple-100" : ""}`}
+                    className={`text-center hover:bg-gray-100 ${isCurrent ? "bg-purple-100 border-l-4 border-purple-500" : ""}`}
                   >
                     <td className="p-2 border">{rank}</td>
                     <td className="p-2 border font-semibold">
                       {rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : ""}
                       {session.player_name}
-                      {session.id === sessionId && (
-                        <span className="ml-2 text-sm text-purple-700 font-medium">(you)</span>
-                      )}
                     </td>
                     <td className="p-2 border">{session.total_points}</td>
                     <td className="p-2 border">{new Date(session.started_at).toLocaleDateString()}</td>
