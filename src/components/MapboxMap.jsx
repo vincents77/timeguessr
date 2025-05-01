@@ -72,11 +72,13 @@ export default function MapboxMap({
     }
 
     if (isResult && actualCoords && guessCoords) {
+      console.log("🟢 Adding actual marker:", actualCoords);
       new mapboxgl.Marker({ color: 'green' })
         .setLngLat([actualCoords[1], actualCoords[0]])
         .setPopup(new mapboxgl.Popup().setText('📍 Actual'))
         .addTo(map.current);
 
+      console.log("🔴 Adding guess marker:", guessCoords);
       new mapboxgl.Marker({ color: 'red' })
         .setLngLat([guessCoords[1], guessCoords[0]])
         .setPopup(new mapboxgl.Popup().setText('❌ Your Guess'))
@@ -87,6 +89,7 @@ export default function MapboxMap({
       bounds.extend([guessCoords[1], guessCoords[0]]);
       map.current.fitBounds(bounds, { padding: 60 });
     } else if (guessCoords && !isResult) {
+      console.log("🔴 Adding guess marker (non-result):", guessCoords);
       new mapboxgl.Marker({ color: 'red' })
         .setLngLat([guessCoords[1], guessCoords[0]])
         .addTo(map.current);

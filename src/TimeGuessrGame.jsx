@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import supabase from './supabaseClient';
 import MapboxMap from './components/MapboxMap';
 import cityLookup from './assets/city_lookup.json';
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import GuessResultModal from './components/GuessResultModal';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 export default function TimeGuessrGame() {
   const [events, setEvents] = useState([]);
@@ -10,7 +15,7 @@ export default function TimeGuessrGame() {
   const [guessCoords, setGuessCoords] = useState(null);
   const [guessYear, setGuessYear] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [playerName, setPlayerName] = useState('');
+  const [playerName, setPlayerName] = useState(() => sessionStorage.getItem('playerName') || '');
   const [history, setHistory] = useState([]);
   const [defaultTimer, setDefaultTimer] = useState(30);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -31,6 +36,28 @@ export default function TimeGuessrGame() {
   const [shouldRecenter, setShouldRecenter] = useState(false);
   const [guessPlace, setGuessPlace] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const [sessionId, setSessionId] = useState(() => {
+    return sessionStorage.getItem('sessionId') || null;
+  });
+  const [playedSlugs, setPlayedSlugs] = useState(new Set());
+  const [sessionProgress, setSessionProgress] = useState({ played: 0, total: 0 });
+  const [showFullCaption, setShowFullCaption] = useState(false);
+  
+  useEffect(() => {
+    setSessionId(null);
+    sessionStorage.removeItem('sessionId');
+  }, [playerName]);
+
+  useEffect(() => {
+    if (playerName) {
+      sessionStorage.setItem('playerName', playerName);
+    }
+  }, [playerName]);
+
+  useEffect(() => {
+    const savedSlugs = JSON.parse(sessionStorage.getItem('playedSlugs') || '[]');
+    setPlayedSlugs(new Set(savedSlugs));
+  }, []);
 
   useEffect(() => {
     async function fetchEvents() {
@@ -39,13 +66,37 @@ export default function TimeGuessrGame() {
         console.error('❌ Error fetching events:', error.message);
         return;
       }
-      const normalized = data.map(e => ({
-        ...e,
-        coords: Array.isArray(e.coords) ? e.coords : JSON.parse(e.coords),
-      }));
+  
+      const normalized = data.map((e) => {
+        let coords = [0, 0];
+      
+        try {
+          if (Array.isArray(e.coords)) {
+            coords = e.coords.map(Number); // Ensure numeric
+          } else if (typeof e.coords === "string") {
+            if (e.coords.trim().startsWith("[")) {
+              coords = JSON.parse(e.coords); // "[lat, lng]"
+            } else {
+              const parts = e.coords.split(",").map(p => parseFloat(p.trim()));
+              coords = parts;
+            }
+          }
+        } catch (err) {
+          console.warn(`⚠️ Could not parse coords for "${e.title}":`, e.coords, err);
+        }
+      
+        if (!Array.isArray(coords) || coords.length !== 2 || coords.some(isNaN)) {
+          console.warn(`⚠️ Malformed coords for "${e.title}":`, coords);
+          coords = [0, 0]; // fallback
+        }
+      
+        return { ...e, coords };
+      });
+  
       setEvents(normalized);
       setFilteredEvents(normalized);
     }
+  
     fetchEvents();
   }, []);
 
@@ -64,6 +115,7 @@ export default function TimeGuessrGame() {
     }
   }, [timeLeft, timerActive, submitted]);
 
+
   const getDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = deg => deg * Math.PI / 180;
     const R = 6371;
@@ -72,6 +124,45 @@ export default function TimeGuessrGame() {
     const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon/2)**2;
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   };
+
+  const navigate = useNavigate();
+
+
+  const IconLocation = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 2a6 6 0 016 6c0 4-6 10-6 10S4 12 4 8a6 6 0 016-6zm0 8a2 2 0 100-4 2 2 0 000 4z" />
+    </svg>
+  );
+
+  const IconCalendar = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M6 2a1 1 0 00-1 1v1H5a3 3 0 00-3 3v9a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3h-.002V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zM4 7h12v9a1 1 0 01-1 1H5a1 1 0 01-1-1V7z" />
+    </svg>
+  );
+
+  const IconTrophy = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M16 4V2H8v2H2v4a6 6 0 006 6c0 .7.1 1.3.4 1.9C8 16.6 7 18.1 7 20h10c0-1.9-1-3.4-1.4-4.1.3-.6.4-1.2.4-1.9a6 6 0 006-6V4h-6zM6 10a4 4 0 01-4-4V6h4v4zm12 0a4 4 0 01-4-4V6h4v4z"/>
+    </svg>
+  );
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const sessionId = sessionStorage.getItem("sessionId");
+      if (sessionId) {
+        navigator.sendBeacon(
+          "https://zmvfnefkksnxiqdcgemc.functions.supabase.co/finalize_session",
+          JSON.stringify({ session_id: sessionId })
+        );
+      }
+    };
+  
+    window.addEventListener("beforeunload", handleBeforeUnload);
+  
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   const distToZoom = (distanceKm) => {
     if (distanceKm < 2) return 16;
@@ -188,19 +279,75 @@ export default function TimeGuessrGame() {
     return Math.max(0, Math.round(baseScore));
   };
 
-  const startGame = () => {
+  const createNewSession = async () => {
+    const newSessionId = uuidv4();
+    const { error } = await supabase.from('sessions').insert([
+      {
+        id: newSessionId,
+        player_name: playerName || "Anonymous",
+        started_at: new Date().toISOString(),
+        theme: selectedTheme || null,
+        era: selectedEra || null,
+        region: selectedRegion || null,
+      }
+    ]);
+  
+    if (error) {
+      console.error('❌ Error creating session:', error.message);
+      alert('⚠️ Could not start session. Please retry.');
+      return null;
+    }
+  
+    console.log('🎯 New session created:', newSessionId);
+    localStorage.setItem('sessionId', newSessionId);
+    return newSessionId;
+  };
+
+  const startGame = async () => {
+    if (!playerName.trim()) {
+      alert("⚠️ Please enter your player name before starting!");
+      return;
+    }
+  
+    let activeSessionId = sessionStorage.getItem('sessionId');
+  
+    if (!activeSessionId) {
+      const newId = await createNewSession();
+      if (!newId) return; // Stop if creation failed
+      sessionStorage.setItem('sessionId', newId);
+      setSessionId(newId);
+    } else {
+      console.log('🔁 Reusing active session:', activeSessionId);
+      setSessionId(activeSessionId);
+    }
+  
+    // Then continue game start...
     let results = events;
+    let playedSlugs = new Set();
+    try {
+      const storedPlayed = JSON.parse(sessionStorage.getItem('playedSlugs'));
+      if (Array.isArray(storedPlayed)) {
+        playedSlugs = new Set(storedPlayed);
+      }
+    } catch (e) {
+      console.error('Error loading playedSlugs from sessionStorage:', e);
+    }
     if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
     if (selectedEra) results = results.filter(e => e.era === selectedEra);
     if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
-    setAccepted(false);
-
+    results = results.filter(e => !playedSlugs.has(e.slug));
+  
     if (results.length === 0) {
       alert("⚠️ No events match your filters. Adjust filters to continue.");
       return;
     }
+  
     const next = results[Math.floor(Math.random() * results.length)];
     setEvent(next);
+    setSessionProgress({
+      played: 0,
+      total: results.length
+    });
     setGuessCoords(null);
     setGuessYear('');
     setGuessPlace('');
@@ -213,11 +360,30 @@ export default function TimeGuessrGame() {
   };
 
   const pickNextFilteredEvent = () => {
-    if (filteredEvents.length === 0) {
-      alert("⚠️ No more events matching your filters. Adjust filters.");
+    let playedSlugs = new Set();
+    try {
+      const storedPlayed = JSON.parse(sessionStorage.getItem('playedSlugs'));
+      if (Array.isArray(storedPlayed)) {
+        playedSlugs = new Set(storedPlayed);
+      }
+    } catch (e) {
+      console.error('Error loading playedSlugs from sessionStorage:', e);
+    }
+  
+    // Filter out already played events
+    const remaining = filteredEvents.filter(e => !playedSlugs.has(e.slug));
+  
+    if (remaining.length === 0) {
+      const hasFilter = selectedTheme || selectedEra || selectedRegion;
+      alert(
+        hasFilter
+          ? "🎯 You've completed all matching events. Try adjusting the filters to explore more!"
+          : "🎯 You've played all available events for now. More will be added soon!"
+      );
       return;
     }
-    const next = filteredEvents[Math.floor(Math.random() * filteredEvents.length)];
+  
+    const next = remaining[Math.floor(Math.random() * remaining.length)];
     setEvent(next);
     setGuessCoords(null);
     setGuessYear('');
@@ -232,18 +398,40 @@ export default function TimeGuessrGame() {
   };
 
   const handleSubmit = async () => {
-    const dist = getDistance(...guessCoords, ...event.coords);
+    if (!event || !guessCoords || guessCoords.length !== 2) {
+      console.warn("⚠️ Cannot submit — missing event or guessCoords");
+      return;
+    }
+  
+    let eventCoords;
+  
+    if (Array.isArray(event.coords)) {
+      eventCoords = event.coords;
+    } else if (typeof event.coords === 'string') {
+      try {
+        eventCoords = event.coords.split(',').map(p => parseFloat(p.trim()));
+      } catch (err) {
+        console.warn(`⚠️ Could not parse coords for ${event.title}`);
+        eventCoords = [0, 0];
+      }
+    } else {
+      eventCoords = [0, 0];
+    }
+  
+    console.log('Coords before distance:', guessCoords, eventCoords);
+  
+    const dist = getDistance(...guessCoords, ...eventCoords);
     const yearDiff = Math.abs(event.year - parseInt(guessYear));
     const timeToGuess = defaultTimer - timeLeft;
     const eraDuration = await fetchEraDuration(event.era_id);
-
+  
     if (eraDuration === null) {
       console.error("Failed to fetch era duration.");
       return;
     }
 
     const entry = {
-      player: playerName || 'Anonymous',
+      player_name: playerName || 'Anonymous',
       slug: event.slug,
       title: event.title,
       actual_year: parseInt(event.year),
@@ -273,80 +461,245 @@ export default function TimeGuessrGame() {
     setSubmitted(true);
     setTimerActive(false);
     setShowModal(true);
+    setAccepted(false);
   };
 
   const handleAcceptResult = async () => {
     if (!lastEntry) return;
   
-    const { error } = await supabase.from('results').insert([lastEntry]);
-    if (error) console.error('❌ Supabase insert error:', error.message);
+    const entryWithSession = {
+      ...lastEntry,
+      session_id: sessionId,
+    };
   
-    setHistory(prev => [...prev, lastEntry]);
+    const { error } = await supabase.from('results').insert([entryWithSession]);
+    if (error) {
+      console.error('❌ Supabase insert error:', error.message);
+      return;
+    }
+  
+    // Update both history and played slugs
+    setHistory(prev => {
+      const updatedHistory = [...prev, entryWithSession];
+      const updatedSlugs = updatedHistory.map(h => h.slug);
+      sessionStorage.setItem('playedSlugs', JSON.stringify(updatedSlugs));
+      setPlayedSlugs(new Set(updatedSlugs));
+      return updatedHistory;
+    });
+    setSessionProgress(prev => ({
+      ...prev,
+      played: prev.played + 1
+    }));
     setAccepted(true);
     setRevealMap(true);
+  };
+
+  const finalizeSession = async () => {
+    if (!sessionId) {
+      console.warn("⚠️ No active session to finalize.");
+      return;
+    }
+  
+    // Case: No guesses made
+    if (history.length === 0) {
+      const { error } = await supabase
+        .from('sessions')
+        .update({
+          ended_at: new Date().toISOString(),
+          completed: false,
+        })
+        .eq('id', sessionId);
+  
+      if (error) {
+        console.error('❌ Failed to finalize empty session:', error.message);
+      } else {
+        console.log('✅ Empty session finalized with completed: false');
+      }
+  
+    // Store sessionId so we can still show it on scoreboard
+    localStorage.setItem("sessionId", sessionId);
+    sessionStorage.removeItem("sessionId");
+    sessionStorage.removeItem("playedSlugs");
+    setSessionId(null);
+    setPlayedSlugs(new Set());
+    return;
+  }
+  
+    // Step 1: Group by slug and find best score per event
+    const bestScoresBySlug = {};
+    history.forEach(entry => {
+      const slug = entry.slug;
+      const clampedScore = Math.max(entry.score || 0, 0);
+      if (!bestScoresBySlug[slug] || clampedScore > bestScoresBySlug[slug]) {
+        bestScoresBySlug[slug] = clampedScore;
+      }
+    });
+  
+    // Step 2: Aggregate session stats
+    const totalEvents = Object.keys(bestScoresBySlug).length;
+    const totalPoints = Object.values(bestScoresBySlug).reduce((sum, score) => sum + score, 0);
+    const averageScore = totalEvents > 0 ? totalPoints / totalEvents : 0;
+  
+    // Step 3: Analyze metadata
+    const summarizeFilter = (values, selected) => {
+      if (!selected) return "all";
+      const unique = [...new Set(values.filter(Boolean))];
+      return unique.length === 1 ? unique[0] : "mixed";
+    };
+  
+    const finalTheme = summarizeFilter(history.map(e => e.theme), selectedTheme);
+    const finalEra = summarizeFilter(history.map(e => e.era), selectedEra);
+    const finalRegion = summarizeFilter(history.map(e => e.region), selectedRegion);
+  
+    // Step 4: Final update
+    const sessionData = {
+      total_events: totalEvents,
+      total_points: Math.round(totalPoints),
+      average_score: Math.round(averageScore),
+      ended_at: new Date().toISOString(),
+      completed: true,
+      theme: finalTheme,
+      era: finalEra,
+      region: finalRegion,
+    };
+  
+    const { error } = await supabase
+      .from('sessions')
+      .update(sessionData)
+      .eq('id', sessionId);
+  
+    if (error) {
+      console.error('❌ Failed to finalize session:', error.message);
+      return;
+    }
+  
+    console.log('✅ Session finalized and saved.', sessionData);
+
+      // 💾 Persist for /scoreboard highlighting
+  localStorage.setItem("sessionId", sessionId);
+  
+    // Cleanup
+    sessionStorage.removeItem('sessionId');
+    sessionStorage.removeItem('playedSlugs');
+    setSessionId(null);
+    setPlayedSlugs(new Set());
+  };
+
+  const logEvent = async (eventType, payload = {}) => {
+    console.log(`[LOG] ${eventType}`, payload);
+  
+    try {
+      await supabase.from('logs').insert([
+        {
+          event_type: eventType,
+          session_id: payload.sessionId || null,
+          player_name: payload.playerName || null,
+          payload,
+        }
+      ]);
+    } catch (error) {
+      console.error('❌ Failed to save log to Supabase:', error);
+    }
   };
 
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6 relative overflow-hidden">
       <h1 className="text-3xl font-bold mb-2">TimeGuessr</h1>
 
-      <div className="flex flex-wrap gap-4 items-center">
-        <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
-          <option value="">🎯 All Themes</option>
-          {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
-        </select>
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+        {/* Filters group */}
+        <div className="flex flex-wrap items-center gap-2">
+          <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
+            <option value="">All Themes</option>
+            {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
+          </select>
 
-        <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
-          <option value="">⏳ All Eras</option>
-          {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
-        </select>
+          <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
+            <option value="">All Eras</option>
+            {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
+          </select>
 
-        <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
-          <option value="">🌍 All Regions</option>
-          {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
-        </select>
+          <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
+            <option value="">All Regions</option>
+            {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
+          </select>
 
+          <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
+        </div>
 
-        <input className="border rounded px-2 py-1" value={playerName} onChange={e => setPlayerName(e.target.value)} placeholder="Player Name" />
-
-        <button className="bg-black text-white p-2 px-4 rounded hover:bg-gray-800" onClick={startGame}>
-          ▶️ Start Guessing
-        </button>
+        <div className="flex items-center gap-4 min-w-[280px]">
+          <button
+            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 whitespace-nowrap"
+            onClick={startGame}
+            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 4l12 8-12 8z" />
+              </svg>Start Guessing
+          </button>
+          {gameStarted && (
+            <div className="flex-1 text-sm text-gray-600">
+              <div className="mb-1">Progress: {sessionProgress.played} / {sessionProgress.total}</div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div
+                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${(sessionProgress.played / sessionProgress.total) * 100}%` }}
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {event && gameStarted && (
   <>
-    <div className="flex flex-col lg:flex-row gap-6 max-w-[90vw] mx-auto">
-      {/* Left: Image */}
-      <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
-        <img
-          src={event.image_url}
-          alt="event"
-          className="w-full h-full object-cover rounded shadow"
-        />
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[90vw] mx-auto">
+      {/* Left column */}
+      <div className="flex flex-col">
+        <div className="min-h-[4.5rem] mb-2">
+          <p className="text-lg font-semibold">Your visual clue</p>
+          <p className="text-sm text-gray-600">Watch carefully! You can zoom in.</p>
+        </div>
+        <div className="aspect-square overflow-hidden rounded shadow">
+          <Zoom>
+            <img
+              src={event.image_url}
+              alt="event"
+              className="w-full h-full object-cover cursor-zoom-in"
+            />
+          </Zoom>
+        </div>
       </div>
 
-      {/* Right: Map + Place Search */}
-      <div className="lg:w-1/2 w-full h-auto aspect-[1/1]">
-        <div className="flex flex-col">
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            <h2 className="font-semibold text-xl">📍 Place your location guess:</h2>
+      {/* Right column */}
+      <div className="flex flex-col">
+        <div className="min-h-[4.5rem] mb-2">
+          <label className="text-lg font-semibold block">
+            Guess the location: pin it on the map or enter a place
+          </label>
+          <div className="flex mt-2">
             <input
               type="text"
-              className="border p-1 rounded text-sm"
+              className="border p-2 rounded-l text-sm w-full"
               value={guessPlace}
               onChange={e => setGuessPlace(e.target.value)}
               placeholder="Enter city, country, or landmark"
             />
             <button
               onClick={handlePlaceSearch}
-              className="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm"
+              className="bg-gray-200 border-l border-gray-300 px-3 py-2 rounded-r hover:bg-gray-300 text-gray-700 text-sm"
               disabled={isSearching}
             >
-              {isSearching ? '...' : '🔍'}
+              {isSearching ? '...' : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              )}
             </button>
           </div>
-
+        </div>
+        <div className="aspect-square overflow-hidden rounded shadow">
           <MapboxMap
             guessCoords={guessCoords}
             setGuessCoords={setGuessCoords}
@@ -360,13 +713,13 @@ export default function TimeGuessrGame() {
       </div>
     </div>
 
-    {/* Input Section (Year Guess) */}
+    {/* Input Section */}
     <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
       <input
         type="number"
         className="border w-full sm:w-64 p-2 rounded"
         value={guessYear}
-        onChange={e => setGuessYear(e.target.value)}
+        onChange={(e) => setGuessYear(e.target.value)}
         placeholder="Year (e.g. 1789 or -753)"
       />
       <button
@@ -380,90 +733,58 @@ export default function TimeGuessrGame() {
   </>
 )}
 
-    {showModal && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
-        <div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto shadow-lg text-center space-y-3 z-[101]">
-          <h2 className="text-xl font-bold">📜 Your Results</h2>
-          <p>✅ <strong>{event.title}</strong></p>
-          <p>📏 Distance: {getDistance(...guessCoords, ...event.coords).toFixed(1)} km</p>
-          <p>📆 Year Difference: {Math.abs(event.year - parseInt(guessYear)) === 0 ? 'Perfect!' : `${Math.abs(event.year - parseInt(guessYear))} year(s)`}</p>
-          {console.log('🔍 Debug lastEntry:', lastEntry)}
-          <p>🏆 Score: {lastEntry?.score}</p>
-          <p className="text-sm text-gray-600 italic">🔁 Attempt {retryCount + 1} of 3</p>
-
-          {(retryCount >= 2 || accepted) ? (
-            <>
-              <p>📍 Location: {[event.notable_location, event.city, event.country].filter(Boolean).join(', ')}</p>
-              <p>⏳ Year: {event.year < 0 ? `${-event.year} BCE` : `${event.year} CE`}</p>
-              {!revealMap ? (
-                <button
-                  onClick={() => setRevealMap(true)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                  🗺️ Reveal Map
-                </button>
-              ) : (
-                <MapboxMap
-                  guessCoords={guessCoords}
-                  actualCoords={event.coords}
-                  isResult
-                />
-              )}
-            </>
-          ) : null}
-
-          <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
-            {!accepted && retryCount < 2 && (
-              <button
-                onClick={() => {
-                  setRetryCount(c => c + 1);
-                  if (guessCoords) {
-                    const dist = getDistance(...guessCoords, ...event.coords);
-                    const zoom = distToZoom(dist * 2);
-                    setRetryCenter(guessCoords);
-                    setRetryZoom(zoom);
-                    setShouldRecenter(true);
-                  }
-                  setSubmitted(false);
-                  setTimeLeft(defaultTimer);
-                  setTimerActive(true);
-                  setShowModal(false);
-                  setAccepted(false);
-                  setRevealMap(false);
-                }}
-                className="bg-white text-black border border-black px-4 py-2 rounded hover:bg-gray-100"
-              >
-                🔁 Retry Guess
-              </button>
-            )}
-
-            {!accepted && (
-              <button
-                onClick={handleAcceptResult}
-                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
-              >
-                ✅ Accept Result
-              </button>
-            )}
-
-            {accepted && (
-              <button
-                onClick={() => {
-                  setLastEntry(null);
-                  setShowModal(false);
-                  setRevealMap(false);
-                  setRetryCount(0);
-                  pickNextFilteredEvent();
-                }}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-              >
-                ▶️ Play Next Event
-              </button>
-            )}
-            </div>
-          </div>
-        </div>
+      {showModal && (
+        <GuessResultModal
+          event={event}
+          guessCoords={guessCoords}
+          guessYear={guessYear}
+          lastEntry={lastEntry}
+          retryCount={retryCount}
+          accepted={accepted}
+          revealMap={revealMap}
+          showFullCaption={showFullCaption}
+          setShowFullCaption={setShowFullCaption}
+          onRetry={() => {
+            setRetryCount(c => c + 1);
+            if (guessCoords) {
+              const dist = getDistance(...guessCoords, ...event.coords);
+              const zoom = distToZoom(dist * 2);
+              setRetryCenter(guessCoords);
+              setRetryZoom(zoom);
+              setShouldRecenter(true);
+            }
+            setSubmitted(false);
+            setTimeLeft(defaultTimer);
+            setTimerActive(true);
+            setShowModal(false);
+            setAccepted(false);
+            setRevealMap(false);
+          }}
+          onAccept={handleAcceptResult}
+          onRevealMap={() => setRevealMap(true)}
+          onPlayNext={() => {
+            setLastEntry(null);
+            setShowModal(false);
+            setRevealMap(false);
+            setRetryCount(0);
+            pickNextFilteredEvent();
+          }}
+          onFinishSession={async () => {
+            await finalizeSession();
+            logEvent('session_finalize_manual', { sessionId });
+            setLastEntry(null);
+            setShowModal(false);
+            setRevealMap(false);
+            setRetryCount(0);
+            setHistory([]);
+            setGameStarted(false);
+            navigate("/scoreboard");
+          }}
+          IconLocation={IconLocation}
+          IconCalendar={IconCalendar}
+          IconTrophy={IconTrophy}
+        />
       )}
-    </div>
+            </div>
   );
-  }
+}
