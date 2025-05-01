@@ -1,5 +1,4 @@
 # src/scripts/fetch_all_events.py
-
 import os
 import json
 from pathlib import Path
@@ -25,31 +24,34 @@ PUBLIC_EVENTS_PATH.parent.mkdir(parents=True, exist_ok=True)  # Ensure /public/d
 
 def normalize_coords(events):
     """
-    Ensures the coords field is stored as [lat, lon] list.
-    Handles both string and malformed cases safely.
+    Ensures coords field is parsed as [lat, lng] array of floats.
+    Handles both JSON-style and CSV-style strings.
+    Validates that both values are real numbers.
     """
     for event in events:
-        coords = event.get("coords")
+        raw = event.get("coords")
+        coords = [0.0, 0.0]
 
-        if isinstance(coords, list) and len(coords) == 2:
-            continue  # Already valid
-        elif isinstance(coords, str):
-            try:
-                # Handle either stringified array or comma-separated lat, lon
-                if coords.strip().startswith("["):
-                    event["coords"] = json.loads(coords)
+        try:
+            if isinstance(raw, str):
+                if raw.strip().startswith("["):
+                    coords = json.loads(raw)
                 else:
-                    parts = [float(x.strip()) for x in coords.split(",")]
-                    if len(parts) == 2:
-                        event["coords"] = parts
-                    else:
-                        raise ValueError("Invalid coords count")
-            except Exception:
-                print(f"⚠️ Failed to parse coords for event: {event.get('title', 'Unknown')}")
-                event["coords"] = [0.0, 0.0]
-        else:
-            print(f"⚠️ Invalid coords type for event: {event.get('title', 'Unknown')}")
-            event["coords"] = [0.0, 0.0]
+                    parts = raw.split(",")
+                    coords = [float(parts[0].strip()), float(parts[1].strip())]
+            elif isinstance(raw, list):
+                coords = [float(raw[0]), float(raw[1])]
+        except Exception as e:
+            print(f"⚠️ Failed to parse coords for event: {event.get('title', 'Unknown')} → {e}")
+            coords = [0.0, 0.0]
+
+        # Final validation step
+        if len(coords) != 2 or any(not isinstance(x, (float, int)) or x != x for x in coords):
+            print(f"⚠️ Invalid coord values for {event.get('title', 'Unknown')}: {coords}")
+            coords = [0.0, 0.0]
+
+        event["coords"] = coords
+
     return events
 
 def fetch_all_events():

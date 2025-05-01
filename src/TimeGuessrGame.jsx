@@ -67,23 +67,29 @@ export default function TimeGuessrGame() {
         return;
       }
   
-      const normalized = data.map(e => {
-        let coords = e.coords;
-  
-        if (Array.isArray(coords)) {
-          // Already correct
-        } else if (typeof coords === "string") {
-          try {
-            const parts = coords.split(",").map(p => parseFloat(p.trim()));
-            coords = parts;
-          } catch (err) {
-            console.warn(`⚠️ Could not parse coords for ${e.title}`);
-            coords = [0, 0];
+      const normalized = data.map((e) => {
+        let coords = [0, 0];
+      
+        try {
+          if (Array.isArray(e.coords)) {
+            coords = e.coords.map(Number); // Ensure numeric
+          } else if (typeof e.coords === "string") {
+            if (e.coords.trim().startsWith("[")) {
+              coords = JSON.parse(e.coords); // "[lat, lng]"
+            } else {
+              const parts = e.coords.split(",").map(p => parseFloat(p.trim()));
+              coords = parts;
+            }
           }
-        } else {
+        } catch (err) {
+          console.warn(`⚠️ Could not parse coords for "${e.title}":`, e.coords, err);
+        }
+      
+        if (!Array.isArray(coords) || coords.length !== 2 || coords.some(isNaN)) {
+          console.warn(`⚠️ Malformed coords for "${e.title}":`, coords);
           coords = [0, 0]; // fallback
         }
-  
+      
         return { ...e, coords };
       });
   
@@ -108,6 +114,7 @@ export default function TimeGuessrGame() {
       return () => clearInterval(interval);
     }
   }, [timeLeft, timerActive, submitted]);
+
 
   const getDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = deg => deg * Math.PI / 180;
@@ -391,11 +398,33 @@ export default function TimeGuessrGame() {
   };
 
   const handleSubmit = async () => {
-    const dist = getDistance(...guessCoords, ...event.coords);
+    if (!event || !guessCoords || guessCoords.length !== 2) {
+      console.warn("⚠️ Cannot submit — missing event or guessCoords");
+      return;
+    }
+  
+    let eventCoords;
+  
+    if (Array.isArray(event.coords)) {
+      eventCoords = event.coords;
+    } else if (typeof event.coords === 'string') {
+      try {
+        eventCoords = event.coords.split(',').map(p => parseFloat(p.trim()));
+      } catch (err) {
+        console.warn(`⚠️ Could not parse coords for ${event.title}`);
+        eventCoords = [0, 0];
+      }
+    } else {
+      eventCoords = [0, 0];
+    }
+  
+    console.log('Coords before distance:', guessCoords, eventCoords);
+  
+    const dist = getDistance(...guessCoords, ...eventCoords);
     const yearDiff = Math.abs(event.year - parseInt(guessYear));
     const timeToGuess = defaultTimer - timeLeft;
     const eraDuration = await fetchEraDuration(event.era_id);
-
+  
     if (eraDuration === null) {
       console.error("Failed to fetch era duration.");
       return;

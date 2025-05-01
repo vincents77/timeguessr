@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Ignore macOS and Python temp files
+.DS_Store
+__pycache__/
