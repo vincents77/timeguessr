@@ -15,9 +15,11 @@ export default function GuessResultModal({
     onRevealMap,
     onPlayNext,
     onFinishSession,
+    onConfirmLastEvent = () => {},
     IconLocation,
     IconCalendar,
-    IconTrophy
+    IconTrophy,
+    isLastRound
 }) {
   const getDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = deg => deg * Math.PI / 180;
@@ -29,9 +31,16 @@ export default function GuessResultModal({
   };
 
 return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
-      <div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto shadow-lg text-left space-y-4 z-[101]">
-        <h2 className="text-xl font-semibold">Your Guess for {event.title.replace(/^the\s+/i, '')}</h2>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[100]">
+        <div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto shadow-lg text-left space-y-4 z-[101]">
+
+          {isLastRound && (
+            <div className="bg-purple-100 text-purple-800 text-xs font-semibold px-2 py-1 rounded w-fit mx-auto mb-2 uppercase tracking-wide">
+              Final Event!
+            </div>
+          )}
+
+          <h2 className="text-xl font-semibold">Your Guess for {event.title.replace(/^the\s+/i, '')}</h2>
   
         <p className="flex items-center text-sm">
           <IconLocation />
@@ -137,19 +146,23 @@ return (
 
           {accepted && (
             <>
-              <button
-                onClick={onPlayNext}
-                className="bg-green-100 hover:bg-green-200 text-green-900 font-medium w-40 h-10 flex items-center justify-center text-sm rounded shadow-sm transition"
-              >
-                → Play Next Event
-              </button>
+              {!isLastRound && (
+                <button
+                  onClick={onPlayNext}
+                  className="bg-green-100 hover:bg-green-200 text-green-900 font-medium w-40 h-10 flex items-center justify-center text-sm rounded shadow-sm transition"
+                >
+                  → Play Next Event
+                </button>
+              )}
 
-              <button
-                onClick={onFinishSession}
-                className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-medium w-40 h-10 flex items-center justify-center text-sm rounded shadow-sm transition"
+              {isLastRound && (
+                <button
+                onClick={onConfirmLastEvent}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium w-40 h-10 flex items-center justify-center text-sm rounded shadow-sm transition"
               >
-                Finish Session
+                → See Final Summary
               </button>
+              )}
             </>
           )}
         </div>

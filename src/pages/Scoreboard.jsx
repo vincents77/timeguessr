@@ -22,9 +22,12 @@ export default function Scoreboard() {
         let sinceDate = new Date();
 
         if (selectedRange === "week") {
-          sinceDate.setDate(today.getDate() - 7);
+          const day = today.getDay();
+          const diff = (day === 0 ? -6 : 1) - day;
+          sinceDate.setDate(today.getDate() + diff);
+          sinceDate.setHours(0, 0, 0, 0);
         } else if (selectedRange === "month") {
-          sinceDate.setMonth(today.getMonth() - 1);
+          sinceDate = new Date(today.getFullYear(), today.getMonth(), 1);
         }
 
         query = query.gte("started_at", sinceDate.toISOString());
@@ -50,11 +53,24 @@ export default function Scoreboard() {
   const currentIndex = sortedSessions.findIndex(s => s.id === sessionId);
   const current = sortedSessions[currentIndex];
   
-  if (!current || currentIndex < 3) {
+  if (!current) {
+    // Show top 10 if current session isn't found
+    displaySessions = sortedSessions.slice(0, 10);
+  } else if (currentIndex < 3) {
+    // Already visible in top 3
     displaySessions = sortedSessions.slice(0, 10);
   } else {
-    const aroundCurrent = sortedSessions.slice(currentIndex - 3, currentIndex + 4);
-    displaySessions = [...top3, ...aroundCurrent.filter(s => !top3.some(top => top.id === s.id))];
+    const top3 = sortedSessions.slice(0, 3);
+    const surrounding = sortedSessions.slice(currentIndex - 3, currentIndex + 4);
+    const uniqueSessions = [...top3];
+  
+    surrounding.forEach(session => {
+      if (!uniqueSessions.find(s => s.id === session.id)) {
+        uniqueSessions.push(session);
+      }
+    });
+  
+    displaySessions = uniqueSessions;
   }
 
   return (
