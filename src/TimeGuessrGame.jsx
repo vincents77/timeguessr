@@ -718,6 +718,17 @@ export default function TimeGuessrGame() {
             setGameStarted(false);
             navigate("/scoreboard");
           }}
+          onEarlyExit={async () => {
+            await finalizeSession(sessionId, history, selectedTheme, selectedEra, selectedRegion, playerName);
+            logEvent('session_finalize_manual_early_exit', { sessionId });
+            setLastEntry(null);
+            setShowModal(false);
+            setRevealMap(false);
+            setRetryCount(0);
+            setHistory([]);
+            setGameStarted(false);
+            navigate("/scoreboard");
+          }}
           IconLocation={IconLocation}
           IconCalendar={IconCalendar}
           IconTrophy={IconTrophy}

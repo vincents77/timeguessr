@@ -16,6 +16,7 @@ export default function GuessResultModal({
     onPlayNext,
     onFinishSession,
     onConfirmLastEvent = () => {},
+    onEarlyExit,
     IconLocation,
     IconCalendar,
     IconTrophy,
@@ -163,6 +164,13 @@ return (
                 → See Final Summary
               </button>
               )}
+
+              <button
+                      onClick={onEarlyExit}
+                      className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium w-40 h-10 flex items-center justify-center text-sm rounded shadow-sm transition"
+                    >
+                      ⏹️ End Session Early
+                    </button>
             </>
           )}
         </div>
