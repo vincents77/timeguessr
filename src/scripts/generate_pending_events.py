@@ -129,27 +129,17 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-        "The beginning of the First Crusade (1096)",
-        "The coronation of Frederick II as Holy Roman Emperor (1220)",
-        "The excommunication of Henry IV during the Investiture Controversy (1076)",
-        "The trial and execution of Joan of Arc (1431)",
-        "The start of the Hundred Years’ War between England and France (1337)",
-        "The rise of the Hanseatic League in northern Europe (13th century)",
-        "The foundation of the Kingdom of Portugal (1139)",
-        "The Albigensian Crusade begins in southern France (1209)",
-        "The Viking siege of Paris (845)",
-        "The Reconquista captures Toledo from Muslim rule (1085)",
-        "The election of Pope Urban II and his call for the First Crusade (1095)",
-        "The Great Schism divides the Eastern and Western Churches (1054)",
-        "The Peasants' Revolt in England led by Wat Tyler (1381)",
-        "The fall of Acre marks the end of Crusader rule in the Holy Land (1291)",
-        "The Battle of Agincourt during the Hundred Years' War (1415)",
-        "The founding of the Teutonic Order (1190)",
-        "The Golden Bull of 1356 issued by Emperor Charles IV (1356)",
-        "The Siege of Constantinople by the Rus' (860)",
-        "The marriage of Ferdinand of Aragon and Isabella of Castile unifies Spain (1469)",
-        "The Battle of Bannockburn secures Scottish independence under Robert the Bruce (1314)",
-    ]
+  "The Battle of Cannae (216 BCE)",
+  "The Siege of Vienna (1683)",
+  "The Battle of Sekigahara (1600)",
+  "The Battle of Antietam (1862)",
+  "The Gallipoli Campaign (1915)",
+  "The Battle of Tenochtitlan (1521)",
+  "The Battle of the Somme (1916)",
+  "The Battle of Leipzig (1813)",
+  "The Tet Offensive (1968)",
+  "The Battle of the Bulge (1944–45)"
+]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
     raw = call_gpt_generate_metadata(idea)
