@@ -20,7 +20,10 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_ANON_KEY)
 # --- Logic
 
 def summarize_session_results(session_id):
-    response = supabase.table("results").select("slug, score").eq("session_id", session_id).execute()
+    print(f"🔎 Checking session_id: {session_id} ({type(session_id)})")
+    response = supabase.table("results").select("slug, score").in_("session_id", [session_id]).execute()
+    print(f"📥 Supabase response: data={response.data} count={getattr(response, 'count', None)}")
+
     entries = response.data
     if not entries:
         return None  # No results, treat as an abandoned session
@@ -52,15 +55,14 @@ def finalize_abandoned_sessions():
     finalized = 0
     for sid in session_ids:
         summary = summarize_session_results(sid)
-        update_data = {
-            "ended_at": datetime.now(timezone.utc).isoformat()
-        }
         if summary:
-            update_data.update(summary)
-
-        result = supabase.table("sessions").update(update_data).eq("id", sid).execute()
-        if result.data:
-            finalized += 1
+            update_data = {
+                "ended_at": datetime.now(timezone.utc).isoformat(),
+                **summary,
+            }
+            result = supabase.table("sessions").update(update_data).eq("id", sid).execute()
+            if result.data:
+                finalized += 1
 
     print(f"✅ Finalized {finalized} sessions with results.")
 
