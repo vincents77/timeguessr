@@ -12,6 +12,20 @@ from src.utils.git_helpers import (
     print_git_summary,
 )
 
+# --- Backup public folder before any image generation
+print("📦 Backing up public folder before image generation...")
+try:
+    result = subprocess.run(
+        ["bash", "src/scripts/backup_public.sh"],
+        check=True,
+        capture_output=True,
+        text=True
+    )
+    print(result.stdout.strip())
+except subprocess.CalledProcessError as e:
+    print("❌ Backup failed:", e.stderr)
+    raise
+
 # --- Setup
 load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env")
 openai.api_key = os.getenv("VITE_OPENAI_API_KEY")
