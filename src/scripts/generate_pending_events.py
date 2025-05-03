@@ -89,6 +89,8 @@ Required fields:
 - country
 - city (if any)
 - notable_location (if any)
+- caption (1–2 sentence summary contextualizing the event)
+- wiki_url (Wikipedia link, if available)
 
 Special instructions:
 - When generating the `prompt` field for the image, always follow this structure:
@@ -164,6 +166,8 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
         "country": raw.get("country", "Unknown"),
         "city": raw.get("city", ""),
         "notable_location": raw.get("notable_location", ""),
+        "caption": raw.get("caption", ""),
+        "wiki_url": raw.get("wiki_url", ""),
         "era": era_match["era"],
         "era_id": era_match["era_id"]
     }
