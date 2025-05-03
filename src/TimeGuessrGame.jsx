@@ -477,21 +477,24 @@ export default function TimeGuessrGame() {
       session_id: sessionId,
     };
   
-    const { error } = await supabase.from('results').insert([entryWithSession]);
+    const { data, error } = await supabase
+      .from('results')
+      .insert([entryWithSession])
+      .select()
+      .single();
+  
     if (error) {
       console.error('❌ Supabase insert error:', error.message);
       return;
     }
   
-    const updatedHistory = [...history, entryWithSession];
+    const entryWithId = { ...entryWithSession, id: data.id };
+    const updatedHistory = [...history, entryWithId];
     const updatedSlugs = updatedHistory.map(h => h.slug);
   
     sessionStorage.setItem('playedSlugs', JSON.stringify(updatedSlugs));
     setPlayedSlugs(new Set(updatedSlugs));
     setHistory(updatedHistory);
-  
-    setHistory(updatedHistory);
-  
     setAccepted(true);
     setRevealMap(true);
   
@@ -732,6 +735,7 @@ export default function TimeGuessrGame() {
           IconLocation={IconLocation}
           IconCalendar={IconCalendar}
           IconTrophy={IconTrophy}
+          playerName={playerName}
         />
       )}
       {showFinalSummary && (
