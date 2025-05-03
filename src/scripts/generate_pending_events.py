@@ -136,28 +136,7 @@ def load_event_ideas():
   "The End of the Last Ice Age and the Start of the Holocene (c. 11,700 BCE)",
   "The Invention of Agriculture in the Fertile Crescent (c. 9,000 BCE)",
   "The Construction of Göbekli Tepe in Anatolia (c. 9,500 BCE)",
-  "The Formation of the First Permanent Villages like Jericho (c. 8,000 BCE)",
-  "The Storming of the Winter Palace during the Russian Revolution (1917)",
-  "The Dropping of the Atomic Bomb on Hiroshima (1945)",
-  "The Signing of the Maastricht Treaty establishing the EU (1992)",
-  "The Moon Landing by Apollo 11 from the NASA headquarters (1969)",
-  "The Fall of the Twin Towers on September 11 (2001)",
-  "The Launch of Facebook marking the rise of social media (2004)",
-  "The Coronation of Napoleon Bonaparte in Notre-Dame (1804)",
-  "The Assassination of John F. Kennedy in Dallas (1963)",
-  "The Opening Ceremony of the Beijing Olympics (2008)",
-  "The Release of Nelson Mandela from Prison (1990)",
-  "The Declaration of the People's Republic of China by Mao Zedong (1949)",
-  "The Abolition of Slavery in the British Empire (1833)",
-  "The Founding of the United Nations in San Francisco (1945)",
-  "The Opening of Japan by Commodore Perry (1853)",
-  "The Election of Barack Obama as U.S. President (2008)",
-  "The Unification of Germany under Otto von Bismarck (1871)",
-  "The Haitian Declaration of Independence (1804)",
-  "The Election of Lech Wałęsa as President of Poland (1990)",
-  "The Bandung Conference of Non-Aligned Nations (1955)",
-  "The Establishment of the European Economic Community (1957)",
-  "The First UN General Assembly held in London (1946)"
+  "The Formation of the First Permanent Villages like Jericho (c. 8,000 BCE)"
 ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
