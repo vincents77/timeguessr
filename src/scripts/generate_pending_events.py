@@ -89,8 +89,6 @@ Required fields:
 - country
 - city (if any)
 - notable_location (if any)
-- caption (1–2 sentence clue or contextual enrichment that hints at or deepens the event, for display after the game round)
-- wiki_url (URL to the best matching Wikipedia article)
 
 Special instructions:
 - When generating the `prompt` field for the image, always follow this structure:
@@ -129,6 +127,16 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
+  "The Emergence of Homo Sapiens in Africa (c. 300,000 BCE)",
+  "The First Use of Fire by Early Humans (c. 1,000,000 BCE)",
+  "The Migration of Humans Out of Africa (c. 70,000 BCE)",
+  "The Development of Stone Tools in the Oldowan Tradition (c. 2,600,000 BCE)",
+  "The Cave Paintings of Lascaux in France (c. 17,000 BCE)",
+  "The Domestication of Dogs from Wolves (c. 15,000 BCE)",
+  "The End of the Last Ice Age and the Start of the Holocene (c. 11,700 BCE)",
+  "The Invention of Agriculture in the Fertile Crescent (c. 9,000 BCE)",
+  "The Construction of Göbekli Tepe in Anatolia (c. 9,500 BCE)",
+  "The Formation of the First Permanent Villages like Jericho (c. 8,000 BCE)",
   "The Storming of the Winter Palace during the Russian Revolution (1917)",
   "The Dropping of the Atomic Bomb on Hiroshima (1945)",
   "The Signing of the Maastricht Treaty establishing the EU (1992)",
@@ -178,9 +186,7 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
         "city": raw.get("city", ""),
         "notable_location": raw.get("notable_location", ""),
         "era": era_match["era"],
-        "era_id": era_match["era_id"],
-        "caption": raw.get("caption", ""),
-        "wiki_url": raw.get("wiki_url", "") 
+        "era_id": era_match["era_id"]
     }
 
 def save_event_locally(event: dict, output_file="pending_events.json"):

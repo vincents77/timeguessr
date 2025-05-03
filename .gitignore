@@ -27,3 +27,4 @@ dist-ssr
 # Ignore macOS and Python temp files
 .DS_Store
 __pycache__/
+__pycache__/
