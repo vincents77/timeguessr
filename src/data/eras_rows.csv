@@ -1,70 +1,108 @@
-id,created_at,label,region,start,end,country,duration
-27,2025-04-25 14:40:38.328042+00,Colonial Africa,Africa,1880,1960,General,80
-28,2025-04-25 14:40:38.328042+00,Decolonization of Africa,Africa,1950,1980,General,30
-29,2025-04-25 14:40:38.328042+00,Modern Africa,Africa,1980,2025,General,45
-50,2025-04-25 14:40:38.328042+00,Pre-Columbian Americas,Americas,-3000,1492,General,4492
-51,2025-04-25 14:40:38.328042+00,Colonial Americas,Americas,1492,1776,General,284
-52,2025-04-25 14:40:38.328042+00,American Revolution,Americas,1776,1789,USA,13
-53,2025-04-25 14:40:38.328042+00,Early USA,Americas,1789,1865,USA,76
-54,2025-04-25 14:40:38.328042+00,Industrial USA,Americas,1865,1914,USA,49
-63,2025-04-25 14:40:38.328042+00,Modern Latin America,Americas,1900,2025,General,125
-55,2025-04-25 14:40:38.328042+00,World Wars USA,Americas,1914,1945,USA,31
-56,2025-04-25 14:40:38.328042+00,Cold War USA,Americas,1945,1991,USA,46
-57,2025-04-25 14:40:38.328042+00,Modern USA,Americas,1991,2025,USA,34
-36,2025-04-25 14:40:38.328042+00,Classical China,East Asia,-2100,220,China,2320
-37,2025-04-25 14:40:38.328042+00,Three Kingdoms to Tang Dynasty,East Asia,220,907,China,687
-43,2025-04-25 14:40:38.328042+00,Classical Japan,East Asia,250,1185,Japan,935
-38,2025-04-25 14:40:38.328042+00,Song to Yuan Dynasties,East Asia,960,1368,China,408
-44,2025-04-25 14:40:38.328042+00,Feudal Japan,East Asia,1185,1868,Japan,683
-39,2025-04-25 14:40:38.328042+00,Ming Dynasty,East Asia,1368,1644,China,276
-40,2025-04-25 14:40:38.328042+00,Qing Dynasty,East Asia,1644,1912,China,268
-45,2025-04-25 14:40:38.328042+00,Meiji Restoration,East Asia,1868,1912,Japan,44
-41,2025-04-25 14:40:38.328042+00,Republic of China,East Asia,1912,1949,China,37
-46,2025-04-25 14:40:38.328042+00,Taisho Era,East Asia,1912,1926,Japan,14
-47,2025-04-25 14:40:38.328042+00,Showa Era,East Asia,1926,1989,Japan,63
-42,2025-04-25 14:40:38.328042+00,People's Republic of China,East Asia,1949,2025,China,76
-48,2025-04-25 14:40:38.328042+00,Heisei Era,East Asia,1989,2019,Japan,30
-49,2025-04-25 14:40:38.328042+00,Reiwa Era,East Asia,2019,2025,Japan,6
-14,2025-04-25 14:40:38.328042+00,Ancient Greece,Europe,-1200,-146,Greece,1054
-15,2025-04-25 14:40:38.328042+00,Roman Republic,Europe,-509,-27,Italy,482
-16,2025-04-25 14:40:38.328042+00,Roman Empire,Europe,-27,476,Italy,503
-17,2025-04-25 14:40:38.328042+00,Byzantine Empire,Europe,330,1453,Turkey,1123
-18,2025-04-25 14:40:38.328042+00,Medieval Europe,Europe,476,1492,General,1016
-19,2025-04-25 14:40:38.328042+00,Renaissance Europe,Europe,1300,1600,General,300
-20,2025-04-25 14:40:38.328042+00,Age of Exploration,Europe,1400,1700,General,300
-21,2025-04-25 14:40:38.328042+00,Industrial Revolution,Europe,1760,1914,General,154
-22,2025-04-25 14:40:38.328042+00,World War I,Europe,1914,1918,General,4
-23,2025-04-25 14:40:38.328042+00,Interwar Period,Europe,1918,1939,General,21
-24,2025-04-25 14:40:38.328042+00,World War II,Europe,1939,1945,General,6
-25,2025-04-25 14:40:38.328042+00,Cold War Europe,Europe,1945,1991,General,46
-26,2025-04-25 14:40:38.328042+00,European Union Era,Europe,1991,2025,General,34
-58,2025-04-25 14:40:38.328042+00,Global Cold War,Global,1945,1991,Global,46
-60,2025-04-25 14:40:38.328042+00,Globalization Era,Global,1980,2025,Global,45
-59,2025-04-25 14:40:38.328042+00,Information Age,Global,1990,2025,Global,35
-61,2025-04-25 14:40:38.328042+00,Climate Crisis Era,Global,2000,2025,Global,25
-7,2025-04-25 14:40:38.328042+00,Ancient Mesopotamia,Middle East,-3500,-539,Iraq,2961
-8,2025-04-25 14:40:38.328042+00,Achaemenid Persia,Middle East,-550,-330,Iran,220
-9,2025-04-25 14:40:38.328042+00,Parthian Empire,Middle East,-247,224,Iran,471
-10,2025-04-25 14:40:38.328042+00,Sassanid Empire,Middle East,224,651,Iran,427
-11,2025-04-25 14:40:38.328042+00,Islamic Golden Age,Middle East,750,1258,General,508
-12,2025-04-25 14:40:38.328042+00,Ottoman Empire,Middle East,1299,1922,Turkey,623
-13,2025-04-25 14:40:38.328042+00,Modern Turkey,Middle East,1923,2025,Turkey,102
-62,2025-04-25 14:40:38.328042+00,Post-Colonial Middle East,Middle East,1945,2025,General,80
-1,2025-04-25 14:40:38.328042+00,Ancient Egypt,North Africa,-3000,-332,Egypt,2668
-2,2025-04-25 14:40:38.328042+00,Hellenistic Egypt,North Africa,-332,641,Egypt,973
-3,2025-04-25 14:40:38.328042+00,Medieval Egypt,North Africa,641,1517,Egypt,876
-4,2025-04-25 14:40:38.328042+00,Ottoman Egypt,North Africa,1517,1867,Egypt,350
-5,2025-04-25 14:40:38.328042+00,Modern Egypt,North Africa,1867,1952,Egypt,85
-6,2025-04-25 14:40:38.328042+00,Republican Egypt,North Africa,1952,2025,Egypt,73
-64,2025-04-25 14:40:38.328042+00,Modern Oceania,Oceania,1900,2025,General,125
-30,2025-04-25 14:40:38.328042+00,Ancient India,South Asia,-2500,500,India,3000
-31,2025-04-25 14:40:38.328042+00,Classical India,South Asia,500,1200,India,700
-32,2025-04-25 14:40:38.328042+00,Medieval India,South Asia,1200,1526,India,326
-33,2025-04-25 14:40:38.328042+00,Mughal Empire,South Asia,1526,1857,India,331
-34,2025-04-25 14:40:38.328042+00,British Raj,South Asia,1858,1947,India,89
-35,2025-04-25 14:40:38.328042+00,Independent India,South Asia,1947,2025,India,78
-101,2025-05-04 05:40:38.328042+00,Lower Paleolithic,Global,-3000000,-300000,General,2700000
-102,2025-05-04 05:40:38.328042+00,Middle Paleolithic,Global,-300000,-50000,General,250000
-103,2025-05-04 05:40:38.328042+00,Upper Paleolithic,Global,-50000,-10000,General,40000
-104,2025-05-04 05:40:38.328042+00,Mesolithic,Global,-10000,-8000,General,2000
-105,2025-05-04 05:40:38.328042+00,Neolithic,Global,-8000,-3000,General,5000
+id,label,region,start,end,country,duration,created_at
+201,Modern United States & Canada,Americas,1900,2100,United States,,2025-05-04T08:55:32.124617+00:00
+202,Modern United States & Canada,Americas,1900,2100,Canada,,2025-05-04T08:55:32.124617+00:00
+211,Modern Latin America,Americas,1900,2100,Mexico,,2025-05-04T08:55:32.124617+00:00
+212,Modern Latin America,Americas,1900,2100,Brazil,,2025-05-04T08:55:32.124617+00:00
+213,Modern Latin America,Americas,1900,2100,Argentina,,2025-05-04T08:55:32.124617+00:00
+214,Modern Latin America,Americas,1900,2100,Chile,,2025-05-04T08:55:32.124617+00:00
+215,Modern Latin America,Americas,1900,2100,Colombia,,2025-05-04T08:55:32.124617+00:00
+216,Modern Latin America,Americas,1900,2100,Peru,,2025-05-04T08:55:32.124617+00:00
+217,Modern Latin America,Americas,1900,2100,Venezuela,,2025-05-04T08:55:32.124617+00:00
+218,Modern Latin America,Americas,1900,2100,Cuba,,2025-05-04T08:55:32.124617+00:00
+219,Modern Latin America,Americas,1900,2100,Dominican Republic,,2025-05-04T08:55:32.124617+00:00
+220,Modern Latin America,Americas,1900,2100,Uruguay,,2025-05-04T08:55:32.124617+00:00
+221,Modern Latin America,Americas,1900,2100,Paraguay,,2025-05-04T08:55:32.124617+00:00
+222,Modern Latin America,Americas,1900,2100,Ecuador,,2025-05-04T08:55:32.124617+00:00
+223,Modern Latin America,Americas,1900,2100,Guatemala,,2025-05-04T08:55:32.124617+00:00
+224,Modern Latin America,Americas,1900,2100,El Salvador,,2025-05-04T08:55:32.124617+00:00
+225,Modern Latin America,Americas,1900,2100,Honduras,,2025-05-04T08:55:32.124617+00:00
+226,Modern Latin America,Americas,1900,2100,Nicaragua,,2025-05-04T08:55:32.124617+00:00
+227,Modern Latin America,Americas,1900,2100,Panama,,2025-05-04T08:55:32.124617+00:00
+228,Modern Latin America,Americas,1900,2100,Costa Rica,,2025-05-04T08:55:32.124617+00:00
+229,Modern Latin America,Americas,1900,2100,Bolivia,,2025-05-04T08:55:32.124617+00:00
+230,Prehistoric Africa,Africa,-3000000,-10000,,2989990,2025-05-04T09:13:53.283446+00:00
+231,Early Human Civilizations (Africa),Africa,-10000,500,,10500,2025-05-04T09:13:53.283446+00:00
+232,Contemporary Asia,Asia,2000,2100,,100,2025-05-04T09:13:53.283446+00:00
+233,Modern Middle East,Middle East,1500,2000,,500,2025-05-04T09:13:53.283446+00:00
+234,Contemporary Middle East,Middle East,2000,2100,,100,2025-05-04T09:13:53.283446+00:00
+235,19th Century United States,Americas,1800,1900,United States,100,2025-05-04T09:13:53.283446+00:00
+245,Agricultural & Neolithic Asia,Asia,-10000,-3000,,7000,2025-05-04T09:37:06.293549+00:00
+246,Medieval Africa,Africa,800,1500,,700,2025-05-04T09:37:06.293549+00:00
+247,19th Century Asia,Asia,1800,1900,,100,2025-05-04T09:37:06.293549+00:00
+1,Ancient Egypt,North Africa,-3000,-332,Egypt,2668,2025-04-25T14:40:38.328042+00:00
+2,Hellenistic Egypt,North Africa,-332,641,Egypt,973,2025-04-25T14:40:38.328042+00:00
+3,Medieval Egypt,North Africa,641,1517,Egypt,876,2025-04-25T14:40:38.328042+00:00
+4,Ottoman Egypt,North Africa,1517,1867,Egypt,350,2025-04-25T14:40:38.328042+00:00
+5,Modern Egypt,North Africa,1867,1952,Egypt,85,2025-04-25T14:40:38.328042+00:00
+6,Republican Egypt,North Africa,1952,2025,Egypt,73,2025-04-25T14:40:38.328042+00:00
+7,Ancient Mesopotamia,Middle East,-3500,-539,Iraq,2961,2025-04-25T14:40:38.328042+00:00
+8,Achaemenid Persia,Middle East,-550,-330,Iran,220,2025-04-25T14:40:38.328042+00:00
+9,Parthian Empire,Middle East,-247,224,Iran,471,2025-04-25T14:40:38.328042+00:00
+10,Sassanid Empire,Middle East,224,651,Iran,427,2025-04-25T14:40:38.328042+00:00
+11,Islamic Golden Age,Middle East,750,1258,General,508,2025-04-25T14:40:38.328042+00:00
+12,Ottoman Empire,Middle East,1299,1922,Turkey,623,2025-04-25T14:40:38.328042+00:00
+13,Modern Turkey,Middle East,1923,2025,Turkey,102,2025-04-25T14:40:38.328042+00:00
+14,Ancient Greece,Europe,-1200,-146,Greece,1054,2025-04-25T14:40:38.328042+00:00
+15,Roman Republic,Europe,-509,-27,Italy,482,2025-04-25T14:40:38.328042+00:00
+16,Roman Empire,Europe,-27,476,Italy,503,2025-04-25T14:40:38.328042+00:00
+17,Byzantine Empire,Europe,330,1453,Turkey,1123,2025-04-25T14:40:38.328042+00:00
+18,Medieval Europe,Europe,476,1492,General,1016,2025-04-25T14:40:38.328042+00:00
+19,Renaissance Europe,Europe,1300,1600,General,300,2025-04-25T14:40:38.328042+00:00
+20,Age of Exploration,Europe,1400,1700,General,300,2025-04-25T14:40:38.328042+00:00
+21,Industrial Revolution,Europe,1760,1914,General,154,2025-04-25T14:40:38.328042+00:00
+22,World War I,Europe,1914,1918,General,4,2025-04-25T14:40:38.328042+00:00
+23,Interwar Period,Europe,1918,1939,General,21,2025-04-25T14:40:38.328042+00:00
+24,World War II,Europe,1939,1945,General,6,2025-04-25T14:40:38.328042+00:00
+25,Cold War Europe,Europe,1945,1991,General,46,2025-04-25T14:40:38.328042+00:00
+26,European Union Era,Europe,1991,2025,General,34,2025-04-25T14:40:38.328042+00:00
+27,Colonial Africa,Africa,1880,1960,General,80,2025-04-25T14:40:38.328042+00:00
+28,Decolonization of Africa,Africa,1950,1980,General,30,2025-04-25T14:40:38.328042+00:00
+29,Modern Africa,Africa,1980,2025,General,45,2025-04-25T14:40:38.328042+00:00
+30,Ancient India,South Asia,-2500,500,India,3000,2025-04-25T14:40:38.328042+00:00
+31,Classical India,South Asia,500,1200,India,700,2025-04-25T14:40:38.328042+00:00
+32,Medieval India,South Asia,1200,1526,India,326,2025-04-25T14:40:38.328042+00:00
+33,Mughal Empire,South Asia,1526,1857,India,331,2025-04-25T14:40:38.328042+00:00
+34,British Raj,South Asia,1858,1947,India,89,2025-04-25T14:40:38.328042+00:00
+35,Independent India,South Asia,1947,2025,India,78,2025-04-25T14:40:38.328042+00:00
+36,Classical China,East Asia,-2100,220,China,2320,2025-04-25T14:40:38.328042+00:00
+37,Three Kingdoms to Tang Dynasty,East Asia,220,907,China,687,2025-04-25T14:40:38.328042+00:00
+38,Song to Yuan Dynasties,East Asia,960,1368,China,408,2025-04-25T14:40:38.328042+00:00
+39,Ming Dynasty,East Asia,1368,1644,China,276,2025-04-25T14:40:38.328042+00:00
+40,Qing Dynasty,East Asia,1644,1912,China,268,2025-04-25T14:40:38.328042+00:00
+41,Republic of China,East Asia,1912,1949,China,37,2025-04-25T14:40:38.328042+00:00
+42,People's Republic of China,East Asia,1949,2025,China,76,2025-04-25T14:40:38.328042+00:00
+43,Classical Japan,East Asia,250,1185,Japan,935,2025-04-25T14:40:38.328042+00:00
+44,Feudal Japan,East Asia,1185,1868,Japan,683,2025-04-25T14:40:38.328042+00:00
+45,Meiji Restoration,East Asia,1868,1912,Japan,44,2025-04-25T14:40:38.328042+00:00
+46,Taisho Era,East Asia,1912,1926,Japan,14,2025-04-25T14:40:38.328042+00:00
+47,Showa Era,East Asia,1926,1989,Japan,63,2025-04-25T14:40:38.328042+00:00
+48,Heisei Era,East Asia,1989,2019,Japan,30,2025-04-25T14:40:38.328042+00:00
+49,Reiwa Era,East Asia,2019,2025,Japan,6,2025-04-25T14:40:38.328042+00:00
+50,Pre-Columbian Americas,Americas,-3000,1492,General,4492,2025-04-25T14:40:38.328042+00:00
+51,Colonial Americas,Americas,1492,1776,General,284,2025-04-25T14:40:38.328042+00:00
+52,American Revolution,Americas,1776,1789,USA,13,2025-04-25T14:40:38.328042+00:00
+53,Early USA,Americas,1789,1865,USA,76,2025-04-25T14:40:38.328042+00:00
+54,Industrial USA,Americas,1865,1914,USA,49,2025-04-25T14:40:38.328042+00:00
+55,World Wars USA,Americas,1914,1945,USA,31,2025-04-25T14:40:38.328042+00:00
+56,Cold War USA,Americas,1945,1991,USA,46,2025-04-25T14:40:38.328042+00:00
+57,Modern USA,Americas,1991,2025,USA,34,2025-04-25T14:40:38.328042+00:00
+58,Global Cold War,Global,1945,1991,Global,46,2025-04-25T14:40:38.328042+00:00
+59,Information Age,Global,1990,2025,Global,35,2025-04-25T14:40:38.328042+00:00
+60,Globalization Era,Global,1980,2025,Global,45,2025-04-25T14:40:38.328042+00:00
+61,Climate Crisis Era,Global,2000,2025,Global,25,2025-04-25T14:40:38.328042+00:00
+62,Post-Colonial Middle East,Middle East,1945,2025,General,80,2025-04-25T14:40:38.328042+00:00
+64,Modern Oceania,Oceania,1900,2025,General,125,2025-04-25T14:40:38.328042+00:00
+101,Lower Paleolithic,Global,-3000000,-300000,General,2700000,2025-05-04T06:43:29.097107+00:00
+102,Middle Paleolithic,Global,-300000,-50000,General,250000,2025-05-04T06:43:29.097107+00:00
+103,Upper Paleolithic,Global,-50000,-10000,General,40000,2025-05-04T06:43:29.097107+00:00
+105,Neolithic,Global,-8000,-3000,Global,5000,2025-05-04T06:43:29.097107+00:00
+104,Mesolithic,Global,-10000,-8000,Global,2000,2025-05-04T06:43:29.097107+00:00
+236,Upper Paleolithic Europe,Europe,-40000,-10000,,30000,2025-05-04T09:28:16.026221+00:00
+237,Neolithic and Bronze Age Europe,Europe,-10000,-1000,,9000,2025-05-04T09:28:16.026221+00:00
+238,Classical and Roman Europe,Europe,-1000,500,,1500,2025-05-04T09:28:16.026221+00:00
+239,Medieval Europe,Europe,500,1500,,1000,2025-05-04T09:28:16.026221+00:00
+240,Neolithic Fertile Crescent,Middle East,-10000,-3000,,7000,2025-05-04T09:28:16.026221+00:00
+241,Bronze Age Mesopotamia,Middle East,-3000,-1200,,1800,2025-05-04T09:28:16.026221+00:00
+242,Iron Age and Classical Middle East,Middle East,-1200,500,,1700,2025-05-04T09:28:16.026221+00:00
+243,Medieval Islamic World,Middle East,500,1500,,1000,2025-05-04T09:28:16.026221+00:00
+244,Modern Asia,Asia,1900,2000,,100,2025-05-04T09:28:16.026221+00:00
