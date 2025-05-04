@@ -63,4 +63,8 @@ id,created_at,label,region,start,end,country,duration
 33,2025-04-25 14:40:38.328042+00,Mughal Empire,South Asia,1526,1857,India,331
 34,2025-04-25 14:40:38.328042+00,British Raj,South Asia,1858,1947,India,89
 35,2025-04-25 14:40:38.328042+00,Independent India,South Asia,1947,2025,India,78
-100,2025-05-03 14:40:38.328042+00,Prehistoric,Global,-3000000,-3000,General,2997000
+101,2025-05-04 05:40:38.328042+00,Lower Paleolithic,Global,-3000000,-300000,General,2700000
+102,2025-05-04 05:40:38.328042+00,Middle Paleolithic,Global,-300000,-50000,General,250000
+103,2025-05-04 05:40:38.328042+00,Upper Paleolithic,Global,-50000,-10000,General,40000
+104,2025-05-04 05:40:38.328042+00,Mesolithic,Global,-10000,-8000,General,2000
+105,2025-05-04 05:40:38.328042+00,Neolithic,Global,-8000,-3000,General,5000
