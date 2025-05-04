@@ -310,14 +310,12 @@ export default function TimeGuessrGame() {
 
   const startGame = async () => {
     const effectivePlayerName = sessionStorage.getItem("playerName") || playerName || "Anonymous";
-
-  
     sessionStorage.setItem("playerName", effectivePlayerName);
   
     let activeSessionId = sessionStorage.getItem("sessionId");
   
     if (!activeSessionId) {
-      const newId = await createNewSession(effectivePlayerName); // pass explicitly
+      const newId = await createNewSession(effectivePlayerName);
       if (!newId) return;
       sessionStorage.setItem("sessionId", newId);
       setSessionId(newId);
@@ -326,32 +324,35 @@ export default function TimeGuessrGame() {
       setSessionId(activeSessionId);
     }
   
-    // Then continue game start...
     let results = events;
-    let playedSlugs = new Set();
-    try {
-      const storedPlayed = JSON.parse(sessionStorage.getItem('playedSlugs'));
-      if (Array.isArray(storedPlayed)) {
-        playedSlugs = new Set(storedPlayed);
-      }
-    } catch (e) {
-      console.error('Error loading playedSlugs from sessionStorage:', e);
-    }
+  
+    // Apply filters
     if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
     if (selectedEra) results = results.filter(e => e.era === selectedEra);
     if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
-    results = results.filter(e => !playedSlugs.has(e.slug));
   
-    if (results.length === 0) {
-      alert("⚠️ No events match your filters. Adjust filters to continue.");
-      return;
+    // Fetch last 50 played slugs
+    const { data: recentResults, error } = await supabase
+      .from("results")
+      .select("slug")
+      .eq("player_name", effectivePlayerName)
+      .order("created_at", { ascending: false })
+      .limit(50);
+  
+    const recentSlugs = new Set((recentResults || []).map(r => r.slug));
+    const available = results.filter(e => !recentSlugs.has(e.slug));
+  
+    if (available.length === 0) {
+      alert("🎯 You've seen most of the matching events recently. Some may repeat.");
     }
   
-    const next = results[Math.floor(Math.random() * results.length)];
+    const finalPool = available.length > 0 ? available : results;
+    const next = finalPool[Math.floor(Math.random() * finalPool.length)];
+  
     setEvent(next);
     setSessionProgress({
       played: 0,
-      total: targetEvents || results.length
+      total: targetEvents || finalPool.length
     });
     setGuessCoords(null);
     setGuessYear('');
@@ -364,31 +365,33 @@ export default function TimeGuessrGame() {
     setRetryCount(0);
   };
 
-  const pickNextFilteredEvent = () => {
-    let playedSlugs = new Set();
-    try {
-      const storedPlayed = JSON.parse(sessionStorage.getItem('playedSlugs'));
-      if (Array.isArray(storedPlayed)) {
-        playedSlugs = new Set(storedPlayed);
-      }
-    } catch (e) {
-      console.error('Error loading playedSlugs from sessionStorage:', e);
-    }
+  const pickNextFilteredEvent = async () => {
+    let results = filteredEvents;
   
-    // Filter out already played events
-    const remaining = filteredEvents.filter(e => !playedSlugs.has(e.slug));
+    // Fetch last 50 played slugs
+    const { data: recentResults, error } = await supabase
+      .from("results")
+      .select("slug")
+      .eq("player_name", playerName)
+      .order("created_at", { ascending: false })
+      .limit(50);
+  
+    const recentSlugs = new Set((recentResults || []).map(r => r.slug));
+    const remaining = results.filter(e => !recentSlugs.has(e.slug));
+  
+    const finalPool = remaining.length > 0 ? remaining : results;
   
     if (remaining.length === 0) {
       const hasFilter = selectedTheme || selectedEra || selectedRegion;
       alert(
         hasFilter
-          ? "🎯 You've completed all matching events. Try adjusting the filters to explore more!"
-          : "🎯 You've played all available events for now. More will be added soon!"
+          ? "🎯 You've completed most recent events with these filters. Some may repeat."
+          : "🎯 You've seen most recent events. Some may repeat until new ones are added!"
       );
-      return;
     }
   
-    const next = remaining[Math.floor(Math.random() * remaining.length)];
+    const next = finalPool[Math.floor(Math.random() * finalPool.length)];
+  
     setEvent(next);
     setGuessCoords(null);
     setGuessYear('');
