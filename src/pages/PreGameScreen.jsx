@@ -34,8 +34,15 @@ export default function PreGameScreen() {
 
   return (
     <div className="p-8 max-w-xl mx-auto space-y-6 text-center">
-      <h1 className="text-3xl font-bold">🕰️ Welcome to TimeGuessr</h1>
-
+    <div className="space-y-1 animate-fade-in-up">
+        <h2 className="text-xl text-gray-600 tracking-wide">
+        Guess when. Guess where. Learn along the way.
+        </h2>
+        <h1 className="text-3xl font-bold text-black">
+        Welcome to MapThePast
+        </h1>
+    </div>
+  
       <div>
         <input
           className="border px-4 py-2 rounded w-full"
@@ -51,7 +58,7 @@ export default function PreGameScreen() {
         />
         {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
       </div>
-
+  
       <div className="space-y-2 text-left">
         {MODES.map((m) => (
           <label
@@ -71,14 +78,14 @@ export default function PreGameScreen() {
           </label>
         ))}
       </div>
-
+  
       <button
         onClick={handleSubmit}
         className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 w-full"
       >
         Start Playing
       </button>
-
+  
       <div className="mt-4 text-sm">
         <button onClick={() => navigate("/scoreboard")} className="underline text-blue-600">
           View Scoreboard

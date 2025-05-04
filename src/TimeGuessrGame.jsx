@@ -537,7 +537,7 @@ export default function TimeGuessrGame() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto space-y-6 relative overflow-hidden">
-      <h1 className="text-3xl font-bold mb-2">TimeGuessr</h1>
+      <h1 className="text-3xl font-bold mb-2">MapThePast</h1>
 
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         {/* Filters group */}
