@@ -130,32 +130,6 @@
     "wiki_url": "https://en.wikipedia.org/wiki/Berlin_Airlift"
   },
   {
-    "title": "The Construction of G\u00f6bekli Tepe in Anatolia",
-    "slug": "the-construction-of-g-bekli-tepe-in-anatolia",
-    "year": -9500,
-    "coords": [
-      37.2236,
-      38.9225
-    ],
-    "theme": "architecture & engineering",
-    "era": null,
-    "region": "Asia",
-    "notable_figures": "",
-    "visuals": "massive stone pillars with intricate carvings; workers using primitive tools; surrounding hilly landscape; early human settlements; ritualistic gatherings",
-    "prompt": "A highly detailed, photo-realistic image of The Construction of G\u00f6bekli Tepe in Anatolia as it might have appeared at the time. The scene includes massive stone pillars with intricate carvings, workers using primitive tools, surrounding hilly landscape, early human settlements, and ritualistic gatherings, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
-    "image_url": "/images/the-construction-of-g-bekli-tepe-in-anatolia.jpg",
-    "difficulty": 3,
-    "source": "AI-generated based on historical records",
-    "id": "53606f21-f99a-4564-bb70-d6364ac34550",
-    "country": "Turkey",
-    "city": "",
-    "notable_location": "G\u00f6bekli Tepe",
-    "era_id": 245,
-    "theme_id": 8,
-    "caption": "G\u00f6bekli Tepe, located in present-day Turkey, is one of the oldest known monumental structures, dating back to around 9,500 BCE. Its construction marks a significant development in prehistoric architecture and religious practices.",
-    "wiki_url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe"
-  },
-  {
     "title": "The meeting of Roosevelt, Churchill, and Stalin at the Yalta Conference",
     "slug": "the-meeting-of-roosevelt-churchill-and-stalin-at-the-yalta-conference",
     "year": 1945,
@@ -388,6 +362,32 @@
     "theme_id": 1,
     "caption": "The Battle of the Somme was one of the largest battles of World War I, marked by its unprecedented scale and the introduction of new military technology.",
     "wiki_url": "https://en.wikipedia.org/wiki/Battle_of_the_Somme"
+  },
+  {
+    "title": "The Construction of G\u00f6bekli Tepe in Anatolia",
+    "slug": "the-construction-of-g-bekli-tepe-in-anatolia",
+    "year": -9500,
+    "coords": [
+      37.2236,
+      38.9225
+    ],
+    "theme": "architecture & engineering",
+    "era": "Agricultural & Neolithic Asia",
+    "region": "Asia",
+    "notable_figures": "",
+    "visuals": "massive stone pillars with intricate carvings; workers using primitive tools; surrounding hilly landscape; early human settlements; ritualistic gatherings",
+    "prompt": "A highly detailed, photo-realistic image of The Construction of G\u00f6bekli Tepe in Anatolia as it might have appeared at the time. The scene includes massive stone pillars with intricate carvings, workers using primitive tools, surrounding hilly landscape, early human settlements, and ritualistic gatherings, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/the-construction-of-g-bekli-tepe-in-anatolia.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "id": "53606f21-f99a-4564-bb70-d6364ac34550",
+    "country": "Turkey",
+    "city": "",
+    "notable_location": "G\u00f6bekli Tepe",
+    "era_id": 245,
+    "theme_id": 8,
+    "caption": "G\u00f6bekli Tepe, located in present-day Turkey, is one of the oldest known monumental structures, dating back to around 9,500 BCE. Its construction marks a significant development in prehistoric architecture and religious practices.",
+    "wiki_url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe"
   },
   {
     "title": "The trial and execution of Louis XVI during the French Revolution",
@@ -3440,7 +3440,7 @@
       34.7818
     ],
     "theme": "diplomacy & international relations",
-    "era": null,
+    "era": "Modern Asia",
     "region": "Asia",
     "notable_figures": "Yitzhak Rabin, Shimon Peres, Yigal Amir",
     "visuals": "a large crowd at a peace rally; Yitzhak Rabin on stage; Tel Aviv cityscape in the background; security personnel; nighttime setting with stage lights",
@@ -3466,7 +3466,7 @@
       35.4433
     ],
     "theme": "architecture & engineering",
-    "era": null,
+    "era": "Agricultural & Neolithic Asia",
     "region": "Asia",
     "notable_figures": "",
     "visuals": "early stone structures; agricultural fields; people engaging in daily activities; domesticated animals; surrounding desert landscape",
@@ -3492,7 +3492,7 @@
       77.209
     ],
     "theme": "foundational political moments",
-    "era": null,
+    "era": "Modern Asia",
     "region": "Asia",
     "notable_figures": "Mahatma Gandhi, Jawaharlal Nehru, Muhammad Ali Jinnah, Lord Mountbatten",
     "visuals": "crowds of people migrating with their belongings; British colonial architecture; train stations filled with people; borders being drawn on maps; leaders in discussion",
@@ -3544,7 +3544,7 @@
       106.7009
     ],
     "theme": "wars & battles",
-    "era": null,
+    "era": "Modern Asia",
     "region": "Asia",
     "notable_figures": "Nguyen Van Thieu, Duong Van Minh, Gerald Ford",
     "visuals": "helicopters evacuating people from rooftops; crowds of people fleeing the city; North Vietnamese tanks entering the city; chaotic scenes at the US Embassy; iconic images of the last American helicopter leaving",
@@ -3622,7 +3622,7 @@
       86.925
     ],
     "theme": "exploration & discovery",
-    "era": null,
+    "era": "Modern Asia",
     "region": "Asia",
     "notable_figures": "Edmund Hillary, Tenzing Norgay",
     "visuals": "Edmund Hillary and Tenzing Norgay reaching the summit; snow-covered peak of Mount Everest; climbing gear from the 1950s; Himalayan landscape; prayer flags fluttering in the wind",
@@ -3674,7 +3674,7 @@
       107.6098
     ],
     "theme": "diplomacy & international relations",
-    "era": null,
+    "era": "Modern Asia",
     "region": "Asia",
     "notable_figures": "Jawaharlal Nehru, Sukarno, Gamal Abdel Nasser, Zhou Enlai, Josip Broz Tito",
     "visuals": "delegates from various countries in traditional and formal attire; conference hall with flags of participating nations; Sukarno delivering a speech; delegates engaging in discussions; traditional Indonesian architectural elements",
@@ -3700,7 +3700,7 @@
       108.2068
     ],
     "theme": "wars & battles",
-    "era": null,
+    "era": "Modern Asia",
     "region": "Asia",
     "notable_figures": "Ho Chi Minh, Vo Nguyen Giap, William Westmoreland",
     "visuals": "urban combat scenes; Vietnamese soldiers; ruined buildings; military vehicles; civilians in distress",
@@ -3726,7 +3726,7 @@
       51.389
     ],
     "theme": "social movements & protests",
-    "era": null,
+    "era": "Contemporary Asia",
     "region": "Asia",
     "notable_figures": "Mahsa Amini",
     "visuals": "women holding signs and banners; crowds gathered in a city square; traditional Iranian architecture in the background; police presence; women without hijabs",
@@ -3804,7 +3804,7 @@
       1.1659
     ],
     "theme": "art & culture",
-    "era": null,
+    "era": "Upper Paleolithic Europe",
     "region": "Europe",
     "notable_figures": "",
     "visuals": "prehistoric humans painting on cave walls; detailed depictions of animals like bulls and horses; primitive tools used for painting",
@@ -3830,7 +3830,7 @@
       38.7169
     ],
     "theme": "foundational political moments",
-    "era": null,
+    "era": "Early Human Civilizations (Africa)",
     "region": "Africa",
     "notable_figures": "King Ezana",
     "visuals": "ancient Aksumite architecture; trading caravans; royal court; stone obelisks; bustling marketplace",
@@ -3882,7 +3882,7 @@
       32.2903
     ],
     "theme": "migration & demographic change",
-    "era": null,
+    "era": "Prehistoric Africa",
     "region": "Africa",
     "notable_figures": "",
     "visuals": "early Homo sapiens engaging in daily activities; savannah landscape with diverse flora and fauna; primitive tools and fire usage; group of Homo sapiens interacting; natural shelters and caves",
@@ -3908,7 +3908,7 @@
       -111.9474
     ],
     "theme": "economic & industrial history",
-    "era": null,
+    "era": "19th Century United States",
     "region": "Americas",
     "notable_figures": "Leland Stanford, Grenville Dodge, Thomas Durant, Theodore Judah",
     "visuals": "workers laying tracks; steam locomotives; railroad construction tools; mountainous landscape; wooden trestle bridges",
@@ -3934,7 +3934,7 @@
       25.0
     ],
     "theme": "scientific & technological breakthroughs",
-    "era": null,
+    "era": "Prehistoric Africa",
     "region": "Africa",
     "notable_figures": "",
     "visuals": "early humans gathered around a fire; primitive tools scattered on the ground; a natural cave setting; smoke rising into the air; surrounding savannah landscape",
@@ -3960,7 +3960,7 @@
       105.423
     ],
     "theme": "natural disasters",
-    "era": null,
+    "era": "19th Century Asia",
     "region": "Asia",
     "notable_figures": "",
     "visuals": "massive volcanic eruption; ash clouds; tsunami waves; destruction of nearby settlements; darkened skies",
@@ -3986,7 +3986,7 @@
       25.0
     ],
     "theme": "migration & demographic change",
-    "era": null,
+    "era": "Prehistoric Africa",
     "region": "Africa",
     "notable_figures": "",
     "visuals": "groups of early humans traveling; diverse landscapes including savannah and forests; primitive tools and clothing; campfires; wildlife typical of the era",
@@ -4012,7 +4012,7 @@
       36.8219
     ],
     "theme": "scientific & technological breakthroughs",
-    "era": null,
+    "era": "Prehistoric Africa",
     "region": "Africa",
     "notable_figures": "",
     "visuals": "early humans crafting stone tools; savannah landscape; primitive shelters; wild animals in the background; stone flakes and cores",
@@ -4038,7 +4038,7 @@
       10.0
     ],
     "theme": "migration & demographic change",
-    "era": null,
+    "era": "Upper Paleolithic Europe",
     "region": "Europe",
     "notable_figures": "",
     "visuals": "early humans interacting with wolves; a campfire in a prehistoric setting; primitive shelters made of natural materials; wild wolves observing humans; early tools and hunting equipment",
@@ -4064,7 +4064,7 @@
       -77.0365
     ],
     "theme": "scientific & technological breakthroughs",
-    "era": null,
+    "era": "19th Century United States",
     "region": "Americas",
     "notable_figures": "Samuel Morse,Alfred Vail",
     "visuals": "telegraph machine; Samuel Morse operating the telegraph; wires stretching across a room; early 19th-century clothing; Washington D.C. interior setting",
@@ -4116,7 +4116,7 @@
       -87.5800695854912
     ],
     "theme": "scientific & technological breakthroughs",
-    "era": null,
+    "era": "19th Century United States",
     "region": "Americas",
     "notable_figures": "",
     "visuals": "Tesla standing beside electrical coils; brilliant arcs of electricity crossing the room; curious onlookers at the World's Columbian Exposition; early 20th-century exhibition hall interior",
@@ -4142,7 +4142,7 @@
       -8.0029
     ],
     "theme": "royalty & coronations",
-    "era": null,
+    "era": "Medieval Africa",
     "region": "Africa",
     "notable_figures": "Mansa Musa",
     "visuals": "Mansa Musa seated on a golden throne; richly adorned courtiers and advisors; bustling market scene with traders; grand architecture of Timbuktu; caravan of camels laden with gold",
@@ -4168,7 +4168,7 @@
       30.933
     ],
     "theme": "architecture & engineering",
-    "era": null,
+    "era": "Medieval Africa",
     "region": "Africa",
     "notable_figures": "",
     "visuals": "massive stone walls; conical towers; ancient pathways; traditional huts; lush surrounding landscape",
@@ -4194,7 +4194,7 @@
       -5.0003
     ],
     "theme": "architecture & engineering",
-    "era": null,
+    "era": "Medieval Africa",
     "region": "Africa",
     "notable_figures": "Fatima al-Fihri",
     "visuals": "workers laying bricks; architects with scrolls; scaffolding around the building; traditional Islamic architectural elements; bustling construction site",
@@ -4220,7 +4220,7 @@
       -74.0445
     ],
     "theme": "architecture & engineering",
-    "era": null,
+    "era": "19th Century United States",
     "region": "Americas",
     "notable_figures": "Grover Cleveland, Fr\u00e9d\u00e9ric Auguste Bartholdi, Gustave Eiffel",
     "visuals": "the Statue of Liberty towering over the harbor; a crowd of people in 1880s attire; boats and ships in the harbor; the skyline of New York City in the background; flags and banners celebrating the event",
@@ -4272,7 +4272,7 @@
       35.3333
     ],
     "theme": "wars & battles",
-    "era": null,
+    "era": "Medieval Islamic World",
     "region": "Middle East",
     "notable_figures": "Sultan Qutuz, Baibars",
     "visuals": "Mamluk cavalry charging; Mongol soldiers in combat; desert landscape; medieval armor and weapons; dust and chaos of battle",
@@ -4298,7 +4298,7 @@
       44.421
     ],
     "theme": "wars & battles",
-    "era": null,
+    "era": "Iron Age and Classical Middle East",
     "region": "Middle East",
     "notable_figures": "",
     "visuals": "Alexander the Great on a white horse; Babylonian citizens kneeling and reaching out; ancient Mesopotamian gate with lion reliefs; ziggurat in the background; Macedonian soldiers with spears and red cloaks",
@@ -4324,7 +4324,7 @@
       -82.5154
     ],
     "theme": "social movements & protests",
-    "era": null,
+    "era": "19th Century United States",
     "region": "Americas",
     "notable_figures": "Sojourner Truth",
     "visuals": "Sojourner Truth speaking passionately; audience of diverse women and men; 19th-century clothing; wooden podium; simple meeting hall interior",
@@ -4376,7 +4376,7 @@
       35.0818
     ],
     "theme": "wars & battles",
-    "era": null,
+    "era": "Medieval Islamic World",
     "region": "Middle East",
     "notable_figures": "Al-Ashraf Khalil, Henry II of Jerusalem",
     "visuals": "Crusader knights in battle; Mamluk forces storming the city; medieval city walls; burning buildings; siege weapons",
@@ -4402,7 +4402,7 @@
       -77.7446
     ],
     "theme": "wars & battles",
-    "era": null,
+    "era": "19th Century United States",
     "region": "Americas",
     "notable_figures": "George B. McClellan, Robert E. Lee",
     "visuals": "Union and Confederate soldiers in battle; smoke from cannon fire; Antietam Creek; Civil War-era uniforms; wooded landscape",
@@ -4428,7 +4428,7 @@
       -72.2852
     ],
     "theme": "foundational political moments",
-    "era": null,
+    "era": "Early USA",
     "region": "Americas",
     "notable_figures": "Jean-Jacques Dessalines, Alexandre P\u00e9tion, Henri Christophe",
     "visuals": "Jean-Jacques Dessalines reading the declaration; gathering of Haitian leaders; tropical landscape in the background; traditional 19th-century Haitian clothing; ceremonial setting with Haitian flags",
@@ -4454,7 +4454,7 @@
       43.6793
     ],
     "theme": "scientific & technological breakthroughs",
-    "era": null,
+    "era": "Agricultural & Neolithic Asia",
     "region": "Asia",
     "notable_figures": "",
     "visuals": "early farmers planting seeds; domesticated animals like sheep and goats; simple stone tools; wild grains being harvested; primitive irrigation systems",
