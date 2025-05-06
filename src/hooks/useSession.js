@@ -8,46 +8,74 @@ function logSupabaseError(context, error) {
   console.error(`❌ ${context}:`, error.message);
 }
 
+function getBroadEraFromYear(year) {
+  if (year <= -300000) return "1. Deep Prehistory";
+  if (year <= -100000) return "2. Early Prehistory";
+  if (year <= -3000) return "3. Late Prehistory";
+  if (year <= 500) return "4. Ancient World";
+  if (year <= 1500) return "5. Middle Ages";
+  if (year <= 1800) return "6. Early Modern Era";
+  if (year <= 1945) return "7. Industrial Age";
+  if (year <= 2000) return "8. 20th Century";
+  return "9. 21st Century";
+}
+
 export function useSession({
-    playerName,
-    selectedTheme,
-    selectedEra,
-    selectedRegion,
-    sessionId,
-    setSessionId,
-    setPlayedSlugs,
-    setHistory,
-    mode,
-    targetEvents,
-    history,
-  }) {
-    const createNewSession = useCallback(async (playerNameOverride) => {
-        const newSessionId = uuidv4();
-        const finalPlayerName = playerNameOverride || playerName || "Anonymous";
-      
-        const { error } = await supabase.from('sessions').insert([
-          {
-            id: newSessionId,
-            player_name: finalPlayerName,
-            started_at: new Date().toISOString(),
-            theme: selectedTheme || null,
-            era: selectedEra || null,
-            region: selectedRegion || null,
-            mode: mode || 'endless',
-            target_events: targetEvents || null,
-            status: 'active',
-            completed: false,
-          }
-        ]);
-      
-        if (error) {
-          logSupabaseError('Error creating session', error);
-          return null;
-        }
-      
-        localStorage.setItem('sessionId', newSessionId);
-        return newSessionId;
-      }, [playerName, selectedTheme, selectedEra, selectedRegion, mode, targetEvents]);
+  playerName,
+  selectedTheme,
+  selectedEra,
+  selectedRegion,
+  sessionId,
+  setSessionId,
+  setPlayedSlugs,
+  setHistory,
+  mode,
+  targetEvents,
+  history,
+}) {
+  const createNewSession = useCallback(async (playerNameOverride) => {
+    const newSessionId = uuidv4();
+    const finalPlayerName = playerNameOverride || playerName || "Anonymous";
+
+    // Default broad era
+    let broadEra = "all";
+
+    // Fetch era start year and calculate broad era
+    if (selectedEra) {
+      const { data: eraData, error } = await supabase
+        .from("eras")
+        .select("start")
+        .eq("id", selectedEra)
+        .single();
+
+      if (!error && eraData?.start != null) {
+        broadEra = getBroadEraFromYear(eraData.start);
+      }
+    }
+
+    const { error } = await supabase.from('sessions').insert([
+      {
+        id: newSessionId,
+        player_name: finalPlayerName,
+        started_at: new Date().toISOString(),
+        theme: selectedTheme || null,
+        broad_era: broadEra || null,
+        region: selectedRegion || null,
+        mode: mode || 'endless',
+        target_events: targetEvents || null,
+        status: 'active',
+        completed: false,
+      }
+    ]);
+
+    if (error) {
+      logSupabaseError('Error creating session', error);
+      return null;
+    }
+
+    localStorage.setItem('sessionId', newSessionId);
+    return newSessionId;
+  }, [playerName, selectedTheme, selectedEra, selectedRegion, mode, targetEvents]);
 
   const updateSessionProgress = useCallback(async (sessionId, history) => {
     if (!sessionId || !Array.isArray(history)) {
@@ -127,6 +155,7 @@ export function useSession({
         status: 'completed',
         player_name: playerNameOverride || 'Anonymous',
         theme: summarizeFilter(history.map(e => e.theme), selectedTheme),
+        broad_era: summarizeFilter(history.map(e => e.broad_era), null),
         era: summarizeFilter(history.map(e => e.era), selectedEra),
         region: summarizeFilter(history.map(e => e.region), selectedRegion),
       };

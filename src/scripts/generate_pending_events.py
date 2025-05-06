@@ -60,6 +60,26 @@ def match_era(year: int, region: str, eras_df: pd.DataFrame) -> dict:
         "era_id": int(selected["id"])
     }
 
+def get_broad_era_label(year: int) -> str:
+    if year <= -300000:
+        return "1. Deep Prehistory"
+    elif year <= -100000:
+        return "2. Early Prehistory"
+    elif year <= -3000:
+        return "3. Late Prehistory"
+    elif year <= 500:
+        return "4. Ancient World"
+    elif year <= 1500:
+        return "5. Middle Ages"
+    elif year <= 1800:
+        return "6. Early Modern Era"
+    elif year <= 1945:
+        return "7. Industrial Age"
+    elif year <= 2000:
+        return "8. 20th Century"
+    else:
+        return "9. 21st Century"
+
 def assign_theme(theme_label: str, theme_lookup: dict) -> dict:
     theme_label = theme_label.lower().strip()
     if theme_label not in theme_lookup:
@@ -169,7 +189,8 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
         "caption": raw.get("caption", ""),
         "wiki_url": raw.get("wiki_url", ""),
         "era": era_match["era"],
-        "era_id": era_match["era_id"]
+        "era_id": era_match["era_id"],
+        "broad_era": broad_era
     }
 
 def save_event_locally(event: dict, output_file="pending_events.json"):

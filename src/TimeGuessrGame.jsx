@@ -22,9 +22,20 @@ export default function TimeGuessrGame() {
   const [timerActive, setTimerActive] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [selectedTheme, setSelectedTheme] = useState('');
-  const [selectedEra, setSelectedEra] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedThemes, setSelectedThemes] = useState(() => {
+    const stored = sessionStorage.getItem("selectedThemes");
+    return stored ? JSON.parse(stored) : [];
+  });
+  
+  const [selectedBroadEras, setSelectedBroadEras] = useState(() => {
+    const stored = sessionStorage.getItem("selectedBroadEras");
+    return stored ? JSON.parse(stored) : [];
+  });
+  
+  const [selectedRegions, setSelectedRegions] = useState(() => {
+    const stored = sessionStorage.getItem("selectedRegions");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [retryCount, setRetryCount] = useState(0);
   const [lastEntry, setLastEntry] = useState(null);
   const [accepted, setAccepted] = useState(false);
@@ -47,7 +58,7 @@ export default function TimeGuessrGame() {
   const targetEventsRaw = sessionStorage.getItem('targetEvents');
   const targetEvents = targetEventsRaw ? Number(targetEventsRaw) : null;
   const [showFinalSummary, setShowFinalSummary] = useState(false);
-  
+
   useEffect(() => {
     setSessionId(null);
     sessionStorage.removeItem('sessionId');
@@ -73,52 +84,70 @@ export default function TimeGuessrGame() {
 
   useEffect(() => {
     async function fetchEvents() {
-      const { data, error } = await supabase.from('events').select('*');
+      const { data, error } = await supabase
+        .from('events')
+        .select('id, title, slug, year, coords, theme, era, region, notable_location, image_url, caption, wiki_url, broad_era, era_id, country, city, difficulty');
+
       if (error) {
         console.error('❌ Error fetching events:', error.message);
         return;
       }
-  
+
       const normalized = data.map((e) => {
         let coords = [0, 0];
-      
         try {
           if (Array.isArray(e.coords)) {
-            coords = e.coords.map(Number); // Ensure numeric
-          } else if (typeof e.coords === "string") {
+            coords = e.coords.map(Number);
+          } else if (typeof e.coords === 'string') {
             if (e.coords.trim().startsWith("[")) {
-              coords = JSON.parse(e.coords); // "[lat, lng]"
+              coords = JSON.parse(e.coords);
             } else {
-              const parts = e.coords.split(",").map(p => parseFloat(p.trim()));
+              const parts = e.coords.split(',').map(p => parseFloat(p.trim()));
               coords = parts;
             }
           }
         } catch (err) {
           console.warn(`⚠️ Could not parse coords for "${e.title}":`, e.coords, err);
         }
-      
+
         if (!Array.isArray(coords) || coords.length !== 2 || coords.some(isNaN)) {
           console.warn(`⚠️ Malformed coords for "${e.title}":`, coords);
-          coords = [0, 0]; // fallback
+          coords = [0, 0];
         }
-      
+
         return { ...e, coords };
       });
-  
+
       setEvents(normalized);
-      setFilteredEvents(normalized);
     }
-  
     fetchEvents();
   }, []);
 
   useEffect(() => {
+    console.log('Selected filters:', { selectedThemes, selectedRegions, selectedBroadEras });
+
     let results = events;
-    if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
-    if (selectedEra) results = results.filter(e => e.era === selectedEra);
-    if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
+    if (selectedThemes.length > 0) {
+      results = results.filter(e => selectedThemes.includes(e.theme));
+    }
+  
+    if (selectedBroadEras.length > 0) {
+      results = results.filter(e => selectedBroadEras.includes(e.broad_era));
+    }
+  
+    if (selectedRegions.length > 0) {
+      results = results.filter(e => selectedRegions.includes(e.region));
+    }
+  
+    console.log("🎛️ Filtering with:", {
+      selectedThemes,
+      selectedBroadEras,
+      selectedRegions,
+      resultCount: results.length
+    });
+  
     setFilteredEvents(results);
-  }, [selectedTheme, selectedEra, selectedRegion, events]);
+  }, [events, selectedThemes, selectedBroadEras, selectedRegions]);
 
   useEffect(() => {
     if (timerActive && !submitted && timeLeft > 0) {
@@ -126,7 +155,12 @@ export default function TimeGuessrGame() {
       return () => clearInterval(interval);
     }
   }, [timeLeft, timerActive, submitted]);
-
+  
+  useEffect(() => {
+    if (!gameStarted && filteredEvents.length > 0) {
+      startGame();
+    }
+  }, [filteredEvents]);
 
   const getDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = deg => deg * Math.PI / 180;
@@ -145,9 +179,9 @@ export default function TimeGuessrGame() {
     finalizeSession
   } = useSession({
     playerName,
-    selectedTheme,
-    selectedEra,
-    selectedRegion,
+    selectedThemes,
+    selectedBroadEras,
+    selectedRegions,
     sessionId,
     setSessionId,
     setPlayedSlugs,
@@ -312,8 +346,8 @@ export default function TimeGuessrGame() {
     const effectivePlayerName = sessionStorage.getItem("playerName") || playerName || "Anonymous";
     sessionStorage.setItem("playerName", effectivePlayerName);
   
+    // Setup sessionId if not already present
     let activeSessionId = sessionStorage.getItem("sessionId");
-  
     if (!activeSessionId) {
       const newId = await createNewSession(effectivePlayerName);
       if (!newId) return;
@@ -324,14 +358,17 @@ export default function TimeGuessrGame() {
       setSessionId(activeSessionId);
     }
   
-    let results = events;
+    // 🧪 Log selected filters for debug
+    console.log("🎛️ Starting game with filters:", {
+      selectedThemes,
+      selectedRegions,
+      selectedBroadEras,
+      filteredCount: filteredEvents.length,
+    });
   
-    // Apply filters
-    if (selectedTheme) results = results.filter(e => e.theme === selectedTheme);
-    if (selectedEra) results = results.filter(e => e.era === selectedEra);
-    if (selectedRegion) results = results.filter(e => e.region === selectedRegion);
+    let results = filteredEvents;
   
-    // Fetch last 50 played slugs
+    // Fetch last 50 played event slugs for this player
     const { data: recentResults, error } = await supabase
       .from("results")
       .select("slug")
@@ -341,6 +378,11 @@ export default function TimeGuessrGame() {
   
     const recentSlugs = new Set((recentResults || []).map(r => r.slug));
     const available = results.filter(e => !recentSlugs.has(e.slug));
+  
+    if (results.length === 0) {
+      alert("❌ No events match your selected filters. Please adjust and try again.");
+      return;
+    }
   
     if (available.length === 0) {
       alert("🎯 You've seen most of the matching events recently. Some may repeat.");
@@ -354,6 +396,7 @@ export default function TimeGuessrGame() {
       played: 0,
       total: targetEvents || finalPool.length
     });
+  
     setGuessCoords(null);
     setGuessYear('');
     setGuessPlace('');
@@ -382,7 +425,7 @@ export default function TimeGuessrGame() {
     const finalPool = remaining.length > 0 ? remaining : results;
   
     if (remaining.length === 0) {
-      const hasFilter = selectedTheme || selectedEra || selectedRegion;
+      const hasFilter = selectedThemes || selectedBroadEras || selectedRegions;
       alert(
         hasFilter
           ? "🎯 You've completed most recent events with these filters. Some may repeat."
@@ -542,48 +585,6 @@ export default function TimeGuessrGame() {
     <div className="p-6 max-w-6xl mx-auto space-y-6 relative overflow-hidden">
       <h1 className="text-3xl font-bold mb-2">MapThePast</h1>
 
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-        {/* Filters group */}
-        <div className="flex flex-wrap items-center gap-2">
-          <select className="border p-2 rounded" onChange={e => setSelectedTheme(e.target.value)}>
-            <option value="">All Themes</option>
-            {[...new Set(events.map(e => e.theme))].map(t => <option key={t}>{t}</option>)}
-          </select>
-
-          <select className="border p-2 rounded" onChange={e => setSelectedEra(e.target.value)}>
-            <option value="">All Eras</option>
-            {[...new Set(events.map(e => e.era))].map(t => <option key={t}>{t}</option>)}
-          </select>
-
-          <select className="border p-2 rounded" onChange={e => setSelectedRegion(e.target.value)}>
-            <option value="">All Regions</option>
-            {[...new Set(events.map(e => e.region))].map(t => <option key={t}>{t}</option>)}
-          </select>
-        </div>
-
-        <div className="flex items-center gap-4 min-w-[280px]">
-          <button
-            onClick={startGame}
-            className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 flex items-center gap-2"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 4l12 8-12 8z" />
-              </svg>Start Guessing
-          </button>
-          {gameStarted && (
-            <div className="flex-1 text-sm text-gray-600">
-              <div className="mb-1">Progress: {sessionProgress.played} / {sessionProgress.total}</div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${(sessionProgress.played / sessionProgress.total) * 100}%` }}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
       {event && gameStarted && (
   <>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[90vw] mx-auto">
@@ -667,84 +668,94 @@ export default function TimeGuessrGame() {
 )}
 
       {showModal && (
-        <GuessResultModal
-          event={event}
-          guessCoords={guessCoords}
-          guessYear={guessYear}
-          lastEntry={lastEntry}
-          retryCount={retryCount}
-          accepted={accepted}
-          revealMap={revealMap}
-          showFullCaption={showFullCaption}
-          setShowFullCaption={setShowFullCaption}
-          onRetry={() => {
-            setRetryCount(c => c + 1);
-            if (guessCoords) {
-              const dist = getDistance(...guessCoords, ...event.coords);
-              const zoom = distToZoom(dist * 2);
-              setRetryCenter(guessCoords);
-              setRetryZoom(zoom);
-              setShouldRecenter(true);
-            }
-            setSubmitted(false);
-            setTimeLeft(defaultTimer);
-            setTimerActive(true);
-            setShowModal(false);
-            setAccepted(false);
-            setRevealMap(false);
-          }}
-          onAccept={handleAcceptResult}
-          onRevealMap={() => setRevealMap(true)}
-          isLastRound={targetEvents && sessionProgress.played >= targetEvents}
-          onConfirmLastEvent={() => {
-            setShowModal(false);
-            setTimeout(() => setShowFinalSummary(true), 300); // Optional delay
-          }}
-          onPlayNext={() => {
-            if (targetEvents && history.length >= targetEvents) {
-              setShowModal(false); // Hide result modal first
-              setTimeout(() => setShowFinalSummary(true), 300); // Small delay to avoid flash
-              return;
-            }
-          
-            setLastEntry(null);
-            setShowModal(false);
-            setRevealMap(false);
-            setRetryCount(0);
-            pickNextFilteredEvent();
-          }}
-          onFinishSession={async () => {
-            await finalizeSession(sessionId, history, selectedTheme, selectedEra, selectedRegion, playerName);
-            logEvent('session_finalize_manual', { sessionId });
-            setLastEntry(null);
-            setShowModal(false);
-            setRevealMap(false);
-            setRetryCount(0);
-            setHistory([]);
-            setGameStarted(false);
-            navigate("/scoreboard");
-          }}
-          onEarlyExit={async () => {
-            await finalizeSession(sessionId, history, selectedTheme, selectedEra, selectedRegion, playerName);
-            logEvent('session_finalize_manual_early_exit', { sessionId });
-            setLastEntry(null);
-            setShowModal(false);
-            setRevealMap(false);
-            setRetryCount(0);
-            setHistory([]);
-            setGameStarted(false);
-            navigate("/scoreboard");
-          }}
-          IconLocation={IconLocation}
-          IconCalendar={IconCalendar}
-          IconTrophy={IconTrophy}
-          playerName={playerName}
-        />
-      )}
+        <>
+        {console.log("Rendering GuessResultModal", {
+          targetEvents,
+          sessionProgress,
+          isLastRound: targetEvents && sessionProgress.played >= targetEvents,
+        })}
+          <GuessResultModal
+            event={event}
+            guessCoords={guessCoords}
+            guessYear={guessYear}
+            lastEntry={lastEntry}
+            retryCount={retryCount}
+            accepted={accepted}
+            revealMap={revealMap}
+            showFullCaption={showFullCaption}
+            setShowFullCaption={setShowFullCaption}
+            onRetry={() => {
+              setRetryCount(c => c + 1);
+              if (guessCoords) {
+                const dist = getDistance(...guessCoords, ...event.coords);
+                const zoom = distToZoom(dist * 2);
+                setRetryCenter(guessCoords);
+                setRetryZoom(zoom);
+                setShouldRecenter(true);
+              }
+              setSubmitted(false);
+              setTimeLeft(defaultTimer);
+              setTimerActive(true);
+              setShowModal(false);
+              setAccepted(false);
+              setRevealMap(false);
+            }}
+            onAccept={handleAcceptResult}
+            onRevealMap={() => setRevealMap(true)}
+            isLastRound={targetEvents && sessionProgress.played >= targetEvents}
+            onConfirmLastEvent={() => {
+              setShowModal(false);
+              setTimeout(() => setShowFinalSummary(true), 300); // Optional delay
+            }}
+            onPlayNext={() => {
+              if (targetEvents && history.length >= targetEvents) {
+                setShowModal(false); // Hide result modal first
+                setTimeout(() => setShowFinalSummary(true), 300); // Small delay to avoid flash
+                return;
+              }
+            
+              setLastEntry(null);
+              setShowModal(false);
+              setRevealMap(false);
+              setRetryCount(0);
+              pickNextFilteredEvent();
+            }}
+            onFinishSession={async () => {
+              await finalizeSession(sessionId, history, selectedThemes, selectedBroadEras, selectedRegions, playerName);
+              logEvent('session_finalize_manual', { sessionId });
+              setLastEntry(null);
+              setShowModal(false);
+              setRevealMap(false);
+              setRetryCount(0);
+              setHistory([]);
+              setGameStarted(false);
+              navigate("/scoreboard");
+            }}
+            onEarlyExit={async () => {
+              await finalizeSession(sessionId, history, selectedThemes, selectedBroadEras, selectedRegions, playerName);
+              logEvent('session_finalize_manual_early_exit', { sessionId });
+              setLastEntry(null);
+              setShowModal(false);
+              setRevealMap(false);
+              setRetryCount(0);
+              setHistory([]);
+              setGameStarted(false);
+              navigate("/scoreboard");
+            }}
+            IconLocation={IconLocation}
+            IconCalendar={IconCalendar}
+            IconTrophy={IconTrophy}
+            playerName={playerName}
+            targetEvents={targetEvents}
+            sessionProgress={sessionProgress}
+            mode={mode}
+          />
+         </> 
+        )}
       {showFinalSummary && (
         <FinalSummaryModal
           onConfirm={async () => {
-            await finalizeSession(sessionId, history, selectedTheme, selectedEra, selectedRegion, playerName);
+            await finalizeSession(sessionId, history, selectedThemes, selectedBroadEras, selectedRegions, playerName);
             logEvent("session_finalize_auto", { sessionId });
             setShowFinalSummary(false);
             setHistory([]);

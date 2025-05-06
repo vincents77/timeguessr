@@ -17,8 +17,8 @@ export default function Scoreboard() {
     async function fetchSessions() {
       let query = supabase
         .from("sessions")
-        .select("id, player_name, total_points, total_events, started_at, theme, era, region, mode")
-        .not("total_points", "is", null);
+        .select("id, player_name, total_points, total_events, started_at, theme, era, broad_era, region, mode")
+        .not("total_points", "is", null); 
 
       if (selectedRange !== "all") {
         const today = new Date();
@@ -162,7 +162,7 @@ export default function Scoreboard() {
                     </td>
                     <td className="p-2 border">{session.total_points}</td>
                     <td className="p-2 border">{avg}</td>
-                    <td className="p-2 border">{getFiltersLabel(session.theme, session.era, session.region)}</td>
+                    <td className="p-2 border">{getFiltersLabel(session.theme, session.broad_era, session.region)}</td>
                   </tr>
                 );
               })}
