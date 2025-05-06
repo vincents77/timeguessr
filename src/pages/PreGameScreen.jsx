@@ -60,12 +60,12 @@ export default function PreGameScreen({ events = [] }) {
 
   useEffect(() => {
     if (filterMode === "random") {
-      setWarning(""); // No warnings needed for random mode
+      setWarning("");
       return;
     }
-  
+
     let filtered = events;
-  
+
     if (selectedThemes.length > 0) {
       filtered = filtered.filter(e => selectedThemes.includes(e.theme));
     }
@@ -75,7 +75,7 @@ export default function PreGameScreen({ events = [] }) {
     if (selectedRegions.length > 0) {
       filtered = filtered.filter(e => selectedRegions.includes(e.region));
     }
-  
+
     if (mode !== "endless") {
       const roundTarget = parseInt(mode);
       if (filtered.length < roundTarget) {
@@ -103,12 +103,12 @@ export default function PreGameScreen({ events = [] }) {
       setError("Please enter your name.");
       return;
     }
-  
+
     sessionStorage.setItem("playerName", playerName.trim());
     sessionStorage.setItem("mode", mode);
     sessionStorage.setItem("targetEvents", mode === "endless" ? "" : String(mode));
     sessionStorage.setItem("filterMode", filterMode);
-  
+
     if (filterMode === "random") {
       sessionStorage.setItem("selectedThemes", JSON.stringify([]));
       sessionStorage.setItem("selectedBroadEras", JSON.stringify([]));
@@ -118,7 +118,7 @@ export default function PreGameScreen({ events = [] }) {
       sessionStorage.setItem("selectedBroadEras", JSON.stringify(selectedEras));
       sessionStorage.setItem("selectedRegions", JSON.stringify(selectedRegions));
     }
-  
+
     navigate("/play");
   };
 
@@ -126,12 +126,12 @@ export default function PreGameScreen({ events = [] }) {
     ${selected ? "bg-purple-200 font-bold text-black" : "bg-gray-100 text-gray-800"}`;
 
   return (
-    <div className="p-8 max-w-xl mx-auto space-y-6 text-center">
-      <h2 className="text-gray-600 text-lg">Guess when. Guess where. Learn along the way.</h2>
-      <h1 className="text-3xl font-bold text-black">Welcome to MapThePast</h1>
+    <div className="p-4 sm:p-6 max-w-xl mx-auto space-y-6 text-center">
+      <h2 className="text-gray-600 text-base sm:text-lg">Guess when. Guess where. Learn along the way.</h2>
+      <h1 className="text-2xl sm:text-3xl font-bold text-black">Welcome to MapThePast</h1>
 
       <input
-        className="border px-4 py-2 rounded w-full"
+        className="border px-4 py-3 rounded w-full text-base"
         value={playerName}
         onChange={(e) => {
           setPlayerName(e.target.value);
@@ -141,12 +141,12 @@ export default function PreGameScreen({ events = [] }) {
       />
       {error && <div className="text-red-500 text-sm mt-1">{error}</div>}
 
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
         {MODES.map((m) => (
           <button
             key={m.value}
             onClick={() => setMode(m.value)}
-            className={`px-4 py-2 rounded-full border text-sm
+            className={`px-4 py-2 rounded-full border text-sm min-w-[96px]
               ${mode === m.value ? "bg-purple-200 font-bold text-black" : "bg-gray-100 text-gray-800"}`}
           >
             {m.label}
@@ -154,14 +154,14 @@ export default function PreGameScreen({ events = [] }) {
         ))}
       </div>
 
-      <div className="flex justify-center gap-3">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
         <button
           onClick={() => setFilterMode("random")}
-          className={`px-4 py-2 rounded-full border text-sm ${filterMode === "random" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
+          className={`px-4 py-2 rounded-full border text-sm min-w-[120px] ${filterMode === "random" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
         >🎲 Surprise Me</button>
         <button
           onClick={() => setFilterMode("manual")}
-          className={`px-4 py-2 rounded-full border text-sm ${filterMode === "manual" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
+          className={`px-4 py-2 rounded-full border text-sm min-w-[120px] ${filterMode === "manual" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
         >🎯 Select Topics</button>
       </div>
 
@@ -169,7 +169,7 @@ export default function PreGameScreen({ events = [] }) {
         <div className="space-y-4 text-left">
           <div>
             <h3 className="font-bold mb-2">Theme</h3>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap gap-2">
               {THEMES.map((t) => (
                 <button
                   key={t}
@@ -184,7 +184,7 @@ export default function PreGameScreen({ events = [] }) {
 
           <div>
             <h3 className="font-bold mb-2">Broad Era</h3>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap gap-2">
               {BROAD_ERAS.map((e) => (
                 <button
                   key={e}
@@ -199,7 +199,7 @@ export default function PreGameScreen({ events = [] }) {
 
           <div>
             <h3 className="font-bold mb-2">Region</h3>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap gap-2">
               {REGIONS.map((r) => (
                 <button
                   key={r}
@@ -218,7 +218,7 @@ export default function PreGameScreen({ events = [] }) {
 
       <button
         onClick={handleSubmit}
-        className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 w-full"
+        className="bg-black text-white px-4 py-3 text-base rounded hover:bg-gray-800 w-full"
       >
         Start Playing
       </button>

@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import PreGameScreen from "./pages/PreGameScreen";
 import TimeGuessrGame from "./TimeGuessrGame";
 import Scoreboard from "./pages/Scoreboard";
+import SessionSummary from "./pages/SessionSummary";
 
 export default function App() {
   const [events, setEvents] = useState([]);
@@ -24,6 +25,7 @@ export default function App() {
       <Route path="/" element={<PreGameScreen events={events} />} />
       <Route path="/play" element={<TimeGuessrGame events={events} />} />
       <Route path="/scoreboard" element={<Scoreboard />} />
+      <Route path="/summary" element={<SessionSummary />} />
     </Routes>
   );
 }
