@@ -27,6 +27,26 @@ if not openai.api_key:
 def slugify(text: str) -> str:
     return re.sub(r'[^a-z0-9]+', '-', text.lower().strip()).strip('-')
 
+def get_broad_era_label(year: int) -> str:
+    if year <= -300000:
+        return "1. Deep Prehistory"
+    elif year <= -100000:
+        return "2. Early Prehistory"
+    elif year <= -3000:
+        return "3. Late Prehistory"
+    elif year <= 500:
+        return "4. Ancient World"
+    elif year <= 1500:
+        return "5. Middle Ages"
+    elif year <= 1800:
+        return "6. Early Modern Era"
+    elif year <= 1945:
+        return "7. Industrial Age"
+    elif year <= 2000:
+        return "8. 20th Century"
+    else:
+        return "9. 21st Century"
+
 def normalize_coords(coords) -> list:
     """
     Ensures coords are always a proper [lat, lon] list.
@@ -127,37 +147,14 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-  "The Emergence of Homo Sapiens in Africa (c. 300,000 BCE)",
-  "The First Use of Fire by Early Humans (c. 1,000,000 BCE)",
-  "The Migration of Humans Out of Africa (c. 70,000 BCE)",
-  "The Development of Stone Tools in the Oldowan Tradition (c. 2,600,000 BCE)",
-  "The Cave Paintings of Lascaux in France (c. 17,000 BCE)",
-  "The Domestication of Dogs from Wolves (c. 15,000 BCE)",
-  "The End of the Last Ice Age and the Start of the Holocene (c. 11,700 BCE)",
-  "The Invention of Agriculture in the Fertile Crescent (c. 9,000 BCE)",
-  "The Construction of Göbekli Tepe in Anatolia (c. 9,500 BCE)",
-  "The Formation of the First Permanent Villages like Jericho (c. 8,000 BCE)",
-  "The Storming of the Winter Palace during the Russian Revolution (1917)",
-  "The Dropping of the Atomic Bomb on Hiroshima (1945)",
-  "The Signing of the Maastricht Treaty establishing the EU (1992)",
-  "The Moon Landing by Apollo 11 from the NASA headquarters (1969)",
-  "The Fall of the Twin Towers on September 11 (2001)",
-  "The Launch of Facebook marking the rise of social media (2004)",
-  "The Coronation of Napoleon Bonaparte in Notre-Dame (1804)",
-  "The Assassination of John F. Kennedy in Dallas (1963)",
-  "The Opening Ceremony of the Beijing Olympics (2008)",
-  "The Release of Nelson Mandela from Prison (1990)",
-  "The Declaration of the People's Republic of China by Mao Zedong (1949)",
-  "The Abolition of Slavery in the British Empire (1833)",
-  "The Founding of the United Nations in San Francisco (1945)",
-  "The Opening of Japan by Commodore Perry (1853)",
-  "The Election of Barack Obama as U.S. President (2008)",
-  "The Unification of Germany under Otto von Bismarck (1871)",
-  "The Haitian Declaration of Independence (1804)",
-  "The Election of Lech Wałęsa as President of Poland (1990)",
-  "The Bandung Conference of Non-Aligned Nations (1955)",
-  "The Establishment of the European Economic Community (1957)",
-  "The First UN General Assembly held in London (1946)"
+        "The Development of the Ancient City of Petra in Jordan",
+        "The Construction of the Akashi Kaikyo Bridge in Japan",
+        "The Building and Impact of the Trans-Siberian Railway",
+        "The Rise of the Songhai Empire and Architectural Achievements in West Africa",
+        "The Construction of the Petronas Towers in Malaysia",
+        "The Engineering Marvel of the Aswan Dam in Egypt",
+        "The Building of the Qutb Minar in India",
+        "The Establishment of the Meiji Restoration and Industrialization in Japan"
 ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
