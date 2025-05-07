@@ -163,10 +163,14 @@ def load_event_ideas():
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
     raw = call_gpt_generate_metadata(idea)
 
+    if "title" not in raw:
+        raise ValueError("Missing title in GPT response — cannot generate slug.")
+
     slug = slugify(raw["title"])
     era_match = match_era(raw["year"], raw["region"], eras_df)
     theme_info = assign_theme(raw["theme"], theme_lookup)
     normalized_coords = normalize_coords(raw["coords"])
+    broad_era_label = get_broad_era_label(raw["year"])
 
     return {
         "title": raw["title"],
@@ -185,8 +189,11 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
         "country": raw.get("country", "Unknown"),
         "city": raw.get("city", ""),
         "notable_location": raw.get("notable_location", ""),
+        "caption": raw.get("caption", ""),
+        "wiki_url": raw.get("wiki_url", ""),
         "era": era_match["era"],
-        "era_id": era_match["era_id"]
+        "era_id": era_match["era_id"],
+        "broad_era": broad_era_label
     }
 
 def save_event_locally(event: dict, output_file="pending_events.json"):
