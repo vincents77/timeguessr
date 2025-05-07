@@ -53,7 +53,7 @@ export default function TimeGuessrGame() {
   const [playedSlugs, setPlayedSlugs] = useState(new Set());
   const [sessionProgress, setSessionProgress] = useState({ played: 0, total: 0 });
   const [showFullCaption, setShowFullCaption] = useState(false);
-  const playerName = sessionStorage.getItem('playerName') || 'Anonymous';
+  const playerName = sessionStorage.getItem('playerName');
   const [mode, setMode] = useState(() => sessionStorage.getItem('mode') || 'endless');
   const targetEventsRaw = sessionStorage.getItem('targetEvents');
   const targetEvents = targetEventsRaw ? Number(targetEventsRaw) : null;
@@ -346,7 +346,13 @@ export default function TimeGuessrGame() {
   const totalScore = history.reduce((sum, entry) => sum + (entry.score || 0), 0);
 
   const startGame = async () => {
-    const effectivePlayerName = sessionStorage.getItem("playerName") || playerName || "Anonymous";
+    if (!playerName || playerName.trim() === "") {
+      alert("⚠️ Please enter a player name before starting the game.");
+      navigate("/"); // or redirect to your name input screen
+      return;
+    }
+  
+    const effectivePlayerName = playerName;
     sessionStorage.setItem("playerName", effectivePlayerName);
 
     // Setup sessionId if not already present
