@@ -5,6 +5,7 @@ import PreGameScreen from "./pages/PreGameScreen";
 import TimeGuessrGame from "./TimeGuessrGame";
 import Scoreboard from "./pages/Scoreboard";
 import SessionSummary from "./pages/SessionSummary";
+import IdeaModerationPanel from "./moderation/IdeaGeneratorTool";
 
 export default function App() {
   const [events, setEvents] = useState([]);
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/play" element={<TimeGuessrGame events={events} />} />
       <Route path="/scoreboard" element={<Scoreboard />} />
       <Route path="/summary" element={<SessionSummary />} />
+      <Route path="/moderation" element={<IdeaModerationPanel />} />
     </Routes>
   );
 }
