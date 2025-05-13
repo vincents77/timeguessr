@@ -177,7 +177,7 @@ export default function Scoreboard() {
             </div>
           )}
 
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-4 gap-4">
             <button
               onClick={() => {
                 localStorage.removeItem("sessionId");
@@ -191,6 +191,17 @@ export default function Scoreboard() {
               </svg>
               Guess Again
             </button>
+
+            {sessionStorage.getItem("playerName") && (
+              <button
+                onClick={() =>
+                  navigate(`/player-stats?player=${encodeURIComponent(sessionStorage.getItem("playerName"))}`)
+                }
+                className="bg-blue-100 hover:bg-blue-200 text-blue-900 font-medium px-4 py-2 rounded"
+              >
+                View My Stats
+              </button>
+            )}
           </div>
         </>
       )}

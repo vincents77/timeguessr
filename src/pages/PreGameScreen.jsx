@@ -158,11 +158,11 @@ export default function PreGameScreen({ events = [] }) {
         <button
           onClick={() => setFilterMode("random")}
           className={`px-4 py-2 rounded-full border text-sm min-w-[120px] ${filterMode === "random" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
-        >🎲 Surprise Me</button>
+        >Surprise Me</button>
         <button
           onClick={() => setFilterMode("manual")}
           className={`px-4 py-2 rounded-full border text-sm min-w-[120px] ${filterMode === "manual" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
-        >🎯 Select Topics</button>
+        >Select Topics</button>
       </div>
 
       {filterMode === "manual" && (
@@ -223,9 +223,18 @@ export default function PreGameScreen({ events = [] }) {
         Start Playing
       </button>
 
-      <div className="mt-4 text-sm">
-        <button onClick={() => navigate("/scoreboard")} className="underline text-blue-600">
+      <div className="mt-4 flex justify-center gap-3 flex-wrap">
+        <button
+          onClick={() => navigate("/scoreboard")}
+          className="px-4 py-2 rounded-full border text-sm bg-blue-100 hover:bg-blue-200"
+        >
           View Scoreboard
+        </button>
+        <button
+          onClick={() => navigate("/player-stats")}
+          className="px-4 py-2 rounded-full border text-sm bg-blue-100 hover:bg-blue-200"
+        >
+          View My Stats
         </button>
       </div>
     </div>
