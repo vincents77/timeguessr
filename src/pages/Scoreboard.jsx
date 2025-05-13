@@ -195,7 +195,7 @@ export default function Scoreboard() {
             {sessionStorage.getItem("playerName") && (
               <button
                 onClick={() =>
-                  navigate(`/player-stats?player=${encodeURIComponent(sessionStorage.getItem("playerName"))}`)
+                  navigate("/player-stats")
                 }
                 className="bg-blue-100 hover:bg-blue-200 text-blue-900 font-medium px-4 py-2 rounded"
               >
