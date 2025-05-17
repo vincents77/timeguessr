@@ -149,16 +149,15 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-  "The Emergence of Homo Sapiens in Africa (c. 300,000 BCE)",
-  "The First Use of Fire by Early Humans (c. 1,000,000 BCE)",
-  "The Migration of Humans Out of Africa (c. 70,000 BCE)",
-  "The Development of Stone Tools in the Oldowan Tradition (c. 2,600,000 BCE)",
-  "The Cave Paintings of Lascaux in France (c. 17,000 BCE)",
-  "The Domestication of Dogs from Wolves (c. 15,000 BCE)",
-  "The End of the Last Ice Age and the Start of the Holocene (c. 11,700 BCE)",
-  "The Invention of Agriculture in the Fertile Crescent (c. 9,000 BCE)",
-  "The Construction of Göbekli Tepe in Anatolia (c. 9,500 BCE)",
-  "The Formation of the First Permanent Villages like Jericho (c. 8,000 BCE)"
+    "The Construction of Sydney Opera House",
+    "The Completion of Burj Khalifa in Dubai",
+    "The Building of The International Space Station (ISS)",
+    "The Invention of 3D Printing Technology",
+    "The Opening of the High Line Park in New York City",
+    "The Inauguration of the Guggenheim Museum Bilbao",
+    "The Construction of Palm Jumeirah in Dubai",
+    "The Completion of the Millau Viaduct in France",
+    "The Opening of the Shard Skyscraper in London"
 ]
 
 def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
@@ -168,6 +167,7 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
     era_match = match_era(raw["year"], raw["region"], eras_df)
     theme_info = assign_theme(raw["theme"], theme_lookup)
     normalized_coords = normalize_coords(raw["coords"])
+    broad_era = get_broad_era_label(raw["year"])
 
     return {
         "title": raw["title"],
