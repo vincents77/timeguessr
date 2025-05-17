@@ -6,11 +6,6 @@ import requests
 import subprocess
 import base64
 from dotenv import load_dotenv
-from src.utils.git_helpers import (
-    smart_git_commit_and_push,
-    print_git_branch,
-    print_git_summary,
-)
 
 # --- Backup public folder before any image generation
 print("📦 Backing up public folder before image generation...")
@@ -127,8 +122,3 @@ def main():
 # --- Entry point
 if __name__ == "__main__":
     main()
-    smart_git_commit_and_push(
-        commit_message="Auto: Generated pending event images",
-        branch="feature/image-generation",
-        create_if_missing=True
-    )

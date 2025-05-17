@@ -6,12 +6,6 @@ import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
 from supabase import create_client, Client
-from src.utils.git_helpers import (
-    smart_git_commit_and_push,
-    print_git_branch,
-    print_git_summary,
-)
-
 
 # --- Setup
 project_root = Path(__file__).resolve().parent.parent.parent
@@ -49,14 +43,20 @@ def normalize_coords_field(event):
     Ensures the 'coords' field is always a valid JSON array [lat, lon].
     """
     try:
-        if isinstance(event.get("coords"), str):
-            coords = json.loads(event["coords"])
+        coords_raw = event.get("coords")
+        if isinstance(coords_raw, str):
+            # Handle both JSON string or comma-separated values
+            if coords_raw.strip().startswith("["):
+                coords = json.loads(coords_raw)
+            else:
+                lat_str, lng_str = coords_raw.split(",")
+                coords = [float(lat_str.strip()), float(lng_str.strip())]
         else:
-            coords = event["coords"]
+            coords = coords_raw
         event["coords"] = json.dumps([float(coords[0]), float(coords[1])])
     except Exception as e:
         print(f"⚠️ Warning: Invalid coords for event '{event.get('title', 'Unknown')}': {e}")
-        event["coords"] = json.dumps([0.0, 0.0])  # fallback if broken
+        event["coords"] = json.dumps([0.0, 0.0])
     return event
 
 def insert_event(event):
@@ -133,13 +133,8 @@ def main():
 
     print(f"🎯 Process finished: {len(successful)} succeeded, {len(failed)} failed.")
 
-    # ⚡ Bonus Step: Pull updated events.json + Git push
+    # ⚡ Bonus Step: Pull updated events.json
     fetch_all_events_and_save()
-    smart_git_commit_and_push(
-    commit_message="Auto: Generated pending event images",
-    branch="feature/image-generation",
-    create_if_missing=True
-)
 
 # --- Entry point
 if __name__ == "__main__":
