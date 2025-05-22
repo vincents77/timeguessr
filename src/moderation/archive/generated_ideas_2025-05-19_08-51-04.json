@@ -1,0 +1,307 @@
+[
+  {
+    "title": "The Invention of the Wheel in Mesopotamia",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833898"
+  },
+  {
+    "title": "The Signing of the Treaty of Tordesillas",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833921"
+  },
+  {
+    "title": "The First Olympic Games in Ancient Greece",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833928"
+  },
+  {
+    "title": "The Establishment of the Han Dynasty in China",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833934"
+  },
+  {
+    "title": "The Foundation of Harvard University",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833940"
+  },
+  {
+    "title": "Foundation of Islam",
+    "year": 622,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes.",
+    "description": "The year 622 marks the Hijra, when the Prophet Muhammad migrated from Mecca to Medina, marking the beginning of the Islamic calendar and the spread of Islam.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685660"
+  },
+  {
+    "title": "Charlemagne Crowned Emperor",
+    "year": 800,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique.",
+    "description": "Charlemagne was crowned Emperor of the Romans by Pope Leo III in 800, symbolizing the fusion of Roman, Christian, and Germanic elements in medieval Europe.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685699"
+  },
+  {
+    "title": "The First Crusade",
+    "year": 1096,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes.",
+    "description": "The First Crusade began in 1096, as European Christians sought to reclaim Jerusalem and other holy lands from Muslim control, impacting Christian-Muslim relations.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685715"
+  },
+  {
+    "title": "The Magna Carta",
+    "year": 1215,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique.",
+    "description": "In 1215, King John of England was forced to sign the Magna Carta, which limited the power of the monarchy and laid the foundation for modern democracy.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685729"
+  },
+  {
+    "title": "Christopher Columbus Discovers America",
+    "year": 1492,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations.",
+    "description": "In 1492, Christopher Columbus reached the Americas, initiating European exploration and colonization of the New World.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685743"
+  },
+  {
+    "title": "Martin Luther's 95 Theses",
+    "year": 1517,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations.",
+    "description": "In 1517, Martin Luther published his 95 Theses, challenging the Catholic Church and sparking the Protestant Reformation.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685757"
+  },
+  {
+    "title": "Treaty of Tordesillas",
+    "year": 1494,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations.",
+    "description": "The Treaty of Tordesillas, signed in 1494, divided the newly discovered lands outside Europe between Spain and Portugal, impacting global colonization.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:45:44.685770"
+  },
+  {
+    "title": "Foundation of Islam",
+    "year": 622,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes",
+    "description": "In 622, the Prophet Muhammad's migration from Mecca to Medina, known as the Hijra, marks the beginning of the Islamic calendar and the establishment of the first Muslim community.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771853"
+  },
+  {
+    "title": "Council of Nicaea",
+    "year": 325,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes",
+    "description": "The Council of Nicaea in 325 AD was the first ecumenical council of the Christian Church, leading to the Nicene Creed and establishing foundational Christian doctrine.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771863"
+  },
+  {
+    "title": "The Great Schism",
+    "year": 1054,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes",
+    "description": "In 1054, the Christian Church split into the Roman Catholic Church and the Eastern Orthodox Church, a division known as the Great Schism, which shaped the religious landscape of Europe.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771867"
+  },
+  {
+    "title": "Signing of the Magna Carta",
+    "year": 1215,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique",
+    "description": "In 1215, King John of England signed the Magna Carta, limiting royal power and laying the foundation for modern constitutional governance.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771870"
+  },
+  {
+    "title": "Battle of Hastings",
+    "year": 1066,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique",
+    "description": "The Battle of Hastings in 1066 resulted in Norman control of England, significantly altering the social and political structure of medieval England.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771873"
+  },
+  {
+    "title": "Creation of the Holy Roman Empire",
+    "year": 962,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique",
+    "description": "In 962, Otto I was crowned Holy Roman Emperor, which established a central European empire influencing medieval politics and society.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771875"
+  },
+  {
+    "title": "Columbus Discovers America",
+    "year": 1492,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations",
+    "description": "In 1492, Christopher Columbus's voyage across the Atlantic Ocean led to the European discovery of the Americas, initiating widespread exploration and colonization.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771878"
+  },
+  {
+    "title": "Martin Luther's 95 Theses",
+    "year": 1517,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations",
+    "description": "In 1517, Martin Luther's publication of the 95 Theses challenged the practices of the Catholic Church, sparking the Protestant Reformation and religious change across Europe.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771881"
+  },
+  {
+    "title": "Treaty of Tordesillas",
+    "year": 1494,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations",
+    "description": "The Treaty of Tordesillas in 1494 divided the newly discovered lands outside Europe between the Portuguese Empire and the Spanish Empire, influencing global colonization.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-18T19:54:21.771883"
+  },
+  {
+    "title": "Foundation of Islam",
+    "year": 622,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes",
+    "description": "The year 622 marks the Hijra, when Prophet Muhammad migrated from Mecca to Medina, an event that signifies the foundation of the Islamic community.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781938"
+  },
+  {
+    "title": "Council of Nicaea",
+    "year": 325,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes",
+    "description": "The First Council of Nicaea was a gathering of Christian bishops convened to achieve consensus in the church through an assembly representing all of Christendom.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781946"
+  },
+  {
+    "title": "The Great Schism",
+    "year": 1054,
+    "theme": "Chrétienté et Islam",
+    "level": "5e",
+    "objective": "Comprendre la naissance et la diffusion des religions monothéistes",
+    "description": "The Great Schism was the break of communion between the Roman Catholic Church and the Eastern Orthodox Church, marking a significant division in Christianity.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781949"
+  },
+  {
+    "title": "The Treaty of Verdun",
+    "year": 843,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique",
+    "description": "The Treaty of Verdun divided the Carolingian Empire into three kingdoms, laying the foundations for the modern states of Europe.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781952"
+  },
+  {
+    "title": "The Investiture Controversy",
+    "year": 1076,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique",
+    "description": "A significant conflict between church and state in medieval Europe over the ability to appoint local church officials.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781954"
+  },
+  {
+    "title": "Signing of the Magna Carta",
+    "year": 1215,
+    "theme": "L’Occident féodal",
+    "level": "5e",
+    "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique",
+    "description": "The Magna Carta was a charter agreed by King John of England that granted certain rights and laid the foundation for modern democracy.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781956"
+  },
+  {
+    "title": "Columbus Discovers America",
+    "year": 1492,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations",
+    "description": "Christopher Columbus's voyage led to the discovery of the Americas by Europeans, marking the beginning of widespread European exploration and colonization.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781958"
+  },
+  {
+    "title": "Martin Luther's 95 Theses",
+    "year": 1517,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations",
+    "description": "Martin Luther's publication of the 95 Theses challenged the practices of the Catholic Church and sparked the Protestant Reformation.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781960"
+  },
+  {
+    "title": "The Treaty of Tordesillas",
+    "year": 1494,
+    "theme": "Regards sur l’Europe et le monde XVIe–XVIIe",
+    "level": "5e",
+    "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations",
+    "description": "This treaty divided the newly discovered lands outside Europe between the Portuguese Empire and the Spanish Empire.",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-19T06:51:04.781962"
+  }
+]

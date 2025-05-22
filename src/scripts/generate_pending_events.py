@@ -149,28 +149,28 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 
 def load_event_ideas():
     return [
-    "The Construction of Sydney Opera House",
-    "The Completion of Burj Khalifa in Dubai",
-    "The Building of The International Space Station (ISS)",
-    "The Invention of 3D Printing Technology",
-    "The Opening of the High Line Park in New York City",
-    "The Inauguration of the Guggenheim Museum Bilbao",
-    "The Construction of Palm Jumeirah in Dubai",
-    "The Completion of the Millau Viaduct in France",
-    "The Opening of the Shard Skyscraper in London"
 ]
 
-def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
-    raw = call_gpt_generate_metadata(idea)
+def generate_event_metadata(idea, eras_df: pd.DataFrame) -> dict:
+    # Support both raw string and enriched idea object
+    if isinstance(idea, str):
+        title = idea
+        raw = call_gpt_generate_metadata(title)
+    elif isinstance(idea, dict):
+        title = idea["title"]
+        raw = call_gpt_generate_metadata(title)
+        raw = {**raw, **idea}  # merge AI result with user-provided fields
+    else:
+        raise ValueError("Unsupported idea format")
 
-    slug = slugify(raw["title"])
+    slug = slugify(title)
     era_match = match_era(raw["year"], raw["region"], eras_df)
     theme_info = assign_theme(raw["theme"], theme_lookup)
     normalized_coords = normalize_coords(raw["coords"])
     broad_era = get_broad_era_label(raw["year"])
 
-    return {
-        "title": raw["title"],
+    enriched = {
+        "title": title,
         "slug": slug,
         "year": raw["year"],
         "coords": json.dumps(normalized_coords),
@@ -193,6 +193,13 @@ def generate_event_metadata(idea: str, eras_df: pd.DataFrame) -> dict:
         "broad_era": broad_era
     }
 
+    # Optional: preserve curriculum metadata if present
+    for field in ["levels", "curriculum_tags", "curriculum_theme_ids", "language", "objective"]:
+        if field in raw:
+            enriched[field] = raw[field]
+
+    return enriched
+
 def save_event_locally(event: dict, output_file="pending_events.json"):
     output_path = Path('src/data') / output_file
     if output_path.exists():
@@ -206,17 +213,70 @@ def save_event_locally(event: dict, output_file="pending_events.json"):
     with open(output_path, "w") as f:
         json.dump(events, f, indent=2)
 
-def batch_generate_events():
-    ideas = load_event_ideas()
+def batch_generate_events_from_pending():
+    pending_path = Path("src/moderation/pending_event_ideas.json")
+    archive_path = Path("src/moderation/archived_event_ideas.json")
+    output_path = Path("src/data/pending_events.json")
+
+    if not pending_path.exists():
+        print("❌ No pending_event_ideas.json found.")
+        return
+
+    with open(pending_path, "r", encoding="utf-8") as f:
+        ideas = json.load(f)
+
+    # Load archived ideas
+    if archive_path.exists():
+        with open(archive_path, "r", encoding="utf-8") as f:
+            archived_ideas = json.load(f)
+    else:
+        archived_ideas = []
+
+    # Load already saved events to prevent duplicates
+    if output_path.exists():
+        with open(output_path, "r", encoding="utf-8") as f:
+            existing_events = json.load(f)
+    else:
+        existing_events = []
+
+    existing_keys = {
+        (
+            e["title"].strip().lower(),
+            e["year"],
+            tuple(sorted(e.get("curriculum_tags", [])))
+        )
+        for e in existing_events
+    }
+
+    new_events = []
 
     for idea in ideas:
+        key = (
+            idea["title"].strip().lower(),
+            idea["year"],
+            tuple(sorted(idea.get("curriculum_tags", [])))
+        )
+        if key in existing_keys:
+            print(f"⚠️ Skipping duplicate: {idea['title']} ({idea['year']}) {idea.get('curriculum_tags', [])}")
+            continue
         try:
-            event = generate_event_metadata(idea, eras_df)
+            event = generate_event_metadata(idea["title"], eras_df)
             save_event_locally(event)
+            new_events.append(event)
+            existing_keys.add(key)
             print(f"✅ Success: {event['title']}")
         except Exception as e:
-            print(f"❌ Error processing {idea}: {str(e)}")
+            print(f"❌ Error processing {idea['title']}: {str(e)}")
+
+    # Archive processed ideas
+    with open(archive_path, "w", encoding="utf-8") as f:
+        json.dump(archived_ideas + ideas, f, indent=2, ensure_ascii=False)
+        print(f"📦 Archived {len(ideas)} ideas to {archive_path.name}")
+
+    # Clear the pending list
+    pending_path.unlink()
+    print("🧹 Cleared pending_event_ideas.json")
 
 # --- Entry Point ---
 if __name__ == "__main__":
-    batch_generate_events()
+    batch_generate_events_from_pending()

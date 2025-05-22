@@ -1,0 +1,170 @@
+[
+  {
+    "title": "Battle of Hastings",
+    "status": "error",
+    "match_title": null,
+    "reason": "Failed to parse model response"
+  },
+  {
+    "title": "The Signing of the Magna Carta",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events listed to compare with the proposed event. Without any existing events provided, it is assumed to be new."
+  },
+  {
+    "title": "Martin Luther's Ninety-Five Theses",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Martin Luther's Ninety-Five Theses' is not a duplicate or variant of any existing events in the database. It specifically focuses on the act of nailing the Ninety-Five Theses to the church door, which is a distinct and pivotal moment in the Protestant Reformation. Without existing events to compare, it is considered a new entry."
+  },
+  {
+    "title": "Henry VIII's Break with Rome",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Henry VIII's Break with Rome' is not listed among the existing events. It specifically focuses on Henry VIII's actions in 1534, which led to the establishment of the Church of England, marking a significant moment in the English Reformation. Without existing events provided for comparison, it cannot be assessed as a duplicate or variant."
+  },
+  {
+    "title": "Battle of Naseby",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Battle of Naseby' does not match any existing events in the database under the same theme and era. It is a specific historical event with a unique title and description, indicating it is entirely new to the database."
+  },
+  {
+    "title": "The Invention of the Spinning Jenny",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The Invention of the Spinning Jenny' is not listed among the existing events in the same theme and era. It describes a specific invention by James Hargreaves in 1764, which is a distinct event in the context of the Industrial Revolution. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant."
+  },
+  {
+    "title": "The First Fleet Arrives in Australia",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The First Fleet Arrives in Australia' does not match any existing events in the database. It describes a specific historical event related to the arrival of the First Fleet in 1788, marking the beginning of British colonization in Australia. Without any existing events provided for comparison, it cannot be determined as a duplicate or variant."
+  },
+  {
+    "title": "Assassination of Archduke Franz Ferdinand",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Assassination of Archduke Franz Ferdinand' is not listed among the existing events. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant. Therefore, it is considered entirely new in this context."
+  },
+  {
+    "title": "Dunkirk Evacuation",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Dunkirk Evacuation' does not match any existing events in the database. It is a specific historical event with a unique title and description, focusing on the evacuation of Allied soldiers from Dunkirk during World War II. Without any existing events provided for comparison, it is considered entirely new."
+  },
+  {
+    "title": "Kristallnacht (The Night of Broken Glass)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Kristallnacht (The Night of Broken Glass)' is not listed among the existing events in the same theme and era. It is a specific and significant event in the history of the Holocaust, and there is no indication of it being a duplicate or variant of any existing event based on the provided information."
+  },
+  {
+    "title": "Indian Independence Act",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events provided in the same theme and era to compare against. Therefore, the proposed event is considered new."
+  },
+  {
+    "title": "Representation of the People Act",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event describes the Representation of the People Act 1918, which is a specific and significant legislative milestone in the women's suffrage movement in the UK. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant. Therefore, it is considered a new entry."
+  },
+  {
+    "title": "The First Crusade Begins",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The First Crusade Begins' is not a duplicate or variant of any existing events because there are no listed events provided for comparison. Therefore, it is considered a new entry."
+  },
+  {
+    "title": "Signing of the Magna Carta",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events provided for comparison. Without existing events to assess against, the proposed event is considered new."
+  },
+  {
+    "title": "The Arrival of the Black Death in England",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event specifically details the arrival of the Black Death in England in 1348, focusing on the initial entry point at Melcombe Regis and its immediate consequences. Without any existing events provided for comparison, it cannot be determined if this event is a duplicate or variant. Therefore, it is considered new."
+  },
+  {
+    "title": "Battle of Agincourt",
+    "status": "error",
+    "match_title": null,
+    "reason": "Failed to parse model response"
+  },
+  {
+    "title": "Act of Supremacy",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Act of Supremacy' from 1534 is not listed among the existing events in the same theme and era. It describes a specific legislative act that marked a significant religious and political shift in England, which is distinct from other events unless they specifically describe the same Act of Supremacy."
+  },
+  {
+    "title": "The Glorious Revolution",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events provided for comparison. Therefore, this event is considered new in the database."
+  },
+  {
+    "title": "The Opening of the Stockton and Darlington Railway",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The Opening of the Stockton and Darlington Railway' is not listed among the existing events. It specifically focuses on the opening of the world's first public railway using steam locomotives, which is a distinct and significant event in the Industrial Revolution. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant."
+  },
+  {
+    "title": "The Battle of Plassey",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The Battle of Plassey' is not listed among the existing events. It is a specific historical event with a unique title and description, indicating it is entirely new to the database."
+  },
+  {
+    "title": "D-Day Landings",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'D-Day Landings' is not a duplicate or variant of any existing events in the database, as no existing events were provided for comparison. It is considered entirely new based on the information given."
+  },
+  {
+    "title": "Indian Independence and Partition",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events provided in the same theme and era to compare against. Therefore, this event is considered new."
+  },
+  {
+    "title": "The Black Death Reaches England",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The Black Death Reaches England' is not a duplicate or variant of any listed events, as there are no existing events provided for comparison. It is considered entirely new based on the information given."
+  },
+  {
+    "title": "Battle of Bosworth Field",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Battle of Bosworth Field' is not listed among the existing events in the database. It is a significant historical event with a unique title and description, marking the end of the Wars of the Roses and the beginning of the Tudor dynasty. Without any existing events provided for comparison, it cannot be considered a duplicate or variant."
+  },
+  {
+    "title": "The Act of Supremacy",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The Act of Supremacy' from 1534 is not listed among the existing events. It is a significant and distinct event in the English Reformation, marking the formal establishment of the Church of England's independence from the Roman Catholic Church. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant."
+  },
+  {
+    "title": "The Signing of the Treaty of Paris",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'The Signing of the Treaty of Paris' in 1763 is not listed among the existing events. It specifically details the end of the Seven Years' War and the expansion of the British Empire, which is a distinct historical event. Without any existing events provided for comparison, it cannot be classified as a duplicate or variant."
+  },
+  {
+    "title": "Introduction of the Factory System",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event specifically focuses on Richard Arkwright's patenting of the water frame in 1769, which is a distinct event marking the introduction of the factory system. Without any existing events provided for comparison, it cannot be determined if it overlaps with any listed event. Therefore, it is considered a new entry."
+  },
+  {
+    "title": "Kristallnacht",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Kristallnacht' is not listed among the existing events in the same theme and era. It is a significant and distinct event in the history of the Holocaust, characterized by the widespread pogrom against Jews in Nazi Germany on 9–10 November 1938. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant."
+  }
+]

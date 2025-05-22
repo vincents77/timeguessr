@@ -1,0 +1,132 @@
+[
+  "The Construction of Sydney Opera House",
+  "The Completion of Burj Khalifa in Dubai",
+  "The Building of The International Space Station (ISS)",
+  "The Invention of 3D Printing Technology",
+  "The Opening of the High Line Park in New York City",
+  "The Inauguration of the Guggenheim Museum Bilbao",
+  "The Construction of Palm Jumeirah in Dubai",
+  "The Completion of the Millau Viaduct in France",
+  "The Opening of the Shard Skyscraper in London",
+  "The Unveiling of the Tesla Cybertruck",
+  {
+    "title": "The Discovery of the Dead Sea Scrolls in the Qumran Caves",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675846"
+  },
+  {
+    "title": "The Coronation of Charlemagne as King of the Lombards",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675854"
+  },
+  {
+    "title": "The Battle of Trafalgar during the Napoleonic Wars",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675856"
+  },
+  {
+    "title": "The Signing of the Treaty of Tordesillas between Spain and Portugal",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675858"
+  },
+  {
+    "title": "The Construction of the Trans-Siberian Railway",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675859"
+  },
+  {
+    "title": "The Signing of the Treaty of Tordesillas",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:26:19.832045"
+  },
+  {
+    "title": "The Construction of the Suez Canal",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:26:19.832055"
+  },
+  {
+    "title": "The Election of Margaret Thatcher as the UK's First Female Prime Minister",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:26:19.832058"
+  },
+  {
+    "title": "The Formation of the League of Nations",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:26:19.832061"
+  },
+  {
+    "title": "The First Successful Transatlantic Telegraph Cable",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:26:19.832064"
+  },
+  {
+    "title": "The Battle of Culloden, the last pitched battle on British soil",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:31:37.603111"
+  },
+  {
+    "title": "The Salem Witch Trials in Colonial America",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:31:37.603127"
+  },
+  {
+    "title": "Invention of the Telephone by Alexander Graham Bell",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:31:37.603132"
+  },
+  {
+    "title": "The Signing of the Emancipation Proclamation by Abraham Lincoln",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:31:37.603136"
+  },
+  {
+    "title": "The Formation of the League of Nations after World War I",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:31:37.603140"
+  },
+  {
+    "title": "The First Successful Cloning of a Mammal - Dolly the Sheep",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:23:50.426545"
+  },
+  {
+    "title": "The Battle of Trafalgar during the Napoleonic Wars",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:23:50.426558"
+  },
+  {
+    "title": "The Discovery of the Dead Sea Scrolls in Qumran Caves",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:23:50.426562"
+  },
+  {
+    "title": "The Ottoman Conquest of Egypt",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:23:50.426565"
+  },
+  {
+    "title": "The Unveiling of Michelangelo's David in Florence",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:23:50.426568"
+  }
+]

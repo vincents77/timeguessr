@@ -2,8 +2,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List
-from src.moderation.generate_ideas import generate_ideas_with_filters
+from typing import List, Optional, Union, Literal
+from src.moderation.generate_ideas import generate_ideas_with_filters, generate_ideas_from_curriculum
 from pathlib import Path
 import json
 from datetime import datetime
@@ -13,6 +13,8 @@ import os
 from dotenv import load_dotenv
 from fastapi import Query
 from collections import defaultdict
+from src.data.curriculum_profiles import curriculum_profiles
+import traceback
 
 project_root = Path(__file__).resolve().parent
 app = FastAPI()
@@ -41,33 +43,67 @@ class IdeaRequest(BaseModel):
     filters: dict
     count: int
 
+class FiltersPayload(BaseModel):
+    mode: Literal["filters"]
+    filters: dict
+    count: int
+
+class CurriculumPayload(BaseModel):
+    mode: Literal["curriculum"]
+    curriculum_country: str
+    curriculum_level: str
+    count: int
+
+# This allows both str and dict-based entries in accepted ideas
+AcceptedIdea = Union[str, dict]
+
 @app.post("/api/generate-ideas")
-def generate_ideas(request: IdeaRequest):
+def generate_ideas(request: Union[FiltersPayload, CurriculumPayload]):
     try:
-        return generate_ideas_with_filters(request.filters, request.count)
+        if request.mode == "filters":
+            return generate_ideas_with_filters(request.filters, count=request.count)
+        elif request.mode == "curriculum":
+            return generate_ideas_from_curriculum(
+                country=request.curriculum_country,
+                curriculum_key_fragment=request.curriculum_level,  # ✅ Renamed param
+                count=request.count
+            )
+        return []
     except Exception as e:
         import traceback
         traceback.print_exc()
-        return {"error": str(e)}
+        return [{"error": str(e)}]
     
 @app.post("/api/save-accepted-ideas")
-def save_accepted_ideas(ideas: List[str]):
-    output_path = Path(__file__).resolve().parent / "src/moderation/pending_event_ideas.json"
-    # ✅ Save the accepted ideas
+def save_accepted_ideas(ideas: List[dict]):
+    from src.agents.deduplication_agent import get_broad_era_label, infer_theme_from_text
+
+    # 🔁 Enrich accepted ideas
+    enriched = []
+    for idea in ideas:
+        # Year → broad era
+        if "broad_era" not in idea and "year" in idea:
+            idea["broad_era"] = get_broad_era_label(idea["year"])
+
+        # Theme inference (if missing)
+        if "theme" not in idea or not idea["theme"]:
+            combined = (idea.get("title", "") + " " + idea.get("description", "")).lower()
+            idea["theme"] = infer_theme_from_text(combined)
+
+        enriched.append(idea)
+    output_path = project_root / "src/moderation/pending_event_ideas.json"
+
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(ideas, f, indent=2, ensure_ascii=False)
 
-    # ✅ Archive it with a timestamp
     archive_dir = project_root / "src/moderation/archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
-
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     archive_path = archive_dir / f"pending_event_ideas_{timestamp}.json"
     shutil.copy(output_path, archive_path)
 
     print(f"✅ Saved to {output_path}")
-    print(f"✅ Archived to {archive_path}")
-
+    print(f"🗂️ Archived to {archive_path}")
     return {"status": "✅ Ideas saved and archived"}
 
 @app.get("/api/player-summary")
@@ -298,3 +334,16 @@ def get_player_dimension_performance(player_name: str = Query(...)):
         import traceback
         traceback.print_exc()
         return {"error": str(e)}
+    
+@app.get("/api/curriculum-profiles")
+def get_curriculum_profiles():
+    result = {}
+    for full_key in curriculum_profiles.keys():
+        if "_" not in full_key:
+            continue
+        country, level = full_key.split("_", 1)
+        country = country.lower()
+        level = level.lower()
+        if level not in result.setdefault(country, []):
+            result[country].append(level)
+    return result

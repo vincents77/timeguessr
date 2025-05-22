@@ -1,0 +1,42 @@
+[
+  "The Construction of Sydney Opera House",
+  "The Completion of Burj Khalifa in Dubai",
+  "The Building of The International Space Station (ISS)",
+  "The Invention of 3D Printing Technology",
+  "The Opening of the High Line Park in New York City",
+  "The Inauguration of the Guggenheim Museum Bilbao",
+  "The Construction of Palm Jumeirah in Dubai",
+  "The Completion of the Millau Viaduct in France",
+  "The Opening of the Shard Skyscraper in London",
+  "The Unveiling of the Tesla Cybertruck",
+  {
+    "title": "The Discovery of the Dead Sea Scrolls in the Qumran Caves",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675846"
+  },
+  {
+    "title": "The Coronation of Charlemagne as King of the Lombards",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675854"
+  },
+  {
+    "title": "The Battle of Trafalgar during the Napoleonic Wars",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675856"
+  },
+  {
+    "title": "The Signing of the Treaty of Tordesillas between Spain and Portugal",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675858"
+  },
+  {
+    "title": "The Construction of the Trans-Siberian Railway",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T18:18:38.675859"
+  }
+]

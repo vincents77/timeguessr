@@ -1,2 +1,25 @@
 [
+  {
+    "title": "Kristallnacht",
+    "slug": "kristallnacht",
+    "year": 1938,
+    "coords": "[52.52, 13.405]",
+    "theme": "social movements & protests",
+    "theme_id": 5,
+    "region": "Europe",
+    "notable_figures": "Adolf Hitler, Joseph Goebbels, Hermann G\u00f6ring",
+    "visuals": "burning synagogues; smashed shop windows; Nazi soldiers; Jewish civilians in distress; debris on the streets",
+    "prompt": "A highly detailed, photo-realistic image of Kristallnacht as it might have appeared at the time. The scene includes burning synagogues, smashed shop windows, Nazi soldiers, Jewish civilians in distress, and debris on the streets, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/kristallnacht.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "country": "Germany",
+    "city": "Berlin",
+    "notable_location": "Berlin Synagogue",
+    "caption": "Kristallnacht, or the Night of Broken Glass, was a pogrom against Jews carried out by the Nazi regime on November 9-10, 1938, resulting in widespread destruction of Jewish property and synagogues across Germany.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Kristallnacht",
+    "era": "Interwar Period",
+    "era_id": 23,
+    "broad_era": "7. Industrial Age"
+  }
 ]
