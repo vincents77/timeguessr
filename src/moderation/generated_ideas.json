@@ -2152,5 +2152,388 @@
     "mode": "curriculum",
     "source": "curriculum_generation",
     "created_at": "2025-05-22T08:22:26.002123"
+  },
+  {
+    "title": "The Discovery of Lascaux Cave Paintings",
+    "year": 1940,
+    "description": "The Lascaux Caves in France, discovered in 1940, contain some of the most famous examples of Upper Paleolithic art. These paintings, estimated to be around 17,000 years old, provide insight into the life and environment of prehistoric humans through depictions of large animals that once roamed the region.",
+    "theme": "Prehistoric Times",
+    "objective": "Understand the life and environment of prehistoric humans.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "prehistoric_times"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:46.997305"
+  },
+  {
+    "title": "Construction of the Great Pyramid of Giza",
+    "year": -2560,
+    "description": "The Great Pyramid of Giza, one of the Seven Wonders of the Ancient World, was constructed during the reign of Pharaoh Khufu. This monumental achievement demonstrates the advanced engineering and architectural skills of ancient Egyptian civilization.",
+    "theme": "Ancient Civilizations",
+    "objective": "Explore the characteristics and contributions of ancient civilizations such as Egypt, Mesopotamia, and the Indus Valley.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "ancient_civilizations"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:48.085949"
+  },
+  {
+    "title": "Invention of Democracy in Athens",
+    "year": -508,
+    "description": "In 508 BCE, Athens established one of the first known democracies, where citizens could participate in decision-making processes. This political advancement laid the foundation for democratic systems in the modern world.",
+    "theme": "Greek and Roman Eras",
+    "objective": "Learn about the political, cultural, and technological advancements of Greek and Roman societies.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "greek_and_roman_eras"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:49.369780"
+  },
+  {
+    "title": "The Coronation of Charlemagne as Emperor",
+    "year": 800,
+    "description": "On Christmas Day in the year 800, Charlemagne was crowned Emperor by Pope Leo III in Rome. This event marked the revival of the Roman Empire in the West and established the Carolingian Empire, which played a crucial role in shaping the social, political, and cultural landscape of the Middle Ages in Europe.",
+    "theme": "Middle Ages",
+    "objective": "Examine the social structures, key events, and cultural developments of the Middle Ages.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "middle_ages"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:51.649401"
+  },
+  {
+    "title": "Publication of 'De revolutionibus orbium coelestium'",
+    "year": 1543,
+    "description": "Nicolaus Copernicus published his groundbreaking work 'De revolutionibus orbium coelestium' (On the Revolutions of the Celestial Spheres), which proposed the heliocentric model of the universe, challenging the geocentric model and significantly advancing scientific thought during the Renaissance.",
+    "theme": "Renaissance",
+    "objective": "Understand the major changes in art, science, and thought during the Renaissance period.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "renaissance"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:53.491422"
+  },
+  {
+    "title": "Christopher Columbus Discovers the Americas",
+    "year": 1492,
+    "description": "In 1492, Christopher Columbus, an Italian explorer sailing under the Spanish flag, reached the Americas. This event marked the beginning of European exploration and colonization of the American continents. Columbus's voyage was motivated by the desire to find new trade routes to Asia, but it ultimately led to the widespread exchange of goods, cultures, and ideas between the Old and New Worlds, known as the Columbian Exchange.",
+    "theme": "Age of Discovery",
+    "objective": "Explore the motivations and impacts of European exploration and colonization.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "age_of_discovery"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:55.002973"
+  },
+  {
+    "title": "Invention of the Steam Engine",
+    "year": 1769,
+    "description": "James Watt patented an improved steam engine design, which became a key driver of the Industrial Revolution, powering factories, trains, and ships, and transforming industries and transportation.",
+    "theme": "Industrial Revolution",
+    "objective": "Analyze the technological advancements and societal changes during the Industrial Revolution.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "industrial_revolution"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:56.072659"
+  },
+  {
+    "title": "Assassination of Archduke Franz Ferdinand",
+    "year": 1914,
+    "description": "The assassination of Archduke Franz Ferdinand of Austria on June 28, 1914, in Sarajevo is often cited as the immediate spark that led to the outbreak of World War I. This event set off a chain of alliances and conflicts that escalated into a full-scale war.",
+    "theme": "World Wars",
+    "objective": "Study the causes, major events, and consequences of World War I and World War II.",
+    "levels": [
+      "CM1",
+      "CM2",
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "world_wars"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:57.796385"
+  },
+  {
+    "title": "Fall of the Berlin Wall",
+    "year": 1989,
+    "description": "The Berlin Wall, which had divided East and West Berlin since 1961, was brought down in 1989. This event symbolized the end of the Cold War and led to the reunification of Germany.",
+    "theme": "Modern Era",
+    "objective": "Discuss the key events and developments in the world from the late 20th century to the present.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "modern_era"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:58.807871"
+  },
+  {
+    "title": "Lascaux Cave Paintings",
+    "year": -17000,
+    "description": "The Lascaux Caves in southwestern France are home to some of the most famous examples of prehistoric cave paintings. These artworks, created by early humans, depict large animals and human figures, providing insight into the life and environment of prehistoric humans.",
+    "theme": "Prehistoric Times",
+    "objective": "Understand the life and environment of prehistoric humans.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "prehistoric_times"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:00.505567"
+  },
+  {
+    "title": "Unification of Upper and Lower Egypt",
+    "year": -3100,
+    "description": "The unification of Upper and Lower Egypt under the rule of the first Pharaoh, Narmer, marked the beginning of the ancient Egyptian civilization. This event laid the foundation for a centralized state that would last for thousands of years, leading to remarkable achievements in architecture, writing, and governance.",
+    "theme": "Ancient Civilizations",
+    "objective": "Explore the development and characteristics of ancient civilizations such as Egypt, Mesopotamia, and the Indus Valley.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "ancient_civilizations"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:01.848381"
+  },
+  {
+    "title": "Battle of Actium",
+    "year": -31,
+    "description": "The Battle of Actium was a decisive confrontation that took place in 31 BC, marking the end of the Roman Republic and the rise of the Roman Empire. It was fought between the forces of Octavian and the combined forces of Mark Antony and Cleopatra. Octavian's victory led to his sole control of Rome and the beginning of the Pax Romana.",
+    "theme": "Greek and Roman Empires",
+    "objective": "Study the rise and fall of the Greek and Roman Empires and their influence on modern society.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "greek_and_roman_empires"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:03.445420"
+  },
+  {
+    "title": "Coronation of Charlemagne",
+    "year": 800,
+    "description": "Charlemagne was crowned Emperor of the Romans by Pope Leo III on December 25, 800, marking the revival of the Roman Empire in the West and laying the foundations for the Holy Roman Empire.",
+    "theme": "Middle Ages",
+    "objective": "Examine the key events and societal changes during the Middle Ages in Europe.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "middle_ages"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:04.797167"
+  },
+  {
+    "title": "Leonardo da Vinci Paints the Mona Lisa",
+    "year": 1503,
+    "description": "Leonardo da Vinci began painting the Mona Lisa, one of the most famous works of art from the Renaissance period, showcasing advancements in artistic techniques and human expression.",
+    "theme": "Renaissance",
+    "objective": "Understand the cultural, artistic, and scientific advancements during the Renaissance period.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "renaissance"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:05.786032"
+  },
+  {
+    "title": "Storming of the Bastille",
+    "year": 1789,
+    "description": "On July 14, 1789, revolutionaries stormed the Bastille prison in Paris, a symbol of the monarchy's tyranny. This event marked the beginning of the French Revolution and is celebrated annually as Bastille Day, symbolizing the end of absolute monarchy and the birth of the people's sovereignty.",
+    "theme": "French Revolution",
+    "objective": "Analyze the causes, events, and outcomes of the French Revolution.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "french_revolution"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:07.869282"
+  },
+  {
+    "title": "Invention of the Spinning Jenny",
+    "year": 1764,
+    "description": "The Spinning Jenny, invented by James Hargreaves, revolutionized the textile industry by allowing a single worker to spin multiple spools of thread at the same time, significantly increasing productivity and reducing the cost of cloth.",
+    "theme": "Industrial Revolution",
+    "objective": "Explore the technological and societal changes brought about by the Industrial Revolution.",
+    "levels": [
+      "CM2",
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "industrial_revolution"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:08.809010"
+  },
+  {
+    "title": "The Code of Hammurabi",
+    "year": 1754,
+    "description": "The Code of Hammurabi, one of the earliest and most complete written legal codes, was proclaimed by the Babylonian king Hammurabi. It provided a set of rules for commercial interactions and set fines and punishments to meet the requirements of justice.",
+    "theme": "Ancient Civilizations",
+    "objective": "Explore the development and characteristics of ancient civilizations.",
+    "levels": [
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "ancient_civilizations"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:11.927656"
+  },
+  {
+    "title": "Coronation of Charlemagne as Emperor",
+    "year": 800,
+    "description": "On December 25, 800, Charlemagne was crowned Emperor of the Romans by Pope Leo III. This event marked the revival of the Roman Empire in the West and was significant for the development of the Holy Roman Empire, influencing the political and cultural landscape of medieval Europe.",
+    "theme": "Middle Ages",
+    "objective": "Understand the societal and cultural changes during the Middle Ages.",
+    "levels": [
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "middle_ages"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:14.630310"
+  },
+  {
+    "title": "The Invention of the Printing Press by Johannes Gutenberg",
+    "year": 1440,
+    "description": "Johannes Gutenberg's invention of the movable-type printing press in 1440 revolutionized the way information was disseminated, leading to the spread of knowledge and ideas across Europe, which played a crucial role in the cultural and intellectual movement of the Renaissance.",
+    "theme": "Renaissance",
+    "objective": "Examine the key figures and innovations of the Renaissance period.",
+    "levels": [
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "renaissance"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:16.593737"
   }
 ]

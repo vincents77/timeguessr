@@ -21,5 +21,28 @@
     "era": "Interwar Period",
     "era_id": 23,
     "broad_era": "7. Industrial Age"
+  },
+  {
+    "title": "Publication of 'De revolutionibus orbium coelestium'",
+    "slug": "publication-of-de-revolutionibus-orbium-coelestium",
+    "year": 1543,
+    "coords": "[51.9194, 19.1451]",
+    "theme": "scientific & technological breakthroughs",
+    "theme_id": 6,
+    "region": "Europe",
+    "notable_figures": "Nicolaus Copernicus",
+    "visuals": "a scholar in Renaissance attire; a wooden desk with manuscripts; an astrolabe; a globe; a window showing a medieval European cityscape",
+    "prompt": "A highly detailed, photo-realistic image of Publication of 'De revolutionibus orbium coelestium' as it might have appeared at the time. The scene includes a scholar in Renaissance attire, a wooden desk with manuscripts, an astrolabe, a globe, and a window showing a medieval European cityscape, depicted with authentic clothing, environment, and technology from the historical era. Captured as if by a high-resolution camera. No text or modern artifacts. Realistic proportions, cinematic style.",
+    "image_url": "/images/publication-of-de-revolutionibus-orbium-coelestium.jpg",
+    "difficulty": 3,
+    "source": "AI-generated based on historical records",
+    "country": "Poland",
+    "city": "Nuremberg",
+    "notable_location": "Nuremberg",
+    "caption": "'De revolutionibus orbium coelestium', published in 1543, marked a pivotal moment in the Scientific Revolution, introducing the heliocentric model of the universe proposed by Nicolaus Copernicus.",
+    "wiki_url": "https://en.wikipedia.org/wiki/De_revolutionibus_orbium_coelestium",
+    "era": "Renaissance Europe",
+    "era_id": 19,
+    "broad_era": "6. Early Modern Era"
   }
 ]

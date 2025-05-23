@@ -77,6 +77,9 @@ def insert_event(event):
             event["levels"] = []
         event["levels"] = json.dumps(event["levels"])
 
+    if "created_at" in event and event["created_at"] is None:
+        del event["created_at"]
+
     # ⬇️ Use UPSERT to update existing rows based on 'slug'
     response = supabase.table("events").upsert(event, on_conflict="slug").execute()
 
@@ -144,12 +147,13 @@ def main():
         archive_events(successful)
 
     # Save back only failed events
-    save_json(failed, PROCESSED_EVENTS_PATH)
+    # save_json(failed, PROCESSED_EVENTS_PATH)
 
     # Log errors if any
     log_errors(failed)
 
     print(f"🎯 Process finished: {len(successful)} succeeded, {len(failed)} failed.")
+    print(f"📘 Curriculum tags: {event.get('curriculum_tags')}")
 
 
 # --- Entry point
