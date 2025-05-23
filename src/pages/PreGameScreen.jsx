@@ -57,6 +57,9 @@ export default function PreGameScreen({ events = [] }) {
   const [selectedRegions, setSelectedRegions] = useState([]);
   const [error, setError] = useState(null);
   const [warning, setWarning] = useState("");
+  const [curriculumCountry, setCurriculumCountry] = useState("");
+  const [curriculumLevel, setCurriculumLevel] = useState("");
+  const [curriculumProfiles, setCurriculumProfiles] = useState({});
 
   useEffect(() => {
     if (filterMode === "random") {
@@ -94,6 +97,32 @@ export default function PreGameScreen({ events = [] }) {
     }
   }, [mode, selectedThemes, selectedEras, selectedRegions, filterMode, events]);
 
+  useEffect(() => {
+    const tagMap = {};
+  
+    for (const event of events) {
+      const tags = event.curriculum_tags || [];
+      for (const tag of tags) {
+        const underscoreIndex = tag.indexOf("_");
+        if (underscoreIndex === -1) return;
+        const country = tag.slice(0, underscoreIndex);
+        const level = tag.slice(underscoreIndex + 1);
+        if (!country || !level) continue;
+  
+        if (!tagMap[country]) tagMap[country] = new Set();
+        tagMap[country].add(level);
+      }
+    }
+  
+    const structured = {};
+    for (const country of Object.keys(tagMap)) {
+      structured[country] = Array.from(tagMap[country]).sort();
+    }
+  
+    setCurriculumProfiles(structured);
+  }, [events]);
+
+
   const toggleSelection = (value, list, setter) => {
     setter(list.includes(value) ? list.filter(v => v !== value) : [...list, value]);
   };
@@ -110,6 +139,14 @@ export default function PreGameScreen({ events = [] }) {
     sessionStorage.setItem("filterMode", filterMode);
 
     if (filterMode === "random") {
+      sessionStorage.setItem("selectedThemes", JSON.stringify([]));
+      sessionStorage.setItem("selectedBroadEras", JSON.stringify([]));
+      sessionStorage.setItem("selectedRegions", JSON.stringify([]));
+      sessionStorage.removeItem("curriculumCountry");
+      sessionStorage.removeItem("curriculumLevel");
+    } else if (filterMode === "curriculum") {
+      sessionStorage.setItem("curriculumCountry", curriculumCountry);
+      sessionStorage.setItem("curriculumLevel", curriculumLevel);
       sessionStorage.setItem("selectedThemes", JSON.stringify([]));
       sessionStorage.setItem("selectedBroadEras", JSON.stringify([]));
       sessionStorage.setItem("selectedRegions", JSON.stringify([]));
@@ -163,6 +200,10 @@ export default function PreGameScreen({ events = [] }) {
           onClick={() => setFilterMode("manual")}
           className={`px-4 py-2 rounded-full border text-sm min-w-[120px] ${filterMode === "manual" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
         >Select Topics</button>
+        <button
+          onClick={() => setFilterMode("curriculum")}
+          className={`px-4 py-2 rounded-full border text-sm min-w-[120px] ${filterMode === "curriculum" ? "bg-purple-200 font-bold" : "bg-gray-100"}`}
+        >Curriculum Mode</button>
       </div>
 
       {filterMode === "manual" && (
@@ -211,6 +252,44 @@ export default function PreGameScreen({ events = [] }) {
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {filterMode === "curriculum" && (
+        <div className="flex gap-4 justify-center">
+          <div>
+            <label className="block text-sm font-semibold mb-1">Country</label>
+            <select
+              value={curriculumCountry}
+              onChange={(e) => {
+                setCurriculumCountry(e.target.value);
+                setCurriculumLevel("");
+              }}
+              className="border px-3 py-2 rounded text-sm"
+            >
+              <option value="">—</option>
+              {Object.keys(curriculumProfiles).map((country) => (
+                <option key={country} value={country}>{country}</option>
+              ))}
+            </select>
+          </div>
+          {curriculumCountry && (
+            <div>
+              <label className="block text-sm font-semibold mb-1">Level</label>
+              <select
+                value={curriculumLevel}
+                onChange={(e) => setCurriculumLevel(e.target.value)}
+                className="border px-3 py-2 rounded text-sm"
+              >
+                <option value="">—</option>
+                {curriculumProfiles[curriculumCountry]?.map((lvl) => (
+                  <option key={lvl} value={lvl}>
+                    {lvl.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       )}
 

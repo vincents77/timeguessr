@@ -60,12 +60,30 @@ def normalize_coords_field(event):
     return event
 
 def insert_event(event):
-    response = supabase.table("events").insert(event).execute()
+
+    # ✅ Ensure curriculum fields are of the correct type
+    if "curriculum_tags" in event:
+        if not isinstance(event["curriculum_tags"], list):
+            event["curriculum_tags"] = []
+    
+    if "curriculum_theme_ids" in event:
+        if not isinstance(event["curriculum_theme_ids"], list):
+            event["curriculum_theme_ids"] = []
+        # Ensure it's JSON-serializable (for jsonb field)
+        event["curriculum_theme_ids"] = json.dumps(event["curriculum_theme_ids"])
+
+    if "levels" in event:
+        if not isinstance(event["levels"], list):
+            event["levels"] = []
+        event["levels"] = json.dumps(event["levels"])
+
+    # ⬇️ Use UPSERT to update existing rows based on 'slug'
+    response = supabase.table("events").upsert(event, on_conflict="slug").execute()
 
     if not response.data:
-        raise Exception(f"❌ Supabase insert failed or no data returned.")
+        raise Exception(f"❌ Supabase upsert failed or no data returned.")
 
-    print(f"✅ Inserted event: {event['title']}")
+    print(f"✅ Upserted: {event['title']}")
 
 def archive_events(events):
     archived = load_json(ARCHIVED_EVENTS_PATH)
@@ -133,8 +151,6 @@ def main():
 
     print(f"🎯 Process finished: {len(successful)} succeeded, {len(failed)} failed.")
 
-    # ⚡ Bonus Step: Pull updated events.json
-    fetch_all_events_and_save()
 
 # --- Entry point
 if __name__ == "__main__":

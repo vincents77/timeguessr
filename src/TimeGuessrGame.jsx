@@ -87,7 +87,7 @@ export default function TimeGuessrGame() {
     async function fetchEvents() {
       const { data, error } = await supabase
         .from('events')
-        .select('id, title, slug, year, coords, theme, era, region, notable_location, image_url, caption, wiki_url, broad_era, era_id, country, city, difficulty');
+        .select('id, title, slug, year, coords, theme, era, region, notable_location, image_url, caption, wiki_url, broad_era, era_id, country, city, difficulty, curriculum_tags, curriculum_theme_ids');
 
       if (error) {
         console.error('❌ Error fetching events:', error.message);
@@ -125,28 +125,36 @@ export default function TimeGuessrGame() {
   }, []);
 
   useEffect(() => {
-    console.log('Selected filters:', { selectedThemes, selectedRegions, selectedBroadEras });
-
+    const curriculumCountry = sessionStorage.getItem("curriculumCountry");
+    const curriculumLevel = sessionStorage.getItem("curriculumLevel");
+  
     let results = events;
-    if (selectedThemes.length > 0) {
-      results = results.filter(e => selectedThemes.includes(e.theme));
+  
+    // ✅ Curriculum filter takes precedence
+    if (curriculumCountry && curriculumLevel) {
+      const curriculumKey = `${curriculumCountry}_${curriculumLevel}`;
+      results = results.filter(
+        e =>
+          Array.isArray(e.curriculum_tags) &&
+          e.curriculum_tags.includes(curriculumKey)
+      );
+      console.log("🎓 Curriculum mode active:", curriculumKey, `→ ${results.length} events`);
+    } else {
+      // Fallback to manual filters
+      if (selectedThemes.length > 0) {
+        results = results.filter(e => selectedThemes.includes(e.theme));
+      }
+  
+      if (selectedBroadEras.length > 0) {
+        results = results.filter(e => selectedBroadEras.includes(e.broad_era));
+      }
+  
+      if (selectedRegions.length > 0) {
+        results = results.filter(e => selectedRegions.includes(e.region));
+      }
     }
-
-    if (selectedBroadEras.length > 0) {
-      results = results.filter(e => selectedBroadEras.includes(e.broad_era));
-    }
-
-    if (selectedRegions.length > 0) {
-      results = results.filter(e => selectedRegions.includes(e.region));
-    }
-
-    console.log("🎛️ Filtering with:", {
-      selectedThemes,
-      selectedBroadEras,
-      selectedRegions,
-      resultCount: results.length
-    });
-
+  
+    console.log("🎛️ Final filtered count:", results.length);
     setFilteredEvents(results);
   }, [events, selectedThemes, selectedBroadEras, selectedRegions]);
 
