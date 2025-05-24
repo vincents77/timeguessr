@@ -233,6 +233,58 @@ def generate_ideas_from_curriculum(country: str, curriculum_key_fragment: str, c
         print("❌ Error during curriculum idea generation:", e)
         return []
 
+# ========== ENRICH EXISTING TITLES ==========
+def enrich_existing_titles(idea_titles: list):
+    prompt = f"""
+You are helping improve a list of historical event ideas for an educational guessing game.
+
+For each event title, extract or infer the following fields:
+- year (just 1 integer or approximate year)
+- theme (choose from: wars & battles, art & culture, diplomacy & international relations, exploration & discovery, etc.)
+- region (Africa, Asia, Europe, Americas, Middle East, Oceania, Global)
+- broad_era (choose from: 1. Deep Prehistory, 3. Late Prehistory, 4. Ancient World, 5. Middle Ages, 6. Early Modern Era, 7. Industrial Age, 8. 20th Century, 9. 21st Century)
+- objective (1-sentence educational goal)
+- difficulty (easy / medium / hard)
+
+Return a JSON list like:
+[
+  {{
+    "title": "Example Title",
+    "year": 1885,
+    "theme": "...",
+    "region": "...",
+    "broad_era": "...",
+    "objective": "...",
+    "difficulty": "...",
+    "language": "en",
+    "mode": "manual",
+    "source": "manual_enrichment"
+  }}
+]
+
+Here are the titles:
+{json.dumps(idea_titles)}
+    """.strip()
+
+    print("✍️ Enriching manually provided titles...")
+
+    response = client.chat.completions.create(
+        model=MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+    )
+
+    content = response.choices[0].message.content.strip()
+    if content.startswith("```json"):
+        content = content[len("```json"):].strip()
+    if content.endswith("```"):
+        content = content[:-3].strip()
+
+    enriched_ideas = json.loads(content)
+    save_ideas(enriched_ideas)
+    run_batch_deduplication(enriched_ideas, save_to_file=True)
+    return enriched_ideas
+
 
 # ========== SHARED SAVE LOGIC ==========
 def save_ideas(new_ideas):
@@ -269,10 +321,21 @@ if __name__ == "__main__":
     parser.add_argument("--broad_era", nargs="*")
     parser.add_argument("--region", nargs="*")
 
+    parser.add_argument("--pending_file", type=str, help="Path to JSON file with list of event titles to enrich")
+
     args = parser.parse_args()
 
-    if args.curriculum:
+    if args.pending_file:
+        # Import and use the enrichment function you added
+        with open(args.pending_file, "r", encoding="utf-8") as f:
+            titles = json.load(f)
+        if isinstance(titles[0], dict):
+            titles = [entry["title"] for entry in titles]  # normalize if JSON contains dicts
+        enrich_existing_titles(titles)
+
+    elif args.curriculum:
         generate_ideas_from_curriculum(args.country, args.curriculum_key_fragment, count=args.count)
+
     else:
         filters = {
             "themes": args.theme or [],

@@ -1,5 +1,35 @@
 [
   {
+    "title": "The Invention of the Wheel in Mesopotamia",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833898"
+  },
+  {
+    "title": "The Signing of the Treaty of Tordesillas",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833921"
+  },
+  {
+    "title": "The First Olympic Games in Ancient Greece",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833928"
+  },
+  {
+    "title": "The Establishment of the Han Dynasty in China",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833934"
+  },
+  {
+    "title": "The Foundation of Harvard University",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-18T19:45:28.833940"
+  },
+  {
     "title": "Foundation of Islam",
     "year": 622,
     "theme": "Chrétienté et Islam",
@@ -594,6 +624,36 @@
     "created_at": "2025-05-19T16:17:17.911771"
   },
   {
+    "title": "The Signing of the Treaty of Tordesillas Dividing the New World",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-21T20:25:26.037404"
+  },
+  {
+    "title": "The Battle of Waterloo Ending Napoleonic Rule",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-21T20:25:26.037416"
+  },
+  {
+    "title": "The First Successful Heart Transplant by Christiaan Barnard",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-21T20:25:26.037420"
+  },
+  {
+    "title": "The Launch of the Hubble Space Telescope",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-21T20:25:26.037423"
+  },
+  {
+    "title": "The Release of Microsoft's Windows 95 Operating System",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-21T20:25:26.037426"
+  },
+  {
     "title": "Henry VIII Establishes the Church of England",
     "year": 1534,
     "theme": "Renaissance and Reformation",
@@ -1040,6 +1100,36 @@
     "mode": "curriculum",
     "source": "curriculum_generation",
     "created_at": "2025-05-22T07:49:11.134528"
+  },
+  {
+    "title": "The Crowning of Queen Victoria",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-22T07:50:41.697212"
+  },
+  {
+    "title": "The First Human Moon Landing by Apollo 11",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-22T07:50:41.697218"
+  },
+  {
+    "title": "The Signing of the Treaty of Tordesillas",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-22T07:50:41.697220"
+  },
+  {
+    "title": "The Invention of the Printing Press by Johannes Gutenberg",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-22T07:50:41.697222"
+  },
+  {
+    "title": "The Conquest of the Incan Empire by Francisco Pizarro",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-22T07:50:41.697223"
   },
   {
     "title": "The English Reformation Begins",

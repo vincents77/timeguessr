@@ -1,116 +1,278 @@
 [
   {
-    "title": "The Discovery of Lascaux Cave Paintings",
+    "title": "Berlin Conference and the Partition of Africa (1884–85)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'The Discovery of Lascaux Cave Paintings' does not match any existing events in the database under the same theme and era. It is a unique event detailing the discovery of prehistoric art in 1940, which is not covered by any other listed events."
+    "reason": "The proposed event 'Berlin Conference and the Partition of Africa (1884–85)' is entirely new as it does not overlap with any existing events in terms of historical context, participants, or outcomes. The existing events focus on different historical moments and themes, such as post-war reorganization, humanitarian aid, and the opening of Japan, whereas the Berlin Conference was specifically about the division of Africa among European powers."
   },
   {
-    "title": "Construction of the Great Pyramid of Giza",
+    "title": "Construction of the Suez Canal (1869)",
     "status": "new",
     "match_title": null,
-    "reason": "There are no existing events provided for comparison. Without any existing events to assess against, the proposed event is considered new."
+    "reason": "The proposed event 'Construction of the Suez Canal (1869)' is entirely new and does not overlap with the existing events. It pertains to a significant engineering project in the Industrial Age, whereas the existing events relate to archaeological discovery and a maritime disaster, respectively."
   },
   {
-    "title": "Invention of Democracy in Athens",
+    "title": "Establishment of Liberia as an independent republic (1847)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'Invention of Democracy in Athens' does not match any existing events in the database. It specifically focuses on the establishment of democracy in Athens in 508 BCE, which is a distinct historical event. Without any listed events to compare against, it cannot be determined as a duplicate or variant."
+    "reason": "The proposed event 'Establishment of Liberia as an independent republic (1847)' is entirely new and does not overlap with any of the existing events. It pertains to the establishment of a nation, which is distinct from the other events that focus on conferences, treaties, and organizations in different contexts and time periods."
   },
   {
-    "title": "The Coronation of Charlemagne as Emperor",
+    "title": "British annexation of the Zulu Kingdom (1879)",
     "status": "new",
     "match_title": null,
-    "reason": "There are no existing events provided in the same theme and era to compare against. Therefore, the proposed event is considered new."
+    "reason": "The proposed event 'British annexation of the Zulu Kingdom (1879)' is entirely new as it does not match or overlap with any existing events in the database. It pertains to a different historical context and geographical region, focusing on the British annexation of the Zulu Kingdom, which is distinct from the listed events that primarily involve European conflicts and World Wars."
   },
   {
-    "title": "Publication of 'De revolutionibus orbium coelestium'",
+    "title": "Kwame Nkrumah leads Ghana to independence (1957)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event describes the publication of 'De revolutionibus orbium coelestium' by Nicolaus Copernicus in 1543, which is a specific and significant event in the history of science. Without any existing events provided for comparison, it cannot be assessed as a duplicate or variant. Therefore, it is considered a new entry."
+    "reason": "The proposed event 'Kwame Nkrumah leads Ghana to independence (1957)' is entirely new as it pertains to Ghana's independence, which is not covered by any of the existing events listed. The existing events focus on Cold War diplomacy, Middle Eastern peace treaties, European integration, and non-alignment movements, none of which directly relate to Ghana's independence or Kwame Nkrumah's leadership."
   },
   {
-    "title": "Christopher Columbus Discovers the Americas",
+    "title": "Rwandan Genocide (1994)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'Christopher Columbus Discovers the Americas' is not a duplicate or variant of any existing events listed in the same theme and era. It is a distinct event describing Columbus's 1492 voyage and its significance, which is not covered by any existing entries."
+    "reason": "The proposed event 'Rwandan Genocide (1994)' is entirely new as it pertains to a different historical event and context than the existing events listed, which are related to the Vietnam War. There is no overlap in the subject matter or geographical focus."
   },
   {
-    "title": "Invention of the Steam Engine",
+    "title": "Founding of the African Union (2002)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Founding of the African Union (2002)' is entirely new as it pertains to the establishment of a continental organization in Africa, whereas the existing event 'The 2015 Paris Agreement is signed at COP21' relates to a global climate agreement. There is no overlap in the subject matter or the specific events described."
+  },
+  {
+    "title": "Ethiopia’s Grand Renaissance Dam dispute (2010s)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Ethiopia’s Grand Renaissance Dam dispute (2010s)' is entirely new as it pertains to a specific diplomatic issue involving Ethiopia and its neighbors over the construction of the Grand Renaissance Dam. This is distinct from the existing event, which focuses on the global climate agreement reached in Paris in 2015. There is no overlap in the subject matter or the parties involved."
+  },
+  {
+    "title": "Rise of mobile banking in Kenya (M-Pesa)",
     "status": "error",
     "match_title": null,
     "reason": "Failed to parse model response"
   },
   {
-    "title": "Assassination of Archduke Franz Ferdinand",
+    "title": "Nigerian End SARS protests (2020)",
     "status": "error",
     "match_title": null,
     "reason": "Failed to parse model response"
   },
   {
-    "title": "Fall of the Berlin Wall",
-    "status": "new",
+    "title": "South Africa’s electricity crisis (Eskom, 2000s–2020s)",
+    "status": "error",
     "match_title": null,
-    "reason": "There are no existing events provided in the same theme and era to compare against. Therefore, the proposed event is considered new."
+    "reason": "Failed to parse model response"
   },
   {
-    "title": "Lascaux Cave Paintings",
+    "title": "Rise of the Olmec Civilization (c. 1200 BCE)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Rise of the Olmec Civilization (c. 1200 BCE)' is entirely new as it pertains to the emergence of the Olmec civilization, which is distinct from the existing event about the Cave Paintings of Lascaux. The two events are from different times and focus on different aspects of prehistoric art and culture."
+  },
+  {
+    "title": "Teotihuacan established in central Mexico (c. 100 BCE)",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events listed in the same theme and era to compare with. Therefore, the proposed event is considered entirely new."
+  },
+  {
+    "title": "Maya City of Tikal reaches its peak (200 CE)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event about the Maya City of Tikal reaching its peak in 200 CE does not match any existing events in the same theme and era. It is a unique event focusing on a specific historical milestone in the Maya civilization, which is not covered by any other listed events."
+  },
+  {
+    "title": "Nazca Lines created in Peru (c. 500 BCE–500 CE)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Nazca Lines created in Peru (c. 500 BCE–500 CE)' does not match any existing events in the database. It is a unique event related to the creation of the Nazca Lines, which is a distinct historical and cultural phenomenon."
+  },
+  {
+    "title": "Chavín culture flourishes in the Andes (900–200 BCE)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Chavín culture flourishes in the Andes (900–200 BCE)' is entirely new as it pertains to a different culture, time period, and geographical location compared to the existing event 'The Cave Paintings of Lascaux'. There is no overlap in meaning or content between the two events."
+  },
+  {
+    "title": "Mayan decline in southern lowlands (c. 900)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Mayan decline in southern lowlands (c. 900)' is entirely new as it pertains to the decline of the Mayan civilization, which is unrelated to the founding of the University of Bologna in 1088. The events are distinct in both time period and subject matter."
+  },
+  {
+    "title": "Rise of the Mississippian Culture (800–1600)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Rise of the Mississippian Culture (800–1600)' is entirely new as it pertains to the development of a pre-Columbian Native American culture in North America, whereas the existing event 'The founding of the University of Bologna (1088)' relates to the establishment of a European university. These events are distinct in terms of geographical location, cultural context, and historical significance."
+  },
+  {
+    "title": "Tairona civilization flourishes in northern Colombia",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event about the Tairona civilization flourishing in northern Colombia in the year 1000 is entirely new. It does not overlap in meaning or content with the existing event about the founding of the University of Bologna in 1088, which is focused on the establishment of a higher education institution in Europe. The two events are distinct in terms of geographical location, cultural context, and historical significance."
+  },
+  {
+    "title": "Founding of New Amsterdam (later New York) (1624)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Founding of New Amsterdam (later New York) (1624)' is entirely new as it pertains to the establishment of a settlement in the early 17th century, whereas the existing events involve different historical milestones in aviation and archaeology from the late 18th century. There is no overlap in terms of content or historical significance with the existing events."
+  },
+  {
+    "title": "Spanish conquest of the Inca Empire (1532)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Spanish conquest of the Inca Empire (1532)' is not a duplicate or variant of any existing events. It pertains to the Spanish conquest of the Inca Empire, which is distinct from the listed events that involve different historical contexts and regions, such as the French Revolution, the Tokugawa shogunate, the fall of the Aztec Empire, and the Siege of Vienna."
+  },
+  {
+    "title": "Jesuit missions in Paraguay (1600s)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Jesuit missions in Paraguay (1600s)' is entirely new as it does not overlap in meaning or content with the existing events. The existing events focus on specific works of art and literature, while the proposed event pertains to religious missions in South America during the 1600s."
+  },
+  {
+    "title": "Persian Empire under Darius the Great (522–486 BCE)",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events provided for comparison. Therefore, the proposed event is considered new."
+  },
+  {
+    "title": "Qin Dynasty unifies China (221 BCE)",
     "status": "new",
     "match_title": null,
     "reason": "There are no existing events provided to compare against. Therefore, the proposed event is considered new."
   },
   {
-    "title": "Unification of Upper and Lower Egypt",
-    "status": "new",
+    "title": "Invention of paper in Han China (c. 100 BCE)",
+    "status": "error",
     "match_title": null,
-    "reason": "The proposed event 'Unification of Upper and Lower Egypt' does not match any existing events in the database. It is a distinct event focusing on the unification under Pharaoh Narmer, marking the beginning of ancient Egyptian civilization. Without any listed events to compare against, it is considered new."
+    "reason": "Failed to parse model response"
   },
   {
-    "title": "Battle of Actium",
+    "title": "Fall of the Ming Dynasty (1644)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'Battle of Actium' does not match any existing events in the database. It is a specific historical event with a unique title and description, detailing a significant battle that marked the transition from the Roman Republic to the Roman Empire. Without any existing events provided for comparison, it is considered entirely new."
+    "reason": "The proposed event 'Fall of the Ming Dynasty (1644)' does not match any existing events in the database under the same theme and era. There is no information provided about existing events, so it is assumed to be a new entry."
   },
   {
-    "title": "Coronation of Charlemagne",
+    "title": "Mughal Empire under Akbar the Great (1556–1605)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'Coronation of Charlemagne' appears to be entirely new as there are no existing events provided for comparison. Without existing events to assess against, it cannot be determined if it is a duplicate or variant."
+    "reason": "The proposed event 'Mughal Empire under Akbar the Great (1556–1605)' does not match any existing events in the same theme and era. It is a unique entry focusing on the Mughal Empire's period under Akbar, which is not mentioned in the provided list of events."
   },
   {
-    "title": "Leonardo da Vinci Paints the Mona Lisa",
+    "title": "Tokugawa shogunate begins in Japan (1603)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'Leonardo da Vinci Paints the Mona Lisa' does not match any existing events in the database. It is a unique event detailing the creation of a specific artwork by Leonardo da Vinci, which is a significant event in the Renaissance period. Without any existing events provided for comparison, it cannot be classified as a duplicate or variant."
+    "reason": "The proposed event 'Tokugawa shogunate begins in Japan (1603)' does not match any existing events in the same theme and era. It is a significant historical event marking the beginning of the Tokugawa shogunate in Japan, which is distinct and specific in its context and time frame."
   },
   {
-    "title": "Storming of the Bastille",
+    "title": "China’s Belt and Road Initiative launches (2013)",
     "status": "new",
     "match_title": null,
-    "reason": "There are no existing events provided for comparison. Without any existing events to assess, the proposed event 'Storming of the Bastille' is considered new in the database."
+    "reason": "The proposed event 'China’s Belt and Road Initiative launches (2013)' is entirely new and does not overlap with the existing event 'The 2015 Paris Agreement is signed at COP21 (2015)'. The Belt and Road Initiative is focused on international infrastructure and economic development, while the Paris Agreement is centered on climate diplomacy and environmental commitments."
   },
   {
-    "title": "Invention of the Spinning Jenny",
-    "status": "new",
-    "match_title": null,
-    "reason": "The proposed event 'Invention of the Spinning Jenny' is not listed among the existing events in the same theme and era. It describes a specific invention and its impact on the textile industry, which is a distinct event in the context of the Industrial Revolution."
+    "title": "Beijing Olympics (2008)",
+    "status": "variant",
+    "match_title": "The Opening Ceremony of the Beijing Olympics (2008)",
+    "reason": "The proposed event 'Beijing Olympics (2008)' overlaps significantly with the existing event 'The Opening Ceremony of the Beijing Olympics (2008)' as both refer to the same major event in 2008. However, the proposed event lacks specific details and focuses on the broader event rather than just the opening ceremony."
   },
   {
-    "title": "The Code of Hammurabi",
-    "status": "new",
+    "title": "Indian Mars Orbiter Mission (2013)",
+    "status": "error",
     "match_title": null,
-    "reason": "The proposed event 'The Code of Hammurabi' is not a duplicate or variant of any existing events in the database under the same theme and era. It is a distinct event focusing on the creation of one of the earliest legal codes by the Babylonian king Hammurabi, which is a unique historical occurrence."
+    "reason": "Failed to parse model response"
   },
   {
-    "title": "Coronation of Charlemagne as Emperor",
+    "title": "World's first telegraph line installed (1837)",
     "status": "new",
     "match_title": null,
-    "reason": "The proposed event 'Coronation of Charlemagne as Emperor' is not listed among the existing events provided. It is a significant historical event that marked the revival of the Roman Empire in the West and the development of the Holy Roman Empire, but without any existing events to compare against, it cannot be classified as a duplicate or variant."
+    "reason": "The proposed event 'World's first telegraph line installed (1837)' does not match any existing events in the database. There is no information provided about existing events, so it is assumed to be entirely new."
   },
   {
-    "title": "The Invention of the Printing Press by Johannes Gutenberg",
+    "title": "First World Expo in London (1851)",
     "status": "new",
     "match_title": null,
-    "reason": "There are no existing events provided to compare against, so this event is considered new."
+    "reason": "The proposed event 'First World Expo in London (1851)' is entirely new as it does not overlap in meaning, time period, or specific content with the existing events listed, which focus on different individuals and events in the 20th century."
+  },
+  {
+    "title": "Standardization of time zones (1884)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Standardization of time zones (1884)' does not match any existing events in the database under the same theme and era. There is no information provided about existing events, so it is assumed to be entirely new."
+  },
+  {
+    "title": "International Red Cross founded (1863)",
+    "status": "variant",
+    "match_title": "The founding of the Red Cross by Henri Dunant (1863)",
+    "reason": "The proposed event 'International Red Cross founded (1863)' describes the same historical event as the existing entry 'The founding of the Red Cross by Henri Dunant (1863)'. Both refer to the establishment of the Red Cross in 1863, highlighting its significance in humanitarian aid and international cooperation."
+  },
+  {
+    "title": "Birth of international labor movements (mid-1800s)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Birth of international labor movements (mid-1800s)' does not have any existing events to compare against in the provided list. Without existing events to assess, it is considered entirely new."
+  },
+  {
+    "title": "Fall of the Berlin Wall (1989)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Fall of the Berlin Wall (1989)' is entirely new as it does not overlap with any existing events in terms of title or description. It represents a distinct and pivotal moment in Cold War history, separate from the listed events which focus on different diplomatic milestones and historical contexts."
+  },
+  {
+    "title": "Formation of NATO (1949)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Formation of NATO (1949)' is entirely new and does not overlap with any existing events in the database. It represents a distinct historical event focused on the establishment of a military alliance, which is not covered by any of the listed events."
+  },
+  {
+    "title": "Moon Landing by Apollo 11 (1969)",
+    "status": "variant",
+    "match_title": "The Moon Landing by Apollo 11 from the NASA headquarters (1969)",
+    "reason": "The proposed event and the existing event both describe the Apollo 11 moon landing in 1969, marking humanity's first steps on the lunar surface. The titles and descriptions are different, but the core event is the same."
+  },
+  {
+    "title": "Creation of the United Nations (1945)",
+    "status": "variant",
+    "match_title": "The First UN General Assembly held in London (1946)",
+    "reason": "The proposed event 'Creation of the United Nations (1945)' is closely related to the existing event 'The First UN General Assembly held in London (1946)'. Both events pertain to the establishment and early activities of the United Nations, marking significant moments in global diplomacy. While the proposed event focuses on the creation of the UN, the existing event highlights the first assembly, which is a direct consequence of its creation."
+  },
+  {
+    "title": "Spanish Flu pandemic (1918–1919)",
+    "status": "error",
+    "match_title": null,
+    "reason": "Failed to parse model response"
+  },
+  {
+    "title": "Arab Spring begins (2010)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event 'Arab Spring begins (2010)' does not have any listed events to compare against, as no existing events were provided. Therefore, it is considered entirely new."
+  },
+  {
+    "title": "Wikileaks releases classified U.S. documents (2010)",
+    "status": "new",
+    "match_title": null,
+    "reason": "The proposed event about Wikileaks releasing classified U.S. documents in 2010 is entirely new and distinct from the existing event about the 2015 Paris Agreement. They pertain to different subjects within the theme of diplomacy & international relations and occurred in different years."
+  },
+  {
+    "title": "Global Financial Crisis (2008)",
+    "status": "new",
+    "match_title": null,
+    "reason": "There are no existing events provided for comparison. Without existing events to assess, the proposed event cannot be classified as a duplicate or variant."
+  },
+  {
+    "title": "COVID-19 Pandemic declared (2020)",
+    "status": "error",
+    "match_title": null,
+    "reason": "Failed to parse model response"
+  },
+  {
+    "title": "Paris Climate Agreement signed (2015)",
+    "status": "duplicate",
+    "match_title": "The 2015 Paris Agreement is signed at COP21 (2015)",
+    "reason": "The proposed event and the existing event both describe the signing of the Paris Climate Agreement in 2015, indicating they refer to the same historical event."
   }
 ]

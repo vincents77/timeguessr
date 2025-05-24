@@ -1,0 +1,215 @@
+[
+  {
+    "title": "Construction of the Great Pyramid of Giza",
+    "year": -2560,
+    "description": "The Great Pyramid of Giza, one of the Seven Wonders of the Ancient World, was constructed during the reign of Pharaoh Khufu. This monumental achievement demonstrates the advanced engineering and architectural skills of ancient Egyptian civilization.",
+    "theme": "Ancient Civilizations",
+    "objective": "Explore the characteristics and contributions of ancient civilizations such as Egypt, Mesopotamia, and the Indus Valley.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "ancient_civilizations"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:48.085949",
+    "broad_era": "4. Ancient World"
+  },
+  {
+    "title": "Invention of Democracy in Athens",
+    "year": -508,
+    "description": "In 508 BCE, Athens established one of the first known democracies, where citizens could participate in decision-making processes. This political advancement laid the foundation for democratic systems in the modern world.",
+    "theme": "Greek and Roman Eras",
+    "objective": "Learn about the political, cultural, and technological advancements of Greek and Roman societies.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "greek_and_roman_eras"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:49.369780",
+    "broad_era": "4. Ancient World"
+  },
+  {
+    "title": "Publication of 'De revolutionibus orbium coelestium'",
+    "year": 1543,
+    "description": "Nicolaus Copernicus published his groundbreaking work 'De revolutionibus orbium coelestium' (On the Revolutions of the Celestial Spheres), which proposed the heliocentric model of the universe, challenging the geocentric model and significantly advancing scientific thought during the Renaissance.",
+    "theme": "Renaissance",
+    "objective": "Understand the major changes in art, science, and thought during the Renaissance period.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "renaissance"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:53.491422",
+    "broad_era": "6. Early Modern Era"
+  },
+  {
+    "title": "Christopher Columbus Discovers the Americas",
+    "year": 1492,
+    "description": "In 1492, Christopher Columbus, an Italian explorer sailing under the Spanish flag, reached the Americas. This event marked the beginning of European exploration and colonization of the American continents. Columbus's voyage was motivated by the desire to find new trade routes to Asia, but it ultimately led to the widespread exchange of goods, cultures, and ideas between the Old and New Worlds, known as the Columbian Exchange.",
+    "theme": "Age of Discovery",
+    "objective": "Explore the motivations and impacts of European exploration and colonization.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "age_of_discovery"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:55.002973",
+    "broad_era": "5. Middle Ages"
+  },
+  {
+    "title": "Invention of the Steam Engine",
+    "year": 1769,
+    "description": "James Watt patented an improved steam engine design, which became a key driver of the Industrial Revolution, powering factories, trains, and ships, and transforming industries and transportation.",
+    "theme": "Industrial Revolution",
+    "objective": "Analyze the technological advancements and societal changes during the Industrial Revolution.",
+    "levels": [
+      "CM1"
+    ],
+    "curriculum_theme_ids": [
+      "industrial_revolution"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:56.072659",
+    "broad_era": "6. Early Modern Era"
+  },
+  {
+    "title": "Assassination of Archduke Franz Ferdinand",
+    "year": 1914,
+    "description": "The assassination of Archduke Franz Ferdinand of Austria on June 28, 1914, in Sarajevo is often cited as the immediate spark that led to the outbreak of World War I. This event set off a chain of alliances and conflicts that escalated into a full-scale war.",
+    "theme": "World Wars",
+    "objective": "Study the causes, major events, and consequences of World War I and World War II.",
+    "levels": [
+      "CM1",
+      "CM2",
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "world_wars"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:11:57.796385",
+    "broad_era": "7. Industrial Age"
+  },
+  {
+    "title": "Unification of Upper and Lower Egypt",
+    "year": -3100,
+    "description": "The unification of Upper and Lower Egypt under the rule of the first Pharaoh, Narmer, marked the beginning of the ancient Egyptian civilization. This event laid the foundation for a centralized state that would last for thousands of years, leading to remarkable achievements in architecture, writing, and governance.",
+    "theme": "Ancient Civilizations",
+    "objective": "Explore the development and characteristics of ancient civilizations such as Egypt, Mesopotamia, and the Indus Valley.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "ancient_civilizations"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:01.848381",
+    "broad_era": "3. Late Prehistory"
+  },
+  {
+    "title": "Battle of Actium",
+    "year": -31,
+    "description": "The Battle of Actium was a decisive confrontation that took place in 31 BC, marking the end of the Roman Republic and the rise of the Roman Empire. It was fought between the forces of Octavian and the combined forces of Mark Antony and Cleopatra. Octavian's victory led to his sole control of Rome and the beginning of the Pax Romana.",
+    "theme": "Greek and Roman Empires",
+    "objective": "Study the rise and fall of the Greek and Roman Empires and their influence on modern society.",
+    "levels": [
+      "CM2"
+    ],
+    "curriculum_theme_ids": [
+      "greek_and_roman_empires"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:03.445420",
+    "broad_era": "4. Ancient World"
+  },
+  {
+    "title": "Invention of the Spinning Jenny",
+    "year": 1764,
+    "description": "The Spinning Jenny, invented by James Hargreaves, revolutionized the textile industry by allowing a single worker to spin multiple spools of thread at the same time, significantly increasing productivity and reducing the cost of cloth.",
+    "theme": "Industrial Revolution",
+    "objective": "Explore the technological and societal changes brought about by the Industrial Revolution.",
+    "levels": [
+      "CM2",
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "industrial_revolution"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:08.809010",
+    "broad_era": "6. Early Modern Era"
+  },
+  {
+    "title": "The Code of Hammurabi",
+    "year": 1754,
+    "description": "The Code of Hammurabi, one of the earliest and most complete written legal codes, was proclaimed by the Babylonian king Hammurabi. It provided a set of rules for commercial interactions and set fines and punishments to meet the requirements of justice.",
+    "theme": "Ancient Civilizations",
+    "objective": "Explore the development and characteristics of ancient civilizations.",
+    "levels": [
+      "6e"
+    ],
+    "curriculum_theme_ids": [
+      "ancient_civilizations"
+    ],
+    "curriculum_tags": [
+      "fr_cycle_3"
+    ],
+    "language": "fr",
+    "mode": "curriculum",
+    "source": "curriculum_generation",
+    "created_at": "2025-05-23T09:12:11.927656",
+    "broad_era": "6. Early Modern Era"
+  }
+]
