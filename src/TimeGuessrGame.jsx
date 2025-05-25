@@ -144,19 +144,29 @@ export default function TimeGuessrGame() {
 
   useEffect(() => {
     let results = events;
-  
+
     if (activeCurriculumTag) {
-      const [country, level] = activeCurriculumTag.split('_'); // e.g., "fr", "6e"
-  
-      results = results.filter((e) =>
-        Array.isArray(e.curricula) &&
-        e.curricula.some((c) =>
-          c.tag.startsWith(`${country}_cycle`) &&
-          Array.isArray(c.levels) &&
-          c.levels.includes(level)
-        )
-      );
-  
+      const [expectedCountryCode, expectedLevel] = activeCurriculumTag.split("_");
+    
+      results = results.filter((e) => {
+        try {
+          const curricula = typeof e.curricula === "string" ? JSON.parse(e.curricula) : e.curricula;
+    
+          if (!Array.isArray(curricula)) return false;
+    
+          return curricula.some((c) => {
+            const tag = c.tag?.toLowerCase();
+            const levels = Array.isArray(c.levels) ? c.levels.map(l => l.toLowerCase()) : [];
+    
+            return tag?.startsWith(expectedCountryCode.toLowerCase()) &&
+                   levels.includes(expectedLevel.toLowerCase());
+          });
+        } catch (err) {
+          console.warn(`❌ Failed to parse curricula for event "${e.slug}":`, err);
+          return false;
+        }
+      });
+    
       console.log("🎓 Curriculum mode active:", activeCurriculumTag, `→ ${results.length} events`);
     } else {
       if (selectedThemes.length > 0) {
@@ -169,7 +179,7 @@ export default function TimeGuessrGame() {
         results = results.filter(e => selectedRegions.includes(e.region));
       }
     }
-  
+
     console.log("🎛️ Final filtered count:", results.length);
     setFilteredEvents(results);
   }, [events, selectedThemes, selectedBroadEras, selectedRegions]);
