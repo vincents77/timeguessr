@@ -2,40 +2,16 @@
 
 curriculum_profiles = {}
 
-fr_5e = {
-    "label": "France 5e – Histoire Cycle 4",
-    "source": "BO n°31 du 30 juillet 2020",
-    "themes": [
-        {
-            "id": "christianity_and_islam",
-            "label": "Chrétienté et Islam",
-            "objective": "Comprendre la naissance et la diffusion des religions monothéistes.",
-            "level": "5e"
-        },
-        {
-            "id": "occident_feodal",
-            "label": "L’Occident féodal",
-            "objective": "Comprendre l’organisation de la société et l’évolution du pouvoir politique.",
-            "level": "5e"
-        },
-        {
-            "id": "europe_et_monde",
-            "label": "Regards sur l’Europe et le monde XVIe–XVIIe",
-            "objective": "Comprendre les grandes découvertes, réformes religieuses et colonisations.",
-            "level": "5e"
-        }
-    ]
-}
-
-curriculum_profiles = {
-    "fr_5e": fr_5e,
-}
-
 fr_cycle_4 = {
   "label": "France Cycle 4 – Histoire et Géographie",
   "source": "Official School Curriculum Document",
   "cycle": "4",
   "level": "Cycle 4",
+  "levels": [
+    "5e",
+    "4e",
+    "3e"
+  ],
   "default_persona": "education_analyst",
   "themes": [
     {
@@ -510,3 +486,17 @@ gb_key_stage_3 = {
 }
 
 curriculum_profiles["gb_key_stage_3"] = gb_key_stage_3
+
+# Export a normalized flat list for GPT processing
+CURRICULUM_PROFILES = []
+
+for tag, profile in curriculum_profiles.items():
+    for theme in profile.get("themes", []):
+        CURRICULUM_PROFILES.append({
+            "curriculum_tag": tag,
+            "theme_ids": [theme["id"]],
+            "levels": [theme["level"]] if "level" in theme else profile.get("levels", []),
+            "objective": theme["objective"],
+            "language": profile.get("language", "fr"),
+            "mode": "curriculum"
+        })

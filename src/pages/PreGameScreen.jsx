@@ -101,16 +101,17 @@ export default function PreGameScreen({ events = [] }) {
     const tagMap = {};
   
     for (const event of events) {
-      const tags = event.curriculum_tags || [];
-      for (const tag of tags) {
+      const curricula = event.curricula || [];
+      for (const entry of curricula) {
+        const tag = entry.tag;
         const underscoreIndex = tag.indexOf("_");
-        if (underscoreIndex === -1) return;
+        if (underscoreIndex === -1) continue;
+  
         const country = tag.slice(0, underscoreIndex);
-        const level = tag.slice(underscoreIndex + 1);
-        if (!country || !level) continue;
+        const levels = entry.levels || [];
   
         if (!tagMap[country]) tagMap[country] = new Set();
-        tagMap[country].add(level);
+        levels.forEach((lvl) => tagMap[country].add(lvl));
       }
     }
   

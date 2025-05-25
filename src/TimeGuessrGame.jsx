@@ -59,6 +59,24 @@ export default function TimeGuessrGame() {
   const targetEvents = targetEventsRaw ? Number(targetEventsRaw) : null;
   const [showFinalSummary, setShowFinalSummary] = useState(false);
   const [isNewRecord, setIsNewRecord] = useState(false);
+  const curriculumCountry = sessionStorage.getItem("curriculumCountry");
+  const curriculumLevel = sessionStorage.getItem("curriculumLevel");
+  const activeCurriculumTag = curriculumCountry && curriculumLevel ? `${curriculumCountry}_${curriculumLevel}` : null;
+
+  const formatCurriculumLabel = (tag) => {
+    const countryMap = {
+      fr: "🇫🇷 France",
+      gb: "🇬🇧 UK",
+      us: "🇺🇸 US",
+      de: "🇩🇪 Germany",
+      es: "🇪🇸 Spain",
+      it: "🇮🇹 Italy"
+    };
+    const [country, level] = tag.split("_");
+    const countryLabel = countryMap[country] || country.toUpperCase();
+    return `${countryLabel} ${level}`;
+  };
+  const curriculumLabel = activeCurriculumTag ? formatCurriculumLabel(activeCurriculumTag) : null;
 
   useEffect(() => {
     setSessionId(null);
@@ -87,7 +105,7 @@ export default function TimeGuessrGame() {
     async function fetchEvents() {
       const { data, error } = await supabase
         .from('events')
-        .select('id, title, slug, year, coords, theme, era, region, notable_location, image_url, caption, wiki_url, broad_era, era_id, country, city, difficulty, curriculum_tags, curriculum_theme_ids');
+        .select('id, title, slug, year, coords, theme, era, region, notable_location, image_url, caption, wiki_url, broad_era, era_id, country, city, difficulty, curricula');
 
       if (error) {
         console.error('❌ Error fetching events:', error.message);
@@ -125,30 +143,28 @@ export default function TimeGuessrGame() {
   }, []);
 
   useEffect(() => {
-    const curriculumCountry = sessionStorage.getItem("curriculumCountry");
-    const curriculumLevel = sessionStorage.getItem("curriculumLevel");
-  
     let results = events;
   
-    // ✅ Curriculum filter takes precedence
-    if (curriculumCountry && curriculumLevel) {
-      const curriculumKey = `${curriculumCountry}_${curriculumLevel}`;
-      results = results.filter(
-        e =>
-          Array.isArray(e.curriculum_tags) &&
-          e.curriculum_tags.includes(curriculumKey)
+    if (activeCurriculumTag) {
+      const [country, level] = activeCurriculumTag.split('_'); // e.g., "fr", "6e"
+  
+      results = results.filter((e) =>
+        Array.isArray(e.curricula) &&
+        e.curricula.some((c) =>
+          c.tag.startsWith(`${country}_cycle`) &&
+          Array.isArray(c.levels) &&
+          c.levels.includes(level)
+        )
       );
-      console.log("🎓 Curriculum mode active:", curriculumKey, `→ ${results.length} events`);
+  
+      console.log("🎓 Curriculum mode active:", activeCurriculumTag, `→ ${results.length} events`);
     } else {
-      // Fallback to manual filters
       if (selectedThemes.length > 0) {
         results = results.filter(e => selectedThemes.includes(e.theme));
       }
-  
       if (selectedBroadEras.length > 0) {
         results = results.filter(e => selectedBroadEras.includes(e.broad_era));
       }
-  
       if (selectedRegions.length > 0) {
         results = results.filter(e => selectedRegions.includes(e.region));
       }
@@ -643,14 +659,22 @@ const modeLabel =
 
   return (
     <>
-    <div className="scroll-container overflow-auto max-h-screen"></div>
+      <div className="scroll-container overflow-auto max-h-screen"></div>
+
       <div className="p-6 max-w-6xl mx-auto space-y-6 relative overflow-hidden">
-        <h1 className="text-3xl font-bold mb-2">MapThePast</h1>
+        <h1 className="text-3xl font-bold mb-1">MapThePast</h1>
+
+        {curriculumLabel && (
+          <div className="text-sm text-gray-600 mb-4">
+            🎓 Curriculum Mode: <span className="font-semibold">{curriculumLabel}</span>
+          </div>
+        )}
 
         {event && gameStarted && (
           <>
+            {/* Clue & Map Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[90vw] mx-auto items-start">
-              {/* Left column */}
+              {/* Clue */}
               <div className="flex flex-col">
                 <div className="min-h-[4.5rem] flex flex-col justify-end mb-2">
                   <p className="text-lg font-semibold">Your visual clue</p>
@@ -667,7 +691,7 @@ const modeLabel =
                 </div>
               </div>
 
-              {/* Right column */}
+              {/* Map */}
               <div className="flex flex-col">
                 <div className="flex flex-col justify-between min-h-[4.5rem] mb-2">
                   <label className="text-lg font-semibold block">
@@ -709,7 +733,7 @@ const modeLabel =
               </div>
             </div>
 
-            {/* Input Section */}
+            {/* Year Input */}
             <div className="flex justify-center mt-6 mb-8">
               <div className="flex gap-4 items-center">
                 <input
@@ -766,10 +790,8 @@ const modeLabel =
           onConfirmLastEvent={async () => {
             await finalizeSession(sessionId, history, selectedThemes, selectedBroadEras, selectedRegions, playerName);
             logEvent("session_finalize_auto", { sessionId });
-
             const total = history.reduce((sum, e) => sum + (e.score || 0), 0);
             setLastEntry(prev => ({ ...prev, totalScore: total }));
-
             setShowModal(false);
             setTimeout(() => setShowFinalSummary(true), 300);
           }}
@@ -779,14 +801,11 @@ const modeLabel =
               setTimeout(() => setShowFinalSummary(true), 300);
               return;
             }
-          
             setLastEntry(null);
             setShowModal(false);
             setRevealMap(false);
             setRetryCount(0);
             pickNextFilteredEvent();
-          
-            // Universal scroll to top (mobile and desktop)
             setTimeout(() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 100);
