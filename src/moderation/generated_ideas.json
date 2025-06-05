@@ -2997,5 +2997,35 @@
     "language": "en",
     "mode": "manual",
     "source": "manual_enrichment"
+  },
+  {
+    "title": "The Conquest of the Inca Empire by Francisco Pizarro",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184444"
+  },
+  {
+    "title": "The Founding of the New York Stock Exchange",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184471"
+  },
+  {
+    "title": "The First Human Heart Transplant by Christiaan Barnard",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184477"
+  },
+  {
+    "title": "The Battle of Waterloo marking the end of Napoleon's rule",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184483"
+  },
+  {
+    "title": "The Invention of the World Wide Web by Sir Tim Berners-Lee",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184488"
   }
 ]

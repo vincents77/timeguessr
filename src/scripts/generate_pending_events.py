@@ -38,6 +38,7 @@ def normalize_coords(coords) -> list:
         return [float(coords[0]), float(coords[1])]
     else:
         raise ValueError(f"Invalid coords format: {coords}")
+    
 
 def match_era(year: int, region: str, eras_df: pd.DataFrame) -> dict:
     candidates = eras_df[(eras_df["start"] <= year) & (eras_df["end"] >= year)]
@@ -148,7 +149,7 @@ eras_df = pd.read_csv('src/data/eras_rows.csv')
 # --- Main Processing ---
 
 def load_event_ideas():
-    return [
+    return ["The Founding of the New York Stock Exchange"
 ]
 
 def generate_event_metadata(idea, eras_df: pd.DataFrame) -> dict:
@@ -251,11 +252,19 @@ def batch_generate_events_from_pending():
     new_events = []
 
     for idea in ideas:
+        required_fields = ["title", "year", "coords", "theme"]
+        missing = [key for key in required_fields if key not in idea]
+
+        if missing:
+            print(f"❌ Skipping idea due to missing fields: {missing} → {idea.get('title', '[no title]')}")
+            continue
+
         key = (
             idea["title"].strip().lower(),
             idea["year"],
             tuple(sorted(idea.get("curriculum_tags", [])))
         )
+
         if key in existing_keys:
             print(f"⚠️ Skipping duplicate: {idea['title']} ({idea['year']}) {idea.get('curriculum_tags', [])}")
             continue

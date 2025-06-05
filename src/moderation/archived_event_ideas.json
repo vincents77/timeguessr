@@ -1365,5 +1365,40 @@
     "language": "en",
     "mode": "manual",
     "source": "manual_enrichment"
+  },
+  {
+    "title": "The Founding of the New York Stock Exchange",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184471",
+    "theme": "art & culture"
+  },
+  {
+    "title": "The Conquest of the Inca Empire by Francisco Pizarro",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184444",
+    "theme": "art & culture"
+  },
+  {
+    "title": "The First Human Heart Transplant by Christiaan Barnard",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184477",
+    "theme": "art & culture"
+  },
+  {
+    "title": "The Battle of Waterloo marking the end of Napoleon's rule",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184483",
+    "theme": "art & culture"
+  },
+  {
+    "title": "The Invention of the World Wide Web by Sir Tim Berners-Lee",
+    "mode": "filters",
+    "source": "filtered_generation",
+    "created_at": "2025-05-27T15:36:33.184488",
+    "theme": "art & culture"
   }
 ]

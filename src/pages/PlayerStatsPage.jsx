@@ -100,18 +100,43 @@ export default function PlayerStatsPage() {
     return Math.round((invert ? (1 - ratio) : ratio) * 100);
   };
 
-  const radarData = [
-    { metric: 'Perfect Guess Rate', player: Math.round(summary.perfect_guess_rate), top: Math.round(selected.perfect_guess_pct),
-      raw: `${Math.round(summary.perfect_guess_rate)}% vs ${Math.round(selected.perfect_guess_pct)}%`, description: 'How often you scored a perfect 2300 points' },
-    { metric: 'Distance Accuracy', player: normalize(summary.average_distance, 10000, true), top: normalize(selected.average_distance, 10000, true),
-      raw: `${Math.round(summary.average_distance)} km vs ${Math.round(selected.average_distance)} km`, description: 'Average distance error – closer is better' },
-    { metric: 'Year Accuracy', player: normalize(summary.average_year_diff, 500, true), top: normalize(selected.average_year_diff, 500, true),
-      raw: `${Math.round(summary.average_year_diff)} yrs vs ${Math.round(selected.average_year_diff)} yrs`, description: 'Average year error in your historical guess' },
-    { metric: 'Guess Efficiency', player: normalize(summary.average_attempts, 4, true), top: normalize(selected.average_attempts, 4, true),
-      raw: `${summary.average_attempts.toFixed(1)} vs ${selected.average_attempts.toFixed(1)} attempts`, description: 'Fewer retries = higher efficiency' },
-    { metric: 'Time Efficiency', player: normalize(summary.average_time_per_guess, 90, true), top: normalize(selected.average_time_per_guess, 90, true),
-      raw: `${Math.round(summary.average_time_per_guess)}s vs ${Math.round(selected.average_time_per_guess)}s`, description: 'Faster guesses — without compromising accuracy' },
-  ];
+  const radarData = selected ? [
+    {
+      metric: 'Perfect Guess Rate',
+      player: Math.round(summary?.perfect_guess_rate ?? 0),
+      top: Math.round(selected?.perfect_guess_pct ?? 0),
+      raw: `${Math.round(summary?.perfect_guess_rate ?? 0)}% vs ${Math.round(selected?.perfect_guess_pct ?? 0)}%`,
+      description: 'How often you scored a perfect 2300 points'
+    },
+    {
+      metric: 'Distance Accuracy',
+      player: normalize(summary?.average_distance ?? 10000, 10000, true),
+      top: normalize(selected?.average_distance ?? 10000, 10000, true),
+      raw: `${Math.round(summary?.average_distance ?? 0)} km vs ${Math.round(selected?.average_distance ?? 0)} km`,
+      description: 'Average distance error – closer is better'
+    },
+    {
+      metric: 'Year Accuracy',
+      player: normalize(summary?.average_year_diff ?? 500, 500, true),
+      top: normalize(selected?.average_year_diff ?? 500, 500, true),
+      raw: `${Math.round(summary?.average_year_diff ?? 0)} yrs vs ${Math.round(selected?.average_year_diff ?? 0)} yrs`,
+      description: 'Average year error in your historical guess'
+    },
+    {
+      metric: 'Guess Efficiency',
+      player: normalize(summary?.average_attempts ?? 4, 4, true),
+      top: normalize(selected?.average_attempts ?? 4, 4, true),
+      raw: `${(summary?.average_attempts ?? 0).toFixed(1)} vs ${(selected?.average_attempts ?? 0).toFixed(1)} attempts`,
+      description: 'Fewer retries = higher efficiency'
+    },
+    {
+      metric: 'Time Efficiency',
+      player: normalize(summary?.average_time_per_guess ?? 90, 90, true),
+      top: normalize(selected?.average_time_per_guess ?? 90, 90, true),
+      raw: `${Math.round(summary?.average_time_per_guess ?? 0)}s vs ${Math.round(selected?.average_time_per_guess ?? 0)}s`,
+      description: 'Faster guesses — without compromising accuracy'
+    }
+  ] : [];
 
   const { rows, cols, values } = dimensionData
     ? pivotPerformanceData(dimensionData, "theme", "broad_era", selectedMetric, {
@@ -183,7 +208,11 @@ export default function PlayerStatsPage() {
             ))}
           </select>
         </div>
-        <AccuracyRadarChart data={radarData} />
+        {radarData.length > 0 ? (
+          <AccuracyRadarChart data={radarData} />
+        ) : (
+          <div className="text-gray-500 text-sm italic mt-2">No benchmark data available for this player.</div>
+        )}
       </CollapsibleSection>
 
       <CollapsibleSection title="Performance by Theme & Era" defaultOpen={false}>
